@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android Studio,Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我在之前有两篇介绍 Android Studio 的博文，分别是 《Android Studio 概览》 和 《再说说 Android Studio》，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.
+
+注意：本文后续建立在你已">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说 Android Studio 下载完成后，我们需要做的事情">
+<meta property="og:url" content="http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="我在之前有两篇介绍 Android Studio 的博文，分别是 《Android Studio 概览》 和 《再说说 Android Studio》，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.
+
+注意：本文后续建立在你已">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050500.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050501.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050502.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050503.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050504.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050505.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050506.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050507.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050508.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050509.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016050510.jpg">
+<meta property="og:updated_time" content="2016-05-14T06:05:00.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="说说 Android Studio 下载完成后，我们需要做的事情">
+<meta name="twitter:description" content="我在之前有两篇介绍 Android Studio 的博文，分别是 《Android Studio 概览》 和 《再说说 Android Studio》，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.
+
+注意：本文后续建立在你已">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016050500.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 说说 Android Studio 下载完成后，我们需要做的事情 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                说说 Android Studio 下载完成后，我们需要做的事情
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-02T08:03:53+08:00" content="2016-04-02">
+              2016-04-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Issues-Resolution/" itemprop="url" rel="index">
+                    <span itemprop="name">Issues Resolution</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我在之前有两篇介绍 Android Studio 的博文，分别是 <a href="http://jiangbing.me/2016/01/25/2016-01-25-android-studio-tips-and-tricks/" target="_blank" rel="external">《Android Studio 概览》</a> 和 <a href="http://jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/" target="_blank" rel="external">《再说说 Android Studio》</a>，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.</p>
+</blockquote>
+<font color="red"><strong>注意：本文后续建立在你已经下好了 AS,且能够正常启动.(至于如何下载，这没什么好说的，自行 Google,百度即可 …)</strong></font>
+
+<h2 id="1-Gradle-配置文件下载耗时太长的问题"><a href="#1-Gradle-配置文件下载耗时太长的问题" class="headerlink" title="1.Gradle 配置文件下载耗时太长的问题"></a>1.Gradle 配置文件下载耗时太长的问题</h2><p>当我们第一次启动 AS，并点击 <em>“Start a new Android Studio project”</em> 的时候，AS 会自动去下载 Gradle 相关的配置文件，默认下载完成后放置位置在 C:\User\Administrator.gradle 下的 C:\Users\Administrator\gradle\wrapper\dists\gradle-2.1-all\27fdsaorewru2342dsjon45 文件夹，也许你会疑问这一串数字和英文组合的文件夹是什么意思，其实它是随机生成的。</p>
+<p>我们打开这个文件夹，可以看到 gradle-2.1-all.zip 的 .part 文件。拿到这个版本号，我们可以通过第三方下载软件（例如迅雷）去 Google 官方网站去下载。</p>
+<p>下载好 gradle-2.1-all.zip 文件好，无需解压，放到这个奇怪的文件夹下，AS 运行的时候会自动解压。这样就可以为我们节省了很多时间了，再次创建工程的时候只需要下载一些 jcenter 的依赖包即可，而这些文件都很小，不会花费多长时间。<br><a id="more"></a></p>
+<h2 id="2-配置主题（Theme）"><a href="#2-配置主题（Theme）" class="headerlink" title="2.配置主题（Theme）"></a>2.配置主题（Theme）</h2><p>配置自己喜欢的主题，会让你编码起来舒心很多。AS 自带的主题包括 Windwons, Intellij, Darcula 等等。就我个人来说黑色系的 Darcula 主题。</p>
+<p><em>具体步骤：</em></p>
+<ul>
+<li>1.点击 <strong>设置</strong> 按钮，如下图：</li>
+</ul>
+<p><img src="/images/2016050500.png" alt=""></p>
+<ul>
+<li>2.点击 Editor -&gt; Colors &amp; Fonts 来设置字体和字体大小</li>
+</ul>
+<p>默认的主题是无法修改的，我们需要点击 Sava as 按钮，通过自命名另一个名字，达到修改的目的。</p>
+<h2 id="3-代码自动提示"><a href="#3-代码自动提示" class="headerlink" title="3.代码自动提示"></a>3.代码自动提示</h2><p>对于使用 eclipse 的开发者来说，习惯了将鼠标指针停留在代码上提示的功能，乍转到 AS,会非常不习惯。</p>
+<p>AS 默认情况下是禁用掉代码提示的功能的，因为这个功能非常耗性能，对于配置不高的电脑，开启这个功能，只能说 “卡爆了”。</p>
+<p><em>如何开启？</em></p>
+<p>设置 -&gt; Editor -&gt; Other -&gt; show quick doc on mouse move,勾选上，就开启这个功能了。</p>
+<h2 id="4-代码提示不区分大小写"><a href="#4-代码提示不区分大小写" class="headerlink" title="4.代码提示不区分大小写"></a>4.代码提示不区分大小写</h2><p>设置 -&gt; Editor -&gt; General -&gt; Code Completion,在 Code Sensitive completion 里面选择 “None”,这样就开启代码提示不区分大小写了。</p>
+<p>如下图所示：</p>
+<p><img src="/images/2016050501.jpg" alt=""></p>
+<h2 id="5-代码编辑区显示行号"><a href="#5-代码编辑区显示行号" class="headerlink" title="5.代码编辑区显示行号"></a>5.代码编辑区显示行号</h2><p>在代码编辑区的左侧，点击鼠标右键，出现 “Show Line Numbers”，勾选上即可。</p>
+<p><img src="/images/2016050502.png" alt=""></p>
+<h2 id="6-更新-SDK"><a href="#6-更新-SDK" class="headerlink" title="6.更新 SDK"></a>6.更新 SDK</h2><p>点击 SDK Manager 图片，打开它，如下所示：</p>
+<p><img src="/images/2016050503.png" alt=""></p>
+<p>出现下面的窗口，点击 <em>“Launch Standalone SDK Manager”</em>:</p>
+<p><img src="/images/2016050504.jpg" alt=""></p>
+<p>在没有翻墙的情况下，我们通常会看到 <font color="red">Connection refuse</font> 的提示信息。</p>
+<p>我们需要在 SDK Manager 的菜单栏中选择 Tools -&gt; Options 选项,打开如下界面：</p>
+<p><img src="/images/2016050505.png" alt=""></p>
+<p>在 Setting 中输入 “翻墙” 代理的 IP 和端口（<font color="blue">我们可以在 AndroidDevTools 网站上找到最新的镜像地址和端口</font>），然后勾选 <em>“Force https:// … sources to be fetched using http:// …”</em> 选项，用 http 来代替 https(http 比 https 的效率要高)。</p>
+<p>完成上面的工作后，我们就可以下载到我们想要的 SDK 版本号了。如下图所示：</p>
+<p><img src="/images/2016050506.jpg" alt=""></p>
+<div class="tip"><br>    注意：Android Build Tools 是 Android SDK 的 Build 工具，会不定期更新，建议使用最新版本。<br></div>
+
+<p>下图是 Android 模拟器的系统镜像文件：</p>
+<p><img src="/images/2016050507.png" alt=""></p>
+<p>如果你使用的 AS 自带的模拟器的话，这些东西必不可少，如果你使用的是 Genymotion 模拟器，就无需下载这些系统镜像文件了。</p>
+<p>然后还要下载相关的 API 文档和 Android 源代码资源（按住 Ctrl 能够跟踪进去查看源代码）。</p>
+<p><em>API 文档：</em></p>
+<p><img src="/images/2016050508.png" alt=""></p>
+<p><em>Android 源代码资源：</em></p>
+<p><img src="/images/2016050509.png" alt=""></p>
+<h2 id="7-导入工程"><a href="#7-导入工程" class="headerlink" title="7.导入工程"></a>7.导入工程</h2><p>导入工程分为两个部分：</p>
+<ul>
+<li>1.导入 AS 工程</li>
+</ul>
+<p>我们在导入 Github 上的 AS 工程时，经常会有失败的情况，而罪魁祸首就是编译工具 Gradle 的问题。</p>
+<p>比如说，你要导入的工程时基于 Gradle 1.5 来构建的，而你本地使用的不是 Gradle 1.5,那么导入工程时，就会去下载这个版本的 Gradle,很多时候，我们无法访问到这些资源，就会发生问题。</p>
+<p><em>如何解决：</em></p>
+<p>1.在本地使用当前版本的 Gradle 创建一个正常的项目，保证其能够正常编译通过。<br>2.用这个新创建的项目中的 “Gradle” 文件夹和 “build.gradle” 文件，替换需要导入的项目的这两个文件夹。<br>3.再次打开这个项目，就可以用本地的 Gradle 对项目进行编译了。</p>
+<ul>
+<li>2.导入 eclipse 工程</li>
+</ul>
+<p>如何将一个 eclipse 工程转为 AS 工程呢？</p>
+<p>1.在 eclipse 中需要导出的项目上右键，选择导出项目。<br>2.”Generate Gradle Build files”</p>
+<p><img src="/images/2016050510.jpg" alt=""></p>
+<p>3.在 AS 中选择导入生成的 Build.gradle 文件即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/28/2016-03-28-start-a-virual-device-failed-on-the-genymotion/" rel="next" title="关于 Genymotion 中启动下载好的虚拟设备报错：Unable to start the virtual device. VirtualBox cannot start the virtual device.">
+                <i class="fa fa-chevron-left"></i> 关于 Genymotion 中启动下载好的虚拟设备报错：Unable to start the virtual device. VirtualBox cannot start the virtual device.
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/07/2016-04-07-butterknife/" rel="prev" title="Android 注解框架之 ButterKnife">
+                Android 注解框架之 ButterKnife <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/"
+     data-title="说说 Android Studio 下载完成后，我们需要做的事情"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/"
+           data-title="说说 Android Studio 下载完成后，我们需要做的事情" data-url="http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Gradle-配置文件下载耗时太长的问题"><span class="nav-number">1.</span> <span class="nav-text">1.Gradle 配置文件下载耗时太长的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置主题（Theme）"><span class="nav-number">2.</span> <span class="nav-text">2.配置主题（Theme）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-代码自动提示"><span class="nav-number">3.</span> <span class="nav-text">3.代码自动提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-代码提示不区分大小写"><span class="nav-number">4.</span> <span class="nav-text">4.代码提示不区分大小写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-代码编辑区显示行号"><span class="nav-number">5.</span> <span class="nav-text">5.代码编辑区显示行号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-更新-SDK"><span class="nav-number">6.</span> <span class="nav-text">6.更新 SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-导入工程"><span class="nav-number">7.</span> <span class="nav-text">7.导入工程</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

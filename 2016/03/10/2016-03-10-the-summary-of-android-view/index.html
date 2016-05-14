@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android View 知识," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。原文地址：http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/
+
+关于 Android View 控件Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android View 小结">
+<meta property="og:url" content="http://www.jiangbing.me/2016/03/10/2016-03-10-the-summary-of-android-view/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。原文地址：http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/
+
+关于 Android View 控件Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016033000.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016033001.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016033002.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016033003.png">
+<meta property="og:updated_time" content="2016-05-14T06:09:41.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android View 小结">
+<meta name="twitter:description" content="文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。原文地址：http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/
+
+关于 Android View 控件Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016033000.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android View 小结 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android View 小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T15:16:27+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/10/2016-03-10-the-summary-of-android-view/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/2016-03-10-the-summary-of-android-view/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。<br>原文地址：<a href="http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/</a></p>
+</blockquote>
+<h2 id="关于-Android-View-控件"><a href="#关于-Android-View-控件" class="headerlink" title="关于 Android View 控件"></a>关于 Android View 控件</h2><p>Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于 Dom 树的架构。父视图负责测量定位绘制等操作。我们经常在用的 <code>findViewById</code> 方法代价昂贵的原因，就是因为他负责至上而下遍历整棵控件树，来寻找 View 实例，在重复操作中尽量少用。现在在用的很多控件都是直接或者间接继承自 View 的，如下图：</p>
+<p><img src="/images/2016033000.jpg" alt=""><br><a id="more"></a></p>
+<h2 id="Android-UI-界面架构"><a href="#Android-UI-界面架构" class="headerlink" title="Android UI 界面架构"></a>Android UI 界面架构</h2><p>每个 Activity 包含一个 PhoneWindow 对象，PhoneWindow 设置 DecorView 为应用窗口的根视图。在里面就是熟悉的 TitleView 和 ContentView,没错，平时使用的 <code>setContentView()</code> 就是设置的 ContentView。</p>
+<p><img src="/images/2016033001.png" alt=""></p>
+<h2 id="Android-是如何绘制-View-的？"><a href="#Android-是如何绘制-View-的？" class="headerlink" title="Android 是如何绘制 View 的？"></a>Android 是如何绘制 View 的？</h2><p>当一个 Activity 启动时，会被要求绘制出它的布局。Android 框架会处理这个请求，当然前提是 Activity 提供了合理的布局。绘制从根视图开始，从上至下遍历整棵视图树，每一个 ViewGroup 负责让自己的子 View 被绘制，每一个 View 负责绘制自己，通过 <code>draw()</code> 方法.绘制过程分三步走:</p>
+<ul>
+<li><strong>Measure</strong></li>
+<li><strong>Layout</strong></li>
+<li><strong>Draw</strong></li>
+</ul>
+<p>整个绘制流程是在 ViewRoot 中的 <code>performTraversals()</code> 方法展开的。部分源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="comment">//最外层的根视图的widthMeasureSpec和heightMeasureSpec由来</span></span><br><span class="line">    <span class="comment">//lp.width和lp.height在创建ViewGroup实例时等于MATCH_PARENT</span></span><br><span class="line">    <span class="keyword">int</span> childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);</span><br><span class="line">    <span class="keyword">int</span> childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);</span><br><span class="line">    ......</span><br><span class="line">    mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">    ......</span><br><span class="line">    mView.layout(<span class="number">0</span>, <span class="number">0</span>, mView.getMeasuredWidth(), mView.getMeasuredHeight());</span><br><span class="line">    ......</span><br><span class="line">    mView.draw(canvas);</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在绘制之前当然要知道 view 的尺寸和绘制。所以先进行 measure 和 layout（测量和定位），如下图:</p>
+<p><img src="/images/2016033002.png" alt=""></p>
+<h2 id="Measure-过程"><a href="#Measure-过程" class="headerlink" title="Measure 过程"></a>Measure 过程</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">measure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;  </span><br><span class="line">    <span class="comment">//....  </span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">//回调onMeasure()方法    </span></span><br><span class="line">    onMeasure(widthMeasureSpec, heightMeasureSpec);  </span><br><span class="line">     </span><br><span class="line">    <span class="comment">//more  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>计算 view 的实际大小，获得高宽存入 mMeasuredHeight 和 mMeasureWidth，measure(int, int)传入的两个参数。MeasureSpec 是一个32位 int 值，高2位为测量的模式，低30位为测量的大小。测量的模式可以分为以下三种:</p>
+<ul>
+<li><strong>EXACTLY</strong></li>
+</ul>
+<blockquote>
+<p>精确值模式，当 layout_width 或 layout_height 指定为具体数值，或者为 match_parent 时，系统使用 EXACTLY。</p>
+</blockquote>
+<ul>
+<li><strong>AT_MOST</strong></li>
+</ul>
+<blockquote>
+<p>最大值模式，指定为 wrap_content 时，控件的尺寸不能超过父控件允许的最大尺寸。</p>
+</blockquote>
+<ul>
+<li><strong>UNSPECIFIED</strong></li>
+</ul>
+<blockquote>
+<p>不指定测量模式，View 想多大就多大，一般不太使用。</p>
+</blockquote>
+<p>根据上面的源码可知，measure 方法不可被重写，自定义时需要重写的是 onMeasure 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),</span><br><span class="line">                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看源码可知最终的高宽是调用 <code>setMeasuredDimension()</code> 设定的,如果不重写，默认是直接调用 getDefaultSize 获取尺寸的。</p>
+<p>使用 View 的 <code>getMeasuredWidth()</code> 和 <code>getMeasuredHeight()</code> 方法来获取 View 测量的宽高，必须保证这两个方法在 onMeasure 流程之后被调用才能返回有效值。</p>
+<h2 id="Layout-过程"><a href="#Layout-过程" class="headerlink" title="Layout 过程"></a>Layout 过程</h2><p>Layout 方法就是用来确定 view 布局的位置，就好像你知道了一件东西的大小以后，总要知道位置才能画上去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mView.layout(<span class="number">0</span>, <span class="number">0</span>, mView.getMeasuredWidth(), mView.getMeasuredHeight());</span><br></pre></td></tr></table></figure>
+<p>layout 获取四个参数，左，上，右，下坐标，相对于父视图而言。这里可以看到，使用了刚刚测量的宽和高。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">layout</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldL = mLeft;</span><br><span class="line">    <span class="keyword">int</span> oldT = mTop;</span><br><span class="line">    <span class="keyword">int</span> oldB = mBottom;</span><br><span class="line">    <span class="keyword">int</span> oldR = mRight;</span><br><span class="line">    <span class="keyword">boolean</span> changed = setFrame(l, t, r, b);</span><br><span class="line">    <span class="keyword">if</span> (changed || (mPrivateFlags &amp; LAYOUT_REQUIRED) == LAYOUT_REQUIRED) &#123;</span><br><span class="line">        .....</span><br><span class="line">        onLayout(changed, l, t, r, b);</span><br><span class="line">        .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 setFrame 设置坐标。如果坐标改变过了，则重新进行定位。如果是 View 对象，那么 onLayout 是个空方法。因为定位是由 ViewGroup 确定的。</p>
+<p>当 layout 结束以后 <code>getWidth()</code> 与 <code>getHeight()</code> 才会返回正确的值。</p>
+<blockquote>
+<font color="red">这里出现一个问题，getWidth/Height() and getMeasuredWidth/Height() 有什么区别？</font>
+
+</blockquote>
+<ul>
+<li><code>getWidth()</code>: View 在設定好佈局後整個 View 的寬度。 </li>
+<li><code>getMeasuredWidth()</code>: 對 View 上的內容進行測量後得到的 View 內容佔據的寬度</li>
+</ul>
+<p><img src="/images/2016033003.png" alt=""></p>
+<h2 id="Draw-过程"><a href="#Draw-过程" class="headerlink" title="Draw 过程"></a>Draw 过程</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        ......</span><br><span class="line">        <span class="comment">/*</span><br><span class="line">         * Draw traversal performs several drawing steps which must be executed</span><br><span class="line">         * in the appropriate order:</span><br><span class="line">         *</span><br><span class="line">         *      1. Draw the background</span><br><span class="line">         *      2. If necessary, save the canvas' layers to prepare for fading</span><br><span class="line">         *      3. Draw view's content</span><br><span class="line">         *      4. Draw children</span><br><span class="line">         *      5. If necessary, draw the fading edges and restore layers</span><br><span class="line">         *      6. Draw decorations (scrollbars for instance)</span><br><span class="line">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1, draw the background, if needed</span></span><br><span class="line">        ......</span><br><span class="line">        <span class="keyword">if</span> (!dirtyOpaque) &#123;</span><br><span class="line">            drawBackground(canvas);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// skip step 2 &amp; 5 if possible (common case)</span></span><br><span class="line">        ......</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2, save the canvas' layers</span></span><br><span class="line">        ......</span><br><span class="line">            <span class="keyword">if</span> (drawTop) &#123;</span><br><span class="line">                canvas.saveLayer(left, top, right, top + length, <span class="keyword">null</span>, flags);</span><br><span class="line">            &#125;</span><br><span class="line">        ......</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 3, draw the content</span></span><br><span class="line">        <span class="keyword">if</span> (!dirtyOpaque) onDraw(canvas);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 4, draw the children</span></span><br><span class="line">        dispatchDraw(canvas);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 5, draw the fade effect and restore layers</span></span><br><span class="line">        ......</span><br><span class="line">        <span class="keyword">if</span> (drawTop) &#123;</span><br><span class="line">            matrix.setScale(<span class="number">1</span>, fadeHeight * topFadeStrength);</span><br><span class="line">            matrix.postTranslate(left, top);</span><br><span class="line">            fade.setLocalMatrix(matrix);</span><br><span class="line">            p.setShader(fade);</span><br><span class="line">            canvas.drawRect(left, top, right, top + length, p);</span><br><span class="line">        &#125;</span><br><span class="line">        ......</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 6, draw decorations (scrollbars)</span></span><br><span class="line">        onDrawScrollBars(canvas);</span><br><span class="line">        ......</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>重点是第三步调用 onDraw 方法。其它几步都是绘制一些边边角角的东西比如背景、scrollBar 之类的。其中 dispatchDraw，是用来递归调用子 View,如果没有则不需要。</p>
+<p>onDraw 方法是需要自己实现的，因为每个控件绘制的内容不同。主要用 canvas 对象进行绘制，这里就不说了。</p>
+<p>参考资料:</p>
+<ul>
+<li>1.<a href="http://blog.csdn.net/guolin_blog/article/details/16330267" target="_blank" rel="external">Android视图绘制流程完全解析，带你一步步深入了解View(二)</a></li>
+<li>2.<a href="http://blog.csdn.net/yanbober/article/details/46128379" target="_blank" rel="external">Android应用层View绘制流程与源码分析</a></li>
+<li>3.<a href="http://developer.android.com/intl/zh-cn/guide/topics/ui/how-android-draws.html" target="_blank" rel="external">How Android Draws Views</a></li>
+<li>4.<a href="http://www.amazon.cn/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0-%E5%BE%90%E5%AE%9C%E7%94%9F/dp/B01481RAA4/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1450359477&amp;sr=1-1&amp;keywords=android%E7%BE%A4%E8%8B%B1%E4%BC%A0" target="_blank" rel="external">《Android群英传》</a></li>
+<li>5.<a href="http://stackoverflow.com/questions/8657540/what-is-the-difference-between-getwidth-height-and-getmeasuredwidth-height-i" target="_blank" rel="external">What is the difference between getWidth/Height() and getMeasuredWidth/Height() in Android SDK?</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-View-知识/" rel="tag">#Android View 知识</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/02/2016-03-02-guitar-qiu-yi-nong/" rel="next" title="【Guitar 弹唱】 秋意浓">
+                <i class="fa fa-chevron-left"></i> 【Guitar 弹唱】 秋意浓
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/15/2016-03-15-guitar-dong-xiao-jie/" rel="prev" title="【Guitar 弹唱】 董小姐">
+                【Guitar 弹唱】 董小姐 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/10/2016-03-10-the-summary-of-android-view/"
+     data-title="Android View 小结"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/03/10/2016-03-10-the-summary-of-android-view/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/10/2016-03-10-the-summary-of-android-view/"
+           data-title="Android View 小结" data-url="http://www.jiangbing.me/2016/03/10/2016-03-10-the-summary-of-android-view/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-Android-View-控件"><span class="nav-number">1.</span> <span class="nav-text">关于 Android View 控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-UI-界面架构"><span class="nav-number">2.</span> <span class="nav-text">Android UI 界面架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-是如何绘制-View-的？"><span class="nav-number">3.</span> <span class="nav-text">Android 是如何绘制 View 的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Measure-过程"><span class="nav-number">4.</span> <span class="nav-text">Measure 过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout-过程"><span class="nav-number">5.</span> <span class="nav-text">Layout 过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Draw-过程"><span class="nav-number">6.</span> <span class="nav-text">Draw 过程</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

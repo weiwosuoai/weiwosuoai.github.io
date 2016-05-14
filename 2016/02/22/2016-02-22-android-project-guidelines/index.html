@@ -1,0 +1,1148 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android 项目规范," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
+
+每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android项目编码规范">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/22/2016-02-22-android-project-guidelines/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
+
+每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几">
+<meta property="og:updated_time" content="2016-05-14T06:37:08.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android项目编码规范">
+<meta name="twitter:description" content="本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
+
+每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android项目编码规范 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android项目编码规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-22T14:00:29+08:00" content="2016-02-22">
+              2016-02-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/22/2016-02-22-android-project-guidelines/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/2016-02-22-android-project-guidelines/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： <a href="https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md" target="_blank" rel="external">https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md</a></p>
+</blockquote>
+<p>每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几大模块介绍作为一个 Android 开发人员，应该遵循的。</p>
+<h2 id="文件命名"><a href="#文件命名" class="headerlink" title="文件命名"></a>文件命名</h2><h3 id="类命名"><a href="#类命名" class="headerlink" title="类命名"></a>类命名</h3><p>继承自某一组件的 java 类的命名方式因该以该组件为后缀，比如 <code>SignInActivity</code>, <code>SignInFragment</code>, <code>ImageUploaderService</code>, <code>ChangePasswordDialog</code>.</p>
+<h3 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h3><p>资源文件应以下划线 <code>_</code> 来分割。<br><a id="more"></a></p>
+<h4 id="Drawable文件"><a href="#Drawable文件" class="headerlink" title="Drawable文件"></a>Drawable文件</h4><p>应遵守下面的规范：</p>
+<table>
+<thead>
+<tr>
+<th><strong>种类</strong></th>
+<th><strong>前缀</strong></th>
+<th><strong>命名规范</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action bar</td>
+<td><code>ab_</code></td>
+<td>ab_stacked.9.png</td>
+</tr>
+<tr>
+<td>Button</td>
+<td><code>btn_</code></td>
+<td>btn_send_pressed.9.png</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td><code>dialog_</code></td>
+<td>dialog_top.9.png</td>
+</tr>
+<tr>
+<td>Divider</td>
+<td><code>divider_</code></td>
+<td>divider_horizontal.9.png</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td><code>ic_</code></td>
+<td>ic_star.png</td>
+</tr>
+<tr>
+<td>Menu</td>
+<td><code>menu_</code></td>
+<td>menu_submenu_bg.9.png</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td><code>notification_</code></td>
+<td>notification_bg.9.png</td>
+</tr>
+<tr>
+<td>Tabs</td>
+<td><code>tab_</code></td>
+<td>tab_pressed.9.png</td>
+</tr>
+</tbody>
+</table>
+<p>icons 相关命名（摘自<a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="external">Android iconography guidelines</a>）：</p>
+<table>
+<thead>
+<tr>
+<th><strong>种类</strong></th>
+<th><strong>前缀</strong></th>
+<th><strong>命名规范</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Icons</td>
+<td><code>ic_</code></td>
+<td>ic_star.png</td>
+</tr>
+<tr>
+<td>Launcher icons</td>
+<td><code>ic_launcher_</code></td>
+<td>ic_launcher_calendar.png</td>
+</tr>
+<tr>
+<td>Menu icons and Action Bar icons</td>
+<td><code>ic_menu_</code></td>
+<td>ic_menu_archive.png</td>
+</tr>
+<tr>
+<td>Status bar icons</td>
+<td><code>ic_stat_notify_</code></td>
+<td>ic_stat_notify_msg.png</td>
+</tr>
+<tr>
+<td>Tab icons</td>
+<td><code>ic_tab_</code></td>
+<td>ic_tab_recent.png</td>
+</tr>
+<tr>
+<td>Dialog icons</td>
+<td><code>ic_dialog_</code></td>
+<td>ic_dialog_info.png</td>
+</tr>
+</tbody>
+</table>
+<p>selector 相关：</p>
+<table>
+<thead>
+<tr>
+<th><strong>种类</strong></th>
+<th><strong>后缀</strong></th>
+<th><strong>命名规范</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td><code>_normal</code></td>
+<td>btn_order_normal.9.png</td>
+</tr>
+<tr>
+<td>Pressed</td>
+<td><code>_pressed</code></td>
+<td>btn_order_pressed.9.png</td>
+</tr>
+<tr>
+<td>Focused</td>
+<td><code>_focused</code></td>
+<td>btn_order_focused.9.png</td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td><code>_normal</code></td>
+<td>btn_order_normal.9.png</td>
+</tr>
+<tr>
+<td>Selected</td>
+<td><code>_selected</code></td>
+<td>btn_order_selected.9.png</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Layout-文件"><a href="#Layout-文件" class="headerlink" title="Layout 文件"></a>Layout 文件</h4><p>布局文件应该与 Android 组件文件名匹配。比如说你为 <code>SignInActivity</code> 创建布局文件，布局文件应该是这样: <code>activity_sign_in.xml</code></p>
+<table>
+<thead>
+<tr>
+<th><strong>组件</strong></th>
+<th><strong>文件名</strong></th>
+<th><strong>布局文件命名方式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>UserProfileActivity</td>
+<td>activity_user_profile.xml</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>SignUpFragment</td>
+<td>fragment_sign_up.xml</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td>ChangePasswordDialog</td>
+<td>dialog_change_password.xml</td>
+</tr>
+<tr>
+<td>AdapterView item</td>
+<td>—</td>
+<td>item_person.xml</td>
+</tr>
+<tr>
+<td>Partial layout</td>
+<td>—</td>
+<td>partial_stats_bar.xml</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: <font color="red">需要注意的是，当你为 <code>adapter</code> 创建布局文件时，应该以 <code>item_</code> 为前缀；另一个就是包含在布局文件的子布局文件，应以 <code>partial_</code> 为前缀。</font></p>
+</blockquote>
+<h4 id="Menu-文件"><a href="#Menu-文件" class="headerlink" title="Menu 文件"></a>Menu 文件</h4><p>Menu 文件与布局文件命名风格一样，比如说你准备为 <code>UserActivity</code> 创建 menu 文件，命名方式应是这样：<code>activity_user.xml</code></p>
+<p>你也许会疑惑，为何不以 <code>menu_</code> 为前缀？大可不必这样做，因为这些文件都被包含在 <code>menu</code> 文件夹下了。</p>
+<h4 id="Values-文件"><a href="#Values-文件" class="headerlink" title="Values 文件"></a>Values 文件</h4><p>Values 文件的命名应该是以复数的形式来命名，例如 <code>strings.xml</code>, <code>styles.xml</code>, <code>colors.xml</code>, <code>dimens.xml</code>, <code>attrs.xml</code>。</p>
+<h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><h3 id="Java-语言规则"><a href="#Java-语言规则" class="headerlink" title="Java 语言规则"></a>Java 语言规则</h3><h4 id="不要无视异常"><a href="#不要无视异常" class="headerlink" title="不要无视异常"></a>不要无视异常</h4><p>比如下面这段代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也许你在想，依据当时的业务场景，这种异常根本不会存在，不处理也无可厚非。明天将会发生什么，谁也不知道，你的这种行为也只是为后人挖了个坑，总有一天，有人会掉进去。严谨的代码是必须处理这些异常的，至于具体如何处理，因情况而定。</p>
+<p>更具体参见<a href="https://source.android.com/source/code-style.html#dont-ignore-exceptions" target="_blank" rel="external">这里</a>。</p>
+<h4 id="不要捕获父类的异常"><a href="#不要捕获父类的异常" class="headerlink" title="不要捕获父类的异常"></a>不要捕获父类的异常</h4><p>你不应该写出下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    someComplicatedIOFunction();        <span class="comment">// may throw IOException</span></span><br><span class="line">    someComplicatedParsingFunction();   <span class="comment">// may throw ParsingException</span></span><br><span class="line">    someComplicatedSecurityFunction();  <span class="comment">// may throw SecurityException</span></span><br><span class="line">    <span class="comment">// phew, made it all the way</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;                 <span class="comment">// I'll just catch all exceptions</span></span><br><span class="line">    handleError();                      <span class="comment">// with one generic handler!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于为何要这么做，以及更详尽的信息，参见<a href="https://source.android.com/source/code-style.html#dont-catch-generic-exception" target="_blank" rel="external">这里</a>。</p>
+<h4 id="Don’t-use-finalizers"><a href="#Don’t-use-finalizers" class="headerlink" title="Don’t use finalizers"></a>Don’t use finalizers</h4><p>We don’t use finalizers. There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a <code>close()</code> method (or the like) and document exactly when that method needs to be called. See <code>InputStream</code> for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs。-（<a href="https://source.android.com/source/code-style.html#dont-use-finalizers" target="_blank" rel="external">Android code style guidelines</a>）</p>
+<h4 id="完整包引入"><a href="#完整包引入" class="headerlink" title="完整包引入"></a>完整包引入</h4><font color="red">你不应该这样做：<code>import foo.*;</code></font><br><font color="green">你应该这样做：<code>import foo.Bar;</code></font>
+
+<p>具体信息参见<a href="https://source.android.com/source/code-style.html#fully-qualify-imports" target="_blank" rel="external">这里</a>。</p>
+<h3 id="Java-style-rules"><a href="#Java-style-rules" class="headerlink" title="Java style rules"></a>Java style rules</h3><h4 id="字段定义和命名"><a href="#字段定义和命名" class="headerlink" title="字段定义和命名"></a>字段定义和命名</h4><p>变量应被定义在<strong>文件的顶部</strong>，他们应该遵循下面列出的命名规则：</p>
+<ul>
+<li>私有的，非静态的变量应该以 <strong>m</strong> 开头。</li>
+<li>私有的，静态的变量以 <strong>s</strong> 开头。</li>
+<li>其他类型的小写开头，驼峰式命名。</li>
+<li><code>static</code> <code>final</code>类型的变量均已大写，下划线分割的方式。</li>
+</ul>
+<p>如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SOME_CONSTANT = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> publicField;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyClass sSingleton;</span><br><span class="line">    <span class="keyword">int</span> mPackagePrivate;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mPrivate;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mProtected;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="驼峰式"><a href="#驼峰式" class="headerlink" title="驼峰式"></a>驼峰式</h4><table>
+<thead>
+<tr>
+<th><strong>正确</strong></th>
+<th><strong>错误</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XmlHttpRequest</td>
+<td>XMLHTTPRequest</td>
+</tr>
+<tr>
+<td>getCustomerId</td>
+<td>getCustomerID</td>
+</tr>
+<tr>
+<td>String url</td>
+<td>String URL</td>
+</tr>
+<tr>
+<td>long id</td>
+<td>long ID</td>
+</tr>
+</tbody>
+</table>
+<h4 id="空格缩进"><a href="#空格缩进" class="headerlink" title="空格缩进"></a>空格缩进</h4><p>代码块内缩进使用 <em>4个空格</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x == <span class="number">1</span>) &#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>行缩进使用 <em>8个空格</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Instrument i =</span><br><span class="line">        someLongExpression(that, wouldNotFit, on, one, line);</span><br></pre></td></tr></table></figure>
+<h4 id="Use-standard-brace-style"><a href="#Use-standard-brace-style" class="headerlink" title="Use standard brace style"></a>Use standard brace style</h4><p>Braces go on the same line as the code before them.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (something) &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (somethingElse) &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Braces around the statements are required unless the condition and the body fit on one line.</p>
+<p>如果判断的代码只有一行，并且最长行数的代码还少的话，大括号就没有必要了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) body();</span><br></pre></td></tr></table></figure>
+<p>而不应该写成下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">    body();  <span class="comment">// bad!</span></span><br></pre></td></tr></table></figure>
+<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><h4 id="Annotations-practices"><a href="#Annotations-practices" class="headerlink" title="Annotations practices"></a>Annotations practices</h4><p>依据 Android code style guide,一些 Java 中的预定义注解的标准做法如下：</p>
+<ul>
+<li><code>@Override</code>: The @Override annotation <strong>must be used</strong> whenever a method overrides the declaration or implementation from a super-class. For example, if you use the @inheritdocs Javadoc tag, and derive from a class (not an interface), you must also annotate that the method @Overrides the parent class’s method.</li>
+<li><code>@SuppressWarnings</code>: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this “impossible to eliminate” test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.</li>
+</ul>
+<p>更多信息参见<a href="http://source.android.com/source/code-style.html#use-standard-java-annotations" target="_blank" rel="external">这里</a>。</p>
+<h4 id="注解style"><a href="#注解style" class="headerlink" title="注解style"></a>注解style</h4><p><strong>类, 方法和构造器：</strong></p>
+<p>当一个类，或者方法，或者构造器中运用到注解，则<em>注解应该下注释的下面，且一行一注解</em>的原则：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This is the documentation block about the class */</span></span><br><span class="line"><span class="meta">@AnnotationA</span></span><br><span class="line"><span class="meta">@AnnotationB</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAnnotatedClass</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>字段上的注解：</strong></p>
+<p>对于字段上的注解应该和该字段处于同一行，除非达到最大行数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Nullable</span> <span class="meta">@Mock</span> DataManager mDataManager;</span><br></pre></td></tr></table></figure>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><p>局部变量的作用域我们应保持到最小。如此，可以提升你代码的可读性和维护性，降低bug出现的可能性。</p>
+<p>局部变量应被声明在第一次使用的地方。且每个变量都应初始化。</p>
+<h3 id="import语句排序"><a href="#import语句排序" class="headerlink" title="import语句排序"></a>import语句排序</h3><p>如果你正在使用的 IDE 是 android studio,你无须担心排序的问题，应该 android studio 已经自动帮你干完了.否则,你需要看看下面排序方式:</p>
+<ul>
+<li>1.Android imports</li>
+<li>2.Imports from third parties (com, junit, net, org)</li>
+<li>3.java and javax</li>
+<li>4.Same project imports</li>
+</ul>
+<p>另:</p>
+<ul>
+<li>每个分组中还需按字母表的排序, 且大写字母在小写字母的前面 (如： Z 在 a 之前).</li>
+<li>分组和分组之间应该空一行 (android, com, junit, net, org, java, javax).</li>
+</ul>
+<p><a href="https://source.android.com/source/code-style.html#limit-variable-scope" target="_blank" rel="external">更多信息</a>。</p>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>使用 <code>Log</code> 类提供的方法能够让我们来发现问题所在:</p>
+<ul>
+<li>Log.v(String tag, String msg) (verbose)</li>
+<li>Log.d(String tag, String msg) (debug)</li>
+<li>Log.i(String tag, String msg) (information)</li>
+<li>Log.w(String tag, String msg) (warning)</li>
+<li>Log.e(String tag, String msg) (error)</li>
+</ul>
+<p>通常情况下, 我们在类的顶部定义一个 <code>static final</code> 的 TAG 变量，该变量为所在类的类名，具体如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = MyClass.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.e(TAG, <span class="string">"My error message"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>VERBOSE 和 DEBUG 日志需在 app 发行版本中禁用. 同样还建议你将 INFORMATION, WARNING 和 ERROR 日志禁用掉，当然这个看你自己，如果你觉得这些信息对于发行版本的 app 的 bug 有用处的话，你可以选择不禁用，这个时候你需要确保这些日志不会泄露用户的隐私信息（比如： email, 地址，用户名，密码等）。</p>
+<p>仅在调试版本打印日志：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (BuildConfig.DEBUG) Log.d(TAG, <span class="string">"The value of x is "</span> + x);</span><br></pre></td></tr></table></figure>
+<h3 id="类成员变量排序"><a href="#类成员变量排序" class="headerlink" title="类成员变量排序"></a>类成员变量排序</h3><p>使用正确的顺序将会显著提高你代码的可读性。这里推荐你使用下面的排序：</p>
+<ul>
+<li>1.常量（Constants）</li>
+<li>2.成员变量（Fields）</li>
+<li>3.构造器（Constructors）</li>
+<li>4.重写的方法和回调方法(public 或者 private)</li>
+<li>5.Public 方法</li>
+<li>6.Private 方法</li>
+<li>7.内部类和接口</li>
+</ul>
+<p>如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String mTitle;</span><br><span class="line">    <span class="keyword">private</span> TextView mTextViewTitle;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        mTitle = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setUpView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AnInnerClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你写的类继承自 Activity 和 Fragment 这样的 android 组件，对于重写的方法，最好和组件的生命周期相匹配。比如，你写的 activity 实现了 <code>onCreate()</code>, <code>onDestroy()</code>， <code>onPause()</code>, 和 <code>onResume()</code>, 那么正确的排序是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Order matches Activity lifecycle</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法中参数的排序"><a href="#方法中参数的排序" class="headerlink" title="方法中参数的排序"></a>方法中参数的排序</h3><p>在 Android 编程中，定义大部分的方法都可能需要一个 <code>context</code> 参数，如果正在定义这样一个方法，<code>context</code> 需要放在第一位。<br>而若存在回调接口，则需要放在最后一位，比如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Context always goes first</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">loadUser</span><span class="params">(Context context, <span class="keyword">int</span> userId)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Callbacks always go last</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadUserAsync</span><span class="params">(Context context, <span class="keyword">int</span> userId, UserCallback callback)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>在 Android SDK 中的 SharedPreferences, Bundle, Intent 都大量使用了字符串常量，所以说，即使一个很小的 app,也有可能定义很多字符串常量。</p>
+<p>如何你需要定义字符串常量，你需要将其定义为 <code>static final</code>，并加上下面的前缀：</p>
+<table>
+<thead>
+<tr>
+<th><strong>所属</strong></th>
+<th><strong>变量前缀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SharedPreferences</td>
+<td><code>PREF_</code></td>
+</tr>
+<tr>
+<td>Bundle</td>
+<td><code>BUNDLE_</code></td>
+</tr>
+<tr>
+<td>Fragment Arguments</td>
+<td><code>ARGUMENT_</code></td>
+</tr>
+<tr>
+<td>Intent Extra</td>
+<td><code>EXTRA_</code></td>
+</tr>
+<tr>
+<td>Intent Action</td>
+<td><code>ACTION_</code></td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是 Fragment 中的arguments : <code>Fragment.getArguments()</code>,它同样是一个 Bundle.然而，因为它太常见了，我们需要为其声明一个不一样的前缀，如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Note the value of the field is the same as the name to avoid duplication issues</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String PREF_EMAIL = <span class="string">"PREF_EMAIL"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String BUNDLE_AGE = <span class="string">"BUNDLE_AGE"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String ARGUMENT_USER_ID = <span class="string">"ARGUMENT_USER_ID"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Intent-related items use full package name as value</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_SURNAME = <span class="string">"com.myapp.extras.EXTRA_SURNAME"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String ACTION_OPEN_USER = <span class="string">"com.myapp.action.ACTION_OPEN_USER"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Fragments和Activities中的参数"><a href="#Fragments和Activities中的参数" class="headerlink" title="Fragments和Activities中的参数"></a>Fragments和Activities中的参数</h3><p>当我们通过 Intent 或者 Bundle 向 activity 传递参数时，对于不同参数的 key 应遵循上一节中的规则。<br>当 activity 或者 Fragment 需要传递参数，它需要提供一个 <code>public static</code> 方法以便接下来该干什么。</p>
+<p>Activity中的此方法通常命名为 <code>getStartIntent()</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title">getStartIntent</span><span class="params">(Context context, User user)</span> </span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(context, ThisActivity.class);</span><br><span class="line">    intent.putParcelableExtra(EXTRA_USER, user);</span><br><span class="line">    <span class="keyword">return</span> intent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Fragments 中的此方法通常命名为： <code>newInstance()</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UserFragment <span class="title">newInstance</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">    UserFragment fragment = <span class="keyword">new</span> UserFragment;</span><br><span class="line">    Bundle args = <span class="keyword">new</span> Bundle();</span><br><span class="line">    args.putParcelable(ARGUMENT_USER, user);</span><br><span class="line">    fragment.setArguments(args)</span><br><span class="line">    <span class="keyword">return</span> fragment;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意1：</strong>: 此方法要放置在 <code>onCreate()</code> 方法之前。</p>
+<p><strong>注意2：</strong>: 如果我们声明了上面的方法，那么参数的 <code>key</code> 应该是 <code>private</code> 的。它们没有必要暴露给其他类。</p>
+</blockquote>
+<h3 id="代码行长度限制"><a href="#代码行长度限制" class="headerlink" title="代码行长度限制"></a>代码行长度限制</h3><p>每一行的代码不应超过 <em>100</em> 个字节。如果超过 100 个字节，这里有两种方法来减少代码行的长度：</p>
+<ul>
+<li>提取局部变量或方法(优先考虑)</li>
+<li>将当行转换为多行</li>
+</ul>
+<p>但也有列外，下面这些情况，你可不必换行：:</p>
+<ul>
+<li>不太可能被分割的行, 比如： 很长的 url 地址.</li>
+<li>包声明和包引入语句。</li>
+</ul>
+<h4 id="在哪里换行？"><a href="#在哪里换行？" class="headerlink" title="在哪里换行？"></a>在哪里换行？</h4><p>对于在哪里换行，其实，也没有一个特别合理的解决方案。但，下面几点还是能够给予我们参考的价值。</p>
+<p><strong>运算符时换行</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne</span><br><span class="line">        + theFinalOne;</span><br></pre></td></tr></table></figure>
+<p><strong>=号后面</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> longName =</span><br><span class="line">        anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne + theFinalOne;</span><br></pre></td></tr></table></figure>
+<p><strong>.换行</strong></p>
+<p>比如说将下面的代码换行前：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Picasso.with(context).load(<span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>).into(imageView);</span><br></pre></td></tr></table></figure>
+<p>换行后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Picasso.with(context)</span><br><span class="line">        .load(<span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+<p><strong>长参数换行</strong></p>
+<p>当一个方法拥有很长的参数时，我们应该换行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadPicture(context, <span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>, mImageViewProfilePicture, clickListener, <span class="string">"Title of the picture"</span>);</span><br></pre></td></tr></table></figure>
+<p>换行后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadPicture(context,</span><br><span class="line">        <span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>,</span><br><span class="line">        mImageViewProfilePicture,</span><br><span class="line">        clickListener,</span><br><span class="line">        <span class="string">"Title of the picture"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="RxJava-chains-styling"><a href="#RxJava-chains-styling" class="headerlink" title="RxJava chains styling"></a>RxJava chains styling</h3><p>Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the .</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Observable&lt;Location&gt; <span class="title">syncLocations</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mDatabaseHelper.getAllLocations()</span><br><span class="line">            .concatMap(<span class="keyword">new</span> Func1&lt;Location, Observable&lt;? extends Location&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                 <span class="keyword">public</span> Observable&lt;? extends Location&gt; call(Location location) &#123;</span><br><span class="line">                     <span class="keyword">return</span> mRetrofitService.getLocation(location.id);</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .retry(<span class="keyword">new</span> Func2&lt;Integer, Throwable, Boolean&gt;() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">(Integer numRetries, Throwable throwable)</span> </span>&#123;</span><br><span class="line">                     <span class="keyword">return</span> throwable <span class="keyword">instanceof</span> RetrofitError;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="XML-规范"><a href="#XML-规范" class="headerlink" title="XML 规范"></a>XML 规范</h2><h3 id="使用头标签闭合"><a href="#使用头标签闭合" class="headerlink" title="使用头标签闭合"></a>使用头标签闭合</h3><p>当一个 xml 节点中没有任何的内容，使用自闭合即可。</p>
+<p>正确的做法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>错误的做法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Don't do this! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="资源命名"><a href="#资源命名" class="headerlink" title="资源命名"></a>资源命名</h3><p>resource 的 id 应该小写且下划线分割。</p>
+<h4 id="ID命名"><a href="#ID命名" class="headerlink" title="ID命名"></a>ID命名</h4><table>
+<thead>
+<tr>
+<th><strong>节点</strong></th>
+<th><strong>前缀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextView</td>
+<td><code>text_</code></td>
+</tr>
+<tr>
+<td>ImageView</td>
+<td><code>image_</code></td>
+</tr>
+<tr>
+<td>Button</td>
+<td><code>button_</code></td>
+</tr>
+<tr>
+<td>Menu</td>
+<td><code>menu_</code></td>
+</tr>
+</tbody>
+</table>
+<p>ImageView范例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Don't do this! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/image_profile"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Menu范例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Don't do this! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_done"</span></span><br><span class="line">        <span class="attr">android:title</span>=<span class="string">"Done"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h4><p>Strings 的命名应该以其所在的场景含义为前缀来命名。比如 <code>registration_email_hint</code> 或 <code>registration_name_hint</code>。如果一个 string,你找不到归类，你可以遵守的下面的规范：</p>
+<table>
+<thead>
+<tr>
+<th><strong>前缀</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error_</code></td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td><code>msg_</code></td>
+<td>常规的信息</td>
+</tr>
+<tr>
+<td><code>title_</code></td>
+<td>标题，如 dialog 的标题</td>
+</tr>
+<tr>
+<td><code>action_</code></td>
+<td>动作，如保存或创建</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Styles-and-Themes"><a href="#Styles-and-Themes" class="headerlink" title="Styles and Themes"></a>Styles and Themes</h4><p>根命名以大驼峰命名，其余则以小驼峰命名。</p>
+<h3 id="属性排序"><a href="#属性排序" class="headerlink" title="属性排序"></a>属性排序</h3><ul>
+<li>1.View Id</li>
+<li>2.Style</li>
+<li>3.布局长宽</li>
+<li>4.其他 layout 属性，按字母排序</li>
+<li>5.剩下的属性, 按字母排序</li>
+</ul>
+<h2 id="测试规范"><a href="#测试规范" class="headerlink" title="测试规范"></a>测试规范</h2><h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p>测试类的命名应该以该类名加上 <code>Test</code> 为后缀来命名。比如，我们创建一个 <code>DatabaseHelper</code> 的测试类，类名应该为 <code>DatabaseHelperTest</code>.</p>
+<p>测试方法因该加上 @Test 注解，并且以被测试的方法名开头，后跟一个前提或预期的行为（有时候并不需要，根据测试的场景）来命名。</p>
+<ul>
+<li>Template: <code>@Test void methodNamePreconditionExpectedBehaviour()</code></li>
+<li>Example: <code>@Test void signInWithEmptyEmailFails()</code></li>
+</ul>
+<p>有时候，一个类中包含了大量的方法，这个时候我们可以根据功能模块来分割这个类的测试类，比如说需要测试 <code>DataManager</code>, 这个类有大量的方法，我们就可以将其划分为 <code>DataManagerSignInTest</code>, <code>DataManagerLoadUsersTest</code>,等。</p>
+<h3 id="Espresso-tests"><a href="#Espresso-tests" class="headerlink" title="Espresso tests"></a>Espresso tests</h3><p>Espresso 测试通常作用于 Activity，因此命名通常以被测试的 activity 的类名为开头，如： <code>SignInActivityTest</code>.</p>
+<p>当你使用到 Espresso 的 API 时，通常以下面的方式换行测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onView(withId(R.id.view))</span><br><span class="line">        .perform(scrollTo())</span><br><span class="line">        .check(matches(isDisplayed()))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-项目规范/" rel="tag">#Android 项目规范</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/20/2016-02-20-the-overview-of-the-andorid-mvp/" rel="next" title="初探 Android 中的 MVP 模式">
+                <i class="fa fa-chevron-left"></i> 初探 Android 中的 MVP 模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/27/2016-02-25-android-s-http-client/" rel="prev" title="关于 Android 中的 HTTP Clients">
+                关于 Android 中的 HTTP Clients <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/22/2016-02-22-android-project-guidelines/"
+     data-title="Android项目编码规范"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/02/22/2016-02-22-android-project-guidelines/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/22/2016-02-22-android-project-guidelines/"
+           data-title="Android项目编码规范" data-url="http://www.jiangbing.me/2016/02/22/2016-02-22-android-project-guidelines/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件命名"><span class="nav-number">1.</span> <span class="nav-text">文件命名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类命名"><span class="nav-number">1.1.</span> <span class="nav-text">类命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源文件"><span class="nav-number">1.2.</span> <span class="nav-text">资源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Drawable文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">Drawable文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Layout-文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">Layout 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Menu-文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">Menu 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Values-文件"><span class="nav-number">1.2.4.</span> <span class="nav-text">Values 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码规范"><span class="nav-number">2.</span> <span class="nav-text">代码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-语言规则"><span class="nav-number">2.1.</span> <span class="nav-text">Java 语言规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不要无视异常"><span class="nav-number">2.1.1.</span> <span class="nav-text">不要无视异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不要捕获父类的异常"><span class="nav-number">2.1.2.</span> <span class="nav-text">不要捕获父类的异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Don’t-use-finalizers"><span class="nav-number">2.1.3.</span> <span class="nav-text">Don’t use finalizers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整包引入"><span class="nav-number">2.1.4.</span> <span class="nav-text">完整包引入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-style-rules"><span class="nav-number">2.2.</span> <span class="nav-text">Java style rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字段定义和命名"><span class="nav-number">2.2.1.</span> <span class="nav-text">字段定义和命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#驼峰式"><span class="nav-number">2.2.2.</span> <span class="nav-text">驼峰式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空格缩进"><span class="nav-number">2.2.3.</span> <span class="nav-text">空格缩进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-standard-brace-style"><span class="nav-number">2.2.4.</span> <span class="nav-text">Use standard brace style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解"><span class="nav-number">2.2.5.</span> <span class="nav-text">注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Annotations-practices"><span class="nav-number">2.2.6.</span> <span class="nav-text">Annotations practices</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解style"><span class="nav-number">2.2.7.</span> <span class="nav-text">注解style</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量作用域"><span class="nav-number">2.3.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import语句排序"><span class="nav-number">2.4.</span> <span class="nav-text">import语句排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志"><span class="nav-number">2.5.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类成员变量排序"><span class="nav-number">2.6.</span> <span class="nav-text">类成员变量排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法中参数的排序"><span class="nav-number">2.7.</span> <span class="nav-text">方法中参数的排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">2.8.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragments和Activities中的参数"><span class="nav-number">2.9.</span> <span class="nav-text">Fragments和Activities中的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码行长度限制"><span class="nav-number">2.10.</span> <span class="nav-text">代码行长度限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在哪里换行？"><span class="nav-number">2.10.1.</span> <span class="nav-text">在哪里换行？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RxJava-chains-styling"><span class="nav-number">2.11.</span> <span class="nav-text">RxJava chains styling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-规范"><span class="nav-number">3.</span> <span class="nav-text">XML 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用头标签闭合"><span class="nav-number">3.1.</span> <span class="nav-text">使用头标签闭合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源命名"><span class="nav-number">3.2.</span> <span class="nav-text">资源命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ID命名"><span class="nav-number">3.2.1.</span> <span class="nav-text">ID命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strings"><span class="nav-number">3.2.2.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Styles-and-Themes"><span class="nav-number">3.2.3.</span> <span class="nav-text">Styles and Themes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性排序"><span class="nav-number">3.3.</span> <span class="nav-text">属性排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试规范"><span class="nav-number">4.</span> <span class="nav-text">测试规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">4.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Espresso-tests"><span class="nav-number">4.2.</span> <span class="nav-text">Espresso tests</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

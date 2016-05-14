@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android Http," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文翻译自 Google Dalvik 虚拟机团队 Jesse Wilson 的 Android’s HTTP Client
+
+绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：
+
+1.HttpURLConnection.
+2.Apache 的 HTTP Client.
+
+这两种都支持 HTTPS,上传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 Android 中的 HTTP Clients">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/27/2016-02-25-android-s-http-client/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文翻译自 Google Dalvik 虚拟机团队 Jesse Wilson 的 Android’s HTTP Client
+
+绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：
+
+1.HttpURLConnection.
+2.Apache 的 HTTP Client.
+
+这两种都支持 HTTPS,上传">
+<meta property="og:updated_time" content="2016-05-14T06:14:59.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 Android 中的 HTTP Clients">
+<meta name="twitter:description" content="本文翻译自 Google Dalvik 虚拟机团队 Jesse Wilson 的 Android’s HTTP Client
+
+绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：
+
+1.HttpURLConnection.
+2.Apache 的 HTTP Client.
+
+这两种都支持 HTTPS,上传">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 关于 Android 中的 HTTP Clients | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于 Android 中的 HTTP Clients
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-27T17:12:43+08:00" content="2016-02-27">
+              2016-02-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android-网络/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 网络</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/27/2016-02-25-android-s-http-client/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/27/2016-02-25-android-s-http-client/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文翻译自 Google Dalvik 虚拟机团队 <a href="http://www.publicobject.com/" target="_blank" rel="external">Jesse Wilson</a> 的 <a href="http://android-developers.blogspot.sg/2011/09/androids-http-clients.html" target="_blank" rel="external">Android’s HTTP Client</a></p>
+</blockquote>
+<p>绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：</p>
+<ul>
+<li>1.HttpURLConnection.</li>
+<li>2.Apache 的 HTTP Client.</li>
+</ul>
+<p>这两种都支持 HTTPS,上传，下载，超时配置，IPv6 和连接池。</p>
+<h2 id="Apache-HTTP-Client"><a href="#Apache-HTTP-Client" class="headerlink" title="Apache HTTP Client"></a>Apache HTTP Client</h2><p><a href="http://developer.android.com/reference/org/apache/http/impl/client/DefaultHttpClient.html" target="_blank" rel="external">DefaultHttpClient</a> 和他的兄弟类 <a href="http://developer.android.com/reference/android/net/http/AndroidHttpClient.html" target="_blank" rel="external">AndroidHttpClient</a> 对于 web 浏览器拓展性非常好。它们拥有庞大的，弹性很好的 API 供我们使用。且它们稳定性极高，很少存在 bug.</p>
+<p>但是如此大量的 API,在我们不破坏其兼容性的前提下，很难去对其拓展。这也是为什么 Android 团队为何不喜欢 Apache HTTP Client 的原因。<br><a id="more"></a></p>
+<h2 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h2><p><a href="http://developer.android.com/reference/java/net/HttpURLConnection.html" target="_blank" rel="external">HttpURLConnection</a> 是一个比较通用的，轻量级的，适用于大多数应用的 HTTP 类.我们很容易在此类上做拓展。</p>
+<p>在 Froyo（2.2）之前， HttpURLConnedction 存在一个重大 bug.那就是，在对 <code>InputStream</code> 调用 <code>close()</code> 方法时会影响连接池。所以在 2.2 之前我们需要关闭连接池：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">disableConnectionReuseIfNecessary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// HTTP connection reuse which was buggy pre-froyo</span></span><br><span class="line">    <span class="keyword">if</span> (Integer.parseInt(Build.VERSION.SDK) &lt; Build.VERSION_CODES.FROYO) &#123;</span><br><span class="line">        System.setProperty(<span class="string">"http.keepAlive"</span>, <span class="string">"false"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Gingerbread（2.3）版本上，为 HttpURLConnection 添加了 gzip 压缩请求头：</p>
+<p><em>Accept-Encoding: gzip</em></p>
+<p>利用它，可以让服务端对传输的数据进行压缩，如果对压缩的支持有问题的话，你可以参考这里的<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html" target="_blank" rel="external">文档</a>，以便知道如何来禁用此项功能。</p>
+<p>通过 HTTP 的 Content-Length 头来获取压缩文件的大小。使用 getContentLength() 来获取未压缩数据的大小是错误的。正确的做法是，从服务端读取字节流直到 <code>InputStream.read()</code> 返回 -1 为止。</p>
+<p>我们在 Gingerbread(2.3) 中对 HTTPS 做了些许改进。 HttpURLConnection 能够尝试连接 Server Name Indication(SNI:允许多个HTTPS主机共享一个IP地址).此外， HttpURLConnection 还有压缩数据和获取 session 的功能。 如果连接失败，HttpURLConnection 会禁用掉这些功能然后再次连接。 这使得 HttpURLConnection 在不破坏对旧版本兼容性的基础上，能够根据服务端的实际情况来选择最高效的应对方案。</p>
+<p>在 Ice Cream Sandwich（4.0）中, 我们添加了请求结果缓存的功能. 一旦有了缓存, HTTP 请求将会在下面三种方式中挑选:</p>
+<ul>
+<li>在没有网络连接的情况下，且本地有完整缓存的时候，HTTP 请求会直接从本地拿数据。</li>
+<li>局部数据缓存需要向服务器验证本地缓存是否为服务器上最新的数据。比如说：客户端发了一条类似这样的请求：”给我一张本地在昨天有缓存的 foo.png 的图片”，这时服务器可能会返回两种结果，一是被更新过的这张图片，或者是 304（未被更新，可以直接拿本地数据）。也就是说，如果图片没被更新过，则不会再次下载图片。</li>
+<li>本地没有缓存的数据会请求服务器拿最新的。稍后，它们将会被缓存。</li>
+</ul>
+<p>我们可以在支持缓存的设备上来打开 HTTP 的缓存功能。下面的实例告诉你如何在不影响 Ice Cream Sandwich（4.0）前的版本上来打开这项功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">enableHttpResponseCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> httpCacheSize = <span class="number">10</span> * <span class="number">1024</span> * <span class="number">1024</span>; <span class="comment">// 10 MiB</span></span><br><span class="line">        File httpCacheDir = <span class="keyword">new</span> File(getCacheDir(), <span class="string">"http"</span>);</span><br><span class="line">        Class.forName(<span class="string">"android.net.http.HttpResponseCache"</span>)</span><br><span class="line">            .getMethod(<span class="string">"install"</span>, File.class, <span class="keyword">long</span>.class)</span><br><span class="line">            .invoke(<span class="keyword">null</span>, httpCacheDir, httpCacheSize);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception httpResponseCacheNotAvailable) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你需要同时在服务端在对 HTTP 做响应时，配置缓存头（cache headers）.</p>
+<h2 id="我们应该如何抉择"><a href="#我们应该如何抉择" class="headerlink" title="我们应该如何抉择"></a>我们应该如何抉择</h2><p>在 Froyo(2.2) 之前，我们最好选择 Apache 的 HTTP client。<br>在 Gingerbread(2.3) 之后， HttpURLConnection 是最好的选择。 它的轻量化使得它非常适合 Android, 另外，数据压缩和请求结果缓存使得它的性能大幅提高（包括响应速度，节省电量）。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Http/" rel="tag">#Android Http</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/22/2016-02-22-android-project-guidelines/" rel="next" title="Android项目编码规范">
+                <i class="fa fa-chevron-left"></i> Android项目编码规范
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/" rel="prev" title="Android Touch 事件传递机制">
+                Android Touch 事件传递机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/27/2016-02-25-android-s-http-client/"
+     data-title="关于 Android 中的 HTTP Clients"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/02/27/2016-02-25-android-s-http-client/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/27/2016-02-25-android-s-http-client/"
+           data-title="关于 Android 中的 HTTP Clients" data-url="http://www.jiangbing.me/2016/02/27/2016-02-25-android-s-http-client/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-HTTP-Client"><span class="nav-number">1.</span> <span class="nav-text">Apache HTTP Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpURLConnection"><span class="nav-number">2.</span> <span class="nav-text">HttpURLConnection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们应该如何抉择"><span class="nav-number">3.</span> <span class="nav-text">我们应该如何抉择</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

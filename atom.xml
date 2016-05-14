@@ -131,6 +131,233 @@
   </entry>
   
   <entry>
+    <title>说说 Android Studio 下载完成后，我们需要做的事情</title>
+    <link href="http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/"/>
+    <id>http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/</id>
+    <published>2016-04-02T00:03:53.000Z</published>
+    <updated>2016-05-14T06:05:00.062Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;我在之前有两篇介绍 Android Studio 的博文，分别是 &lt;a href=&quot;http://jiangbing.me/2016/01/25/2016-01-25-android-studio-tips-and-tricks/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Android Studio 概览》&lt;/a&gt; 和 &lt;a href=&quot;http://jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《再说说 Android Studio》&lt;/a&gt;，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;strong&gt;注意：本文后续建立在你已经下好了 AS,且能够正常启动.(至于如何下载，这没什么好说的，自行 Google,百度即可 …)&lt;/strong&gt;&lt;/font&gt;
+
+&lt;h2 id=&quot;1-Gradle-配置文件下载耗时太长的问题&quot;&gt;&lt;a href=&quot;#1-Gradle-配置文件下载耗时太长的问题&quot; class=&quot;headerlink&quot; title=&quot;1.Gradle 配置文件下载耗时太长的问题&quot;&gt;&lt;/a&gt;1.Gradle 配置文件下载耗时太长的问题&lt;/h2&gt;&lt;p&gt;当我们第一次启动 AS，并点击 &lt;em&gt;“Start a new Android Studio project”&lt;/em&gt; 的时候，AS 会自动去下载 Gradle 相关的配置文件，默认下载完成后放置位置在 C:\User\Administrator.gradle 下的 C:\Users\Administrator\gradle\wrapper\dists\gradle-2.1-all\27fdsaorewru2342dsjon45 文件夹，也许你会疑问这一串数字和英文组合的文件夹是什么意思，其实它是随机生成的。&lt;/p&gt;
+&lt;p&gt;我们打开这个文件夹，可以看到 gradle-2.1-all.zip 的 .part 文件。拿到这个版本号，我们可以通过第三方下载软件（例如迅雷）去 Google 官方网站去下载。&lt;/p&gt;
+&lt;p&gt;下载好 gradle-2.1-all.zip 文件好，无需解压，放到这个奇怪的文件夹下，AS 运行的时候会自动解压。这样就可以为我们节省了很多时间了，再次创建工程的时候只需要下载一些 jcenter 的依赖包即可，而这些文件都很小，不会花费多长时间。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-配置主题（Theme）&quot;&gt;&lt;a href=&quot;#2-配置主题（Theme）&quot; class=&quot;headerlink&quot; title=&quot;2.配置主题（Theme）&quot;&gt;&lt;/a&gt;2.配置主题（Theme）&lt;/h2&gt;&lt;p&gt;配置自己喜欢的主题，会让你编码起来舒心很多。AS 自带的主题包括 Windwons, Intellij, Darcula 等等。就我个人来说黑色系的 Darcula 主题。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;具体步骤：&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.点击 &lt;strong&gt;设置&lt;/strong&gt; 按钮，如下图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050500.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.点击 Editor -&amp;gt; Colors &amp;amp; Fonts 来设置字体和字体大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;默认的主题是无法修改的，我们需要点击 Sava as 按钮，通过自命名另一个名字，达到修改的目的。&lt;/p&gt;
+&lt;h2 id=&quot;3-代码自动提示&quot;&gt;&lt;a href=&quot;#3-代码自动提示&quot; class=&quot;headerlink&quot; title=&quot;3.代码自动提示&quot;&gt;&lt;/a&gt;3.代码自动提示&lt;/h2&gt;&lt;p&gt;对于使用 eclipse 的开发者来说，习惯了将鼠标指针停留在代码上提示的功能，乍转到 AS,会非常不习惯。&lt;/p&gt;
+&lt;p&gt;AS 默认情况下是禁用掉代码提示的功能的，因为这个功能非常耗性能，对于配置不高的电脑，开启这个功能，只能说 “卡爆了”。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;如何开启？&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;设置 -&amp;gt; Editor -&amp;gt; Other -&amp;gt; show quick doc on mouse move,勾选上，就开启这个功能了。&lt;/p&gt;
+&lt;h2 id=&quot;4-代码提示不区分大小写&quot;&gt;&lt;a href=&quot;#4-代码提示不区分大小写&quot; class=&quot;headerlink&quot; title=&quot;4.代码提示不区分大小写&quot;&gt;&lt;/a&gt;4.代码提示不区分大小写&lt;/h2&gt;&lt;p&gt;设置 -&amp;gt; Editor -&amp;gt; General -&amp;gt; Code Completion,在 Code Sensitive completion 里面选择 “None”,这样就开启代码提示不区分大小写了。&lt;/p&gt;
+&lt;p&gt;如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050501.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;5-代码编辑区显示行号&quot;&gt;&lt;a href=&quot;#5-代码编辑区显示行号&quot; class=&quot;headerlink&quot; title=&quot;5.代码编辑区显示行号&quot;&gt;&lt;/a&gt;5.代码编辑区显示行号&lt;/h2&gt;&lt;p&gt;在代码编辑区的左侧，点击鼠标右键，出现 “Show Line Numbers”，勾选上即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050502.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;6-更新-SDK&quot;&gt;&lt;a href=&quot;#6-更新-SDK&quot; class=&quot;headerlink&quot; title=&quot;6.更新 SDK&quot;&gt;&lt;/a&gt;6.更新 SDK&lt;/h2&gt;&lt;p&gt;点击 SDK Manager 图片，打开它，如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050503.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;出现下面的窗口，点击 &lt;em&gt;“Launch Standalone SDK Manager”&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050504.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在没有翻墙的情况下，我们通常会看到 &lt;font color=&quot;red&quot;&gt;Connection refuse&lt;/font&gt; 的提示信息。&lt;/p&gt;
+&lt;p&gt;我们需要在 SDK Manager 的菜单栏中选择 Tools -&amp;gt; Options 选项,打开如下界面：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050505.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在 Setting 中输入 “翻墙” 代理的 IP 和端口（&lt;font color=&quot;blue&quot;&gt;我们可以在 AndroidDevTools 网站上找到最新的镜像地址和端口&lt;/font&gt;），然后勾选 &lt;em&gt;“Force https:// … sources to be fetched using http:// …”&lt;/em&gt; 选项，用 http 来代替 https(http 比 https 的效率要高)。&lt;/p&gt;
+&lt;p&gt;完成上面的工作后，我们就可以下载到我们想要的 SDK 版本号了。如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050506.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;tip&quot;&gt;&lt;br&gt;    注意：Android Build Tools 是 Android SDK 的 Build 工具，会不定期更新，建议使用最新版本。&lt;br&gt;&lt;/div&gt;
+
+&lt;p&gt;下图是 Android 模拟器的系统镜像文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050507.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果你使用的 AS 自带的模拟器的话，这些东西必不可少，如果你使用的是 Genymotion 模拟器，就无需下载这些系统镜像文件了。&lt;/p&gt;
+&lt;p&gt;然后还要下载相关的 API 文档和 Android 源代码资源（按住 Ctrl 能够跟踪进去查看源代码）。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;API 文档：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050508.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Android 源代码资源：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050509.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;7-导入工程&quot;&gt;&lt;a href=&quot;#7-导入工程&quot; class=&quot;headerlink&quot; title=&quot;7.导入工程&quot;&gt;&lt;/a&gt;7.导入工程&lt;/h2&gt;&lt;p&gt;导入工程分为两个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.导入 AS 工程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们在导入 Github 上的 AS 工程时，经常会有失败的情况，而罪魁祸首就是编译工具 Gradle 的问题。&lt;/p&gt;
+&lt;p&gt;比如说，你要导入的工程时基于 Gradle 1.5 来构建的，而你本地使用的不是 Gradle 1.5,那么导入工程时，就会去下载这个版本的 Gradle,很多时候，我们无法访问到这些资源，就会发生问题。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;如何解决：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;1.在本地使用当前版本的 Gradle 创建一个正常的项目，保证其能够正常编译通过。&lt;br&gt;2.用这个新创建的项目中的 “Gradle” 文件夹和 “build.gradle” 文件，替换需要导入的项目的这两个文件夹。&lt;br&gt;3.再次打开这个项目，就可以用本地的 Gradle 对项目进行编译了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.导入 eclipse 工程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如何将一个 eclipse 工程转为 AS 工程呢？&lt;/p&gt;
+&lt;p&gt;1.在 eclipse 中需要导出的项目上右键，选择导出项目。&lt;br&gt;2.”Generate Gradle Build files”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016050510.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3.在 AS 中选择导入生成的 Build.gradle 文件即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我在之前有两篇介绍 Android Studio 的博文，分别是 &lt;a href=&quot;http://jiangbing.me/2016/01/25/2016-01-25-android-studio-tips-and-tricks/&quot;&gt;《Android Studio 概览》&lt;/a&gt; 和 &lt;a href=&quot;http://jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/&quot;&gt;《再说说 Android Studio》&lt;/a&gt;，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;font color=&#39;red&#39;&gt;&lt;strong&gt;注意：本文后续建立在你已经下好了 AS,且能够正常启动.(至于如何下载，这没什么好说的，自行 Google,百度即可 …)&lt;/strong&gt;&lt;/font&gt;
+
+&lt;h2 id=&quot;1-Gradle-配置文件下载耗时太长的问题&quot;&gt;&lt;a href=&quot;#1-Gradle-配置文件下载耗时太长的问题&quot; class=&quot;headerlink&quot; title=&quot;1.Gradle 配置文件下载耗时太长的问题&quot;&gt;&lt;/a&gt;1.Gradle 配置文件下载耗时太长的问题&lt;/h2&gt;&lt;p&gt;当我们第一次启动 AS，并点击 &lt;em&gt;“Start a new Android Studio project”&lt;/em&gt; 的时候，AS 会自动去下载 Gradle 相关的配置文件，默认下载完成后放置位置在 C:\User\Administrator.gradle 下的 C:\Users\Administrator\gradle\wrapper\dists\gradle-2.1-all\27fdsaorewru2342dsjon45 文件夹，也许你会疑问这一串数字和英文组合的文件夹是什么意思，其实它是随机生成的。&lt;/p&gt;
+&lt;p&gt;我们打开这个文件夹，可以看到 gradle-2.1-all.zip 的 .part 文件。拿到这个版本号，我们可以通过第三方下载软件（例如迅雷）去 Google 官方网站去下载。&lt;/p&gt;
+&lt;p&gt;下载好 gradle-2.1-all.zip 文件好，无需解压，放到这个奇怪的文件夹下，AS 运行的时候会自动解压。这样就可以为我们节省了很多时间了，再次创建工程的时候只需要下载一些 jcenter 的依赖包即可，而这些文件都很小，不会花费多长时间。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+    
+    
+      <category term="Android Studio" scheme="http://www.jiangbing.me/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 Genymotion 中启动下载好的虚拟设备报错：Unable to start the virtual device. VirtualBox cannot start the virtual device.</title>
+    <link href="http://www.jiangbing.me/2016/03/28/2016-03-28-start-a-virual-device-failed-on-the-genymotion/"/>
+    <id>http://www.jiangbing.me/2016/03/28/2016-03-28-start-a-virual-device-failed-on-the-genymotion/</id>
+    <published>2016-03-28T13:59:25.000Z</published>
+    <updated>2016-05-14T06:04:48.076Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;问题出现场景：最近在新机器上装上 Genymotion 后，启动下载好的虚拟设备，老是报错，启动失败。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;问题详情&quot;&gt;&lt;a href=&quot;#问题详情&quot; class=&quot;headerlink&quot; title=&quot;问题详情&quot;&gt;&lt;/a&gt;问题详情&lt;/h2&gt;&lt;p&gt;因为当时没有截图报错的 Dialog,下面就手打出具体的错误信息：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;font color=&quot;red&quot;&gt;Unable to start the virtual device.&lt;/font&gt;&lt;br&gt; &lt;font color=&quot;red&quot;&gt;VirtualBox cannot start the virtual device.&lt;/font&gt;&lt;br&gt; &lt;font color=&quot;red&quot;&gt;To find out the cause of the problem, start the virtual device from VirtualBox.&lt;/font&gt;&lt;br&gt; &lt;font color=&quot;red&quot;&gt;For more information, check the log files. &lt;/font&gt;Please refer to: &lt;a href=&quot;https://www.genymotion.com/#!/support?chapter=collapse-logs#faq&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.genymotion.com/#!/support?chapter=collapse-logs#faq&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;上面的提示信息并没有具体说明是什么错误，但是提示我们可以从 VirtualBox 中直接启动来查找问题发生的具体原因：&lt;/p&gt;
+&lt;p&gt;按照提示，在 &lt;code&gt;VirtualBox&lt;/code&gt; 中直接启动虚拟手机后，报了一行有用的错误信息（&lt;font color=&quot;red&quot;&gt;Intel VT-x 虚拟化被禁用了&lt;/font&gt;），依然没有截图……&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;由于默认情况下，&lt;code&gt;Intel VT-x&lt;/code&gt; 是不被启用的，我们需要重启电脑，进入 &lt;code&gt;BIOS&lt;/code&gt; 模式，找到 &lt;code&gt;Intel VT-x&lt;/code&gt; 选项，启用它，保存并退出，重新开机后，再次打开 Genymotion，就可以如愿打开模拟器了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;问题出现场景：最近在新机器上装上 Genymotion 后，启动下载好的虚拟设备，老是报错，启动失败。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;问题详情&quot;&gt;&lt;a href=&quot;#问题详情&quot; class=&quot;headerlink&quot; title=&quot;问题详情&quot;&gt;&lt;/a&gt;问题详情&lt;/h2&gt;&lt;p&gt;因为当时没有截图报错的 Dialog,下面就手打出具体的错误信息：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;font color=&#39;red&#39;&gt;Unable to start the virtual device.&lt;/font&gt;&lt;br&gt; &lt;font color=&#39;red&#39;&gt;VirtualBox cannot start the virtual device.&lt;/font&gt;&lt;br&gt; &lt;font color=&#39;red&#39;&gt;To find out the cause of the problem, start the virtual device from VirtualBox.&lt;/font&gt;&lt;br&gt; &lt;font color=&#39;red&#39;&gt;For more information, check the log files. &lt;/font&gt;Please refer to: &lt;a href=&quot;https://www.genymotion.com/#!/support?chapter=collapse-logs#faq&quot;&gt;https://www.genymotion.com/#!/support?chapter=collapse-logs#faq&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Genymotion" scheme="http://www.jiangbing.me/tags/Genymotion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于如何运用命令行操作 Android 真机上的 sqlite 数据库</title>
+    <link href="http://www.jiangbing.me/2016/03/22/2016-03-22-how-can-we-use-cmd-operate-sqlite-of-the-true-phone/"/>
+    <id>http://www.jiangbing.me/2016/03/22/2016-03-22-how-can-we-use-cmd-operate-sqlite-of-the-true-phone/</id>
+    <published>2016-03-22T08:26:13.000Z</published>
+    <updated>2016-05-14T06:07:01.226Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;场景：今天在对 sqlite 数据库中的某张表进行查询时，发现查询到的数据总是为空，但是，我非常肯定表中是有数据的，所谓口说无凭，需要真正确认才能定论，于是就需要查 sqlite 数据库，但是真机的 .db 文件无法通过 DDMS 导出，也就无法运用第三方 sqlite 客户端打开 .db 文件来查询数据了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这篇博文就来说说如何运用命令行来对真机上的 sqlite 数据库文件进行操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步 ： 打开 cmd (Windows 系统)，切换至&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;adb shell&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;第二步 ： 定位到你 app 的数据库文件所在目录：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd data/data/com.example.demo/databases&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;第三步 ： &lt;code&gt;ls&lt;/code&gt; 或者 &lt;code&gt;ll&lt;/code&gt; 查看文件夹下的所有数据库，通过 &lt;code&gt;sqlite3&lt;/code&gt; 打开指定数据库：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sqlite3 db1.db&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过上面的命令即可打开该数据库了，输入语句对表进行增删改查，你也可以通过输入 &lt;code&gt;.help&lt;/code&gt; 来查看 sqlite3 的相关命令，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016041400.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;补充&lt;/strong&gt;：常用 sqlite 设置命令表格：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;.tables&lt;/td&gt;
+&lt;td&gt;查看当前数据库下所有的表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.exit&lt;/td&gt;
+&lt;td&gt;退出数据库模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.headers ON/OFF&lt;/td&gt;
+&lt;td&gt;是否显示列名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.mode csv/ column（推荐）/ html/insert/ line/ list/ tabs&lt;/td&gt;
+&lt;td&gt;表的显示样式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.show&lt;/td&gt;
+&lt;td&gt;会显示所有设置的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;strong&gt;注意&lt;/strong&gt;：执行的语句，结尾需跟上分号（;）,若没有则会出现 …&amp;gt;&lt;/font&gt; 
+
+
+
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;场景：今天在对 sqlite 数据库中的某张表进行查询时，发现查询到的数据总是为空，但是，我非常肯定表中是有数据的，所谓口说无凭，需要真正确认才能定论，于是就需要查 sqlite 数据库，但是真机的 .db 文件无法通过 DDMS 导出，也就无法运用第三方 sqlite 客户端打开 .db 文件来查询数据了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这篇博文就来说说如何运用命令行来对真机上的 sqlite 数据库文件进行操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步 ： 打开 cmd (Windows 系统)，切换至&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;adb shell&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;第二步 ： 定位到你 app 的数据库文件所在目录：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd data/data/com.example.demo/databases&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android Sqlite" scheme="http://www.jiangbing.me/categories/Android-Sqlite/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Sqlite" scheme="http://www.jiangbing.me/tags/Sqlite/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【Guitar 弹唱】 董小姐</title>
     <link href="http://www.jiangbing.me/2016/03/15/2016-03-15-guitar-dong-xiao-jie/"/>
     <id>http://www.jiangbing.me/2016/03/15/2016-03-15-guitar-dong-xiao-jie/</id>
@@ -156,6 +383,866 @@
     
     
       <category term="Guitar" scheme="http://www.jiangbing.me/tags/Guitar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android View 小结</title>
+    <link href="http://www.jiangbing.me/2016/03/10/2016-03-10-the-summary-of-android-view/"/>
+    <id>http://www.jiangbing.me/2016/03/10/2016-03-10-the-summary-of-android-view/</id>
+    <published>2016-03-10T07:16:27.000Z</published>
+    <updated>2016-05-14T06:09:41.837Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。&lt;br&gt;原文地址：&lt;a href=&quot;http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;关于-Android-View-控件&quot;&gt;&lt;a href=&quot;#关于-Android-View-控件&quot; class=&quot;headerlink&quot; title=&quot;关于 Android View 控件&quot;&gt;&lt;/a&gt;关于 Android View 控件&lt;/h2&gt;&lt;p&gt;Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于 Dom 树的架构。父视图负责测量定位绘制等操作。我们经常在用的 &lt;code&gt;findViewById&lt;/code&gt; 方法代价昂贵的原因，就是因为他负责至上而下遍历整棵控件树，来寻找 View 实例，在重复操作中尽量少用。现在在用的很多控件都是直接或者间接继承自 View 的，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016033000.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Android-UI-界面架构&quot;&gt;&lt;a href=&quot;#Android-UI-界面架构&quot; class=&quot;headerlink&quot; title=&quot;Android UI 界面架构&quot;&gt;&lt;/a&gt;Android UI 界面架构&lt;/h2&gt;&lt;p&gt;每个 Activity 包含一个 PhoneWindow 对象，PhoneWindow 设置 DecorView 为应用窗口的根视图。在里面就是熟悉的 TitleView 和 ContentView,没错，平时使用的 &lt;code&gt;setContentView()&lt;/code&gt; 就是设置的 ContentView。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016033001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Android-是如何绘制-View-的？&quot;&gt;&lt;a href=&quot;#Android-是如何绘制-View-的？&quot; class=&quot;headerlink&quot; title=&quot;Android 是如何绘制 View 的？&quot;&gt;&lt;/a&gt;Android 是如何绘制 View 的？&lt;/h2&gt;&lt;p&gt;当一个 Activity 启动时，会被要求绘制出它的布局。Android 框架会处理这个请求，当然前提是 Activity 提供了合理的布局。绘制从根视图开始，从上至下遍历整棵视图树，每一个 ViewGroup 负责让自己的子 View 被绘制，每一个 View 负责绘制自己，通过 &lt;code&gt;draw()&lt;/code&gt; 方法.绘制过程分三步走:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Measure&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layout&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draw&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;整个绘制流程是在 ViewRoot 中的 &lt;code&gt;performTraversals()&lt;/code&gt; 方法展开的。部分源代码如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;performTraversals&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//最外层的根视图的widthMeasureSpec和heightMeasureSpec由来&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//lp.width和lp.height在创建ViewGroup实例时等于MATCH_PARENT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mView.layout(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, mView.getMeasuredWidth(), mView.getMeasuredHeight());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mView.draw(canvas);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在绘制之前当然要知道 view 的尺寸和绘制。所以先进行 measure 和 layout（测量和定位），如下图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016033002.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Measure-过程&quot;&gt;&lt;a href=&quot;#Measure-过程&quot; class=&quot;headerlink&quot; title=&quot;Measure 过程&quot;&gt;&lt;/a&gt;Measure 过程&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;measure&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; widthMeasureSpec, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; heightMeasureSpec)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//....  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//回调onMeasure()方法    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    onMeasure(widthMeasureSpec, heightMeasureSpec);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//more  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;计算 view 的实际大小，获得高宽存入 mMeasuredHeight 和 mMeasureWidth，measure(int, int)传入的两个参数。MeasureSpec 是一个32位 int 值，高2位为测量的模式，低30位为测量的大小。测量的模式可以分为以下三种:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;EXACTLY&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;精确值模式，当 layout_width 或 layout_height 指定为具体数值，或者为 match_parent 时，系统使用 EXACTLY。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AT_MOST&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最大值模式，指定为 wrap_content 时，控件的尺寸不能超过父控件允许的最大尺寸。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;UNSPECIFIED&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不指定测量模式，View 想多大就多大，一般不太使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;根据上面的源码可知，measure 方法不可被重写，自定义时需要重写的是 onMeasure 方法&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onMeasure&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; widthMeasureSpec, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; heightMeasureSpec)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;查看源码可知最终的高宽是调用 &lt;code&gt;setMeasuredDimension()&lt;/code&gt; 设定的,如果不重写，默认是直接调用 getDefaultSize 获取尺寸的。&lt;/p&gt;
+&lt;p&gt;使用 View 的 &lt;code&gt;getMeasuredWidth()&lt;/code&gt; 和 &lt;code&gt;getMeasuredHeight()&lt;/code&gt; 方法来获取 View 测量的宽高，必须保证这两个方法在 onMeasure 流程之后被调用才能返回有效值。&lt;/p&gt;
+&lt;h2 id=&quot;Layout-过程&quot;&gt;&lt;a href=&quot;#Layout-过程&quot; class=&quot;headerlink&quot; title=&quot;Layout 过程&quot;&gt;&lt;/a&gt;Layout 过程&lt;/h2&gt;&lt;p&gt;Layout 方法就是用来确定 view 布局的位置，就好像你知道了一件东西的大小以后，总要知道位置才能画上去。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mView.layout(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, mView.getMeasuredWidth(), mView.getMeasuredHeight());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;layout 获取四个参数，左，上，右，下坐标，相对于父视图而言。这里可以看到，使用了刚刚测量的宽和高。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; l, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; t, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; r, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldL = mLeft;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldT = mTop;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldB = mBottom;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldR = mRight;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; changed = setFrame(l, t, r, b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (changed || (mPrivateFlags &amp;amp; LAYOUT_REQUIRED) == LAYOUT_REQUIRED) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        onLayout(changed, l, t, r, b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过 setFrame 设置坐标。如果坐标改变过了，则重新进行定位。如果是 View 对象，那么 onLayout 是个空方法。因为定位是由 ViewGroup 确定的。&lt;/p&gt;
+&lt;p&gt;当 layout 结束以后 &lt;code&gt;getWidth()&lt;/code&gt; 与 &lt;code&gt;getHeight()&lt;/code&gt; 才会返回正确的值。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;这里出现一个问题，getWidth/Height() and getMeasuredWidth/Height() 有什么区别？&lt;/font&gt;
+
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getWidth()&lt;/code&gt;: View 在設定好佈局後整個 View 的寬度。 &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getMeasuredWidth()&lt;/code&gt;: 對 View 上的內容進行測量後得到的 View 內容佔據的寬度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016033003.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Draw-过程&quot;&gt;&lt;a href=&quot;#Draw-过程&quot; class=&quot;headerlink&quot; title=&quot;Draw 过程&quot;&gt;&lt;/a&gt;Draw 过程&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Canvas canvas)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         * Draw traversal performs several drawing steps which must be executed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         * in the appropriate order:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      1. Draw the background&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      2. If necessary, save the canvas&#39; layers to prepare for fading&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      3. Draw view&#39;s content&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      4. Draw children&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      5. If necessary, draw the fading edges and restore layers&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         *      6. Draw decorations (scrollbars for instance)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 1, draw the background, if needed&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!dirtyOpaque) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            drawBackground(canvas);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// skip step 2 &amp;amp; 5 if possible (common case)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 2, save the canvas&#39; layers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (drawTop) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                canvas.saveLayer(left, top, right, top + length, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, flags);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 3, draw the content&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!dirtyOpaque) onDraw(canvas);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 4, draw the children&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        dispatchDraw(canvas);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 5, draw the fade effect and restore layers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (drawTop) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            matrix.setScale(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, fadeHeight * topFadeStrength);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            matrix.postTranslate(left, top);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            fade.setLocalMatrix(matrix);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            p.setShader(fade);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            canvas.drawRect(left, top, right, top + length, p);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Step 6, draw decorations (scrollbars)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        onDrawScrollBars(canvas);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;重点是第三步调用 onDraw 方法。其它几步都是绘制一些边边角角的东西比如背景、scrollBar 之类的。其中 dispatchDraw，是用来递归调用子 View,如果没有则不需要。&lt;/p&gt;
+&lt;p&gt;onDraw 方法是需要自己实现的，因为每个控件绘制的内容不同。主要用 canvas 对象进行绘制，这里就不说了。&lt;/p&gt;
+&lt;p&gt;参考资料:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.&lt;a href=&quot;http://blog.csdn.net/guolin_blog/article/details/16330267&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android视图绘制流程完全解析，带你一步步深入了解View(二)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.&lt;a href=&quot;http://blog.csdn.net/yanbober/article/details/46128379&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android应用层View绘制流程与源码分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3.&lt;a href=&quot;http://developer.android.com/intl/zh-cn/guide/topics/ui/how-android-draws.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How Android Draws Views&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4.&lt;a href=&quot;http://www.amazon.cn/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0-%E5%BE%90%E5%AE%9C%E7%94%9F/dp/B01481RAA4/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1450359477&amp;amp;sr=1-1&amp;amp;keywords=android%E7%BE%A4%E8%8B%B1%E4%BC%A0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Android群英传》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5.&lt;a href=&quot;http://stackoverflow.com/questions/8657540/what-is-the-difference-between-getwidth-height-and-getmeasuredwidth-height-i&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;What is the difference between getWidth/Height() and getMeasuredWidth/Height() in Android SDK?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;文本对于 Android View 的总结比较简洁易懂，转过来与大家一起分享。&lt;br&gt;原文地址：&lt;a href=&quot;http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/&quot;&gt;http://threezj.com/2015/12/17/Android%20View%E8%AF%A6%E8%A7%A3/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;关于-Android-View-控件&quot;&gt;&lt;a href=&quot;#关于-Android-View-控件&quot; class=&quot;headerlink&quot; title=&quot;关于 Android View 控件&quot;&gt;&lt;/a&gt;关于 Android View 控件&lt;/h2&gt;&lt;p&gt;Android 中控件大致被分为两类 ViewGroup,View。ViewGroup 作为容器管理 View。 Android 视图，是类似于 Dom 树的架构。父视图负责测量定位绘制等操作。我们经常在用的 &lt;code&gt;findViewById&lt;/code&gt; 方法代价昂贵的原因，就是因为他负责至上而下遍历整棵控件树，来寻找 View 实例，在重复操作中尽量少用。现在在用的很多控件都是直接或者间接继承自 View 的，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016033000.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android View 知识" scheme="http://www.jiangbing.me/tags/Android-View-%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Guitar 弹唱】 秋意浓</title>
+    <link href="http://www.jiangbing.me/2016/03/02/2016-03-02-guitar-qiu-yi-nong/"/>
+    <id>http://www.jiangbing.me/2016/03/02/2016-03-02-guitar-qiu-yi-nong/</id>
+    <published>2016-03-02T02:26:11.000Z</published>
+    <updated>2016-05-14T06:19:48.854Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;还记得星爷唱的那首李香兰吗？ :-D&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/UfeNzClc3QE/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;还记得星爷唱的那首李香兰吗？ :-D&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/UfeNzClc3QE/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;/embed&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="音乐" scheme="http://www.jiangbing.me/categories/%E9%9F%B3%E4%B9%90/"/>
+    
+    
+      <category term="Guitar" scheme="http://www.jiangbing.me/tags/Guitar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Touch 事件传递机制</title>
+    <link href="http://www.jiangbing.me/2016/02/29/2016-02-30-mastering-the-android-touch-system/"/>
+    <id>http://www.jiangbing.me/2016/02/29/2016-02-30-mastering-the-android-touch-system/</id>
+    <published>2016-02-29T03:45:49.000Z</published>
+    <updated>2016-05-14T06:13:29.881Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文转自 Trinea大牛的 &lt;a href=&quot;http://www.trinea.cn/android/touch-event-delivery-mechanism/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Android Touch事件传递机制》&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;(1) 所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。&lt;/p&gt;
+&lt;p&gt;(2) 事件类型分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ACTION_DOWN&lt;/li&gt;
+&lt;li&gt;ACTION_UP&lt;/li&gt;
+&lt;li&gt;ACTION_MOVE &lt;/li&gt;
+&lt;li&gt;ACTION_POINTER_DOWN &lt;/li&gt;
+&lt;li&gt;ACTION_POINTER_UP&lt;/li&gt;
+&lt;li&gt;ACTION_CANCEL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个事件都是以ACTION_DOWN 开始 ACTION_UP 结束。&lt;/p&gt;
+&lt;p&gt;(3) 对事件的处理包括三类，分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.传递：dispatchTouchEvent()函数&lt;/li&gt;
+&lt;li&gt;2.拦截：onInterceptTouchEvent()函数&lt;/li&gt;
+&lt;li&gt;3.消费：onTouchEvent()函数和 OnTouchListener&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;传递流程&quot;&gt;&lt;a href=&quot;#传递流程&quot; class=&quot;headerlink&quot; title=&quot;传递流程&quot;&gt;&lt;/a&gt;传递流程&lt;/h2&gt;&lt;p&gt;(1) 事件从&lt;code&gt;Activity.dispatchTouchEvent()&lt;/code&gt; 开始传递，只要没有被停止或拦截，从最上层的 &lt;code&gt;View(ViewGroup)&lt;/code&gt; 开始一直往下(子View)传递。子View可以通过 &lt;code&gt;onTouchEvent()&lt;/code&gt; 对事件进行处理。&lt;/p&gt;
+&lt;p&gt;(2) 事件由父View(ViewGroup)传递给子View，ViewGroup 可以通过 &lt;code&gt;onInterceptTouchEvent()&lt;/code&gt; 对事件做拦截，停止其往下传递。&lt;/p&gt;
+&lt;p&gt;(3) 如果事件从上往下传递过程中一直没有被停止，且最底层子View没有消费事件，事件会反向往上传递，这时父View(ViewGroup)可以进行消费，如果还是没有被消费的话，最后会到 Activity 的 &lt;code&gt;onTouchEvent()&lt;/code&gt; 函数。&lt;/p&gt;
+&lt;p&gt;(4) 如果 View 没有对 &lt;code&gt;ACTION_DOWN&lt;/code&gt; 进行消费，之后的其他事件不会传递过来。&lt;/p&gt;
+&lt;p&gt;(5) &lt;code&gt;OnTouchListener&lt;/code&gt; 优先于 &lt;code&gt;onTouchEvent()&lt;/code&gt; 对事件进行消费。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面的消费即表示相应函数返回值为true。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文 PDF 文档 &lt;a href=&quot;http://wugengxin.cn/download/pdf/android/PRE_andevcon_mastering-the-android-touch-system.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Mastering the Android Touch System》&lt;/a&gt;，实例代码：&lt;a href=&quot;https://github.com/devunwired/custom-touch-examples&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo@Github&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;附上两张原文中流程图&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(1) View 不处理事件流程图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016031700.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;(2) View 处理事件流程图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016031701.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文转自 Trinea大牛的 &lt;a href=&quot;http://www.trinea.cn/android/touch-event-delivery-mechanism/&quot;&gt;《Android Touch事件传递机制》&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;p&gt;(1) 所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。&lt;/p&gt;
+&lt;p&gt;(2) 事件类型分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ACTION_DOWN&lt;/li&gt;
+&lt;li&gt;ACTION_UP&lt;/li&gt;
+&lt;li&gt;ACTION_MOVE &lt;/li&gt;
+&lt;li&gt;ACTION_POINTER_DOWN &lt;/li&gt;
+&lt;li&gt;ACTION_POINTER_UP&lt;/li&gt;
+&lt;li&gt;ACTION_CANCEL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个事件都是以ACTION_DOWN 开始 ACTION_UP 结束。&lt;/p&gt;
+&lt;p&gt;(3) 对事件的处理包括三类，分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.传递：dispatchTouchEvent()函数&lt;/li&gt;
+&lt;li&gt;2.拦截：onInterceptTouchEvent()函数&lt;/li&gt;
+&lt;li&gt;3.消费：onTouchEvent()函数和 OnTouchListener
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android Touch" scheme="http://www.jiangbing.me/tags/Android-Touch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 Android 中的 HTTP Clients</title>
+    <link href="http://www.jiangbing.me/2016/02/27/2016-02-25-android-s-http-client/"/>
+    <id>http://www.jiangbing.me/2016/02/27/2016-02-25-android-s-http-client/</id>
+    <published>2016-02-27T09:12:43.000Z</published>
+    <updated>2016-05-14T06:14:59.184Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文翻译自 Google Dalvik 虚拟机团队 &lt;a href=&quot;http://www.publicobject.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jesse Wilson&lt;/a&gt; 的 &lt;a href=&quot;http://android-developers.blogspot.sg/2011/09/androids-http-clients.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android’s HTTP Client&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.HttpURLConnection.&lt;/li&gt;
+&lt;li&gt;2.Apache 的 HTTP Client.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两种都支持 HTTPS,上传，下载，超时配置，IPv6 和连接池。&lt;/p&gt;
+&lt;h2 id=&quot;Apache-HTTP-Client&quot;&gt;&lt;a href=&quot;#Apache-HTTP-Client&quot; class=&quot;headerlink&quot; title=&quot;Apache HTTP Client&quot;&gt;&lt;/a&gt;Apache HTTP Client&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://developer.android.com/reference/org/apache/http/impl/client/DefaultHttpClient.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DefaultHttpClient&lt;/a&gt; 和他的兄弟类 &lt;a href=&quot;http://developer.android.com/reference/android/net/http/AndroidHttpClient.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AndroidHttpClient&lt;/a&gt; 对于 web 浏览器拓展性非常好。它们拥有庞大的，弹性很好的 API 供我们使用。且它们稳定性极高，很少存在 bug.&lt;/p&gt;
+&lt;p&gt;但是如此大量的 API,在我们不破坏其兼容性的前提下，很难去对其拓展。这也是为什么 Android 团队为何不喜欢 Apache HTTP Client 的原因。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;HttpURLConnection&quot;&gt;&lt;a href=&quot;#HttpURLConnection&quot; class=&quot;headerlink&quot; title=&quot;HttpURLConnection&quot;&gt;&lt;/a&gt;HttpURLConnection&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://developer.android.com/reference/java/net/HttpURLConnection.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HttpURLConnection&lt;/a&gt; 是一个比较通用的，轻量级的，适用于大多数应用的 HTTP 类.我们很容易在此类上做拓展。&lt;/p&gt;
+&lt;p&gt;在 Froyo（2.2）之前， HttpURLConnedction 存在一个重大 bug.那就是，在对 &lt;code&gt;InputStream&lt;/code&gt; 调用 &lt;code&gt;close()&lt;/code&gt; 方法时会影响连接池。所以在 2.2 之前我们需要关闭连接池：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;disableConnectionReuseIfNecessary&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// HTTP connection reuse which was buggy pre-froyo&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (Integer.parseInt(Build.VERSION.SDK) &amp;lt; Build.VERSION_CODES.FROYO) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.setProperty(&lt;span class=&quot;string&quot;&gt;&quot;http.keepAlive&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;false&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在 Gingerbread（2.3）版本上，为 HttpURLConnection 添加了 gzip 压缩请求头：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Accept-Encoding: gzip&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;利用它，可以让服务端对传输的数据进行压缩，如果对压缩的支持有问题的话，你可以参考这里的&lt;a href=&quot;http://developer.android.com/reference/java/net/HttpURLConnection.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文档&lt;/a&gt;，以便知道如何来禁用此项功能。&lt;/p&gt;
+&lt;p&gt;通过 HTTP 的 Content-Length 头来获取压缩文件的大小。使用 getContentLength() 来获取未压缩数据的大小是错误的。正确的做法是，从服务端读取字节流直到 &lt;code&gt;InputStream.read()&lt;/code&gt; 返回 -1 为止。&lt;/p&gt;
+&lt;p&gt;我们在 Gingerbread(2.3) 中对 HTTPS 做了些许改进。 HttpURLConnection 能够尝试连接 Server Name Indication(SNI:允许多个HTTPS主机共享一个IP地址).此外， HttpURLConnection 还有压缩数据和获取 session 的功能。 如果连接失败，HttpURLConnection 会禁用掉这些功能然后再次连接。 这使得 HttpURLConnection 在不破坏对旧版本兼容性的基础上，能够根据服务端的实际情况来选择最高效的应对方案。&lt;/p&gt;
+&lt;p&gt;在 Ice Cream Sandwich（4.0）中, 我们添加了请求结果缓存的功能. 一旦有了缓存, HTTP 请求将会在下面三种方式中挑选:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在没有网络连接的情况下，且本地有完整缓存的时候，HTTP 请求会直接从本地拿数据。&lt;/li&gt;
+&lt;li&gt;局部数据缓存需要向服务器验证本地缓存是否为服务器上最新的数据。比如说：客户端发了一条类似这样的请求：”给我一张本地在昨天有缓存的 foo.png 的图片”，这时服务器可能会返回两种结果，一是被更新过的这张图片，或者是 304（未被更新，可以直接拿本地数据）。也就是说，如果图片没被更新过，则不会再次下载图片。&lt;/li&gt;
+&lt;li&gt;本地没有缓存的数据会请求服务器拿最新的。稍后，它们将会被缓存。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们可以在支持缓存的设备上来打开 HTTP 的缓存功能。下面的实例告诉你如何在不影响 Ice Cream Sandwich（4.0）前的版本上来打开这项功能：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;enableHttpResponseCache&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; httpCacheSize = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1024&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1024&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 10 MiB&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        File httpCacheDir = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; File(getCacheDir(), &lt;span class=&quot;string&quot;&gt;&quot;http&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Class.forName(&lt;span class=&quot;string&quot;&gt;&quot;android.net.http.HttpResponseCache&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .getMethod(&lt;span class=&quot;string&quot;&gt;&quot;install&quot;&lt;/span&gt;, File.class, &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt;.class)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .invoke(&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, httpCacheDir, httpCacheSize);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (Exception httpResponseCacheNotAvailable) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;你需要同时在服务端在对 HTTP 做响应时，配置缓存头（cache headers）.&lt;/p&gt;
+&lt;h2 id=&quot;我们应该如何抉择&quot;&gt;&lt;a href=&quot;#我们应该如何抉择&quot; class=&quot;headerlink&quot; title=&quot;我们应该如何抉择&quot;&gt;&lt;/a&gt;我们应该如何抉择&lt;/h2&gt;&lt;p&gt;在 Froyo(2.2) 之前，我们最好选择 Apache 的 HTTP client。&lt;br&gt;在 Gingerbread(2.3) 之后， HttpURLConnection 是最好的选择。 它的轻量化使得它非常适合 Android, 另外，数据压缩和请求结果缓存使得它的性能大幅提高（包括响应速度，节省电量）。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文翻译自 Google Dalvik 虚拟机团队 &lt;a href=&quot;http://www.publicobject.com/&quot;&gt;Jesse Wilson&lt;/a&gt; 的 &lt;a href=&quot;http://android-developers.blogspot.sg/2011/09/androids-http-clients.html&quot;&gt;Android’s HTTP Client&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;绝大多数 Android app 都会用 HTTP 来进行网络连接，已达到收发数据的目的。 Android 中有两个 Http 使用类，分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.HttpURLConnection.&lt;/li&gt;
+&lt;li&gt;2.Apache 的 HTTP Client.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两种都支持 HTTPS,上传，下载，超时配置，IPv6 和连接池。&lt;/p&gt;
+&lt;h2 id=&quot;Apache-HTTP-Client&quot;&gt;&lt;a href=&quot;#Apache-HTTP-Client&quot; class=&quot;headerlink&quot; title=&quot;Apache HTTP Client&quot;&gt;&lt;/a&gt;Apache HTTP Client&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://developer.android.com/reference/org/apache/http/impl/client/DefaultHttpClient.html&quot;&gt;DefaultHttpClient&lt;/a&gt; 和他的兄弟类 &lt;a href=&quot;http://developer.android.com/reference/android/net/http/AndroidHttpClient.html&quot;&gt;AndroidHttpClient&lt;/a&gt; 对于 web 浏览器拓展性非常好。它们拥有庞大的，弹性很好的 API 供我们使用。且它们稳定性极高，很少存在 bug.&lt;/p&gt;
+&lt;p&gt;但是如此大量的 API,在我们不破坏其兼容性的前提下，很难去对其拓展。这也是为什么 Android 团队为何不喜欢 Apache HTTP Client 的原因。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android 网络" scheme="http://www.jiangbing.me/categories/Android-%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android Http" scheme="http://www.jiangbing.me/tags/Android-Http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android项目编码规范</title>
+    <link href="http://www.jiangbing.me/2016/02/22/2016-02-22-android-project-guidelines/"/>
+    <id>http://www.jiangbing.me/2016/02/22/2016-02-22-android-project-guidelines/</id>
+    <published>2016-02-22T06:00:29.000Z</published>
+    <updated>2016-05-14T06:37:08.485Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： &lt;a href=&quot;https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几大模块介绍作为一个 Android 开发人员，应该遵循的。&lt;/p&gt;
+&lt;h2 id=&quot;文件命名&quot;&gt;&lt;a href=&quot;#文件命名&quot; class=&quot;headerlink&quot; title=&quot;文件命名&quot;&gt;&lt;/a&gt;文件命名&lt;/h2&gt;&lt;h3 id=&quot;类命名&quot;&gt;&lt;a href=&quot;#类命名&quot; class=&quot;headerlink&quot; title=&quot;类命名&quot;&gt;&lt;/a&gt;类命名&lt;/h3&gt;&lt;p&gt;继承自某一组件的 java 类的命名方式因该以该组件为后缀，比如 &lt;code&gt;SignInActivity&lt;/code&gt;, &lt;code&gt;SignInFragment&lt;/code&gt;, &lt;code&gt;ImageUploaderService&lt;/code&gt;, &lt;code&gt;ChangePasswordDialog&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;资源文件&quot;&gt;&lt;a href=&quot;#资源文件&quot; class=&quot;headerlink&quot; title=&quot;资源文件&quot;&gt;&lt;/a&gt;资源文件&lt;/h3&gt;&lt;p&gt;资源文件应以下划线 &lt;code&gt;_&lt;/code&gt; 来分割。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Drawable文件&quot;&gt;&lt;a href=&quot;#Drawable文件&quot; class=&quot;headerlink&quot; title=&quot;Drawable文件&quot;&gt;&lt;/a&gt;Drawable文件&lt;/h4&gt;&lt;p&gt;应遵守下面的规范：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;种类&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;前缀&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;命名规范&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Action bar&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ab_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ab_stacked.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Button&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;btn_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_send_pressed.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dialog&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dialog_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;dialog_top.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Divider&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;divider_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;divider_horizontal.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Icon&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_star.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Menu&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;menu_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;menu_submenu_bg.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Notification&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;notification_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;notification_bg.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tabs&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tab_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tab_pressed.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;icons 相关命名（摘自&lt;a href=&quot;http://developer.android.com/design/style/iconography.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android iconography guidelines&lt;/a&gt;）：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;种类&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;前缀&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;命名规范&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_star.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Launcher icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_launcher_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_launcher_calendar.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Menu icons and Action Bar icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_menu_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_menu_archive.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Status bar icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_stat_notify_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_stat_notify_msg.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tab icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_tab_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_tab_recent.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dialog icons&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ic_dialog_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ic_dialog_info.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;selector 相关：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;种类&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;后缀&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;命名规范&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Normal&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_normal&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_order_normal.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pressed&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_pressed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_order_pressed.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Focused&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_focused&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_order_focused.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Disabled&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_normal&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_order_normal.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Selected&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_selected&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;btn_order_selected.9.png&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Layout-文件&quot;&gt;&lt;a href=&quot;#Layout-文件&quot; class=&quot;headerlink&quot; title=&quot;Layout 文件&quot;&gt;&lt;/a&gt;Layout 文件&lt;/h4&gt;&lt;p&gt;布局文件应该与 Android 组件文件名匹配。比如说你为 &lt;code&gt;SignInActivity&lt;/code&gt; 创建布局文件，布局文件应该是这样: &lt;code&gt;activity_sign_in.xml&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;组件&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;文件名&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;布局文件命名方式&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Activity&lt;/td&gt;
+&lt;td&gt;UserProfileActivity&lt;/td&gt;
+&lt;td&gt;activity_user_profile.xml&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Fragment&lt;/td&gt;
+&lt;td&gt;SignUpFragment&lt;/td&gt;
+&lt;td&gt;fragment_sign_up.xml&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dialog&lt;/td&gt;
+&lt;td&gt;ChangePasswordDialog&lt;/td&gt;
+&lt;td&gt;dialog_change_password.xml&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AdapterView item&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;item_person.xml&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Partial layout&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;partial_stats_bar.xml&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: &lt;font color=&quot;red&quot;&gt;需要注意的是，当你为 &lt;code&gt;adapter&lt;/code&gt; 创建布局文件时，应该以 &lt;code&gt;item_&lt;/code&gt; 为前缀；另一个就是包含在布局文件的子布局文件，应以 &lt;code&gt;partial_&lt;/code&gt; 为前缀。&lt;/font&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;Menu-文件&quot;&gt;&lt;a href=&quot;#Menu-文件&quot; class=&quot;headerlink&quot; title=&quot;Menu 文件&quot;&gt;&lt;/a&gt;Menu 文件&lt;/h4&gt;&lt;p&gt;Menu 文件与布局文件命名风格一样，比如说你准备为 &lt;code&gt;UserActivity&lt;/code&gt; 创建 menu 文件，命名方式应是这样：&lt;code&gt;activity_user.xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;你也许会疑惑，为何不以 &lt;code&gt;menu_&lt;/code&gt; 为前缀？大可不必这样做，因为这些文件都被包含在 &lt;code&gt;menu&lt;/code&gt; 文件夹下了。&lt;/p&gt;
+&lt;h4 id=&quot;Values-文件&quot;&gt;&lt;a href=&quot;#Values-文件&quot; class=&quot;headerlink&quot; title=&quot;Values 文件&quot;&gt;&lt;/a&gt;Values 文件&lt;/h4&gt;&lt;p&gt;Values 文件的命名应该是以复数的形式来命名，例如 &lt;code&gt;strings.xml&lt;/code&gt;, &lt;code&gt;styles.xml&lt;/code&gt;, &lt;code&gt;colors.xml&lt;/code&gt;, &lt;code&gt;dimens.xml&lt;/code&gt;, &lt;code&gt;attrs.xml&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;代码规范&quot;&gt;&lt;a href=&quot;#代码规范&quot; class=&quot;headerlink&quot; title=&quot;代码规范&quot;&gt;&lt;/a&gt;代码规范&lt;/h2&gt;&lt;h3 id=&quot;Java-语言规则&quot;&gt;&lt;a href=&quot;#Java-语言规则&quot; class=&quot;headerlink&quot; title=&quot;Java 语言规则&quot;&gt;&lt;/a&gt;Java 语言规则&lt;/h3&gt;&lt;h4 id=&quot;不要无视异常&quot;&gt;&lt;a href=&quot;#不要无视异常&quot; class=&quot;headerlink&quot; title=&quot;不要无视异常&quot;&gt;&lt;/a&gt;不要无视异常&lt;/h4&gt;&lt;p&gt;比如下面这段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setServerPort&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String value)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        serverPort = Integer.parseInt(value);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (NumberFormatException e) &amp;#123; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;也许你在想，依据当时的业务场景，这种异常根本不会存在，不处理也无可厚非。明天将会发生什么，谁也不知道，你的这种行为也只是为后人挖了个坑，总有一天，有人会掉进去。严谨的代码是必须处理这些异常的，至于具体如何处理，因情况而定。&lt;/p&gt;
+&lt;p&gt;更具体参见&lt;a href=&quot;https://source.android.com/source/code-style.html#dont-ignore-exceptions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;不要捕获父类的异常&quot;&gt;&lt;a href=&quot;#不要捕获父类的异常&quot; class=&quot;headerlink&quot; title=&quot;不要捕获父类的异常&quot;&gt;&lt;/a&gt;不要捕获父类的异常&lt;/h4&gt;&lt;p&gt;你不应该写出下面的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    someComplicatedIOFunction();        &lt;span class=&quot;comment&quot;&gt;// may throw IOException&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    someComplicatedParsingFunction();   &lt;span class=&quot;comment&quot;&gt;// may throw ParsingException&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    someComplicatedSecurityFunction();  &lt;span class=&quot;comment&quot;&gt;// may throw SecurityException&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// phew, made it all the way&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (Exception e) &amp;#123;                 &lt;span class=&quot;comment&quot;&gt;// I&#39;ll just catch all exceptions&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    handleError();                      &lt;span class=&quot;comment&quot;&gt;// with one generic handler!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;至于为何要这么做，以及更详尽的信息，参见&lt;a href=&quot;https://source.android.com/source/code-style.html#dont-catch-generic-exception&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;Don’t-use-finalizers&quot;&gt;&lt;a href=&quot;#Don’t-use-finalizers&quot; class=&quot;headerlink&quot; title=&quot;Don’t use finalizers&quot;&gt;&lt;/a&gt;Don’t use finalizers&lt;/h4&gt;&lt;p&gt;We don’t use finalizers. There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a &lt;code&gt;close()&lt;/code&gt; method (or the like) and document exactly when that method needs to be called. See &lt;code&gt;InputStream&lt;/code&gt; for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs。-（&lt;a href=&quot;https://source.android.com/source/code-style.html#dont-use-finalizers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android code style guidelines&lt;/a&gt;）&lt;/p&gt;
+&lt;h4 id=&quot;完整包引入&quot;&gt;&lt;a href=&quot;#完整包引入&quot; class=&quot;headerlink&quot; title=&quot;完整包引入&quot;&gt;&lt;/a&gt;完整包引入&lt;/h4&gt;&lt;font color=&quot;red&quot;&gt;你不应该这样做：&lt;code&gt;import foo.*;&lt;/code&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;green&quot;&gt;你应该这样做：&lt;code&gt;import foo.Bar;&lt;/code&gt;&lt;/font&gt;
+
+&lt;p&gt;具体信息参见&lt;a href=&quot;https://source.android.com/source/code-style.html#fully-qualify-imports&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;Java-style-rules&quot;&gt;&lt;a href=&quot;#Java-style-rules&quot; class=&quot;headerlink&quot; title=&quot;Java style rules&quot;&gt;&lt;/a&gt;Java style rules&lt;/h3&gt;&lt;h4 id=&quot;字段定义和命名&quot;&gt;&lt;a href=&quot;#字段定义和命名&quot; class=&quot;headerlink&quot; title=&quot;字段定义和命名&quot;&gt;&lt;/a&gt;字段定义和命名&lt;/h4&gt;&lt;p&gt;变量应被定义在&lt;strong&gt;文件的顶部&lt;/strong&gt;，他们应该遵循下面列出的命名规则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;私有的，非静态的变量应该以 &lt;strong&gt;m&lt;/strong&gt; 开头。&lt;/li&gt;
+&lt;li&gt;私有的，静态的变量以 &lt;strong&gt;s&lt;/strong&gt; 开头。&lt;/li&gt;
+&lt;li&gt;其他类型的小写开头，驼峰式命名。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;static&lt;/code&gt; &lt;code&gt;final&lt;/code&gt;类型的变量均已大写，下划线分割的方式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyClass&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; SOME_CONSTANT = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; publicField;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; MyClass sSingleton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; mPackagePrivate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; mPrivate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; mProtected;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;驼峰式&quot;&gt;&lt;a href=&quot;#驼峰式&quot; class=&quot;headerlink&quot; title=&quot;驼峰式&quot;&gt;&lt;/a&gt;驼峰式&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;正确&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;错误&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;XmlHttpRequest&lt;/td&gt;
+&lt;td&gt;XMLHTTPRequest&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getCustomerId&lt;/td&gt;
+&lt;td&gt;getCustomerID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;String url&lt;/td&gt;
+&lt;td&gt;String URL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long id&lt;/td&gt;
+&lt;td&gt;long ID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;空格缩进&quot;&gt;&lt;a href=&quot;#空格缩进&quot; class=&quot;headerlink&quot; title=&quot;空格缩进&quot;&gt;&lt;/a&gt;空格缩进&lt;/h4&gt;&lt;p&gt;代码块内缩进使用 &lt;em&gt;4个空格&lt;/em&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (x == &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    x++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;行缩进使用 &lt;em&gt;8个空格&lt;/em&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Instrument i =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        someLongExpression(that, wouldNotFit, on, one, line);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;Use-standard-brace-style&quot;&gt;&lt;a href=&quot;#Use-standard-brace-style&quot; class=&quot;headerlink&quot; title=&quot;Use standard brace style&quot;&gt;&lt;/a&gt;Use standard brace style&lt;/h4&gt;&lt;p&gt;Braces go on the same line as the code before them.&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyClass&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (something) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (somethingElse) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Braces around the statements are required unless the condition and the body fit on one line.&lt;/p&gt;
+&lt;p&gt;如果判断的代码只有一行，并且最长行数的代码还少的话，大括号就没有必要了：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (condition) body();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;而不应该写成下面这样：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (condition)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    body();  &lt;span class=&quot;comment&quot;&gt;// bad!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;注解&quot;&gt;&lt;a href=&quot;#注解&quot; class=&quot;headerlink&quot; title=&quot;注解&quot;&gt;&lt;/a&gt;注解&lt;/h4&gt;&lt;h4 id=&quot;Annotations-practices&quot;&gt;&lt;a href=&quot;#Annotations-practices&quot; class=&quot;headerlink&quot; title=&quot;Annotations practices&quot;&gt;&lt;/a&gt;Annotations practices&lt;/h4&gt;&lt;p&gt;依据 Android code style guide,一些 Java 中的预定义注解的标准做法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@Override&lt;/code&gt;: The @Override annotation &lt;strong&gt;must be used&lt;/strong&gt; whenever a method overrides the declaration or implementation from a super-class. For example, if you use the @inheritdocs Javadoc tag, and derive from a class (not an interface), you must also annotate that the method @Overrides the parent class’s method.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@SuppressWarnings&lt;/code&gt;: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this “impossible to eliminate” test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多信息参见&lt;a href=&quot;http://source.android.com/source/code-style.html#use-standard-java-annotations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;注解style&quot;&gt;&lt;a href=&quot;#注解style&quot; class=&quot;headerlink&quot; title=&quot;注解style&quot;&gt;&lt;/a&gt;注解style&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;类, 方法和构造器：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当一个类，或者方法，或者构造器中运用到注解，则&lt;em&gt;注解应该下注释的下面，且一行一注解&lt;/em&gt;的原则：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* This is the documentation block about the class */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@AnnotationA&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@AnnotationB&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyAnnotatedClass&lt;/span&gt; &lt;/span&gt;&amp;#123; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;字段上的注解：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于字段上的注解应该和该字段处于同一行，除非达到最大行数：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Nullable&lt;/span&gt; &lt;span class=&quot;meta&quot;&gt;@Mock&lt;/span&gt; DataManager mDataManager;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;变量作用域&quot;&gt;&lt;a href=&quot;#变量作用域&quot; class=&quot;headerlink&quot; title=&quot;变量作用域&quot;&gt;&lt;/a&gt;变量作用域&lt;/h3&gt;&lt;p&gt;局部变量的作用域我们应保持到最小。如此，可以提升你代码的可读性和维护性，降低bug出现的可能性。&lt;/p&gt;
+&lt;p&gt;局部变量应被声明在第一次使用的地方。且每个变量都应初始化。&lt;/p&gt;
+&lt;h3 id=&quot;import语句排序&quot;&gt;&lt;a href=&quot;#import语句排序&quot; class=&quot;headerlink&quot; title=&quot;import语句排序&quot;&gt;&lt;/a&gt;import语句排序&lt;/h3&gt;&lt;p&gt;如果你正在使用的 IDE 是 android studio,你无须担心排序的问题，应该 android studio 已经自动帮你干完了.否则,你需要看看下面排序方式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.Android imports&lt;/li&gt;
+&lt;li&gt;2.Imports from third parties (com, junit, net, org)&lt;/li&gt;
+&lt;li&gt;3.java and javax&lt;/li&gt;
+&lt;li&gt;4.Same project imports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个分组中还需按字母表的排序, 且大写字母在小写字母的前面 (如： Z 在 a 之前).&lt;/li&gt;
+&lt;li&gt;分组和分组之间应该空一行 (android, com, junit, net, org, java, javax).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://source.android.com/source/code-style.html#limit-variable-scope&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更多信息&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;日志&quot;&gt;&lt;a href=&quot;#日志&quot; class=&quot;headerlink&quot; title=&quot;日志&quot;&gt;&lt;/a&gt;日志&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;Log&lt;/code&gt; 类提供的方法能够让我们来发现问题所在:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log.v(String tag, String msg) (verbose)&lt;/li&gt;
+&lt;li&gt;Log.d(String tag, String msg) (debug)&lt;/li&gt;
+&lt;li&gt;Log.i(String tag, String msg) (information)&lt;/li&gt;
+&lt;li&gt;Log.w(String tag, String msg) (warning)&lt;/li&gt;
+&lt;li&gt;Log.e(String tag, String msg) (error)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通常情况下, 我们在类的顶部定义一个 &lt;code&gt;static final&lt;/code&gt; 的 TAG 变量，该变量为所在类的类名，具体如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyClass&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String TAG = MyClass.class.getSimpleName();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myMethod&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Log.e(TAG, &lt;span class=&quot;string&quot;&gt;&quot;My error message&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;VERBOSE 和 DEBUG 日志需在 app 发行版本中禁用. 同样还建议你将 INFORMATION, WARNING 和 ERROR 日志禁用掉，当然这个看你自己，如果你觉得这些信息对于发行版本的 app 的 bug 有用处的话，你可以选择不禁用，这个时候你需要确保这些日志不会泄露用户的隐私信息（比如： email, 地址，用户名，密码等）。&lt;/p&gt;
+&lt;p&gt;仅在调试版本打印日志：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (BuildConfig.DEBUG) Log.d(TAG, &lt;span class=&quot;string&quot;&gt;&quot;The value of x is &quot;&lt;/span&gt; + x);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;类成员变量排序&quot;&gt;&lt;a href=&quot;#类成员变量排序&quot; class=&quot;headerlink&quot; title=&quot;类成员变量排序&quot;&gt;&lt;/a&gt;类成员变量排序&lt;/h3&gt;&lt;p&gt;使用正确的顺序将会显著提高你代码的可读性。这里推荐你使用下面的排序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.常量（Constants）&lt;/li&gt;
+&lt;li&gt;2.成员变量（Fields）&lt;/li&gt;
+&lt;li&gt;3.构造器（Constructors）&lt;/li&gt;
+&lt;li&gt;4.重写的方法和回调方法(public 或者 private)&lt;/li&gt;
+&lt;li&gt;5.Public 方法&lt;/li&gt;
+&lt;li&gt;6.Private 方法&lt;/li&gt;
+&lt;li&gt;7.内部类和接口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String mTitle;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TextView mTextViewTitle;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String title)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mTitle = title;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setUpView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AnInnerClass&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果你写的类继承自 Activity 和 Fragment 这样的 android 组件，对于重写的方法，最好和组件的生命周期相匹配。比如，你写的 activity 实现了 &lt;code&gt;onCreate()&lt;/code&gt;, &lt;code&gt;onDestroy()&lt;/code&gt;， &lt;code&gt;onPause()&lt;/code&gt;, 和 &lt;code&gt;onResume()&lt;/code&gt;, 那么正确的排序是：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//Order matches Activity lifecycle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onResume&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onPause&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onDestroy&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;方法中参数的排序&quot;&gt;&lt;a href=&quot;#方法中参数的排序&quot; class=&quot;headerlink&quot; title=&quot;方法中参数的排序&quot;&gt;&lt;/a&gt;方法中参数的排序&lt;/h3&gt;&lt;p&gt;在 Android 编程中，定义大部分的方法都可能需要一个 &lt;code&gt;context&lt;/code&gt; 参数，如果正在定义这样一个方法，&lt;code&gt;context&lt;/code&gt; 需要放在第一位。&lt;br&gt;而若存在回调接口，则需要放在最后一位，比如:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Context always goes first&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; User &lt;span class=&quot;title&quot;&gt;loadUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; userId)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Callbacks always go last&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;loadUserAsync&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; userId, UserCallback callback)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h3&gt;&lt;p&gt;在 Android SDK 中的 SharedPreferences, Bundle, Intent 都大量使用了字符串常量，所以说，即使一个很小的 app,也有可能定义很多字符串常量。&lt;/p&gt;
+&lt;p&gt;如何你需要定义字符串常量，你需要将其定义为 &lt;code&gt;static final&lt;/code&gt;，并加上下面的前缀：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;所属&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;变量前缀&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SharedPreferences&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;PREF_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bundle&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BUNDLE_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Fragment Arguments&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ARGUMENT_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intent Extra&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;EXTRA_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intent Action&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ACTION_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;需要注意的是 Fragment 中的arguments : &lt;code&gt;Fragment.getArguments()&lt;/code&gt;,它同样是一个 Bundle.然而，因为它太常见了，我们需要为其声明一个不一样的前缀，如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Note the value of the field is the same as the name to avoid duplication issues&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String PREF_EMAIL = &lt;span class=&quot;string&quot;&gt;&quot;PREF_EMAIL&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String BUNDLE_AGE = &lt;span class=&quot;string&quot;&gt;&quot;BUNDLE_AGE&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String ARGUMENT_USER_ID = &lt;span class=&quot;string&quot;&gt;&quot;ARGUMENT_USER_ID&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Intent-related items use full package name as value&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String EXTRA_SURNAME = &lt;span class=&quot;string&quot;&gt;&quot;com.myapp.extras.EXTRA_SURNAME&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String ACTION_OPEN_USER = &lt;span class=&quot;string&quot;&gt;&quot;com.myapp.action.ACTION_OPEN_USER&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Fragments和Activities中的参数&quot;&gt;&lt;a href=&quot;#Fragments和Activities中的参数&quot; class=&quot;headerlink&quot; title=&quot;Fragments和Activities中的参数&quot;&gt;&lt;/a&gt;Fragments和Activities中的参数&lt;/h3&gt;&lt;p&gt;当我们通过 Intent 或者 Bundle 向 activity 传递参数时，对于不同参数的 key 应遵循上一节中的规则。&lt;br&gt;当 activity 或者 Fragment 需要传递参数，它需要提供一个 &lt;code&gt;public static&lt;/code&gt; 方法以便接下来该干什么。&lt;/p&gt;
+&lt;p&gt;Activity中的此方法通常命名为 &lt;code&gt;getStartIntent()&lt;/code&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Intent &lt;span class=&quot;title&quot;&gt;getStartIntent&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, User user)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent(context, ThisActivity.class);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    intent.putParcelableExtra(EXTRA_USER, user);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; intent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Fragments 中的此方法通常命名为： &lt;code&gt;newInstance()&lt;/code&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; UserFragment &lt;span class=&quot;title&quot;&gt;newInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(User user)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    UserFragment fragment = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; UserFragment;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Bundle args = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Bundle();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    args.putParcelable(ARGUMENT_USER, user);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fragment.setArguments(args)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; fragment;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意1：&lt;/strong&gt;: 此方法要放置在 &lt;code&gt;onCreate()&lt;/code&gt; 方法之前。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意2：&lt;/strong&gt;: 如果我们声明了上面的方法，那么参数的 &lt;code&gt;key&lt;/code&gt; 应该是 &lt;code&gt;private&lt;/code&gt; 的。它们没有必要暴露给其他类。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;代码行长度限制&quot;&gt;&lt;a href=&quot;#代码行长度限制&quot; class=&quot;headerlink&quot; title=&quot;代码行长度限制&quot;&gt;&lt;/a&gt;代码行长度限制&lt;/h3&gt;&lt;p&gt;每一行的代码不应超过 &lt;em&gt;100&lt;/em&gt; 个字节。如果超过 100 个字节，这里有两种方法来减少代码行的长度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提取局部变量或方法(优先考虑)&lt;/li&gt;
+&lt;li&gt;将当行转换为多行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但也有列外，下面这些情况，你可不必换行：:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不太可能被分割的行, 比如： 很长的 url 地址.&lt;/li&gt;
+&lt;li&gt;包声明和包引入语句。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;在哪里换行？&quot;&gt;&lt;a href=&quot;#在哪里换行？&quot; class=&quot;headerlink&quot; title=&quot;在哪里换行？&quot;&gt;&lt;/a&gt;在哪里换行？&lt;/h4&gt;&lt;p&gt;对于在哪里换行，其实，也没有一个特别合理的解决方案。但，下面几点还是能够给予我们参考的价值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;运算符时换行&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        + theFinalOne;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;=号后面&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; longName =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne + theFinalOne;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;.换行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;比如说将下面的代码换行前：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Picasso.with(context).load(&lt;span class=&quot;string&quot;&gt;&quot;http://ribot.co.uk/images/sexyjoe.jpg&quot;&lt;/span&gt;).into(imageView);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;换行后：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Picasso.with(context)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .load(&lt;span class=&quot;string&quot;&gt;&quot;http://ribot.co.uk/images/sexyjoe.jpg&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .into(imageView);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;长参数换行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当一个方法拥有很长的参数时，我们应该换行：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;loadPicture(context, &lt;span class=&quot;string&quot;&gt;&quot;http://ribot.co.uk/images/sexyjoe.jpg&quot;&lt;/span&gt;, mImageViewProfilePicture, clickListener, &lt;span class=&quot;string&quot;&gt;&quot;Title of the picture&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;换行后：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;loadPicture(context,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;http://ribot.co.uk/images/sexyjoe.jpg&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mImageViewProfilePicture,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        clickListener,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;Title of the picture&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;RxJava-chains-styling&quot;&gt;&lt;a href=&quot;#RxJava-chains-styling&quot; class=&quot;headerlink&quot; title=&quot;RxJava chains styling&quot;&gt;&lt;/a&gt;RxJava chains styling&lt;/h3&gt;&lt;p&gt;Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the .&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Observable&amp;lt;Location&amp;gt; &lt;span class=&quot;title&quot;&gt;syncLocations&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; mDatabaseHelper.getAllLocations()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .concatMap(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Func1&amp;lt;Location, Observable&amp;lt;? extends Location&amp;gt;&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Observable&amp;lt;? extends Location&amp;gt; call(Location location) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; mRetrofitService.getLocation(location.id);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .retry(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Func2&amp;lt;Integer, Throwable, Boolean&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Boolean &lt;span class=&quot;title&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer numRetries, Throwable throwable)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; throwable &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; RetrofitError;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;XML-规范&quot;&gt;&lt;a href=&quot;#XML-规范&quot; class=&quot;headerlink&quot; title=&quot;XML 规范&quot;&gt;&lt;/a&gt;XML 规范&lt;/h2&gt;&lt;h3 id=&quot;使用头标签闭合&quot;&gt;&lt;a href=&quot;#使用头标签闭合&quot; class=&quot;headerlink&quot; title=&quot;使用头标签闭合&quot;&gt;&lt;/a&gt;使用头标签闭合&lt;/h3&gt;&lt;p&gt;当一个 xml 节点中没有任何的内容，使用自闭合即可。&lt;/p&gt;
+&lt;p&gt;正确的做法：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/text_view_profile&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;错误的做法：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Don&#39;t do this! --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/text_view_profile&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;TextView&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;资源命名&quot;&gt;&lt;a href=&quot;#资源命名&quot; class=&quot;headerlink&quot; title=&quot;资源命名&quot;&gt;&lt;/a&gt;资源命名&lt;/h3&gt;&lt;p&gt;resource 的 id 应该小写且下划线分割。&lt;/p&gt;
+&lt;h4 id=&quot;ID命名&quot;&gt;&lt;a href=&quot;#ID命名&quot; class=&quot;headerlink&quot; title=&quot;ID命名&quot;&gt;&lt;/a&gt;ID命名&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;节点&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;前缀&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;TextView&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;text_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ImageView&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;image_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Button&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;button_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Menu&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;menu_&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;ImageView范例：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Don&#39;t do this! --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ImageView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/image_profile&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Menu范例：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Don&#39;t do this! --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;menu&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;item&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/menu_done&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:title&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Done&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;menu&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;Strings&quot;&gt;&lt;a href=&quot;#Strings&quot; class=&quot;headerlink&quot; title=&quot;Strings&quot;&gt;&lt;/a&gt;Strings&lt;/h4&gt;&lt;p&gt;Strings 的命名应该以其所在的场景含义为前缀来命名。比如 &lt;code&gt;registration_email_hint&lt;/code&gt; 或 &lt;code&gt;registration_name_hint&lt;/code&gt;。如果一个 string,你找不到归类，你可以遵守的下面的规范：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;前缀&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;错误信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;msg_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;常规的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标题，如 dialog 的标题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;action_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;动作，如保存或创建&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Styles-and-Themes&quot;&gt;&lt;a href=&quot;#Styles-and-Themes&quot; class=&quot;headerlink&quot; title=&quot;Styles and Themes&quot;&gt;&lt;/a&gt;Styles and Themes&lt;/h4&gt;&lt;p&gt;根命名以大驼峰命名，其余则以小驼峰命名。&lt;/p&gt;
+&lt;h3 id=&quot;属性排序&quot;&gt;&lt;a href=&quot;#属性排序&quot; class=&quot;headerlink&quot; title=&quot;属性排序&quot;&gt;&lt;/a&gt;属性排序&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1.View Id&lt;/li&gt;
+&lt;li&gt;2.Style&lt;/li&gt;
+&lt;li&gt;3.布局长宽&lt;/li&gt;
+&lt;li&gt;4.其他 layout 属性，按字母排序&lt;/li&gt;
+&lt;li&gt;5.剩下的属性, 按字母排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;测试规范&quot;&gt;&lt;a href=&quot;#测试规范&quot; class=&quot;headerlink&quot; title=&quot;测试规范&quot;&gt;&lt;/a&gt;测试规范&lt;/h2&gt;&lt;h3 id=&quot;单元测试&quot;&gt;&lt;a href=&quot;#单元测试&quot; class=&quot;headerlink&quot; title=&quot;单元测试&quot;&gt;&lt;/a&gt;单元测试&lt;/h3&gt;&lt;p&gt;测试类的命名应该以该类名加上 &lt;code&gt;Test&lt;/code&gt; 为后缀来命名。比如，我们创建一个 &lt;code&gt;DatabaseHelper&lt;/code&gt; 的测试类，类名应该为 &lt;code&gt;DatabaseHelperTest&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;测试方法因该加上 @Test 注解，并且以被测试的方法名开头，后跟一个前提或预期的行为（有时候并不需要，根据测试的场景）来命名。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Template: &lt;code&gt;@Test void methodNamePreconditionExpectedBehaviour()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Example: &lt;code&gt;@Test void signInWithEmptyEmailFails()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有时候，一个类中包含了大量的方法，这个时候我们可以根据功能模块来分割这个类的测试类，比如说需要测试 &lt;code&gt;DataManager&lt;/code&gt;, 这个类有大量的方法，我们就可以将其划分为 &lt;code&gt;DataManagerSignInTest&lt;/code&gt;, &lt;code&gt;DataManagerLoadUsersTest&lt;/code&gt;,等。&lt;/p&gt;
+&lt;h3 id=&quot;Espresso-tests&quot;&gt;&lt;a href=&quot;#Espresso-tests&quot; class=&quot;headerlink&quot; title=&quot;Espresso tests&quot;&gt;&lt;/a&gt;Espresso tests&lt;/h3&gt;&lt;p&gt;Espresso 测试通常作用于 Activity，因此命名通常以被测试的 activity 的类名为开头，如： &lt;code&gt;SignInActivityTest&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;当你使用到 Espresso 的 API 时，通常以下面的方式换行测试：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;onView(withId(R.id.view))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .perform(scrollTo())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .check(matches(isDisplayed()))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文翻译自 GitHub 上一篇个人认为比较好的 Android 项目规范文档： &lt;a href=&quot;https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md&quot;&gt;https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;每个项目都应该有编码规范，俗话说的好：”无规矩不成方圆”。没有编码规范的项目，恩，谁维护谁知道…反正我是深有体会。废话少说，本篇博文将会从几大模块介绍作为一个 Android 开发人员，应该遵循的。&lt;/p&gt;
+&lt;h2 id=&quot;文件命名&quot;&gt;&lt;a href=&quot;#文件命名&quot; class=&quot;headerlink&quot; title=&quot;文件命名&quot;&gt;&lt;/a&gt;文件命名&lt;/h2&gt;&lt;h3 id=&quot;类命名&quot;&gt;&lt;a href=&quot;#类命名&quot; class=&quot;headerlink&quot; title=&quot;类命名&quot;&gt;&lt;/a&gt;类命名&lt;/h3&gt;&lt;p&gt;继承自某一组件的 java 类的命名方式因该以该组件为后缀，比如 &lt;code&gt;SignInActivity&lt;/code&gt;, &lt;code&gt;SignInFragment&lt;/code&gt;, &lt;code&gt;ImageUploaderService&lt;/code&gt;, &lt;code&gt;ChangePasswordDialog&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;资源文件&quot;&gt;&lt;a href=&quot;#资源文件&quot; class=&quot;headerlink&quot; title=&quot;资源文件&quot;&gt;&lt;/a&gt;资源文件&lt;/h3&gt;&lt;p&gt;资源文件应以下划线 &lt;code&gt;_&lt;/code&gt; 来分割。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android 项目规范" scheme="http://www.jiangbing.me/tags/Android-%E9%A1%B9%E7%9B%AE%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初探 Android 中的 MVP 模式</title>
+    <link href="http://www.jiangbing.me/2016/02/20/2016-02-20-the-overview-of-the-andorid-mvp/"/>
+    <id>http://www.jiangbing.me/2016/02/20/2016-02-20-the-overview-of-the-andorid-mvp/</id>
+    <published>2016-02-20T05:30:31.000Z</published>
+    <updated>2016-05-14T06:41:21.519Z</updated>
+    
+    <content type="html">&lt;p&gt;本文将会为你介绍什么是 MVP 模式，以及它的长处，并从一个demo入手。&lt;/p&gt;
+&lt;h2 id=&quot;MVP-使用起来真的简单吗？为何要使用它？&quot;&gt;&lt;a href=&quot;#MVP-使用起来真的简单吗？为何要使用它？&quot; class=&quot;headerlink&quot; title=&quot;MVP 使用起来真的简单吗？为何要使用它？&quot;&gt;&lt;/a&gt;MVP 使用起来真的简单吗？为何要使用它？&lt;/h2&gt;&lt;h3 id=&quot;什么是-MVP-模式？&quot;&gt;&lt;a href=&quot;#什么是-MVP-模式？&quot; class=&quot;headerlink&quot; title=&quot;什么是 MVP 模式？&quot;&gt;&lt;/a&gt;什么是 MVP 模式？&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;View 层&lt;/strong&gt; 用来展示数据以及反馈用户操作。在Android中，此层级包括 Activity, Fragment, android.view.view.View 抑或者是一个 Dialog.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model 层&lt;/strong&gt; 数据接入层，包括连接本地数据库，或者从服务器拿数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Presenter 层&lt;/strong&gt; view 层和 model 层通信的中介，也就是说view想要展示数据，它需要找 Presenter 来拿，而 Presenter 会去调用 Model 层。Presenter 也被用来处理后台任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说，使用 MVP 模式，可以让你的 activity, view, fragment 更加专注于 UI 相关，将业务逻辑剥离出来。这样可以使你的项目低耦合，高内聚，项目更易维护，可靠性倍增，拓展起来更爽。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用MVP的理由&quot;&gt;&lt;a href=&quot;#使用MVP的理由&quot; class=&quot;headerlink&quot; title=&quot;使用MVP的理由&quot;&gt;&lt;/a&gt;使用MVP的理由&lt;/h3&gt;&lt;h4 id=&quot;Keep-It-Stupid-Simple&quot;&gt;&lt;a href=&quot;#Keep-It-Stupid-Simple&quot; class=&quot;headerlink&quot; title=&quot;Keep It Stupid Simple&quot;&gt;&lt;/a&gt;Keep It Stupid Simple&lt;/h4&gt;&lt;p&gt;我们在做任何产品时，都应该保持 KISS 原则（Keep It Stupid Simple）,虽然这是从用户角度出发考虑的。但拿此观点，来实现我们的应用架构，同样适用。&lt;/p&gt;
+&lt;p&gt;而目前市场里面的应用普遍存在以下状况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我敢肯定的说超过 80% 的应用是在使用 &lt;font color=&quot;red&quot;&gt;View-Model&lt;/font&gt; 的架构层级。（虽然这么说，他们自己并不会承认，因为他们自认为在使用的是MVC模式，activity充当控制层）&lt;/li&gt;
+&lt;li&gt;很多开发者都在不断增加 activity 的复杂度，甚至一个 activity 的代码行数过千的情况（本人就亲眼见过，说实话我是一行都不想看），而不是将这些逻辑业务独立出来。这也使得后期的维护变得极其复杂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在只使用 &lt;strong&gt;View-Model&lt;/strong&gt; 模式的项目中，你可以看到以下的关系结构，还真是万物互联啊：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016030801.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这种结构的项目复杂性你难以想象，其中的组件无法复用，debug 和测试起来都是费时费力，更不要说是重构了。&lt;/p&gt;
+&lt;p&gt;那么使用 MVP 模式的项目是怎样的呢？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016030802.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;任务复杂性减低，业务更易处理。&lt;/li&gt;
+&lt;li&gt;更少的对象管理，bug 出现频率减少，更易 debug.&lt;/li&gt;
+&lt;li&gt;测试更容易.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MVP 的视图层变得如此简单，请求数据时时它甚至不需要回调。整个视图的逻辑变得线性化。&lt;/p&gt;
+&lt;font color=&quot;blue&quot;&gt;&lt;strong&gt;附1：MVP 和 MVC 差异图解：&lt;/strong&gt;&lt;/font&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016030803.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;由上，&lt;strong&gt;我们可以看出 MVC 中是允许 Model 和 View 进行交互的，而 MVP 中很明显，Model 与 View 之间的交互由 Presenter 完成。还有一点就是 Presenter 与 View 之间的交互是通过接口的&lt;/strong&gt;。&lt;/p&gt;
+&lt;font color=&quot;blue&quot;&gt;&lt;strong&gt;附2：ribot 架构图：&lt;/strong&gt;&lt;/font&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016030805.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h3&gt;&lt;p&gt;这里有我利用 MVP 模式实现的小 demo.&lt;/p&gt;
+&lt;h4 id=&quot;demo项目结构&quot;&gt;&lt;a href=&quot;#demo项目结构&quot; class=&quot;headerlink&quot; title=&quot;demo项目结构&quot;&gt;&lt;/a&gt;demo项目结构&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;/images/2016030806.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面是整个项目的结构图，bean 和 operation 隶属于 model 层，view 层（包括 activity,fragment,viewGroup 视图相关）只负责 UI 相关，presenter 层负责 view 的逻辑业务，二者通过定义的接口进行通讯。&lt;/p&gt;
+&lt;font color=&quot;blue&quot;&gt;具体代码就不讲解了，这里附上 &lt;a href=&quot;https://github.com/weiwosuoai/Demos/tree/master/SimpleMVPDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Domo下载地址&lt;/a&gt;，以供下载查看源码.&lt;/font&gt;
+
+&lt;p&gt;本文参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/lmj623565791/article/details/46596109&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/lmj623565791/article/details/46596109&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将会为你介绍什么是 MVP 模式，以及它的长处，并从一个demo入手。&lt;/p&gt;
+&lt;h2 id=&quot;MVP-使用起来真的简单吗？为何要使用它？&quot;&gt;&lt;a href=&quot;#MVP-使用起来真的简单吗？为何要使用它？&quot; class=&quot;headerlink&quot; title=&quot;MVP 使用起来真的简单吗？为何要使用它？&quot;&gt;&lt;/a&gt;MVP 使用起来真的简单吗？为何要使用它？&lt;/h2&gt;&lt;h3 id=&quot;什么是-MVP-模式？&quot;&gt;&lt;a href=&quot;#什么是-MVP-模式？&quot; class=&quot;headerlink&quot; title=&quot;什么是 MVP 模式？&quot;&gt;&lt;/a&gt;什么是 MVP 模式？&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;View 层&lt;/strong&gt; 用来展示数据以及反馈用户操作。在Android中，此层级包括 Activity, Fragment, android.view.view.View 抑或者是一个 Dialog.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model 层&lt;/strong&gt; 数据接入层，包括连接本地数据库，或者从服务器拿数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Presenter 层&lt;/strong&gt; view 层和 model 层通信的中介，也就是说view想要展示数据，它需要找 Presenter 来拿，而 Presenter 会去调用 Model 层。Presenter 也被用来处理后台任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说，使用 MVP 模式，可以让你的 activity, view, fragment 更加专注于 UI 相关，将业务逻辑剥离出来。这样可以使你的项目低耦合，高内聚，项目更易维护，可靠性倍增，拓展起来更爽。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android 架构" scheme="http://www.jiangbing.me/categories/Android-%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android 架构" scheme="http://www.jiangbing.me/tags/Android-%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你还在写导致 context 内存泄露的代码吗？</title>
+    <link href="http://www.jiangbing.me/2016/02/18/2016-02-18-how-to-leak-a-context-about-handlers-and-classes/"/>
+    <id>http://www.jiangbing.me/2016/02/18/2016-02-18-how-to-leak-a-context-about-handlers-and-classes/</id>
+    <published>2016-02-18T05:30:31.000Z</published>
+    <updated>2016-05-14T06:54:25.058Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文翻译自： &lt;a href=&quot;http://www.androiddesignpatterns.com/2013/01/inner-class-handler-memory-leak.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.androiddesignpatterns.com/2013/01/inner-class-handler-memory-leak.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一个 Android 程序员，一定对下面这段代码很是熟悉：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SampleActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Handler mLeakyHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Handler() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;handleMessage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Message msg)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// ... &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;你或许认为这段代码写很正常，没有任何问题，那你就大错特错了。这段代码真是导致 context 内存泄露的罪魁祸首，Android Lint 可能会给你以下警告：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;font color=&quot;red&quot;&gt;In Android, Handler classes should be static or leaks might occur&lt;/font&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;你也许会疑惑，内存泄露是如何发生的？让我们来追寻问题的源头：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.当一个 Android App 初次启动时，framework 层会为这个 app 的主线程创建一个 &lt;code&gt;Looper&lt;/code&gt; 对象。此对象的内部实现是一个队列，用来处理 &lt;code&gt;Message&lt;/code&gt; 对象。所有的应用 framework 事件（比如 activity 的生命周期方法调用，按钮的点击事件等）都交给这个 &lt;code&gt;Message&lt;/code&gt;,然后再放到消息队列用处理。主线程的 &lt;code&gt;Looper&lt;/code&gt; 对象存活在整个 application 的生命周期。&lt;/li&gt;
+&lt;li&gt;2.当你在主线程中实例化了一个 &lt;code&gt;Handler&lt;/code&gt;,也就意味着它与 &lt;code&gt;Looper&lt;/code&gt; 的消息队列关联了，被发送到消息队列的消息会持有一个 Handler 的引用,以便 Android framework 层可以在 Looper 最终处理这个消息的时候，调用 &lt;code&gt;Handler#handleMessage(Message)&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;3.在 Java 中，非静态的内部类和匿名类会隐式地持有一个他们外部类的引用。静态内部类则不会。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看了上面3点，你可能还不是很清楚到底什么是内存泄露？让我们再来看看下面这段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SampleActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Handler mLeakyHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Handler() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;handleMessage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Message msg)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Post a message and delay its execution for 10 minutes.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mLeakyHandler.postDelayed(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;, &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Go back to the previous Activity.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    finish();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;当这个 Activity 被 finished 后，延时发送的消息会继续在主线程的消息队列中存活 10 分钟，直到他们被处理。这个消息持有这个 Activity 的 Handler 引用，这个 Handler 有隐式地持有他的外部类（在这个例子中是 SampleActivity ）。直到消息被处理前，这个引用都不会被释放。因此 Activity 不会被垃圾回收机制回收，泄露他所持有的应用程序资源。注意，第 15 行的匿名 Runnable 类也一样。匿名类的非静态实例持有一个隐式的外部类引用,因此 context 将被泄露。&lt;/p&gt;
+&lt;p&gt;为了解决这个问题，Handler 的子类应该定义在一个新文件中或使用静态内部类。静态内部类不会隐式持有外部类的引用。所以不会导致它的 Activity 泄露。如果你需要在Handle内部调用外部 Activity 的方法，那么让 Handler 持有一个 Activity 的弱引用（WeakReference）以便你不会意外导致 context 泄露。为了解决我们实例化匿名 Runnable 类可能导致的内存泄露，我们将用一个静态变量来引用他（因为匿名类的静态实例不会隐式持有他们外部类的引用）。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SampleActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   * Instances of static inner classes do not hold an implicit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   * reference to their outer class.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyHandler&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Handler&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; WeakReference&amp;lt;SampleActivity&amp;gt; mActivity;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyHandler&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SampleActivity activity)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      mActivity = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; WeakReference&amp;lt;SampleActivity&amp;gt;(activity);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;handleMessage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Message msg)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      SampleActivity activity = mActivity.get();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (activity != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; MyHandler mHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyHandler(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   * Instances of anonymous classes do not hold an implicit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   * reference to their outer class when they are &quot;static&quot;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Runnable sRunnable = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;/* ... */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Post a message and delay its execution for 10 minutes.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler.postDelayed(sRunnable, &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Go back to the previous Activity.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    finish();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;作为一个 Android 开发人员都应该了解。开发中不能碰的雷区是什么？&lt;strong&gt;不在一个 Activity 中使用非静态内部类， 以防它的生命周期比 Activity 长。相反，尽量使用持有 Activity 弱引用的静态内部类。&lt;/strong&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文翻译自： &lt;a href=&quot;http://www.androiddesignpatterns.com/2013/01/inner-class-handler-memory-leak.html&quot;&gt;http://www.androiddesignpatterns.com/2013/01/inner-class-handler-memory-leak.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一个 Android 程序员，一定对下面这段代码很是熟悉：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SampleActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Handler mLeakyHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Handler() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;handleMessage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Message msg)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// ... &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android 性能优化" scheme="http://www.jiangbing.me/categories/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
+    
+      <category term="Android Performance Optimization" scheme="http://www.jiangbing.me/tags/Android-Performance-Optimization/"/>
     
   </entry>
   
