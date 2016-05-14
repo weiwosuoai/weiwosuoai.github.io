@@ -1,0 +1,748 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="开发工具," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文转自 http://finalshares.com/read-1026?qq-44425
+
+
+Lantern是一款开源软件，任何人都可以查看 源代码来获知其工作机制，自己做出判断。 我们非常欢迎安全专家来审计，你也可以自己编译出软件包的哦 ！ 
+★如何安装？考虑到用 Windows 的读者比较多，本章节仅针对 Windows 平台，Lantern 的安装文件自带“数字签名”。为了保险起见，照">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻墙利器推荐之 Lantern">
+<meta property="og:url" content="http://www.jiangbing.me/2016/01/30/2016-01-30-lantern/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文转自 http://finalshares.com/read-1026?qq-44425
+
+
+Lantern是一款开源软件，任何人都可以查看 源代码来获知其工作机制，自己做出判断。 我们非常欢迎安全专家来审计，你也可以自己编译出软件包的哦 ！ 
+★如何安装？考虑到用 Windows 的读者比较多，本章节仅针对 Windows 平台，Lantern 的安装文件自带“数字签名”。为了保险起见，照">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022400.jpg">
+<meta property="og:updated_time" content="2016-05-14T07:32:51.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻墙利器推荐之 Lantern">
+<meta name="twitter:description" content="本文转自 http://finalshares.com/read-1026?qq-44425
+
+
+Lantern是一款开源软件，任何人都可以查看 源代码来获知其工作机制，自己做出判断。 我们非常欢迎安全专家来审计，你也可以自己编译出软件包的哦 ！ 
+★如何安装？考虑到用 Windows 的读者比较多，本章节仅针对 Windows 平台，Lantern 的安装文件自带“数字签名”。为了保险起见，照">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016022400.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 翻墙利器推荐之 Lantern | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                翻墙利器推荐之 Lantern
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-30T10:49:44+08:00" content="2016-01-30">
+              2016-01-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/30/2016-01-30-lantern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/30/2016-01-30-lantern/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文转自 <a href="http://finalshares.com/read-1026?qq-44425" target="_blank" rel="external">http://finalshares.com/read-1026?qq-44425</a></p>
+</blockquote>
+<p><img src="/images/2016022400.jpg" alt=""></p>
+<p>Lantern是一款开源软件，任何人都可以查看 源代码来获知其工作机制，自己做出判断。 我们非常欢迎安全专家来审计，你也可以自己编译出软件包的哦 ！ </p>
+<h2 id="★如何安装？"><a href="#★如何安装？" class="headerlink" title="★如何安装？"></a>★如何安装？</h2><p>考虑到用 Windows 的读者比较多，本章节仅针对 Windows 平台，Lantern 的安装文件自带“数字签名”。为了保险起见，照例先检查一下数字签名是否有效（如果你不懂得校验“数字签名”，先看“这篇博文”）。安装很简单，双击这个 exe 既可（“一键式”安装）。</p>
+<a id="more"></a> 
+<p>由于安装过程没有让你选“安装目录”，有些同学可能想知道“蓝灯安装在哪里”。很简单——你只需在“资源管理器”的地址栏输入 <code>%APPDATA%</code> 然后回车，就会进入“当前用户的 APPDATA 目录”，在该目录下，就可以看到有一个子目录叫做 lantern——这就是它的安装目录。由于 Lantern 的安装【无需】管理员权限，以俺的习惯，使用【普通用户】来安装它。再次唠叨一下：能不使用管理员的场合，就尽量不要使用——可以降低一些安全风险。 </p>
+<h2 id="★如何使用？"><a href="#★如何使用？" class="headerlink" title="★如何使用？"></a>★如何使用？</h2><h3 id="启动-停止"><a href="#启动-停止" class="headerlink" title="启动/停止"></a>启动/停止</h3><p>安装之后，你可以通过“开始菜单”或者“桌面上的图标”，来启动蓝灯。然后在任务栏的“托盘区”会出现一个蓝灯的图标；同时，它还会自动弹出系统默认的浏览器，在浏览器上显示它的主界面。这个“主界面”很简单，大伙儿自己看一下就明白了。如果你想退出，在任务栏的“托盘区图标”点右键，弹出的“快捷菜单”上会有退出的选项。 </p>
+<h3 id="Lantern-的配置参数"><a href="#Lantern-的配置参数" class="headerlink" title="Lantern 的配置参数"></a>Lantern 的配置参数</h3><p>主界面的右下角有一个“配置按钮”，点击之后会弹出“Lantern 的配置界面”——这个界面同样很简单，目前只有3个复选框（选项）。其中一个选项是“Proxy all traffic”，俺稍微说一下：如果你勾选了这个选项，那么所有的 HTTP 请求都会走 Lantern 的翻墙通道；反之（没有勾选），那么只有那些“被墙的网站”才会走 Lantern 的线路。Lantern 内置了一个“被屏蔽的网站列表”，以此来判断那些是“被墙的”。 </p>
+<h3 id="配置网络软件走-Lantern-的代理"><a href="#配置网络软件走-Lantern-的代理" class="headerlink" title="配置网络软件走 Lantern 的代理"></a>配置网络软件走 Lantern 的代理</h3><p>本章节所说的“网络软件”指的是：浏览器、IM 工具、下载工具 …， 蓝灯默认会在【本机地址】上开启一个 HTTP 代理的端口，端口号是 8787，如果你的网络软件跟它运行在【同一个操作系统】，那么你只需在网络软件的代理界面上设置 HTTP 代理——地址填写 127.0.0.1 端口号填写 8787（注：“127.0.0.1”表示“本机地址”）如果你想要【跨操作系统】共享蓝灯的翻墙通道，参见俺的另一篇博文《多台电脑如何共享翻墙通道》。 </p>
+<p>本文发出后，经热心读者提醒，补充说一下：蓝灯可以作为 TOR 的前置代理。对于那些看重【隐匿性】的网友，建议使用“蓝灯 + TOR”构造双重代理。关于“双重代理”的原理及好处，请参见《如何隐藏你的踪迹，避免跨省追捕》系列的其中一篇。 </p>
+<h2 id="关于蓝灯的Q-amp-A"><a href="#关于蓝灯的Q-amp-A" class="headerlink" title="关于蓝灯的Q&amp;A:"></a>关于蓝灯的Q&amp;A:</h2><h3 id="1-谁开发了Lantern？"><a href="#1-谁开发了Lantern？" class="headerlink" title="1. 谁开发了Lantern？"></a>1. 谁开发了Lantern？</h3><p>Lantern由Brave New Software Project, Inc开发。这是一个501(c)3的非赢利机构，专注于用软件解决艰巨的全球性问题。 Brave New Software的创始人，也是 Lantern的首席开发者，Adam Fisk，曾是P2P文件共享服务LimeWire和LittleShoot的主力程序员。 在搭建P2P架构的过程中，他发现同样的架构也能用于提供不受限制的互联网访问。 </p>
+<h3 id="2-Lantern-是如何工作的？"><a href="#2-Lantern-是如何工作的？" class="headerlink" title="2. Lantern 是如何工作的？"></a>2. Lantern 是如何工作的？</h3><p>Lantern让用户能流畅地访问被封锁的互联网站点。 Lantern自动检测一个网站是否被封锁。对那些被封锁的网站，Lantern通过自有的服务器，或者未封锁地区的用户运行的Lantern，来提供访问。 如果网站没有被封锁，Lantern选择靠边站。浏览器就能直接访问网站，速度不受影响。 </p>
+<h3 id="3-Lantern独特之处在哪里？"><a href="#3-Lantern独特之处在哪里？" class="headerlink" title="3. Lantern独特之处在哪里？"></a>3. Lantern独特之处在哪里？</h3><p>Lantern使用了一系列技术来对抗封锁。一种技术被封了，就自动试用别的方法。 这些技术包括中心化的结构，也包括复杂的P2P架构。 可用性和用户反馈也是Lantern不可分割的部分。新的版本总是包括用户的建议，解决用户关心的问题。 </p>
+<h3 id="4-我能信任Lantern吗？"><a href="#4-我能信任Lantern吗？" class="headerlink" title="4. 我能信任Lantern吗？"></a>4. 我能信任Lantern吗？</h3><p>Lantern是一款开源软件，任何人都可以查看 源代码来获知其工作机制，自己做出判断。 我们非常欢迎安全专家来审计。我们非常重视您的反馈(security@getlantern.org)。 </p>
+<h3 id="5-我使用Lantern时，别人能看到我的访问内容吗？"><a href="#5-我使用Lantern时，别人能看到我的访问内容吗？" class="headerlink" title="5. 我使用Lantern时，别人能看到我的访问内容吗？"></a>5. 我使用Lantern时，别人能看到我的访问内容吗？</h3><p>Lantern收集什么个人信息？<br>你可以选择给开发团队提供有用的信息和分析，以帮助我们持续改进。 如果你改变了主意，可以在Lantern的设置中随时更改。 如果你选择了给Lantern发送数据，我们只会用它来改进Lantern的服务。 </p>
+<h3 id="6-Lantern能保证我的网络匿名性吗？"><a href="#6-Lantern能保证我的网络匿名性吗？" class="headerlink" title="6. Lantern能保证我的网络匿名性吗？"></a>6. Lantern能保证我的网络匿名性吗？</h3><p>Lantern不是一个网络匿名访问工具。 Lantern的目的是让用户能流畅地访问被封锁的互联网站点。 如果你觉得匿名非常重要（比如你要发一些可能触犯当地法律的内容），建议你使用Tor。 否则，Lantern能给你快速访问被封锁网站的能力。 </p>
+<h3 id="7-我怎么知道Lantern是否正在运行？"><a href="#7-我怎么知道Lantern是否正在运行？" class="headerlink" title="7. 我怎么知道Lantern是否正在运行？"></a>7. 我怎么知道Lantern是否正在运行？</h3><p>下载安装lantern后，Lantern的图标会在你Windows电脑右下角的通知区域，以及OSX系统右上方的菜单栏出现。 只要那个图标在，就意味着Lantern正在运行，你就能用任何浏览器访问被封锁网站。 如果你想停止Lantern，请点击该图标，在弹出的菜单中选择“退出Lantern”。 </p>
+<font color="red" size="5"><strong>软件包下载：</strong></font>
+
+<ul>
+<li><a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta.exe" target="_blank" rel="external">Windows XP SP 3 and above</a></li>
+<li><a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta.dmg" target="_blank" rel="external">OSX 10.8 and above</a></li>
+<li><a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-32-bit.deb" target="_blank" rel="external">Ubuntu 14.04 32 bit</a></li>
+<li><a href="https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb" target="_blank" rel="external">Ubuntu 14.04 64 bit</a></li>
+<li><a href="https://s3.amazonaws.com/lantern-android/lantern-android-beta.apk" target="_blank" rel="external">Android手机版 </a></li>
+</ul>
+<font color="blue" size="5"><a href="http://jingyan.baidu.com/article/7e440953dc4b6e2fc0e2efdc.html" target="_blank" rel="external"><strong>Win10 运行不兼容问题的解决</strong></a></font>
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/28/2016-01-28-guitar-miao-xiao-jie/" rel="next" title="【Guitar 弹唱】再见吧，喵小姐！">
+                <i class="fa fa-chevron-left"></i> 【Guitar 弹唱】再见吧，喵小姐！
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/01/2016-02-01-the-websites-that-android-devoloper-should-go/" rel="prev" title="Android 程序员应该去的一些网站">
+                Android 程序员应该去的一些网站 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/30/2016-01-30-lantern/"
+     data-title="翻墙利器推荐之 Lantern"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/01/30/2016-01-30-lantern/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/30/2016-01-30-lantern/"
+           data-title="翻墙利器推荐之 Lantern" data-url="http://www.jiangbing.me/2016/01/30/2016-01-30-lantern/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#★如何安装？"><span class="nav-number">1.</span> <span class="nav-text">★如何安装？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#★如何使用？"><span class="nav-number">2.</span> <span class="nav-text">★如何使用？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-停止"><span class="nav-number">2.1.</span> <span class="nav-text">启动/停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lantern-的配置参数"><span class="nav-number">2.2.</span> <span class="nav-text">Lantern 的配置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置网络软件走-Lantern-的代理"><span class="nav-number">2.3.</span> <span class="nav-text">配置网络软件走 Lantern 的代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于蓝灯的Q-amp-A"><span class="nav-number">3.</span> <span class="nav-text">关于蓝灯的Q&A:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-谁开发了Lantern？"><span class="nav-number">3.1.</span> <span class="nav-text">1. 谁开发了Lantern？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Lantern-是如何工作的？"><span class="nav-number">3.2.</span> <span class="nav-text">2. Lantern 是如何工作的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Lantern独特之处在哪里？"><span class="nav-number">3.3.</span> <span class="nav-text">3. Lantern独特之处在哪里？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-我能信任Lantern吗？"><span class="nav-number">3.4.</span> <span class="nav-text">4. 我能信任Lantern吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-我使用Lantern时，别人能看到我的访问内容吗？"><span class="nav-number">3.5.</span> <span class="nav-text">5. 我使用Lantern时，别人能看到我的访问内容吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Lantern能保证我的网络匿名性吗？"><span class="nav-number">3.6.</span> <span class="nav-text">6. Lantern能保证我的网络匿名性吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-我怎么知道Lantern是否正在运行？"><span class="nav-number">3.7.</span> <span class="nav-text">7. 我怎么知道Lantern是否正在运行？</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android Studio,Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文翻译自： http://developer.android.com/intl/zh-cn/tools/studio/index.html
+
+前言除了上一篇中对Android Studio的介绍，本篇我们将继续深入了解Android Studio的功能：
+
+基于 Gradle 来构建应用
+同时生成多个 apk 文件（Build variants and multiple apk file ge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再说说 Android Studio">
+<meta property="og:url" content="http://www.jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文翻译自： http://developer.android.com/intl/zh-cn/tools/studio/index.html
+
+前言除了上一篇中对Android Studio的介绍，本篇我们将继续深入了解Android Studio的功能：
+
+基于 Gradle 来构建应用
+同时生成多个 apk 文件（Build variants and multiple apk file ge">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022200.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022201.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022202.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022203.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022204.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022205.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022206.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022207.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022208.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022209.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022211.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016022212.png">
+<meta property="og:updated_time" content="2016-05-14T07:35:25.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再说说 Android Studio">
+<meta name="twitter:description" content="本文翻译自： http://developer.android.com/intl/zh-cn/tools/studio/index.html
+
+前言除了上一篇中对Android Studio的介绍，本篇我们将继续深入了解Android Studio的功能：
+
+基于 Gradle 来构建应用
+同时生成多个 apk 文件（Build variants and multiple apk file ge">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016022200.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 再说说 Android Studio | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                再说说 Android Studio
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-27T10:12:54+08:00" content="2016-01-27">
+              2016-01-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android-Studio/" itemprop="url" rel="index">
+                    <span itemprop="name">Android Studio</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/27/2016-01-27-android-studio-preview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/27/2016-01-27-android-studio-preview/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文翻译自： <a href="http://developer.android.com/intl/zh-cn/tools/studio/index.html" target="_blank" rel="external">http://developer.android.com/intl/zh-cn/tools/studio/index.html</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了上一篇中对Android Studio的介绍，本篇我们将继续深入了解Android Studio的功能：</p>
+<ul>
+<li>基于 <code>Gradle</code> 来构建应用</li>
+<li>同时生成多个 <code>apk</code> 文件（Build variants and multiple apk file generation）</li>
+<li>常用的代码模板以帮助你快速生成app中常见的功能模块</li>
+<li>支持拖拽的布局编辑器</li>
+<li><code>lint</code> 工具（帮助你性能调优，app易用性，版本兼容性以及其他一些问题）</li>
+<li>代码混淆（ProGuard）和app签名功能</li>
+<li><a href="http://developers.google.com/cloud/devtools/android_studio_templates/" target="_blank" rel="external">Google云平台</a>的内置支持，使它易于集成Google云通讯服务和应用程序引擎</li>
+<li>更多…</li>
+</ul>
+<a id="more"></a>
+<p>如果你还想知道关于Android Studio具体的使用细节，请阅读 <a href="http://developer.android.com/tools/workflow/index.html" target="_blank" rel="external">Workflow</a>,包括<br><a href="http://developer.android.com/sdk/installing/create-project.html" target="_blank" rel="external">如何在Android Studio中管理项目</a> 和 <a href="http://developer.android.com/tools/building/building-studio.html" target="_blank" rel="external">如何在Android Studio中构建与运行项目</a>。还有<a href="http://developer.android.com/tools/revisions/studio.html" target="_blank" rel="external">关于Android Studio最近的更新文档介绍</a>。</p>
+<h2 id="项目和文件结构"><a href="#项目和文件结构" class="headerlink" title="项目和文件结构"></a>项目和文件结构</h2><h3 id="Android-Project-view"><a href="#Android-Project-view" class="headerlink" title="Android Project view"></a><em>Android</em> Project view</h3><p>默认情况下，Android Studio使用 <em>Android</em> project view来展示你的项目文件。这个视图结构是你更加易于访问到项目中的关键性文件，并且是基于Gradle构建系统的，该视图特性清单：</p>
+<ul>
+<li>将关键性文件都展示在了一级目录下</li>
+<li>将所有项目的构建文件放在公用文件夹下</li>
+<li>每个项目都有清单文件夹，用来存放清单文件</li>
+<li>Shows resource files from all Gradle source sets</li>
+<li>为资源文件分配了不同的地区，横竖屏，屏幕分辨率文件夹</li>
+</ul>
+<p>1.<em>Android</em> project view:<br><br><img src="/images/2016022200.png" alt=""></p>
+<p>2.项目中的构建文件<br><br><img src="/images/2016022201.png" alt=""></p>
+<p>在每个project module中，都会有以下的项目结构：</p>
+<ul>
+<li><code>java/</code> - 存放所有的代码文件</li>
+<li><code>manifests/</code> - 项目的清单文件</li>
+<li><code>res/</code> - 项目的资源文件</li>
+<li><code>Gradle Scripts/</code> - Gradle的构建和特性文件</li>
+</ul>
+<p>比如,<em>Android</em> project view 在同一个文件夹下管理不同分辨率下的 <code>ic_launcher.png</code> 的文件。</p>
+<blockquote>
+<p>注意： 项目在硬盘中的实际结构与 <em>Android</em> project view 展示的目录结构是不同的。如果你想切换至项目的实际结构，请点击 <em>Project</em> ，在下拉框中勾选 <em>Project</em> 项。</p>
+</blockquote>
+<h3 id="Android-Studio中的其他视图结构"><a href="#Android-Studio中的其他视图结构" class="headerlink" title="Android Studio中的其他视图结构"></a>Android Studio中的其他视图结构</h3><p>如果你正在使用 <em>Project</em> 视图结构，你应该也注意到了，不同于之前使用的 Eclipse，Andorid Studio为我们提供了不同的视图结构。每个工作空间下包含了不同的 <em>modules</em>， 每个 <em>modules</em> 中又包含了完整的项目代码，包括 <code>src/main/</code> 和 <code>src/androidTest/</code> 路径，资源，构建文件和清单文件。 </p>
+<p><img src="/images/2016022202.png" alt=""></p>
+<p>你也可以自定义文件的视图，专注于您的应用程序开发的具体方面：</p>
+<ul>
+<li>Packages</li>
+<li>Project Files</li>
+<li>Scratches</li>
+<li>Problems</li>
+<li>Production</li>
+<li>Tests</li>
+</ul>
+<p>比如说，你选中了 <em>Problems</em> 视图结构，该视图就会展现项目文件中包含的任何错误，比如在布局文件中丢失的 <code>xml</code> 节点等。</p>
+<h2 id="Andorid构建系统"><a href="#Andorid构建系统" class="headerlink" title="Andorid构建系统"></a>Andorid构建系统</h2><p>在Andorid Studio中，替换了 Eclipse ADT 中的 Ant 系统。它可以作为一个集成的工具从android studio菜单运行，也可以独立地从命令行。你可以使用构建系统的特性如下：</p>
+<ul>
+<li>自定义、配置和扩展构建过程</li>
+<li>将同一个项目打包成不同特性的app</li>
+<li>重用代码和资源（Reuse code and resources across source sets）</li>
+</ul>
+<p>android构建系统的灵活性使您可以实现这一切无需修改应用程序的源文件。关于<a href="http://developer.android.com/tools/building/configuring-gradle.html" target="_blank" rel="external">如何在Android Studio中配置自定义的构建设置</a>。</p>
+<h2 id="Debug和性能优化"><a href="#Debug和性能优化" class="headerlink" title="Debug和性能优化"></a>Debug和性能优化</h2><p>Android Studio提供了一些工具来帮助你debug和提升你代码的性能，这其中包括改良的虚拟设备，内联debug, app性能分析工具。</p>
+<h3 id="Android虚拟设备（AVD）管理"><a href="#Android虚拟设备（AVD）管理" class="headerlink" title="Android虚拟设备（AVD）管理"></a>Android虚拟设备（AVD）管理</h3><p>AVD Manager能够让你在编码UI时，布局文件显示在市场大多数的设备上。你只需要在工具栏中点击 Android Virtual Device Manager,<br>Android Virtual Device (AVD) Manager<img src="/images/2016022203.png" alt="">,创建一个新的虚拟设备，然后在模拟器中运行你的app即可。</p>
+<p>AVD Manager支持 Nexus6 和 Nexus9 设备，也支持创建自定义的设备。 Android Studio安装了 Intel x86硬件加速器，使我们的模拟器能够运行的像真机一样快。</p>
+<p>更多信息参考 <a href="http://developer.android.com/tools/devices/managing-avds.html" target="_blank" rel="external">AVD Managers</a></p>
+<h3 id="内嵌的调试器"><a href="#内嵌的调试器" class="headerlink" title="内嵌的调试器"></a>内嵌的调试器</h3><p>使用内嵌的调试器，以帮助你在代码的运行过程中来核查引用，表达式，变量值。具体信息如下：</p>
+<ul>
+<li>查看运行过程中的变量值</li>
+<li>引用对象</li>
+<li>方法的返回值</li>
+<li>运算符表达式</li>
+<li>Tool tip values</li>
+</ul>
+<p>你只需在 <em>Debug</em> 窗口中，点击<strong>设置图标</strong><img src="/images/2016022204.png" alt="">，然后勾选 <strong>Show Values In Editor</strong> 的checkbox即可.</p>
+<h3 id="内存和CPU监控"><a href="#内存和CPU监控" class="headerlink" title="内存和CPU监控"></a>内存和CPU监控</h3><p>Android Studio提供了内存和CPU监控器来帮助你监控app的性能，内存使用情况，cpu的使用率，查找已释放的对象，内存泄露，以及连接设备的内存情况。当你的app正在模拟器或者设备中运行，在左下角点击 <strong>Android</strong> 标签来启动运行时窗口。点击 <strong>Memory</strong> 或者 <strong>CPU</strong> 标签。<br><br><img src="/images/2016022205.png" alt=""></p>
+<h4 id="Heap-堆-dump"><a href="#Heap-堆-dump" class="headerlink" title="Heap(堆) dump"></a>Heap(堆) dump</h4><p>当你正在跟踪app的内存使用情况，同时，<strong>HPROF</strong> 视图还可以展示类，每个类中的实例和引用树来帮助你跟踪内存使用情况，查找内存泄露。<br><br><img src="/images/2016022206.png" alt=""></p>
+<p>想要获取Android app堆内存的使用情况，在 <strong>Memory Monitor</strong> 中单击 <strong>Dump Java Heap</strong> 图标<img src="/images/2016022207.png" alt="">。这样，AS(后面的Andorid Studio均使用缩写AS) 就会在 Captures 标签中创建一个文件名为 <code>Snapshot-yyyy.mm.dd-hh.mm.ss.hprof</code> 堆内存的简要文件，双击这个文件来打开 <strong>HPROF</strong> 视图。</p>
+<p>想要在AS中，转换出一个 <strong>HPROF</strong> 格式的文件，在 <em>Caprures view</em> 右击堆的简要文件，点击 <strong>Export to standard .hprof</strong> 即可。</p>
+<h4 id="内存分配跟踪"><a href="#内存分配跟踪" class="headerlink" title="内存分配跟踪"></a>内存分配跟踪</h4><p>AS能够帮助你跟踪内存的分配使用情况。这样，你在app中执行某个动作的时候，就可以知道具体对象的分配细节，来帮助你调整代码结构，使你的app性能和内存使用达到最优化。<br><br><img src="/images/2016022208.png" alt=""></p>
+<p>更多细节参考<a href="http://tools/help/am-memory.html#tracking" target="_blank" rel="external">Memory Monitor</a>.</p>
+<h3 id="数据文件访问（Data-file-access）"><a href="#数据文件访问（Data-file-access）" class="headerlink" title="数据文件访问（Data file access）"></a>数据文件访问（Data file access）</h3><p>,<br>在Android SDK中包含了这些工具，有 <a href="http://developer.android.com/tools/help/systrace.html" target="_blank" rel="external"><strong>Systrace</strong></a>，<a href="http://developer.android.com/tools/help/logcat.html" target="_blank" rel="external"><strong>logcat</strong></a>, <a href="http://developer.android.com/tools/help/traceview.html" target="_blank" rel="external"><strong>Traceview</strong></a>, <strong>debugging data</strong>,他们都被用来帮助我们来分析app,获取app的详细信息。</p>
+<p>通过点击运行时窗口的左上角的 <strong>Captures</strong>来产看生成的数据文件。 在自动生成文件的列表中，双击文件来查看数据。右击任何一个 <code>.hprof</code> 文件来将它们转换成一个 <code>.hprof</code> 文件格式。</p>
+<h3 id="代码审查"><a href="#代码审查" class="headerlink" title="代码审查"></a>代码审查</h3><p>在AS中，the configured <code>lint</code> and other IDE inspections run automatically whenever you compile your program. In addition to the configured <code>lint</code> checks, additional IntelliJ code inspections and annotation validation run to streamline code review.</p>
+<p>Android Studio enables several lint checks to ensure:</p>
+<ul>
+<li><code>Cipher.getInstance()</code> is used with safe values</li>
+<li>In custom Views, the associated declare-styleable for the custom view uses the same base name as the class name</li>
+<li>安全检查片段注入</li>
+<li>Where ever property assignment no longer works as expected</li>
+<li>gradle插件版本兼容sdk</li>
+<li>无误验证</li>
+<li>所需的api版本</li>
+<li>其他</li>
+</ul>
+<p>Hovering over an inspection error displays the full issue explanation inline for easy error resolution. There is also a helpful hyperlink at the end of the error message for additional error information.</p>
+<p>With Android Studio, you can also run lint inspections for a specific build variant, or for all build variants. You can configure the lint inspections that run by adding a lintOptions property to the Android settings in the build.gradle file. </p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">       <span class="comment">// set to true to turn off analysis progress reporting by lint</span></span><br><span class="line">       quiet <span class="keyword">true</span></span><br><span class="line">       <span class="comment">// if true, stop the gradle build if errors are found</span></span><br><span class="line">       abortOnError <span class="keyword">false</span></span><br><span class="line">       <span class="comment">// if true, only report errors</span></span><br><span class="line">       ignoreWarnings <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>你还可以管理审核配置文件，在AS里面配置审核属性。选择 <strong>File &gt; Setting &gt;</strong>, 点击 <strong>Editor</strong> 选项，再点击 <strong>Inspections</strong>， 在 Inspection配置页面显示了被支持的属性值。<br><br><img src="/images/2016022209.png" alt=""></p>
+<blockquote>
+<p>注意：要更改特定的检查通知的行为，更改检查严重性，比如从 <code>warning</code>级别的提示到 <code>error</code>的级别的提示。</p>
+</blockquote>
+<h4 id="从命令行中运行inspections"><a href="#从命令行中运行inspections" class="headerlink" title="从命令行中运行inspections"></a>从命令行中运行inspections</h4><p>你可以用命令行进入<code>sdk</code>的目录，来运行 <code>lint</code> inspections.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk$ lint [flags] </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>lint</code> –show 和 –list可以被用来显示一些问题和说明。</p>
+</blockquote>
+<p>更多信息，参考 <a href="http://developer.android.com/tools/debugging/improving-w-lint.html" target="_blank" rel="external">Improving Your Code with lint</a>和<a href="http://developer.android.com/tools/help/lint.html" target="_blank" rel="external">lint tool</a>。</p>
+<h3 id="Annotations-in-Android-Studio"><a href="#Annotations-in-Android-Studio" class="headerlink" title="Annotations in Android Studio"></a>Annotations in Android Studio</h3><p>AS支持注释变量、参数和返回值，以帮助你捕获BUG,比如空指针异常和资源类型冲突。<strong>Android SDK Manager</strong> 在Android支持库中包含了 <strong>Support-Annotations</strong> 库以供AS使用。AS在代码审查期间来验证你所配置的注释。</p>
+<p>想在AS中为你的代码添加 <em>annotations</em>，首先在 <em>Support-Annotaions</em> 库中添加依赖：</p>
+<p>1.选择 <strong>File &gt; Project Structure</strong>.<br><br>2.在 <em>Project Structure</em> 对话框中，选择 <em>desired module</em>，点击 <strong>Dependencies</strong>。<br><br>3.点击<img src="/images/2016022211.png" alt="">来包含一个 <strong>Library dependency</strong>.<br><br>4.在 <em>Library Dependency</em>的对话框中，选择 <code>support-annotations</code> ，点击OK.<br></p>
+<p>完成这些后， build.gradle 文件就被更新了，并已经添加了 <code>support-annotations</code> 的依赖。</p>
+<p>当然，你也可以手动来完成这些工作，如下：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.0.0'</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:support-annotations:22.0.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Inferring-nullability"><a href="#Inferring-nullability" class="headerlink" title="Inferring nullability"></a>Inferring nullability</h4><p>A nullability analysis scans the contracts throughout the method hierarchies in your code to detect:</p>
+<ul>
+<li>调用可能返回null的方法</li>
+<li>某个方法不应返回null</li>
+<li>可能为空的变量</li>
+<li>不允许为空的变量</li>
+</ul>
+<p>The analysis then automatically inserts the appropriate null annotations in the detected locations.</p>
+<p>想要在AS中使用 nullability analysis, 选择 <strong>Analyze &gt; Infer Nullity</strong> 菜单选项。AS会在你的代码中检测到的地方插入 <code>@Nullable</code> 和 <code>@NonNull</code> 注释。在运行 <em>null analysis</em> 后，会验证注入的注释。</p>
+<blockquote>
+<p>注意:在你运行了 <em>null analysis</em>后，<strong>nullability 分析器</strong>可能会插入 IntelliJ的 <code>@Nullable</code> 和 <code>@NotNull</code> 注释，而不是Android的 <em>null annotations.</em>,如何解决这个问题呢？我们可以手动搜索这两个关键注释并全部覆盖，或者在 <code>build.gradle</code> 文件中加入 <code>com.intellij:annotations:12.0</code> 的编译依赖。参考下面的例子：</p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.0.0'</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:support-annotations:22.0.0'</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.intellij:annotations:12.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Validating注解"><a href="#Validating注解" class="headerlink" title="Validating注解"></a>Validating注解</h4><p>你也可以在你的代码里为各种各样的引用值手动添加 nullability，resource，枚举注解，比如 <code>R.string</code> ,<code>Drawable</code>, <code>Color</code>, 枚举常量。</p>
+<p>运行 <strong>Analyze &gt; Inspect Code</strong>来验证配置注解。</p>
+<p>为支持注释的完整列表, either use the auto-complete feature to display the available options for the <code>import android.support.annotation</code> statement or view the contents of the <a href="http://developer.android.com/reference/android/support/annotation/package-summary.html" target="_blank" rel="external">Support-Annotations library</a>.</p>
+<p>更多信息参考<a href="http://developer.android.com/tools/debugging/annotations.html" target="_blank" rel="external">Improving Code Inspection with Annotations</a>。</p>
+<h3 id="Log信息"><a href="#Log信息" class="headerlink" title="Log信息"></a>Log信息</h3><p>当你在AS上构建并运行你的app,你通过点击窗口下方的 Android 来查看 adb 和设备的日志信息。</p>
+<p>如果你想通过 Android Debug Monitor来debug你的app,你可以点击工具栏中的 <strong>Monitor</strong><img src="/images/2016022212.png" alt="">来运行它。Debug Monitor 是一个你能够在其中找到完整功能的 DDMS,控制设备行为，等等功能的工具。他还包含了查看视图层级功能，以便帮助你优化你的布局文件。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/25/2016-01-25-android-studio-tips-and-tricks/" rel="next" title="Android studio 概览">
+                <i class="fa fa-chevron-left"></i> Android studio 概览
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/28/2016-01-28-guitar-miao-xiao-jie/" rel="prev" title="【Guitar 弹唱】再见吧，喵小姐！">
+                【Guitar 弹唱】再见吧，喵小姐！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/27/2016-01-27-android-studio-preview/"
+     data-title="再说说 Android Studio"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/27/2016-01-27-android-studio-preview/"
+           data-title="再说说 Android Studio" data-url="http://www.jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目和文件结构"><span class="nav-number">2.</span> <span class="nav-text">项目和文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Project-view"><span class="nav-number">2.1.</span> <span class="nav-text">Android Project view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio中的其他视图结构"><span class="nav-number">2.2.</span> <span class="nav-text">Android Studio中的其他视图结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Andorid构建系统"><span class="nav-number">3.</span> <span class="nav-text">Andorid构建系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug和性能优化"><span class="nav-number">4.</span> <span class="nav-text">Debug和性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android虚拟设备（AVD）管理"><span class="nav-number">4.1.</span> <span class="nav-text">Android虚拟设备（AVD）管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内嵌的调试器"><span class="nav-number">4.2.</span> <span class="nav-text">内嵌的调试器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存和CPU监控"><span class="nav-number">4.3.</span> <span class="nav-text">内存和CPU监控</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Heap-堆-dump"><span class="nav-number">4.3.1.</span> <span class="nav-text">Heap(堆) dump</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存分配跟踪"><span class="nav-number">4.3.2.</span> <span class="nav-text">内存分配跟踪</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据文件访问（Data-file-access）"><span class="nav-number">4.4.</span> <span class="nav-text">数据文件访问（Data file access）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码审查"><span class="nav-number">4.5.</span> <span class="nav-text">代码审查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从命令行中运行inspections"><span class="nav-number">4.5.1.</span> <span class="nav-text">从命令行中运行inspections</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Annotations-in-Android-Studio"><span class="nav-number">4.6.</span> <span class="nav-text">Annotations in Android Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inferring-nullability"><span class="nav-number">4.6.1.</span> <span class="nav-text">Inferring nullability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Validating注解"><span class="nav-number">4.6.2.</span> <span class="nav-text">Validating注解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log信息"><span class="nav-number">4.7.</span> <span class="nav-text">Log信息</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
