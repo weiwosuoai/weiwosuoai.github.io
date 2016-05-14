@@ -1,0 +1,752 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android AsyncTask," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="OverviewAsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。
+AsyncTask 理论上被用来执行 短时（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 java.util.concurrent 包下的 Executor, ThreadPoolExecut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 中的 AsyncTask">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/16/2016-02-16-asynctask-of-the-android/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="OverviewAsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。
+AsyncTask 理论上被用来执行 短时（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 java.util.concurrent 包下的 Executor, ThreadPoolExecut">
+<meta property="og:updated_time" content="2016-05-14T07:17:27.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 中的 AsyncTask">
+<meta name="twitter:description" content="OverviewAsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。
+AsyncTask 理论上被用来执行 短时（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 java.util.concurrent 包下的 Executor, ThreadPoolExecut">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 中的 AsyncTask | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 中的 AsyncTask
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-16T13:30:31+08:00" content="2016-02-16">
+              2016-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/16/2016-02-16-asynctask-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/16/2016-02-16-asynctask-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>AsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。</p>
+<p>AsyncTask 理论上被用来执行 <em>短时</em>（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 <code>java.util.concurrent</code> 包下的 <code>Executor</code>, <code>ThreadPoolExecutor</code> 和 <code>FutureTask</code>.</p>
+<p>你在定义AsyncTask时需要定义三个泛型参数：</p>
+<ul>
+<li><strong>Called Params</strong> - 传入的参数</li>
+<li><strong>Progress</strong>      - 执行中的参数</li>
+<li><strong>Result</strong>        - 返回值参数</li>
+</ul>
+<p>4 个方法：</p>
+<ul>
+<li><code>onPreExecute()</code></li>
+<li><code>doInBackground()</code></li>
+<li><code>onProgressUpdate()</code></li>
+<li><code>onPostExecute()</code><a id="more"></a>
+</li>
+</ul>
+<h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><p>AsyncTask 必须作为一个子类去使用。其中， <code>doInBackgournd(Params...)</code> 是必须实现的方法，大部分情况下，我们还需要实现 <code>onPostExecute(Result)</code> 方法.</p>
+<p>下面是一个使用的例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DownloadFilesTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">URL</span>, <span class="title">Integer</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Long <span class="title">doInBackground</span><span class="params">(URL... urls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = urls.length;</span><br><span class="line">        <span class="keyword">long</span> totalSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">            totalSize += Downloader.downloadFile(urls[i]);</span><br><span class="line">            publishProgress((<span class="keyword">int</span>) ((i / (<span class="keyword">float</span>) count) * <span class="number">100</span>));</span><br><span class="line">            <span class="comment">// Escape early if cancel() is called</span></span><br><span class="line">            <span class="keyword">if</span> (isCancelled()) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> totalSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Integer... progress)</span> </span>&#123;</span><br><span class="line">        setProgressPercent(progress[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Long result)</span> </span>&#123;</span><br><span class="line">        showDialog(<span class="string">"Downloaded "</span> + result + <span class="string">" bytes"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后,就是执行这个 AsyncTask:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> DownloadFilesTask().execute(url1, url2, url3);</span><br></pre></td></tr></table></figure>
+<h2 id="AsyncTask-的泛型参数"><a href="#AsyncTask-的泛型参数" class="headerlink" title="AsyncTask 的泛型参数"></a>AsyncTask 的泛型参数</h2><ul>
+<li>1.<code>Params</code>   执行前传入的参数</li>
+<li>2.<code>Progress</code> 执行中传入的参数</li>
+<li>3.<code>Result</code>   执行完毕后返回的参数</li>
+</ul>
+<p>当然，如果你不需要传任何参数，使用 <code>Void</code> 即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四个方法"><a href="#四个方法" class="headerlink" title="四个方法"></a>四个方法</h2><ul>
+<li>1.<code>onPreExecute()</code> UI线程会在任务执行前调用此方法。通常被用来设置与任务相关的操作，比如在用户界面显示一个进度条。</li>
+<li>2.<code>doInBackground(Params...)</code> 在 <code>onPreExecute()</code> 执行完毕后，调用此方法，注意，此耗时操作执行在一个后台线程中。 <code>Params</code> 参数会被传入到此方法中，计算的结果必须由这一步返回，并将传回最后一步。在方法中，我们还可以调用 <code>publishProgress(Progress...)</code> 来传递进度，然后我就可以在 <code>onProgressUpdate(Progress...)</code> 的方法中来更新 UI 了。</li>
+<li>3.<code>onProgressUpdate(Progress...)</code> 此方法将会在调用了 <code>publishProgress(Progress...)</code> 后，由UI线程来调用。通常被用来在界面上显示执行的进度，例如，它可用于动画显示一个进度栏或在文本字段中显示日志。</li>
+<li>4.<code>onPostExecute(Result)</code> 此方法在耗时操作执行完毕后，由UI线程调用。 <code>doInBackground（Params...）</code> 中返回的结果将作为参数传递进来。</li>
+</ul>
+<h2 id="取消任务"><a href="#取消任务" class="headerlink" title="取消任务"></a>取消任务</h2><p>我们可以通过调用 <code>cancel(boolean)</code> 在任何时候来取消异步任务。Invoking this method will cause subsequent calls to isCancelled() to return true. After invoking this method, onCancelled(Object), instead of onPostExecute(Object) will be invoked after doInBackground(Object[]) returns. To ensure that a task is cancelled as quickly as possible, you should always check the return value of isCancelled() periodically from doInBackground(Object[]), if possible (inside a loop for instance.)</p>
+<h2 id="使用它，你需要遵守"><a href="#使用它，你需要遵守" class="headerlink" title="使用它，你需要遵守"></a>使用它，你需要遵守</h2><ul>
+<li>The AsyncTask class must be loaded on the UI thread. This is done automatically as of JELLY_BEAN.</li>
+<li>你必须在 UI 线程中创建任务实例。</li>
+<li>你必须在 UI 线程中调用 <code>execute(Params...)</code></li>
+<li>不要手动调用 <code>onPreExecute()</code>, <code>onPostExecute(Result)</code>, <code>doInBackground(Params...)</code>, <code>onProgressUpdate(Progress...)</code></li>
+<li>任务只能执行一次(如果你尝试调用第二次，将会抛出异常)</li>
+</ul>
+<h2 id="Memory-observability"><a href="#Memory-observability" class="headerlink" title="Memory observability"></a>Memory observability</h2><p>AsyncTask guarantees that all callback calls are synchronized in such a way that the following operations are safe without explicit synchronizations.</p>
+<ul>
+<li>Set member fields in the constructor or onPreExecute(), and refer to them in doInBackground(Params…).</li>
+<li>Set member fields in doInBackground(Params…), and refer to them in onProgressUpdate(Progress…) and onPostExecute(Result).</li>
+</ul>
+<h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><p>在第一次引入 <code>AsyncTask</code> 时，内部实现使用串行执行单个后台线程。而从 <code>DONUT</code>（甜甜圈）开始，这是更改为允许多个任务并行运行的线程池。从 <code>HONEYCOMB</code>（蜂窝）开始，在单个线程上执行任务并行执行，以避免引起的常见的应用程序错误</p>
+<p>如果你真的需要并行执行, 你可以通过 <code>THREAD_POOL_EXECUTOR</code> 来调用 <code>executeOnExecutor(java.util.concurrent.Executor, Object[])</code> .</p>
+<p>本文参考：<br><a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">http://developer.android.com/reference/android/os/AsyncTask.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-AsyncTask/" rel="tag">#Android AsyncTask</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/" rel="next" title="关于 Android 中工作者线程的思考">
+                <i class="fa fa-chevron-left"></i> 关于 Android 中工作者线程的思考
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/18/2016-02-18-how-to-leak-a-context-about-handlers-and-classes/" rel="prev" title="你还在写导致 context 内存泄露的代码吗？">
+                你还在写导致 context 内存泄露的代码吗？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/16/2016-02-16-asynctask-of-the-android/"
+     data-title="Android 中的 AsyncTask"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/02/16/2016-02-16-asynctask-of-the-android/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/16/2016-02-16-asynctask-of-the-android/"
+           data-title="Android 中的 AsyncTask" data-url="http://www.jiangbing.me/2016/02/16/2016-02-16-asynctask-of-the-android/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用？"><span class="nav-number">2.</span> <span class="nav-text">如何使用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask-的泛型参数"><span class="nav-number">3.</span> <span class="nav-text">AsyncTask 的泛型参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四个方法"><span class="nav-number">4.</span> <span class="nav-text">四个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消任务"><span class="nav-number">5.</span> <span class="nav-text">取消任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用它，你需要遵守"><span class="nav-number">6.</span> <span class="nav-text">使用它，你需要遵守</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-observability"><span class="nav-number">7.</span> <span class="nav-text">Memory observability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行顺序"><span class="nav-number">8.</span> <span class="nav-text">执行顺序</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

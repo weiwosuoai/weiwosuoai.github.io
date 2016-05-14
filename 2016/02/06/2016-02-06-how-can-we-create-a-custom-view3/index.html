@@ -1,0 +1,743 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android 自定义控件," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="上一篇中说到了自定义view的绘制，这一节中我们将探讨自定义view的响应事件。
+绘制UI仅仅是创建自定义View的一部分。你还需要使得你的View能够以模拟现实世界的方式来进行反馈。对象应该总是与现实情景能够保持一致。例如，图片不应该突然消失又从另外一个地方出现，因为在现实世界里面不会发生那样的事情。正确的应该是，图片从一个地方移动到另外一个地方。
+用户应该可以感受到UI上的微小变化，并对模仿现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 自定义控件(三)">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="上一篇中说到了自定义view的绘制，这一节中我们将探讨自定义view的响应事件。
+绘制UI仅仅是创建自定义View的一部分。你还需要使得你的View能够以模拟现实世界的方式来进行反馈。对象应该总是与现实情景能够保持一致。例如，图片不应该突然消失又从另外一个地方出现，因为在现实世界里面不会发生那样的事情。正确的应该是，图片从一个地方移动到另外一个地方。
+用户应该可以感受到UI上的微小变化，并对模仿现">
+<meta property="og:updated_time" content="2016-05-14T07:27:10.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 自定义控件(三)">
+<meta name="twitter:description" content="上一篇中说到了自定义view的绘制，这一节中我们将探讨自定义view的响应事件。
+绘制UI仅仅是创建自定义View的一部分。你还需要使得你的View能够以模拟现实世界的方式来进行反馈。对象应该总是与现实情景能够保持一致。例如，图片不应该突然消失又从另外一个地方出现，因为在现实世界里面不会发生那样的事情。正确的应该是，图片从一个地方移动到另外一个地方。
+用户应该可以感受到UI上的微小变化，并对模仿现">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 自定义控件(三) | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 自定义控件(三)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-06T14:48:12+08:00" content="2016-02-06">
+              2016-02-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android-自定义控件/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 自定义控件</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一篇中说到了自定义view的绘制，这一节中我们将探讨自定义view的响应事件。</p>
+<p>绘制UI仅仅是创建自定义View的一部分。你还需要使得你的View能够以模拟现实世界的方式来进行反馈。对象应该总是与现实情景能够保持一致。例如，图片不应该突然消失又从另外一个地方出现，因为在现实世界里面不会发生那样的事情。正确的应该是，图片从一个地方移动到另外一个地方。</p>
+<p>用户应该可以感受到UI上的微小变化，并对模仿现实世界的细微之处反应强烈。例如，当用户迅速滑动一个对象时，应该在开始时感到摩擦带来的阻力，在结束时感到滑动带动的动力。应该在滑动开始与结束的时候给用户一定的反馈。</p>
+<p>这节课会演示如何使用Android framework层的功能来为自定义的View添加那些现实世界中的行为。<br><a id="more"></a></p>
+<h2 id="处理输入的手势"><a href="#处理输入的手势" class="headerlink" title="处理输入的手势"></a>处理输入的手势</h2><p>像许多其他UI框架一样，Android提供一个输入事件模型。用户的动作会转换成触发一些回调函数的事件，你可以重写这些回调方法来定制你的程序应该如何响应用户的输入事件。在Android中最常用的输入事件是touch，它会触发<code>onTouchEvent(android.view.MotionEvent)</code>的回调。重写这个方法来处理touch事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Touch事件本身并不是特别有用。如今的touch UI定义了<code>touch</code>事件之间的相互作用，叫做<code>gestures</code>。例如<code>tapping</code>,<code>pulling</code>,<code>flinging</code>与<code>zooming</code>。为了把那些<code>touch</code>的源事件转换成<code>gestures</code>, Android提供了<code>GestureDetector</code>。</p>
+<p>通过传入<code>GestureDetector.OnGestureListener</code>的一个实例构建一个<code>GestureDetector</code>。如果你只是想要处理几种gestures(手势操作)你可以继承<code>GestureDetector.SimpleOnGestureListener</code>，而不用实现<code>GestureDetector.OnGestureListener</code>接口。例如，下面的代码创建一个继承<code>GestureDetector.SimpleOnGestureListener</code>的类，并重写<code>onDown(MotionEvent)</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mListener</span> <span class="keyword">extends</span> <span class="title">GestureDetector</span>.<span class="title">SimpleOnGestureListener</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onDown</span><span class="params">(MotionEvent e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">mDetector = <span class="keyword">new</span> GestureDetector(PieChart.<span class="keyword">this</span>.getContext(), <span class="keyword">new</span> mListener());</span><br></pre></td></tr></table></figure>
+<p>不管你是否使用<code>GestureDetector.SimpleOnGestureListener</code>, 你必须总是实现<code>onDown()</code>方法，并返回<code>true</code>。这一步是必须的，因为所有的gestures都是从<code>onDown()</code>开始的。<strong>如果你在onDown()里面返回false，系统会认为你想要忽略后续的gesture</strong>,那么GestureDetector.OnGestureListener的其他回调方法就不会被执行到了。一旦你实现了GestureDetector.OnGestureListener并且创建了GestureDetector的实例, 你可以使用你的GestureDetector来中止你在onTouchEvent里面收到的touch事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span> result = mDetector.onTouchEvent(event);</span><br><span class="line">   <span class="keyword">if</span> (!result) &#123;</span><br><span class="line">       <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_UP) &#123;</span><br><span class="line">           stopScrolling();</span><br><span class="line">           result = <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当你传递一个touch事件到<code>onTouchEvent()</code>时，若这个事件没有被辨认出是何种gesture，它会返回<code>false</code>。你可以执行自定义的<code>gesture-decection</code>代码。</p>
+<h2 id="创建基本合理的物理运动"><a href="#创建基本合理的物理运动" class="headerlink" title="创建基本合理的物理运动"></a>创建基本合理的物理运动</h2><p>Gestures是控制触摸设备的一种强有力的方式，但是除非你能够产出一个合理的触摸反馈，否则将是违反用户直觉的。一个很好的例子是滑动手势，用户迅速的在屏幕上移动手指然后抬手离开屏幕。这个手势应该使得UI迅速的按照滑动的方向进行滑动，然后慢慢停下来，就像是用户旋转一个飞轮一样。</p>
+<p>但是模拟这个飞轮的感觉并不简单，要想得到正确的飞轮模型，需要大量的物理，数学知识。幸运的是，Android有提供帮助类来模拟这些物理行为。<strong>Scroller</strong>是控制飞轮式的滑动的基类。</p>
+<p>要启动一个fling，需调用<code>fling()</code>，并传入启动速率、x、y的最小值和最大值，对于启动速度值，可以使用<code>GestureDetector</code>计算得出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onFling</span><span class="params">(MotionEvent e1, MotionEvent e2, <span class="keyword">float</span> velocityX, <span class="keyword">float</span> velocityY)</span> </span>&#123;</span><br><span class="line">   mScroller.fling(currentX, currentY, velocityX / SCALE, velocityY / SCALE, minX, minY, maxX, maxY);</span><br><span class="line">   postInvalidate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：尽管速率是通过GestureDetector来计算的，许多开发者感觉使用这个值使得fling动画太快。通常把x与y设置为4到8倍的关系。</p>
+</blockquote>
+<p>调用<code>fling()</code>时会为fling手势设置物理模型。然后，通过调用定期调用 <code>Scroller.computeScrollOffset()</code>来更新<code>Scroller.computeScrollOffset()</code>通过读取当前时间和使用物理模型来计算x和y的位置更新Scroller对象的内部状态。调用<code>getCurrX()</code>和<code>getCurrY()</code>来获取这些值。</p>
+<p>大多数view通过Scroller对象的x,y的位置直接到scrollTo())，PieChart例子稍有不同，它使用当前滚动y的位置设置图表的旋转角度。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!mScroller.isFinished()) &#123;</span><br><span class="line">    mScroller.computeScrollOffset();</span><br><span class="line">    setPieRotation(mScroller.getCurrY());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Scroller 类会为你计算滚动位置，但是他不会自动把哪些位置运用到你的view上面。你有责任确保View获取并运用到新的坐标。你有两种方法来实现这件事情：</p>
+<ul>
+<li>在调用<code>fling()</code>之后执行<code>postInvalidate()</code>, 这是为了确保能强制进行重画。这个技术需要每次在onDraw里面计算过scroll offsets(滚动偏移量)之后调用<code>postInvalidate()</code>。</li>
+<li>使用ValueAnimator在fling是展现动画，并且通过调用<code>addUpdateListener()</code>增加对fling过程的监听。</li>
+</ul>
+<p>这个PieChart 的例子使用了第二种方法。这个方法使用起来会稍微复杂一点，但是它更有效率并且避免了不必要的重画的view进行重绘。缺点是ValueAnimator是从API Level 11才有的。因此他不能运用到3.0的系统之前的版本上.</p>
+<blockquote>
+<p>注意： ValueAnimator虽然是API 11才有的，但是你还是可以在最低版本低于3.0的系统上使用它，做法是在运行时判断当前的API Level，如果低于11则跳过。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mScroller = <span class="keyword">new</span> Scroller(getContext(), <span class="keyword">null</span>, <span class="keyword">true</span>);</span><br><span class="line">mScrollAnimator = ValueAnimator.ofFloat(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">mScrollAnimator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator valueAnimator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!mScroller.isFinished()) &#123;</span><br><span class="line">            mScroller.computeScrollOffset();</span><br><span class="line">            setPieRotation(mScroller.getCurrY());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            mScrollAnimator.cancel();</span><br><span class="line">            onScrollFinished();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="过渡平滑"><a href="#过渡平滑" class="headerlink" title="过渡平滑"></a>过渡平滑</h2><p>用户期待一个UI之间的切换是能够平滑过渡的。UI元素需要做到渐入淡出来取代突然出现与消失。Android从3.0开始有提供<a href="http://developer.android.com/guide/topics/graphics/prop-animation.html" target="_blank" rel="external">property animation framework</a>,用来使得平滑过渡变得更加容易。</p>
+<p>使用这套动画系统时，任何时候属性的改变都会影响到你的视图，所以不要直接改变属性的值。而是使用<strong>ValueAnimator</strong>来实现改变。在下面的例子中，在PieChart 中更改选择的部分将导致整个图表的旋转，以至选择的进入选择区内。<strong>ValueAnimator</strong>在数百毫秒内改变旋转量，而不是突然地设置新的旋转值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mAutoCenterAnimator = ObjectAnimator.ofInt(PieChart.<span class="keyword">this</span>, <span class="string">"PieRotation"</span>, <span class="number">0</span>);</span><br><span class="line">mAutoCenterAnimator.setIntValues(targetAngle);</span><br><span class="line">mAutoCenterAnimator.setDuration(AUTOCENTER_ANIM_DURATION);</span><br><span class="line">mAutoCenterAnimator.start();</span><br></pre></td></tr></table></figure>
+<p>如果你想改变的是view的某些基础属性，你可以使用<a href="http://developer.android.com/reference/android/view/ViewPropertyAnimator.html" target="_blank" rel="external">ViewPropertyAnimator</a> ,它能够同时执行多个属性的动画。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animate().rotation(targetAngle).setDuration(ANIM_DURATION).start();</span><br></pre></td></tr></table></figure>
+<p>参考文章：<br><a href="http://http://developer.android.com/training/custom-view/make-interactive.html" target="_blank" rel="external">http://developer.android.com/training/custom-view/make-interactive.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-自定义控件/" rel="tag">#Android 自定义控件</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/05/2016-02-05-how-can-we-create-a-custom-view2/" rel="next" title="Android 自定义控件(二)">
+                <i class="fa fa-chevron-left"></i> Android 自定义控件(二)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/" rel="prev" title="Android 自定义控件(四)">
+                Android 自定义控件(四) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/"
+     data-title="Android 自定义控件(三)"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/"
+           data-title="Android 自定义控件(三)" data-url="http://www.jiangbing.me/2016/02/06/2016-02-06-how-can-we-create-a-custom-view3/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理输入的手势"><span class="nav-number">1.</span> <span class="nav-text">处理输入的手势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建基本合理的物理运动"><span class="nav-number">2.</span> <span class="nav-text">创建基本合理的物理运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过渡平滑"><span class="nav-number">3.</span> <span class="nav-text">过渡平滑</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

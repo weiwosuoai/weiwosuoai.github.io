@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android Thread," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文转自 http://www.infoq.com/cn/articles/android-worker-thread
+
+
+在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 Android 中工作者线程的思考">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文转自 http://www.infoq.com/cn/articles/android-worker-thread
+
+
+在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016030700.jpg">
+<meta property="og:updated_time" content="2016-05-14T07:18:24.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 Android 中工作者线程的思考">
+<meta name="twitter:description" content="本文转自 http://www.infoq.com/cn/articles/android-worker-thread
+
+
+在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016030700.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 关于 Android 中工作者线程的思考 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于 Android 中工作者线程的思考
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-14T13:30:31+08:00" content="2016-02-14">
+              2016-02-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文转自 <a href="http://www.infoq.com/cn/articles/android-worker-thread" target="_blank" rel="external">http://www.infoq.com/cn/articles/android-worker-thread</a></p>
+</blockquote>
+<p><img src="/images/2016030700.jpg" alt=""></p>
+<p>在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问题呢，关于工作者线程有哪些优化的方面呢，本文将一一解答这些问题。</p>
+<font color="red"><strong>工作者线程的存在原因：</strong></font>
+
+<ul>
+<li>因为Android的UI单线程模型，所有的UI相关的操作都需要在主线程(UI线程)执行</li>
+<li>Android中各大组件的生命周期回调都是位于主线程中，使得主线程的职责更重</li>
+<li>如果不使用工作者线程为主线程分担耗时的任务，会造成应用卡顿，严重时可能出现ANR(Application Not Responding),即程序未响应。</li>
+</ul>
+<p>因而，在Android中使用工作者线程显得势在必行，如一开始提到那样，在Android中工作者线程有很多，接下来我们将围绕AsyncTask，HandlerThread等深入研究。<br><a id="more"></a></p>
+<h2 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h2><p>AsyncTask是Android框架提供给开发者的一个辅助类，使用该类我们可以轻松的处理异步线程与主线程的交互，由于其便捷性，在Android工程中，AsyncTask被广泛使用。然而AsyncTask并非一个完美的方案，使用它往往会存在一些问题。接下来将逐一列举AsyncTask不容易被开发者察觉的问题。</p>
+<h3 id="AsyncTask与内存泄露"><a href="#AsyncTask与内存泄露" class="headerlink" title="AsyncTask与内存泄露"></a>AsyncTask与内存泄露</h3><p>内存泄露是Android开发中常见的问题，只要开发者稍有不慎就有可能导致程序产生内存泄露，严重时甚至可能导致OOM(OutOfMemory，即内存溢出错误)。AsyncTask也不例外，也有可能造成内存泄露。</p>
+<p>以一个简单的场景为例：<br>在Activity中，通常我们这样使用AsyncTask:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//In Activity</span></span><br><span class="line"><span class="keyword">new</span> AsyncTask&lt;String, Void, Void&gt;() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//some code</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.execute(<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+<p>上述代码使用的匿名内存类创建AsyncTask实例，然而在Java中，非静态内存类会隐式持有外部类的实例引用，上面例子AsyncTask创建于Activity中，因而会隐式持有Activity的实例引用。</p>
+<p>而在AsyncTask内部实现中,mFuture同样使用匿名内部类创建对象，而mFuture会作为执行任务加入到任务执行器中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> WorkerRunnable&lt;Params, Result&gt; mWorker;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mFuture = <span class="keyword">new</span> FutureTask&lt;Result&gt;(mWorker) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">done</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">//some code</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而mFuture加入任务执行器，实际上是放入了一个静态成员变量SERIAL_EXECUTOR指向的对象SerialExecutor的一个ArrayDeque类型的集合中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Executor SERIAL_EXECUTOR = <span class="keyword">new</span> SerialExecutor();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SerialExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">   <span class="keyword">final</span> ArrayDeque&lt;Runnable&gt; mTasks = <span class="keyword">new</span> ArrayDeque&lt;Runnable&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(<span class="keyword">final</span> Runnable r)</span> </span>&#123;</span><br><span class="line">        mTasks.offer(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">//fake code</span></span><br><span class="line">                r.run();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当任务处于排队状态，则Activity实例引用被静态常量SERIAL_EXECUTOR 间接持有。</p>
+<p>在通常情况下，当设备发生屏幕旋转事件，当前的Activity被销毁，新的Activity被创建，以此完成对布局的重新加载。</p>
+<p>而本例中，当屏幕旋转时，处于排队的AsyncTask由于其对Activity实例的引用关系，导致这个Activity不能被销毁，其对应的内存不能被GC回收，因而就出现了内存泄露问题。</p>
+<p>关于如何避免内存泄露，我们可以使用<strong>静态内部类 + 弱引用</strong>的形式解决。</p>
+<h3 id="cancel的问题"><a href="#cancel的问题" class="headerlink" title="cancel的问题"></a>cancel的问题</h3><p>AsyncTask作为任务，是支持调用者取消任务的，即允许我们使用AsyncTask.canncel()方法取消提交的任务。然而其实cancel并非真正的起作用。</p>
+<p>首先，我们看一下cancel方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> mayInterruptIfRunning)</span> </span>&#123;</span><br><span class="line">    mCancelled.set(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">return</span> mFuture.cancel(mayInterruptIfRunning);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>cancel方法接受一个boolean类型的参数，名称为mayInterruptIfRunning，意思是是否可以打断正在执行的任务。<br><br>1.当我们调用cancel(false)，不打断正在执行的任务，对应的结果是:</p>
+<ul>
+<li>处于doInBackground中的任务不受影响，继续执行</li>
+<li>任务结束时不会去调用onPostExecute方法，而是执行onCancelled方法</li>
+</ul>
+<p>2.当我们调用cancel(true)，表示打断正在执行的任务，会出现如下情况：</p>
+<ul>
+<li>如果doInBackground方法处于阻塞状态，如调用Thread.sleep,wait等方法，则会抛出InterruptedException。</li>
+<li>对于某些情况下，有可能无法打断正在执行的任务</li>
+</ul>
+<p>如下，就是一个cancel方法无法打断正在执行的任务的例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AsyncTask&lt;String,Void,Void&gt; task = <span class="keyword">new</span> AsyncTask&lt;String, Void, Void&gt;() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> loop = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(loop) &#123;</span><br><span class="line">            Log.i(LOGTAG, <span class="string">"doInBackground after interrupting the loop"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">task.execute(<span class="string">"hello world"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Thread.sleep(<span class="number">2000</span>);<span class="comment">//确保AsyncTask任务执行</span></span><br><span class="line">    task.cancel(<span class="keyword">true</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子，如果想要使cancel正常工作需要在循环中，需要在循环条件里面同时检测isCancelled()才可以。</p>
+<h3 id="串行带来的问题"><a href="#串行带来的问题" class="headerlink" title="串行带来的问题"></a>串行带来的问题</h3><p>Android团队关于AsyncTask执行策略进行了多次修改，修改大致如下：</p>
+<ul>
+<li>自最初引入到Donut(1.6)之前，任务串行执行</li>
+<li>从Donut到GINGERBREAD_MR1(2.3.4),任务被修改成了并行执行</li>
+<li>从HONEYCOMB（3.0）至今，任务恢复至串行，但可以设置executeOnExecutor()实现并行执行。</li>
+</ul>
+<p>然而AsyncTask的串行实际执行起来是这样的逻辑</p>
+<ul>
+<li>由串行执行器控制任务的初始分发</li>
+<li>并行执行器一次执行单个任务，并启动下一个</li>
+</ul>
+<p>在AsyncTask中，并发执行器实际为ThreadPoolExecutor的实例，其CORE_POOL_SIZE为当前设备CPU数量+1，MAXIMUM_POOL_SIZE值为CPU数量的2倍 + 1。</p>
+<p>以一个四核手机为例，当我们持续调用AsyncTask任务过程中:</p>
+<ul>
+<li>在AsyncTask线程数量小于CORE_POOL_SIZE(5个)时，会启动新的线程处理任务，不重用之前空闲的线程</li>
+<li>当数量超过CORE_POOL_SIZE(5个)，才开始重用之前的线程处理任务</li>
+</ul>
+<p>但是由于AsyncTask属于默认线性执行任务，导致并发执行器总是处于某一个线程工作的状态，因而造成了ThreadPool中其他线程的浪费。同时由于AsyncTask中并不存在<code>allowCoreThreadTimeOut(boolean)</code>的调用，所以ThreadPool中的核心线程即使处于空闲状态也不会销毁掉。</p>
+<h2 id="Executors"><a href="#Executors" class="headerlink" title="Executors"></a>Executors</h2><p>Executors是Java API中一个快速创建线程池的工具类，然而在它里面也是存在问题的。</p>
+<p>以Executors中获取一个固定大小的线程池方法为例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newFixedThreadPool</span><span class="params">(<span class="keyword">int</span> nThreads)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,<span class="number">0L</span>, </span><br><span class="line">        TimeUnit.MILLISECONDS,<span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上面代码实现中，CORE_POOL_SIZE和MAXIMUM_POOL_SIZE都是同样的值，如果把nThreads当成核心线程数，则无法保证最大并发，而如果当做最大并发线程数，则会造成线程的浪费。因而Executors这样的API导致了我们无法在最大并发数和线程节省上做到平衡。</p>
+<p>为了达到最大并发数和线程节省的平衡，建议自行创建ThreadPoolExecutor，根据业务和设备信息确定CORE_POOL_SIZE和MAXIMUM_POOL_SIZE的合理值。</p>
+<h2 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h2><p>HandlerThread是Android中提供特殊的线程类，使用这个类我们可以轻松创建一个带有Looper的线程，同时利用Looper我们可以结合Handler实现任务的控制与调度。以Handler的post方法为例，我们可以封装一个轻量级的任务处理器.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Handler mHandler;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">LightTaskManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    HandlerThread workerThread = <span class="keyword">new</span> HandlerThread(<span class="string">"LightTaskThread"</span>);</span><br><span class="line">    workerThread.start();</span><br><span class="line">    mHandler = <span class="keyword">new</span> Handler(workerThread.getLooper());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Runnable run)</span> </span>&#123;</span><br><span class="line">    mHandler.post(run);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postAtFrontOfQueue</span><span class="params">(Runnable runnable)</span> </span>&#123;</span><br><span class="line">    mHandler.postAtFrontOfQueue(runnable);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postDelayed</span><span class="params">(Runnable runnable, <span class="keyword">long</span> delay)</span> </span>&#123;</span><br><span class="line">    mHandler.postDelayed(runnable, delay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postAtTime</span><span class="params">(Runnable runnable, <span class="keyword">long</span> time)</span> </span>&#123;</span><br><span class="line">    mHandler.postAtTime(runnable, time);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在本例中，我们可以按照如下规则提交任务:</p>
+<ul>
+<li><code>post</code> 提交优先级一般的任务</li>
+<li><code>postAtFrontOfQueue</code> 将优先级较高的任务加入到队列前端</li>
+<li><code>postAtTime</code> 指定时间提交任务</li>
+<li><code>postDelayed</code> 延后提交优先级较低的任务</li>
+</ul>
+<p>上面的轻量级任务处理器利用<strong>HandlerThread的单一线程 + 任务队列</strong>的形式，可以处理类似本地IO（文件或数据库读取）的轻量级任务。在具体的处理场景下，可以参考如下做法：</p>
+<ul>
+<li>对于本地IO读取，并显示到界面，建议使用postAtFrontOfQueue</li>
+<li>对于本地IO写入，不需要通知界面，建议使用postDelayed</li>
+<li>一般操作，可以使用post</li>
+</ul>
+<h2 id="线程优先级调整"><a href="#线程优先级调整" class="headerlink" title="线程优先级调整"></a>线程优先级调整</h2><p>在Android应用中，将耗时任务放入异步线程是一个不错的选择，那么为异步线程调整应有的优先级则是一件锦上添花的事情。众所周知，线程的并行通过CPU的时间片(这个时间片，让我想到了当时教我们《操作系统》的美女老师:-D)切换实现，对线程优先级调整，最主要的策略就是降低异步线程的优先级，从而使得主线程获得更多的CPU资源。</p>
+<p>Android中的线程优先级和Linux系统进程优先级有些类似，其值都是从-20至19（递减，-20优先级最大,19优先级最小）。其中Android中，开发者可以控制的优先级有：</p>
+<ul>
+<li><strong>THREAD_PRIORITY_DEFAULT</strong>，默认的线程优先级，值为0</li>
+<li><strong>THREAD_PRIORITY_LOWEST</strong>，最低的线程级别，值为19</li>
+<li><strong>THREAD_PRIORITY_BACKGROUND</strong> 后台线程建议设置这个优先级，值为10</li>
+<li><strong>THREAD_PRIORITY_MORE_FAVORABLE</strong> 相对THREAD_PRIORITY_DEFAULT稍微优先，值为-1</li>
+<li><strong>THREAD_PRIORITY_LESS_FAVORABLE</strong> 相对THREAD_PRIORITY_DEFAULT稍微落后一些，值为1</li>
+</ul>
+<p>为线程设置优先级也比较简单，通用的做法是在run方法体的开始部分加入下列代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android.os.Process.setThreadPriority(priority);</span><br></pre></td></tr></table></figure>
+<p>通常设置优先级的规则如下：</p>
+<ul>
+<li>一般的工作者线程，设置成<code>THREAD_PRIORITY_BACKGROUND</code></li>
+<li>对于优先级很低的线程，可以设置<code>THREAD_PRIORITY_LOWEST</code></li>
+<li>其他特殊需求，视业务应用具体的优先级</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在Android中工作者线程如此普遍，然而潜在的问题也不可避免，建议在开发者使用工作者线程时，从工作者线程的数量和优先级等方面进行审视，做到较为合理的使用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Thread/" rel="tag">#Android Thread</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/11/2016-02-11-android-processes-and-threads/" rel="next" title="Android 中的进程和线程">
+                <i class="fa fa-chevron-left"></i> Android 中的进程和线程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/16/2016-02-16-asynctask-of-the-android/" rel="prev" title="Android 中的 AsyncTask">
+                Android 中的 AsyncTask <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/"
+     data-title="关于 Android 中工作者线程的思考"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/"
+           data-title="关于 Android 中工作者线程的思考" data-url="http://www.jiangbing.me/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AsyncTask"><span class="nav-number">1.</span> <span class="nav-text">AsyncTask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AsyncTask与内存泄露"><span class="nav-number">1.1.</span> <span class="nav-text">AsyncTask与内存泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cancel的问题"><span class="nav-number">1.2.</span> <span class="nav-text">cancel的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串行带来的问题"><span class="nav-number">1.3.</span> <span class="nav-text">串行带来的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executors"><span class="nav-number">2.</span> <span class="nav-text">Executors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HandlerThread"><span class="nav-number">3.</span> <span class="nav-text">HandlerThread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程优先级调整"><span class="nav-number">4.</span> <span class="nav-text">线程优先级调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
