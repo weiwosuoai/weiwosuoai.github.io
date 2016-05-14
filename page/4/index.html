@@ -265,6 +265,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/" itemprop="url">
+                  Android 应用在系统内的存在方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-16T10:14:51+08:00" content="2016-01-16">
+              2016-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>碎碎念：关于 Android 应用在系统内的存在方式。</p>
+</blockquote>
+<p>Android 应用在安装到设备后，每个 Android 应用都运行在自己的安全沙箱内.</p>
+<p>你需要知道的是：</p>
+<ul>
+<li>Android 操作系统是一种多用户的 Linux 系统，其中的每个应用都是一位不同的用户；</li>
+<li>默认情况下，系统会为每个应用分配一个唯一的 Linux 用户 ID (该 ID 仅由系统使用，应用并不知晓)。系统为应用中的所有文件设置权限，使得只有分配给该应用的用户 ID 才能访问这些文件；</li>
+<li>每个进程都具有自己的虚拟机（VM）,因此应用代码是在与其他应用隔离的环境中运行；</li>
+<li>默认情况下，每个应用都在其自己的 Linux 进程内运行。Android 会在需要执行任何应用组件时启动该进程，然后在不再需要该进程或系统必须为其他应用恢复内存时关闭该进程。</li>
+</ul>
+<p>Android 系统可以通过这种方式实现 <strong>最小权限原则</strong>。也就是说，默认情况下，每个应用都只能访问执行其工作所需的组件，而不能访问其他组件。这样便营造出一个非常安全的环境，在这个环境中，应用无法访问系统中其未获得权限的部分。</p>
+<p>不过，应用仍然可以通过一些途径与其他应用共享数据以及访问系统服务：</p>
+<ul>
+<li>可以安排两个应用共享同一 Linux 用户 ID,在这种情况下，他们能够相互访问彼此的文件。为了节省系统资源，可以安排具有相同用户 ID 的应用在同一 Linux 进程中运行，并共享同一 VM(应用还必须使用相同的证书签署)；</li>
+<li>应用可以请求访问设备数据（如用户的联系人,短信，SD 卡，相机，蓝牙，etc.）的权限。所有应用权限都必须由用户在安装是授予。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/13/2016-01-13-the-interview-question-of-the-android2/" itemprop="url">
                   Android 面试题整理
                 </a>
@@ -1017,6 +1154,265 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/07/2015-12-07-the-interview-question-of-the-android/" itemprop="url">
+                  Android 面试中常问的那些问题？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-07T10:53:49+08:00" content="2015-12-07">
+              2015-12-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/07/2015-12-07-the-interview-question-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/07/2015-12-07-the-interview-question-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本篇博文中，我们来说说Android面试中常见的那些问题。主要从 Java 和 Android 两个大块来例举。</p>
+</blockquote>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="关于内存泄露"><a href="#关于内存泄露" class="headerlink" title="关于内存泄露"></a>关于内存泄露</h3><p>1.资源对象未关闭</p>
+<blockquote>
+<p>如 Cursor, File 等资源。虽然他们会在 finalize 中关闭，当这样效率太低。容易造成内存泄露。<br>SQLiteCursor, 当数据量大时容易泄露。</p>
+</blockquote>
+<p>2.使用 Adapter 时，没有使用系统缓存的 converView.</p>
+<p>3.即时调用 <code>recycle()</code> 释放不在使用的 Bitmap.</p>
+<p>4.在能使用 application 的 context 的地方就尽量不要用 activity 的 context,因为这样可能会导致 activity 被引用而无法释放。</p>
+<p>5.注册没取消造成内存泄露，比如：广播</p>
+<p>6.集合中的对象没清理造成内存泄露，我们通常把一些对象的引用加入到集合中，当我们不需要该对象时，并没有让 GC 及时清理它，导致这个集合越来越大，如果这个集合是 static 的话，可能 OOM.</p>
+<p>7.Handler 因该声明为静态对象，并在其内部类中保存一个对外部类的弱引用，参见我的另一篇博客<a href="http://jiangbing.me/2016/02/18/2016-02-18-how-to-leak-a-context-about-handlers-and-classes/">《你还在写导致context内存泄露的代码吗？》</a>。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/07/2015-12-07-the-interview-question-of-the-android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" itemprop="url">
+                  朋友面试中被问到的 Android 面试题解答
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-05T15:21:28+08:00" content="2015-12-05">
+              2015-12-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>最近知道朋友面试，于是就问了一下关于面试的问题，发现平时用的挺顺手，要是被突然这么一问，还真有些答不上来。本篇博文，就这些问题，综合 Google 官方文档和网上一些大牛的博客，给出一个比较专业的答案，希望对各位面试的朋友有些帮助。</p>
+</blockquote>
+<h2 id="Question-1-碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？"><a href="#Question-1-碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？" class="headerlink" title="Question 1: 碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？"></a>Question 1: 碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？</h2><p>这个问题很简单，但是为了答案的可信度和专业度，这里还是要贴上官方的文档：<br><img src="/images/2016031600.png" alt=""><br><a href="http://developer.android.com/training/basics/fragments/fragment-ui.html#Replace">官方文档链接</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1062,7 +1458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android 面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本篇博文中，我们来说说Android面试中常见的那些问题。主要从 Java 和 Android 两个大块来例举。
+
+Java关于内存泄露1.资源对象未关闭
+
+如 Cursor, File 等资源。虽然他们会在 finalize 中关闭，当这样效率太低。容易造成内存泄露。SQLiteCursor, 当数据量大时容易泄露。
+
+2.使用 Adapter 时，没有使用系统缓存的 converView.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 面试中常问的那些问题？">
+<meta property="og:url" content="http://www.jiangbing.me/2015/12/07/2015-12-07-the-interview-question-of-the-android/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本篇博文中，我们来说说Android面试中常见的那些问题。主要从 Java 和 Android 两个大块来例举。
+
+Java关于内存泄露1.资源对象未关闭
+
+如 Cursor, File 等资源。虽然他们会在 finalize 中关闭，当这样效率太低。容易造成内存泄露。SQLiteCursor, 当数据量大时容易泄露。
+
+2.使用 Adapter 时，没有使用系统缓存的 converView.">
+<meta property="og:updated_time" content="2016-05-14T08:08:23.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 面试中常问的那些问题？">
+<meta name="twitter:description" content="本篇博文中，我们来说说Android面试中常见的那些问题。主要从 Java 和 Android 两个大块来例举。
+
+Java关于内存泄露1.资源对象未关闭
+
+如 Cursor, File 等资源。虽然他们会在 finalize 中关闭，当这样效率太低。容易造成内存泄露。SQLiteCursor, 当数据量大时容易泄露。
+
+2.使用 Adapter 时，没有使用系统缓存的 converView.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 面试中常问的那些问题？ | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 面试中常问的那些问题？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-07T10:53:49+08:00" content="2015-12-07">
+              2015-12-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/07/2015-12-07-the-interview-question-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/07/2015-12-07-the-interview-question-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本篇博文中，我们来说说Android面试中常见的那些问题。主要从 Java 和 Android 两个大块来例举。</p>
+</blockquote>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="关于内存泄露"><a href="#关于内存泄露" class="headerlink" title="关于内存泄露"></a>关于内存泄露</h3><p>1.资源对象未关闭</p>
+<blockquote>
+<p>如 Cursor, File 等资源。虽然他们会在 finalize 中关闭，当这样效率太低。容易造成内存泄露。<br>SQLiteCursor, 当数据量大时容易泄露。</p>
+</blockquote>
+<p>2.使用 Adapter 时，没有使用系统缓存的 converView.</p>
+<p>3.即时调用 <code>recycle()</code> 释放不在使用的 Bitmap.</p>
+<p>4.在能使用 application 的 context 的地方就尽量不要用 activity 的 context,因为这样可能会导致 activity 被引用而无法释放。</p>
+<p>5.注册没取消造成内存泄露，比如：广播</p>
+<p>6.集合中的对象没清理造成内存泄露，我们通常把一些对象的引用加入到集合中，当我们不需要该对象时，并没有让 GC 及时清理它，导致这个集合越来越大，如果这个集合是 static 的话，可能 OOM.</p>
+<p>7.Handler 因该声明为静态对象，并在其内部类中保存一个对外部类的弱引用，参见我的另一篇博客<a href="http://jiangbing.me/2016/02/18/2016-02-18-how-to-leak-a-context-about-handlers-and-classes/" target="_blank" rel="external">《你还在写导致context内存泄露的代码吗？》</a>。<br><a id="more"></a></p>
+<h3 id="ArrayList-和-LinkedList-的区别"><a href="#ArrayList-和-LinkedList-的区别" class="headerlink" title="ArrayList 和 LinkedList 的区别"></a>ArrayList 和 LinkedList 的区别</h3><ul>
+<li>ArrayList 初始大小为 10，大小不够会调用 grow 扩容： length = length + (length &gt;&gt; 1)</li>
+<li><p>LikedList 中 Node first, last 分别指向头尾。</p>
+</li>
+<li><p>ArrayList 和 LinkedList 在性能上各有优缺点，需要根据业务场景来决定使用哪个：</p>
+</li>
+</ul>
+<blockquote>
+<p>1.在 ArrayList 的中间插入或删除一个元素意味着这个列表剩余的元素都会被移动；而在 LinkedList 中这个开销是固定的。<br>2.LinkedList 不支持高效的随机元素访问。<br>3.ArrayList 的空间浪费主要体现在list列表的结尾会预留一定的容量空间</p>
+</blockquote>
+<h3 id="hashmap-和-hashtable-的不同"><a href="#hashmap-和-hashtable-的不同" class="headerlink" title="hashmap 和 hashtable 的不同"></a>hashmap 和 hashtable 的不同</h3><p>1.父类不同：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hashtable</span> <span class="keyword">extends</span> <span class="title">Dictionary</span> <span class="keyword">implements</span> <span class="title">Map</span></span><br><span class="line"><span class="title">public</span> <span class="title">class</span> <span class="title">HashMap</span> <span class="keyword">extends</span> <span class="title">AbstractMap</span> <span class="keyword">implements</span> <span class="title">Map</span></span></span><br></pre></td></tr></table></figure>
+<p>2.Hashtable 中的方法是同步的，而 HashMap 中的方法在缺省情况下是非同步的。在多线程并发的情况下，可以直接使用 Hashtable,但是要使用 HashMap 的话就要自己增加同步处理。</p>
+<p>3.Hashtable 中，key 和 value 都不允许出现 null 值。而在 HashMap 中，null 可以作为 key,但这样的 key 只能存在一个，value 为 null可以存在多个；因为 HashMap 中存在 null 的 key,所以你不应该使用 <code>get()</code> 的方法来判断某个 key 是否存在，而应该使用 <code>containsKey()</code> 方法来判断。</p>
+<p>4.两个遍历方式的内部实现不同。</p>
+<blockquote>
+<p>Hashtable 和 HashMap 都使用了 Iterator。由于历史原因，Hashtable 还使用了 Enumeration 的方式。</p>
+</blockquote>
+<p>5.哈希值的使用不同，HashTable直接使用对象的 hashCode.而 HashMap 重新计算 hash 值。</p>
+<p>6.Hashtable 和 HashMap 他们两个内部实现方式的数组的初始大小和扩容方式不同。HashTable 中的 hash 数组默认大小是11，扩容方式是 <code>old*2 + 1</code>。HashMap 中的 hash 数组的默认大小是16，而且一定是2的指数。</p>
+<h3 id="Iterator-和-Enumeration-的不同"><a href="#Iterator-和-Enumeration-的不同" class="headerlink" title="Iterator 和 Enumeration 的不同"></a>Iterator 和 Enumeration 的不同</h3><p>1.函数接口不同</p>
+<p>Enumeration 只有2个函数接口。通过 Enumeration,我们只能读取集合的数据，而不能对数据进行修改。<br>Iterator 只有3个函数接口。 Iterator 除了能读取集合的数据之外，也能对数据进行删除操作。</p>
+<p>2.Iterator 支持 fail-fast 机制，而 Enumeration 不支持。</p>
+<p>Enumeration 是 JDK 1.0 添加的接口。使用到它的类包括 Vector, Hashtable 等类，这些类都是 JDK 1.0 中加入的，Enumeration 存在的目的就是为它们提供遍历接口。 Enumeration 本身并没有支持同步，而在 Vector, Hashtable 实现 Enumeration 时，添加了同步。</p>
+<p>Iterator 是 JDK 1.2 添加的的接口，他也是为了 HashMap, ArrayList 等集合提供遍历的接口。 Iterator 是支持 fail-fast 机制的.</p>
+<blockquote>
+<p>什么是 fail-fast 机制？<br>fail-fast 机制是 java 集合中的一种错误机制。当多个线程对同一个集合内的内容进行操作时，就可能会发生该事件。<br>例如：当某一个线程A通过 iterator 去遍历某集合的过程中，若该集合的内容被其他线程所改变了，那么线程A访问时，就会抛出 ConcurrentModificationException 异常，触发 fail-fast 事件。</p>
+</blockquote>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>1.接口中的字段全部默认为 <code>public static</code> 类型。<br>2.接口中的方法全部默认为 <code>public</code> 类型。<br>3.接口中可以声明内部类，而默认为 <code>public static</code>,正因为是 <code>static</code>,只是命名空间属于接口，代码逻辑不属于接口。所以不违反接口定义。<br>4.接口本身可以声明为 public 或者缺省。<br>5.抽象类继承自某接口。如果在抽象类中实现了父类（接口）中的方法，在其子类可以不用实现，否则在子类必须实现。</p>
+<h3 id="final方法"><a href="#final方法" class="headerlink" title="final方法"></a>final方法</h3><p>将方法声明为 final 有两个原因：</p>
+<blockquote>
+<p>第一就是说明你已经知道这个方法提供的功能已经满足你要求，不需要进行扩展，并且也不允许任何从此类继承的类来覆写这个方法，但是继承仍然可以继承这个方法，也就是说可以直接使用。</p>
+<p>第二就是允许编译器将所有对此方法的调用转化为 inline 调用的机制，它会使你在调用 final 方法时，直接将方法主体插入到调用处，而不是进行例行的方法调用，例如保存断点，压栈等，这样可能会使你的程序效率有所提高，然而当你的方法主体非常庞大时，或你在多处调用此方法，那么你的调用主体代码便会迅速膨胀，可能反而会影响效率，所以你要慎用 final 进行方法定义。</p>
+</blockquote>
+<h2 id="Android方面"><a href="#Android方面" class="headerlink" title="Android方面"></a>Android方面</h2><h3 id="Handler机制"><a href="#Handler机制" class="headerlink" title="Handler机制"></a>Handler机制</h3><p>1.Handler 对 Activity finish 影响。 </p>
+<blockquote>
+<p>在开发的过程中碰到一个棘手的问题，调用 Activity.finish 函数. Acitivity没有执行生命周期的 ondestory 函数，后面查找半天是因为有一个<br>handler 成员，因为它有一个 delay 消息没有处理，调用 Activity.finish，Activity 不会马上 destory，所以记得在 Ativity finish 前清<br>理一下 handle 中的未处理的消息，这样Activity才会顺利的destory</p>
+</blockquote>
+<p>2.Looper</p>
+<p>通过调用 Looper.prepare() 创建 Looper() 对象并绑定到ThreadLocal变量中。<br>Looper里面包含了messageQueue。<br>构造器如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Looper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     mQueue = <span class="keyword">new</span> MessageQueue();</span><br><span class="line">     mRun = <span class="keyword">true</span>;</span><br><span class="line">     mThread = Thread.currentThread();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.loop() 函数 </p>
+<blockquote>
+<p>从Looper中取出MessageQueue；<br>循环从MessageQueue中取出Message；<br>从Message中取出Target（Handler对象）；<br>调用tartget的dispatchMessage分发消息。</p>
+</blockquote>
+<p>4.Handler 对象<br>重要成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> MessageQueue mQueue;</span><br><span class="line"><span class="keyword">final</span> Looper  mLooper;</span><br><span class="line"><span class="keyword">final</span> Callback mCallback; <span class="comment">// 用于回调</span></span><br></pre></td></tr></table></figure>
+<p>Handler 对象在发送消息的时候，将 MSG 的 target 变量设为自己。这样在 Looper 对象循环取出 msg 的时候就可以调用对应 handler 的<code>dispatchMessage()</code>。此函数分发消息的优先级如下： </p>
+<ul>
+<li>Message在创建的时候调用 Obtain 设置了 Callback。 </li>
+<li>Handler在创建的时候传入了 Callback。 </li>
+<li>交给 Handler 子类的 HandleMessage 处理（通常的做法）。</li>
+</ul>
+<h3 id="Android启动模式"><a href="#Android启动模式" class="headerlink" title="Android启动模式"></a>Android启动模式</h3><p><strong>standard 和 singleTop 模式</strong></p>
+<p>这两种比较简单。创建Activity放入当前的任务栈中，若当前是 singleInstace，则放入设置的任务栈中。其中如果 Activity 在栈顶，则调用onNewIntent。 </p>
+<p><strong>singletask：栈内复用模式</strong></p>
+<p>不是在当前任务栈中查找是否存在，实际过程如下：</p>
+<ul>
+<li>查找该 Activity 所需的任务栈是否存在（由 taskAffinity 控制，或者默认为包名）。</li>
+<li>在任务栈当中查找该 Activity 是否存在。 这里面存在任务栈的切换，也就是当开启的 singtask 类型的 Activity 不属于当前任务栈时，则会切换到其任务栈。</li>
+</ul>
+<p><strong>singleInstance：单实例模式</strong></p>
+<p>包含了 singleTask 的所有特性，另外加上：设置为该模式的 Activity，只能单独存在于一个任务栈中。当有两个 singleInstace 的 Activity 设置成同样的任务栈时，会出现两个同名的任务栈，分别用来存放同名的 Activity。</p>
+<blockquote>
+<font color="red">注意：在任何跳转的时候，首先调用本 Activity 的 onPause，然后跳转。如果被跳转的 activity 由于启动方式而没创建新的实例，则会先调用onNewIntent，然后按照正常的生命周期调用。<br>如：<br>1：A→B，A：onPause；B：onCreate，onStart，onResume。<br>2：A(singleTop)→A，A：onPause；A：onSaveInstanceState；A：onResume。 </font>
+
+</blockquote>
+<h3 id="View-的绘制"><a href="#View-的绘制" class="headerlink" title="View 的绘制"></a>View 的绘制</h3><p>推荐郭霖的博客：<br><a href="http://blog.csdn.net/guolin_blog/article/details/16330267" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/16330267</a></p>
+<h3 id="canvas-的使用"><a href="#canvas-的使用" class="headerlink" title="canvas 的使用"></a>canvas 的使用</h3><p>推荐以下博客：<br><a href="http://blog.csdn.net/qinjuning/article/details/6936783" target="_blank" rel="external">http://blog.csdn.net/qinjuning/article/details/6936783</a></p>
+<h3 id="Activity-切换时生命周期交集"><a href="#Activity-切换时生命周期交集" class="headerlink" title="Activity 切换时生命周期交集"></a>Activity 切换时生命周期交集</h3><p>Activity 之间的协作,当一个 activity A 启动了另外一个 activity B，它们的生命周期是有交叉的:<br>首先 A 的 <code>onPause()</code> 被调用,之后 B 的 <code>onCrate()</code>, <code>onStart()</code> 及 <code>onResume()</code> 方法会被调用（此时B拥有用户焦点）,最后，如果A在屏幕上不可见，<code>onStop()</code> 方法被调用.因此，我们在两个 activities 中传递数据，或者共享资源时（如数据库连接），需要在前一个activity的<code>onPause()</code> 方法而不是 <code>onStop()</code> 方法中进行.</p>
+<h3 id="Hybrid（重要加分项）"><a href="#Hybrid（重要加分项）" class="headerlink" title="Hybrid（重要加分项）"></a>Hybrid（重要加分项）</h3><p>1.java 和 JS 的交互<br><a href="http://droidyue.com/blog/2014/09/20/interaction-between-java-and-javascript-in-android/" target="_blank" rel="external">http://droidyue.com/blog/2014/09/20/interaction-between-java-and-javascript-in-android/</a><br><a href="http://rensanning.iteye.com/blog/2043049" target="_blank" rel="external">http://rensanning.iteye.com/blog/2043049</a><br>2.WebView 开启 JavaScript 脚本执行<br>3.WebView 设置供 JavaScript 调用的交互接口。</p>
+<h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><p><strong>1.volley</strong></p>
+<ul>
+<li><a href="https://bxbxbai.github.io/2014/09/14/android-working-with-volley/" target="_blank" rel="external">https://bxbxbai.github.io/2014/09/14/android-working-with-volley/</a> </li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/17656437" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/17656437</a></li>
+</ul>
+<p><strong>2.如何控制 TCP 连接时的拥塞</strong><br><a href="http://blog.csdn.net/yechaodechuntian/article/details/25429143" target="_blank" rel="external">http://blog.csdn.net/yechaodechuntian/article/details/25429143</a></p>
+<p><strong>3.三次握手 </strong><br><a href="http://blog.csdn.net/whuslei/article/details/6667471" target="_blank" rel="external">http://blog.csdn.net/whuslei/article/details/6667471</a></p>
+<p><strong>4.Android 客户端和服务端如何使用 Token 和 Session</strong><br><a href="http://wyong.blog.51cto.com/1115465/1553352" target="_blank" rel="external">http://wyong.blog.51cto.com/1115465/1553352</a></p>
+<p><strong>5.移动端获取网络数据优化的几个点连接复用</strong></p>
+<p>节省连接建立时间，如开启 keep-alive。<br>对于 Android 来说默认情况下 HttpURLConnection 和 HttpClient 都开启了 keep-alive。只是 2.2 之前 HttpURLConnection 存在影响连接池的 Bug，具体可见：<a href="http://www.trinea.cn/android/android-http-api-compare/" target="_blank" rel="external">Android HttpURLConnection 及 HttpClient 选择</a></p>
+<p><strong>6.请求合并</strong></p>
+<p>即将多个请求合并为一个进行请求，比较常见的就是网页中的 CSS Image Sprites。如果某个页面内请求过多，也可以考虑做一定的请求合并。</p>
+<p><strong>7.减少请求数据的大小</strong></p>
+<ul>
+<li>对于 post 请求，body 可以做 gzip 压缩的，header 也可以作数据压缩(不过只支持http 2.0)。</li>
+<li>返回的数据的body也可以作 gzip 压缩，body 数据体积可以缩小到原来的30%左右。(也可以考虑压缩返回的 json 数据的 key 数据的体积，尤其是针对返回数据格式变化不大的情况，支付宝聊天返回的数据用到了)</li>
+<li>根据用户的当前的网络质量来判断下载什么质量的图片(电商用的比较多)</li>
+</ul>
+<h3 id="android-开发中，可能会导致内存泄露的问题"><a href="#android-开发中，可能会导致内存泄露的问题" class="headerlink" title="android 开发中，可能会导致内存泄露的问题"></a>android 开发中，可能会导致内存泄露的问题</h3><ul>
+<li>不要让生命周期长于 Activity 的对象持有到 Activity 的引用</li>
+<li>尽量使用 Application 的 Context 而不是 Activity 的 Context</li>
+<li>尽量不要在 Activity 中使用非静态内部类，因为非静态内部类会隐式持有外部类实例的引用（具体可以查看细话Java：”失效”的private修饰符了解）.如果使用静态内部类，将外部实例引用作为弱引用持有。</li>
+<li>垃圾回收不能解决内存泄露，了解Android中垃圾回收机制</li>
+</ul>
+<p>更多内容可以参考以下博客：<br><a href="http://spencer-dev.lofter.com/post/d7b9e_6faf120" target="_blank" rel="external">http://spencer-dev.lofter.com/post/d7b9e_6faf120</a></p>
+<h3 id="activity-的启动过程"><a href="#activity-的启动过程" class="headerlink" title="activity 的启动过程"></a>activity 的启动过程</h3><p><a href="http://www.cloudchou.com/android/post-788.html" target="_blank" rel="external">http://www.cloudchou.com/android/post-788.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-面试题/" rel="tag">#Android 面试题</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" rel="next" title="朋友面试中被问到的 Android 面试题解答">
+                <i class="fa fa-chevron-left"></i> 朋友面试中被问到的 Android 面试题解答
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/26/2015-12-26-the-palette-of-the-android5-0/" rel="prev" title="Anroid 5.X 新特性之 Palette">
+                Anroid 5.X 新特性之 Palette <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/12/07/2015-12-07-the-interview-question-of-the-android/"
+     data-title="Android 面试中常问的那些问题？"
+     data-content=""
+     data-url="http://www.jiangbing.me/2015/12/07/2015-12-07-the-interview-question-of-the-android/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/07/2015-12-07-the-interview-question-of-the-android/"
+           data-title="Android 面试中常问的那些问题？" data-url="http://www.jiangbing.me/2015/12/07/2015-12-07-the-interview-question-of-the-android/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于内存泄露"><span class="nav-number">1.1.</span> <span class="nav-text">关于内存泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-和-LinkedList-的区别"><span class="nav-number">1.2.</span> <span class="nav-text">ArrayList 和 LinkedList 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashmap-和-hashtable-的不同"><span class="nav-number">1.3.</span> <span class="nav-text">hashmap 和 hashtable 的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator-和-Enumeration-的不同"><span class="nav-number">1.4.</span> <span class="nav-text">Iterator 和 Enumeration 的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">1.5.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final方法"><span class="nav-number">1.6.</span> <span class="nav-text">final方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android方面"><span class="nav-number">2.</span> <span class="nav-text">Android方面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler机制"><span class="nav-number">2.1.</span> <span class="nav-text">Handler机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android启动模式"><span class="nav-number">2.2.</span> <span class="nav-text">Android启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-的绘制"><span class="nav-number">2.3.</span> <span class="nav-text">View 的绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas-的使用"><span class="nav-number">2.4.</span> <span class="nav-text">canvas 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-切换时生命周期交集"><span class="nav-number">2.5.</span> <span class="nav-text">Activity 切换时生命周期交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hybrid（重要加分项）"><span class="nav-number">2.6.</span> <span class="nav-text">Hybrid（重要加分项）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程"><span class="nav-number">2.7.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-开发中，可能会导致内存泄露的问题"><span class="nav-number">2.8.</span> <span class="nav-text">android 开发中，可能会导致内存泄露的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#activity-的启动过程"><span class="nav-number">2.9.</span> <span class="nav-text">activity 的启动过程</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

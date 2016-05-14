@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Guitar," />
+  <meta name="keywords" content="Android,开发工具," />
 
 
 
@@ -86,16 +86,36 @@
 
 
 
-<meta name="description" content="宋冬野 - 《董小姐》">
+<meta name="description" content="本文转自 http://www.finalshares.com/read-5498)
+还在为找不到目标真机发愁，今天在逛 极分享 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。
+
+之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！废话少说，先睹为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Guitar 弹唱】 董小姐">
-<meta property="og:url" content="http://www.jiangbing.me/2016/03/15/2016-03-15-guitar-dong-xiao-jie/index.html">
+<meta property="og:title" content="通过 Android Studio 远程调试真机">
+<meta property="og:url" content="http://www.jiangbing.me/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/index.html">
 <meta property="og:site_name" content="Allen's Blog">
-<meta property="og:description" content="宋冬野 - 《董小姐》">
-<meta property="og:updated_time" content="2016-05-14T00:31:52.405Z">
+<meta property="og:description" content="本文转自 http://www.finalshares.com/read-5498)
+还在为找不到目标真机发愁，今天在逛 极分享 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。
+
+之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！废话少说，先睹为">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031500.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031501.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031502.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031503.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031504.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031505.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031506.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031507.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031508.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016031509.png">
+<meta property="og:updated_time" content="2016-05-14T08:07:17.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Guitar 弹唱】 董小姐">
-<meta name="twitter:description" content="宋冬野 - 《董小姐》">
+<meta name="twitter:title" content="通过 Android Studio 远程调试真机">
+<meta name="twitter:description" content="本文转自 http://www.finalshares.com/read-5498)
+还在为找不到目标真机发愁，今天在逛 极分享 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。
+
+之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！废话少说，先睹为">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016031500.png">
 
 
 
@@ -113,7 +133,7 @@
   };
 </script>
 
-  <title> 【Guitar 弹唱】 董小姐 | Allen's Blog </title>
+  <title> 通过 Android Studio 远程调试真机 | Allen's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +283,7 @@
             
             
               
-                【Guitar 弹唱】 董小姐
+                通过 Android Studio 远程调试真机
               
             
           </h1>
@@ -275,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T14:59:53+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2016-02-25T15:09:59+08:00" content="2016-02-25">
+              2016-02-25
             </time>
           </span>
 
@@ -289,8 +309,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/音乐/" itemprop="url" rel="index">
-                    <span itemprop="name">音乐</span>
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
                   </a>
                 </span>
 
@@ -305,8 +325,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/15/2016-03-15-guitar-dong-xiao-jie/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/2016-03-15-guitar-dong-xiao-jie/" itemprop="commentsCount"></span>
+                <a href="/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,9 +350,22 @@
 
       
         <blockquote>
-<p>宋冬野 - 《董小姐》</p>
+<p>本文转自 <a href="[http://www.finalshares.com/read-5498](http://www.finalshares.com/read-5498"><a href="http://www.finalshares.com/read-5498" target="_blank" rel="external">http://www.finalshares.com/read-5498</a></a>)</p>
+<p>还在为找不到目标真机发愁，今天在逛 <a href="http://www.finalshares.com/" target="_blank" rel="external">极分享</a> 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。</p>
 </blockquote>
-<p><embed src="http://www.tudou.com/v/PoHXhezHJ3M/&bid=05&rpid=816991464&resourceId=816991464_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"><br><a id="more"></a></p>
+<p>之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！<br>废话少说，先睹为快。在不用数据线连接手机的情况下，我先来个打断点截图。<br><img src="/images/2016031500.png" alt=""></p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>首先，准备工作做好，需要借助如下这个辅助工具。<br><img src="/images/2016031501.png" alt=""><br><a id="more"></a><br>这是需要注册一个账号才能使用的，现在这个平台是开放注册，免费体验，看完觉得还可以的话觉得点这里注册试试： <a href="http://t.cn/R48gYL5" target="_blank" rel="external">http://t.cn/R48gYL5</a></p>
+<p>工具准备好以后，点进去选一台手机，比如像我之前调试的时候选的是一台 <strong>htc one M8</strong>.<br><img src="/images/2016031502.png" alt=""></p>
+<p>点击租用以后我们会看到这个画面。<br><img src="/images/2016031503.png" alt=""></p>
+<p>我们可以用鼠标点击或者滑动屏幕，这台手机也会跟着动。实际上我们现在操作的手机是一台真的手机，只是他在云端，也就是我们平常说的远程调试，我们是在用电脑操控它，而且它还支持截图，视频，日志，shell命令等功能。</p>
+<p>接下来，我们需要看到界面右上角的adb 连接地址。<br><img src="/images/2016031504.png" alt=""></p>
+<p>每台云手机都有一个单独的连接地址，我们需要复制这个adb连接地址到命令行，然后按回车执行这个命令我们的电脑就会连接到云手机。（ps：云端和PC上显示的adb地址一定要一致）<br><img src="/images/2016031505.png" alt=""></p>
+<p>输入命令“adb devices”，看到以下结果的话，此时我们的电脑已经连接到云手机上了。<br><img src="/images/2016031506.png" alt=""></p>
+<p>现在我们就可以用Android Studio调试了。（我这里是以AS为例，其实eclipse也是一样用的）<br>当我们的电脑通过前面的操作连接到了云手机，我们就获得了这台手机的最大控制权。此时，打开我们的Android Studio来debug吧！ </p>
+<p>首先，在代码中设置断点:<br><img src="/images/2016031507.png" alt=""></p>
+<p>打开 Android Studio,工具栏选择 Run —&gt; Debug，选中已连接的云手机:<br><img src="/images/2016031508.png" alt=""></p>
+<p>程序启动，可以看到程序命中断点，即可开始远程调试了。<br><img src="/images/2016031509.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个工具的优势就在于它集合了上千款各种型号的手机，不会再担心出现BUG没有手机调试的尴尬场景，而且所有的调试设备全部是真机，这样就避免了在调试的过程中模拟器速度慢、硬件性能模拟不出来以及接口不全的问题，然后就是这个工具提供视频、截图、日志、shell命令等功能用来记录和复现BUG，省钱省事，提高开发效率，何乐不为~</p>
 
       
     </div>
@@ -354,7 +387,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Guitar/" rel="tag">#Guitar</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
           
         </div>
       
@@ -363,16 +398,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/10/2016-03-10-the-summary-of-android-view/" rel="next" title="Android View 小结">
-                <i class="fa fa-chevron-left"></i> Android View 小结
+              <a href="/2016/02/22/2016-02-22-android-project-guidelines/" rel="next" title="Android项目编码规范">
+                <i class="fa fa-chevron-left"></i> Android项目编码规范
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/22/2016-03-22-how-can-we-use-cmd-operate-sqlite-of-the-true-phone/" rel="prev" title="关于如何运用命令行操作 Android 真机上的 sqlite 数据库">
-                关于如何运用命令行操作 Android 真机上的 sqlite 数据库 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/27/2016-02-25-android-s-http-client/" rel="prev" title="关于 Android 中的 HTTP Clients">
+                关于 Android 中的 HTTP Clients <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -388,10 +423,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/03/15/2016-03-15-guitar-dong-xiao-jie/"
-     data-title="【Guitar 弹唱】 董小姐"
+        <div class="ds-share flat" data-thread-key="2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/"
+     data-title="通过 Android Studio 远程调试真机"
      data-content=""
-     data-url="http://www.jiangbing.me/2016/03/15/2016-03-15-guitar-dong-xiao-jie/">
+     data-url="http://www.jiangbing.me/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -418,8 +453,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/15/2016-03-15-guitar-dong-xiao-jie/"
-           data-title="【Guitar 弹唱】 董小姐" data-url="http://www.jiangbing.me/2016/03/15/2016-03-15-guitar-dong-xiao-jie/">
+      <div class="ds-thread" data-thread-key="2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/"
+           data-title="通过 Android Studio 远程调试真机" data-url="http://www.jiangbing.me/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/">
       </div>
     
   </div>
@@ -543,7 +578,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现步骤"><span class="nav-number">1.</span> <span class="nav-text">实现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
