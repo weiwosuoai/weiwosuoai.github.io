@@ -265,11 +265,11 @@
   </entry>
   
   <entry>
-    <title>关于如何运用命令行操作 Android 真机上的 sqlite 数据库</title>
+    <title>关于如何运用命令行操作 Android 真机上的 SQLite 数据库</title>
     <link href="http://www.jiangbing.me/2016/03/22/2016-03-22-how-can-we-use-cmd-operate-sqlite-of-the-true-phone/"/>
     <id>http://www.jiangbing.me/2016/03/22/2016-03-22-how-can-we-use-cmd-operate-sqlite-of-the-true-phone/</id>
     <published>2016-03-22T08:26:13.000Z</published>
-    <updated>2016-05-14T06:07:01.226Z</updated>
+    <updated>2016-05-14T12:56:52.878Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;场景：今天在对 sqlite 数据库中的某张表进行查询时，发现查询到的数据总是为空，但是，我非常肯定表中是有数据的，所谓口说无凭，需要真正确认才能定论，于是就需要查 sqlite 数据库，但是真机的 .db 文件无法通过 DDMS 导出，也就无法运用第三方 sqlite 客户端打开 .db 文件来查询数据了。&lt;/p&gt;
@@ -348,12 +348,12 @@
     
     </summary>
     
-      <category term="Android Sqlite" scheme="http://www.jiangbing.me/categories/Android-Sqlite/"/>
+      <category term="Android SQLite" scheme="http://www.jiangbing.me/categories/Android-SQLite/"/>
     
     
       <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
     
-      <category term="Sqlite" scheme="http://www.jiangbing.me/tags/Sqlite/"/>
+      <category term="SQLite" scheme="http://www.jiangbing.me/tags/SQLite/"/>
     
   </entry>
   
