@@ -1,0 +1,747 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android Performance Optimization," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简书上关于 Android 性能优化之 Overdraw 方面不错的文章。原文地址：http://www.jianshu.com/p/145fc61011cd
+
+什么是 Overdraw？Overdraw 就是过度绘制，是指在一帧的时间内（16.67ms）像素被绘制了多次，理论上一个像素每次只绘制一次是最优的，但是由于重叠的布局导致一些像素会被多次绘制，而每次绘制都会对应到 CPU 的一组绘图命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 性能优化之如何避免 Overdraw">
+<meta property="og:url" content="http://www.jiangbing.me/2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="简书上关于 Android 性能优化之 Overdraw 方面不错的文章。原文地址：http://www.jianshu.com/p/145fc61011cd
+
+什么是 Overdraw？Overdraw 就是过度绘制，是指在一帧的时间内（16.67ms）像素被绘制了多次，理论上一个像素每次只绘制一次是最优的，但是由于重叠的布局导致一些像素会被多次绘制，而每次绘制都会对应到 CPU 的一组绘图命">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016040100.jpg">
+<meta property="og:updated_time" content="2016-05-14T07:54:58.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 性能优化之如何避免 Overdraw">
+<meta name="twitter:description" content="简书上关于 Android 性能优化之 Overdraw 方面不错的文章。原文地址：http://www.jianshu.com/p/145fc61011cd
+
+什么是 Overdraw？Overdraw 就是过度绘制，是指在一帧的时间内（16.67ms）像素被绘制了多次，理论上一个像素每次只绘制一次是最优的，但是由于重叠的布局导致一些像素会被多次绘制，而每次绘制都会对应到 CPU 的一组绘图命">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016040100.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 性能优化之如何避免 Overdraw | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 性能优化之如何避免 Overdraw
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-06T16:33:15+08:00" content="2016-01-06">
+              2016-01-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android-性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a>上关于 Android 性能优化之 Overdraw 方面不错的文章。<br>原文地址：<a href="http://www.jianshu.com/p/145fc61011cd" target="_blank" rel="external">http://www.jianshu.com/p/145fc61011cd</a></p>
+</blockquote>
+<h2 id="什么是-Overdraw？"><a href="#什么是-Overdraw？" class="headerlink" title="什么是 Overdraw？"></a>什么是 Overdraw？</h2><p>Overdraw 就是过度绘制，是指在一帧的时间内（16.67ms）像素被绘制了多次，理论上一个像素每次只绘制一次是最优的，但是由于重叠的布局导致一些像素会被多次绘制，而每次绘制都会对应到 CPU 的一组绘图命令和 GPU 的一些操作，当这个操作耗时超过 16.67ms 时，就会出现掉帧现象，也就是我们所说的卡顿，所以对重叠不可见元素的重复绘制会产生额外的开销，需要尽量减少 Overdraw 的发生。<br>Android 提供了测量 Overdraw 的选项，在开发者选项－调试GPU过度绘制（Show GPU Overdraw），打开选项就可以看到当前页面 Overdraw 的状态，就可以观察屏幕的绘制状态。该工具会使用三种不同的颜色绘制屏幕，来指示 overdraw 发生在哪里以及程度如何，其中：</p>
+<ul>
+<li>没有颜色： 意味着没有 overdraw。像素只画了一次。</li>
+<li>蓝色： 意味着 overdraw 1倍。像素绘制了两次。大片的蓝色还是可以接受的（若整个窗口是蓝色的，可以摆脱一层）。</li>
+<li>绿色： 意味着 overdraw 2倍。像素绘制了三次。中等大小的绿色区域是可以接受的但你应该尝试优化、减少它们。</li>
+<li>浅红： 意味着 overdraw 3倍。像素绘制了四次，小范围可以接受。</li>
+<li>暗红： 意味着 overdraw 4倍。像素绘制了五次或者更多。这是错误的，要修复它们。</li>
+</ul>
+<p><img src="/images/2016040100.jpg" alt=""></p>
+<p>那么我们怎么来消灭 overdraw 呢？总的原则就是：<strong>尽量避免重叠不可见元素的绘制</strong>，基于这个原则，我们大概可以想出以下几招：<br><a id="more"></a></p>
+<h2 id="第一招：合理选择控件容器"><a href="#第一招：合理选择控件容器" class="headerlink" title="第一招：合理选择控件容器"></a>第一招：合理选择控件容器</h2><p>既然 overdraw 是因为重复绘制了同一片区域的像素点，那我们首先想到的是解决布局问题。Android 提供的 Layout 控件主要包括 LinearLayout、TableLayout、FrameLayout、RelativeLayout。俗话说条条大路通罗马，同一个界面我们可以使用不同的容器控件来表达，但是各个容器控件描述界面的复杂度是不一样的。一般来说 LinearLayout 最易，RelativeLayout 较复杂。但是尺有所短，寸有所长，LinearLayout 只能用来描述一个方向上连续排列的控件，而 RelativeLayout 几乎可以用于描述任意复杂度的界面。但是我又要说但是了，表达能力越强的容器控件，性能往往略低一些，因为系统需要将更多的时间花在计算子控件的位置上。</p>
+<blockquote>
+<font color="blue">综上所述：<strong>LinearLayout 易用，效率高，表达能力有限。RelativeLayout 复杂，表达能力强，效率稍逊</strong>。</font>
+
+</blockquote>
+<p>那么对于同一界面而言，作为开发者考虑是使用尽量少的、表达能力强的 RelativeLayout 作为容器，还是选择多个、表达能力稍弱的 LinearLayout 来展示。从减少 overdraw 的角度来看，LinearLayout 会增加控件数的层级，自然是 RelativeLayout 更优，但是当某一界面在使用 LinearLayout 并不会比 RelativeLayout 带来更多的控件数和控件层级时，LinearLayout 则是首选。所以在表达界面的时候，作为一个有前瞻性的开发者要根据实际情况来选择合适容器控件，在保证性能的同时，尽量避免 overdraw。</p>
+<h2 id="第二招：去掉-window-的默认背景"><a href="#第二招：去掉-window-的默认背景" class="headerlink" title="第二招：去掉 window 的默认背景"></a>第二招：去掉 window 的默认背景</h2><p>当我们使用了 Android 自带的一些主题时，window 会被默认添加一个纯色的背景，这个背景是被 DecorView 持有的。当我们的自定义布局时又添加了一张背景图或者设置背景色，那么 DecorView 的 background 此时对我们来说是无用的，但是它会产生一次 Overdraw，带来绘制性能损耗。<br>去掉 window 的背景可以在 onCreate() 中 setContentView() 之后调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getWindow().setBackgroundDrawable(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p>或者在 theme 中添加:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:windowbackground="null"；</span><br></pre></td></tr></table></figure>
+<h2 id="第三招：去掉其他不必要的背景"><a href="#第三招：去掉其他不必要的背景" class="headerlink" title="第三招：去掉其他不必要的背景"></a>第三招：去掉其他不必要的背景</h2><p>有时候为了方便会先给 Layout 设置一个整体的背景，再给子 View 设置背景，这里也会造成重叠，如果子 View 宽度 mach_parent，可以看到完全覆盖了 Layout 的一部分，这里就可以通过分别设置背景来减少重绘。再比如如果采用的是 selector 的背景，将 normal 状态的 color 设置为 “<code>@android:color/transparent</code>“,也同样可以解决问题。这里只简单举两个例子，我们在开发过程中的一些习惯性思维定式会带来不经意的 Overdraw，所以开发过程中我们为某个 View 或者 ViewGroup 设置背景的时候，先思考下是否真的有必要，或者思考下这个背景能不能分段设置在子 View 上，而不是图方便直接设置在根 View 上。</p>
+<h2 id="第四招：ClipRect-amp-QuickReject"><a href="#第四招：ClipRect-amp-QuickReject" class="headerlink" title="第四招：ClipRect &amp; QuickReject"></a>第四招：ClipRect &amp; QuickReject</h2><p>为了解决 Overdraw 的问题，Android 系统会通过避免绘制那些完全不可见的组件来尽量减少消耗。但是不幸的是，对于那些过于复杂的自定义的 View (通常重写了 onDraw 方法)，Android 系统无法检测在 onDraw 里面具体会执行什么操作，系统无法监控并自动优化，也就无法避免 Overdraw 了。但是我们可以通过<code>canvas.clipRect()</code> 来帮助系统识别那些可见的区域。这个方法可以指定一块矩形区域，只有在这个区域内才会被绘制，其他的区域会被忽视。这个API可以很好的帮助那些有多组重叠组件的自定义View来控制显示的区域。同时 clipRect 方法还可以帮助节约 CPU 与 GPU 资源，在clipRect区域之外的绘制指令都不会被执行，那些部分内容在矩形区域内的组件，仍然会得到绘制。除了clipRect方法之外，我们还可以使用 <code>canvas.quickreject()</code> 来判断是否没和某个矩形相交，从而跳过那些非矩形区域内的绘制操作。</p>
+<h2 id="第五招：ViewStub"><a href="#第五招：ViewStub" class="headerlink" title="第五招：ViewStub"></a>第五招：ViewStub</h2><p>ViewStub 是个什么东西？一句话总结：<strong>高效占位符</strong>。</p>
+<p>我们经常会遇到这样的情况，运行时动态根据条件来决定显示哪个 View 或布局。常用的做法是把 View 都写在上面，先把它们的可见性都设为 <code>View.GONE</code>，然后在代码中动态的更改它的可见性。这样的做法的优点是逻辑简单而且控制起来比较灵活。但是它的缺点就是，耗费资源。虽然把 View 的初始可见 <code>View.GONE</code> 但是在 Inflate 布局的时候 View 仍然会被 Inflate，也就是说仍然会创建对象，会被实例化，会被设置属性。也就是说，会耗费内存等资源。</p>
+<p>推荐的做法是使用 <code>android.view.ViewStub</code>，ViewStub 是一个轻量级的 View，它一个看不见的，不占布局位置，占用资源非常小的控件。可以为 ViewStub 指定一个布局，在 Inflate 布局的时候，只有 ViewStub 会被初始化，然后当 ViewStub 被设置为可见的时候，或是调用了 <code>ViewStub.inflate()</code> 的时候，ViewStub 所向的布局就会被 Inflate 和实例化，然后 ViewStub 的布局属性都会传给它所指向的布局。这样，就可以使用 ViewStub 来方便的在运行时，要还是不要显示某个布局。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ViewStub</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/stub_view"</span></span><br><span class="line">    <span class="attr">android:inflatedId</span>=<span class="string">"@+id/panel_stub"</span></span><br><span class="line">    <span class="attr">android:layout</span>=<span class="string">"@layout/progress_overlay"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:layout_gravity</span>=<span class="string">"bottom"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当你想加载布局时，可以使用下面其中一种方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">((ViewStub) findViewById(R.id.stub_view)).setVisibility(View.VISIBLE);</span><br><span class="line">View importPanel = ((ViewStub) findViewById(R.id.stub_view)).inflate();</span><br></pre></td></tr></table></figure>
+<h2 id="第六招：Merge"><a href="#第六招：Merge" class="headerlink" title="第六招：Merge"></a>第六招：Merge</h2><p>Merge 标签有什么用呢？<br>简单粗暴点回答：<strong>干掉一个view层级</strong>。</p>
+<p>Merge 的作用很明显，但是也有一些使用条件的限制。有两种情况下我们可以使用 Merge 标签来做容器控件。第一种子视图不需要指定任何针对父视图的布局属性，就是说父容器仅仅是个容器，子视图只需要直接添加到父视图上用于显示就行。另外一种是假如需要在 LinearLayout 里面嵌入一个布局（或者视图），而恰恰这个布局（或者视图）的根节点也是 LinearLayout，这样就多了一层没有用的嵌套，无疑这样只会拖慢程序速度。而这个时候如果我们使用 merge 根标签就可以避免那样的问题。另外 Merge 只能作为 XML 布局的根标签使用，当 Inflate 以 <merge> 开头的布局文件时，必须指定一个父ViewGroup，并且必须设定 attachToRoot为true。</merge></p>
+<p>举个简单的例子吧：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> </span><br><span class="line">	<span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> </span><br><span class="line">	<span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span> </span><br><span class="line">	<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span><br><span class="line">	<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</span></span><br><span class="line"> </span><br><span class="line">	<span class="tag">&lt;<span class="name">TextView</span> </span><br><span class="line">	<span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span>  </span><br><span class="line">	<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> </span><br><span class="line">	<span class="attr">android:text</span>=<span class="string">"merge标签使用"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>把上面这个 XML 加载到页面中，布局层级是 RelativeLayout-TextView。但是采用下面的方式，把 RelativeLayout 提换成 merge，RelativeLayout 这一层级就被干掉了。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">merge</span></span><br><span class="line">	<span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> </span><br><span class="line">	<span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span> </span><br><span class="line">	<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span><br><span class="line">	<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">TextView</span>  </span><br><span class="line">	<span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span> </span><br><span class="line">	<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> </span><br><span class="line">	<span class="attr">android:text</span>=<span class="string">"merge标签使用"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">merge</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="第七招：善用-draw9patch"><a href="#第七招：善用-draw9patch" class="headerlink" title="第七招：善用 draw9patch"></a>第七招：善用 draw9patch</h2><p>给 ImageView 加一个边框，你肯定遇到过这种需求，通常在 ImageView 后面设置一张背景图，露出边框便完美解决问题，此时这个 ImageView，设置了两层 drawable，底下一层仅仅是为了作为图片的边框而已。但是两层 drawable 的重叠区域去绘制了两次，导致 overdraw。</p>
+<p>优化方案： 将背景 drawable 制作成 draw9patch，并且将和前景重叠的部分设置为透明。由于 Android 的 2D 渲染器会优化 draw9patch 中的透明区域，从而优化了这次 overdraw。 但是背景图片必须制作成 draw9patch 才行，因为 Android 2D 渲染器只对 draw9patch 有这个优化，否则，一张普通的 Png，就算你把中间的部分设置成透明，也不会减少这次 overdraw。</p>
+<h2 id="第八招：慎用-Alpha"><a href="#第八招：慎用-Alpha" class="headerlink" title="第八招：慎用 Alpha"></a>第八招：慎用 Alpha</h2><p>假如对一个 View 做 Alpha 转化，需要先将 View 绘制出来，然后做 Alpha 转化，最后将转换后的效果绘制在界面上。通俗点说，做 Alpha 转化就需要对当前 View 绘制两遍，可想而知，绘制效率会大打折扣，耗时会翻倍，所以 Alpha s还是慎用。<br>如果一定做 Alpha 转化的话，可以采用缓存的方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">view.setLayerType(LAYER_TYPE_HARDWARE);</span><br><span class="line">doSmoeThing();</span><br><span class="line">view.setLayerType(LAYER_TYPE_NONE);</span><br></pre></td></tr></table></figure>
+<p>通过 setLayerType 方式可以将当前界面缓存在 GPU 中，这样不需要每次绘制原始界面，但是 GPU 内存是相当宝贵的，所以用完要马上释放掉。</p>
+<h2 id="第九招：避免“OverDesign”"><a href="#第九招：避免“OverDesign”" class="headerlink" title="第九招：避免“OverDesign”"></a>第九招：避免“OverDesign”</h2><p>overdraw 会给 APP 带来不好的体验，overdraw 产生的原因无外乎：复杂的 Layout 层级，重叠的 View，重叠的背景这几种。开发人员无节制的 View 堆砌，究其根本无非是产品无节制的需求设计。有道是“由俭入奢易，由奢入俭难”，很多 APP 披着过度设计的华丽外衣，却忘了简单易用才是王道的本质，纷繁复杂的设计并不会给用户带来好的体验，反而会让用户有压迫感，产品本身也有可能因此变得卡顿。当然，一切抛开业务谈优化都是空中楼阁，这就需要产品设计也要有一个权衡，在复杂的业务逻辑与简单易用的界面展现中做一个平衡，而不是一味的 OverDesign。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Performance-Optimization/" rel="tag">#Android Performance Optimization</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/02/2016-01-02-the-error-called-can-t-create-handler-inside-thread-that-has-not-called-Looper-prepare/" rel="next" title="Android 常见错误之 Can't create handler inside thread that has not called Looper.prepare() ">
+                <i class="fa fa-chevron-left"></i> Android 常见错误之 Can't create handler inside thread that has not called Looper.prepare() 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/10/2016-01-10-tips-and-tricks-of-android-about-how-can-we-make-the-text-of-textview-vertical/" rel="prev" title="Android 小技巧之将 TextView 的文字竖直排列">
+                Android 小技巧之将 TextView 的文字竖直排列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/"
+     data-title="Android 性能优化之如何避免 Overdraw"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/"
+           data-title="Android 性能优化之如何避免 Overdraw" data-url="http://www.jiangbing.me/2016/01/06/2016-01-06-how-can-we-avoid-overdraw-of-the-performance-optimication-of-android/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-Overdraw？"><span class="nav-number">1.</span> <span class="nav-text">什么是 Overdraw？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一招：合理选择控件容器"><span class="nav-number">2.</span> <span class="nav-text">第一招：合理选择控件容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二招：去掉-window-的默认背景"><span class="nav-number">3.</span> <span class="nav-text">第二招：去掉 window 的默认背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三招：去掉其他不必要的背景"><span class="nav-number">4.</span> <span class="nav-text">第三招：去掉其他不必要的背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四招：ClipRect-amp-QuickReject"><span class="nav-number">5.</span> <span class="nav-text">第四招：ClipRect & QuickReject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五招：ViewStub"><span class="nav-number">6.</span> <span class="nav-text">第五招：ViewStub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六招：Merge"><span class="nav-number">7.</span> <span class="nav-text">第六招：Merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七招：善用-draw9patch"><span class="nav-number">8.</span> <span class="nav-text">第七招：善用 draw9patch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八招：慎用-Alpha"><span class="nav-number">9.</span> <span class="nav-text">第八招：慎用 Alpha</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九招：避免“OverDesign”"><span class="nav-number">10.</span> <span class="nav-text">第九招：避免“OverDesign”</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

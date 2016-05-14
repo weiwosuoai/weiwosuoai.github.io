@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Octopress," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言如果你依照Octopress官方网站的说明文档，并已经成功搭建成功的话。 当你兴奋地打开你的网站，你一定会发现，为何网页完全加载完成会这么慢，极其的慢。 就我个人而言，我打开一个网页的整个时间平均在10s上下，10s,说实话，我自认为我还是一个耐心不错的人，10s的加载周期也让我有种抓狂的冲动。
+那么，这篇博文将会帮助你提升访问速度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何解决 Octopress 博客打开网页巨慢的尴尬">
+<meta property="og:url" content="http://www.jiangbing.me/2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="前言如果你依照Octopress官方网站的说明文档，并已经成功搭建成功的话。 当你兴奋地打开你的网站，你一定会发现，为何网页完全加载完成会这么慢，极其的慢。 就我个人而言，我打开一个网页的整个时间平均在10s上下，10s,说实话，我自认为我还是一个耐心不错的人，10s的加载周期也让我有种抓狂的冲动。
+那么，这篇博文将会帮助你提升访问速度。">
+<meta property="og:updated_time" content="2016-05-14T07:46:53.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何解决 Octopress 博客打开网页巨慢的尴尬">
+<meta name="twitter:description" content="前言如果你依照Octopress官方网站的说明文档，并已经成功搭建成功的话。 当你兴奋地打开你的网站，你一定会发现，为何网页完全加载完成会这么慢，极其的慢。 就我个人而言，我打开一个网页的整个时间平均在10s上下，10s,说实话，我自认为我还是一个耐心不错的人，10s的加载周期也让我有种抓狂的冲动。
+那么，这篇博文将会帮助你提升访问速度。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 如何解决 Octopress 博客打开网页巨慢的尴尬 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何解决 Octopress 博客打开网页巨慢的尴尬
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-22T10:13:13+08:00" content="2016-01-22">
+              2016-01-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/博客/" itemprop="url" rel="index">
+                    <span itemprop="name">博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果你依照<a href="http://octopress.org/docs/setup/" target="_blank" rel="external">Octopress官方网站的说明文档</a>，并已经成功搭建成功的话。 当你兴奋地打开你的网站，你一定会发现，为何网页完全加载完成会这么慢，极其的慢。 就我个人而言，我打开一个网页的整个时间平均在10s上下，10s,说实话，我自认为我还是一个耐心不错的人，10s的加载周期也让我有种抓狂的冲动。</p>
+<p>那么，这篇博文将会帮助你提升访问速度。</p>
+<a id="more"></a>
+<h1 id="第一步，修改-config-yml配置文件"><a href="#第一步，修改-config-yml配置文件" class="headerlink" title="第一步，修改_config.yml配置文件"></a>第一步，修改<code>_config.yml</code>配置文件</h1><p>打开<code>_config.yml</code>配置文件，这里有相关配置需要关闭，其中涉及到的服务因为是国外的，特别是谷歌的（被墙），会影响到访问速度。</p>
+<h2 id="1-去除Github仓库展示"><a href="#1-去除Github仓库展示" class="headerlink" title="1.去除Github仓库展示"></a>1.去除Github仓库展示</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#Github repositories</span><br><span class="line">#github_user: androidyue</span><br><span class="line">#github_repo_count: 11</span><br><span class="line">#github_show_profile_link: true</span><br><span class="line">#github_skip_forks: true</span><br></pre></td></tr></table></figure>
+<h2 id="2-去除Twitte"><a href="#2-去除Twitte" class="headerlink" title="2. 去除Twitte"></a>2. 去除Twitte</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Twitter</span><br><span class="line">#twitter_user:</span><br><span class="line">#twitter_tweet_button: true</span><br></pre></td></tr></table></figure>
+<h2 id="3-去除Google-相关服务"><a href="#3-去除Google-相关服务" class="headerlink" title="3.去除Google+相关服务"></a>3.去除Google+相关服务</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Google +1</span><br><span class="line">#google_plus_one: true</span><br><span class="line">#google_plus_one_size: medium</span><br><span class="line"></span><br><span class="line"># Google Plus Profile</span><br><span class="line"># Hidden: No visible button, just add author information to search results</span><br><span class="line">#googleplus_user:</span><br><span class="line">#googleplus_hidden: false</span><br></pre></td></tr></table></figure>
+<h2 id="4-去除Pinboard服务"><a href="#4-去除Pinboard服务" class="headerlink" title="4.去除Pinboard服务"></a>4.去除Pinboard服务</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Pinboard</span><br><span class="line">#pinboard_user:</span><br><span class="line">#pinboard_count: 3</span><br></pre></td></tr></table></figure>
+<h2 id="5-去除Facebook-Like"><a href="#5-去除Facebook-Like" class="headerlink" title="5.去除Facebook Like"></a>5.去除Facebook Like</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Facebook Like</span><br><span class="line">#facebook_like: true</span><br></pre></td></tr></table></figure>
+<h2 id="6-去除disqus"><a href="#6-去除disqus" class="headerlink" title="6.去除disqus"></a>6.去除disqus</h2><blockquote>
+<font color="red">注意：去除后，你嵌入的disqus评论系统就没有了</font>
+
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Delicious</span><br><span class="line">#delicious_user:</span><br><span class="line">#delicious_count: 3</span><br><span class="line"></span><br><span class="line"># Disqus Comments</span><br><span class="line">#disqus_short_name: weiwosuoaigithubio</span><br><span class="line">#disqus_show_comment_count: true</span><br></pre></td></tr></table></figure>
+<h1 id="第二步，替换Octopress博客中依赖的资源"><a href="#第二步，替换Octopress博客中依赖的资源" class="headerlink" title="第二步，替换Octopress博客中依赖的资源"></a>第二步，替换Octopress博客中依赖的资源</h1><p>Octopress博客有很多依赖于Google的库和资源，正因为如此，才会导致你的博客访问速度巨慢无比。下面我们需要做的就是将这些资源替换成国内的资源：</p>
+<h2 id="1-替换ga-js"><a href="#1-替换ga-js" class="headerlink" title="1.替换ga.js"></a>1.替换ga.js</h2><p>对于使用Google Analytics用户来说，加载ga.js这个文件巨慢无比，我们需要将其替换成 <a href="http://droidyue-tools.qiniudn.com/ga.js" target="_blank" rel="external">http://droidyue-tools.qiniudn.com/ga.js</a><br>修改<code>source/_includes/google_analytics.html</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ga = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>); ga.type = <span class="string">'text/javascript'</span>; ga.async = <span class="literal">true</span>;</span><br><span class="line">  ga.src = <span class="string">'http://droidyue-tools.qiniudn.com/ga.js'</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'script'</span>)[<span class="number">0</span>]; s.parentNode.insertBefore(ga, s);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h2 id="2-替换fonts-googleapis-com依赖"><a href="#2-替换fonts-googleapis-com依赖" class="headerlink" title="2.替换fonts.googleapis.com依赖"></a>2.替换fonts.googleapis.com依赖</h2><p>Octopress博客需要用到google的字体，这里我们将其替换成360的字体库，将 <code>fonts.googleapis.com</code> 替换成 <code>fonts.useso.com</code><br><br>修改文件<code>/source/_includes/custom/head.html</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--Fonts from Google"s Web font directory at http://google.com/webfonts --&gt;</span><br><span class="line">&lt;link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"&gt;</span><br><span class="line">&lt;link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-替换ajax-googleapis-com依赖"><a href="#3-替换ajax-googleapis-com依赖" class="headerlink" title="3.替换ajax.googleapis.com依赖"></a>3.替换ajax.googleapis.com依赖</h2><p>将 <code>ajax.googleapis.com</code> 替换成 <code>ajax.useso.com</code><br><br>修改<code>source/_includes/head.html</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"canonical"</span> href=<span class="string">""</span>&gt;</span><br><span class="line">  &lt;link href="/favicon.png" rel="icon"&gt;</span><br><span class="line">  &lt;link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"&gt;</span><br><span class="line">  &lt;link href="" rel="alternate" title="" type="application/atom+xml"&gt;</span><br><span class="line">  &lt;script src="/javascripts/modernizr-2.0.js"&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;!window.jQuery &amp;&amp; document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))&lt;/script&gt;</span><br><span class="line">  &lt;script src="/javascripts/octopress.js" type="text/javascript"&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总而言之，导致博客打开页面的罪魁祸首是加载了一些国外服务器的资源和依赖。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Octopress/" rel="tag">#Octopress</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/21/2016-01-21-how-to-create-a-custom-blog-website/" rel="next" title="如何通过 GitHub Pages 和 Jekyll 来创建个人博客网站！">
+                <i class="fa fa-chevron-left"></i> 如何通过 GitHub Pages 和 Jekyll 来创建个人博客网站！
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/24/2016-01-24-how-can-i-insert-a-table-on-the-markdownpad-tool/" rel="prev" title="解决在 MarkdownPad2 编辑器中写入表格语法无法正常显示的问题">
+                解决在 MarkdownPad2 编辑器中写入表格语法无法正常显示的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/"
+     data-title="如何解决 Octopress 博客打开网页巨慢的尴尬"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/"
+           data-title="如何解决 Octopress 博客打开网页巨慢的尴尬" data-url="http://www.jiangbing.me/2016/01/22/2016-01-22-what-should-we-do-when-i-created-the-blog-website/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步，修改-config-yml配置文件"><span class="nav-number">2.</span> <span class="nav-text">第一步，修改_config.yml配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-去除Github仓库展示"><span class="nav-number">2.1.</span> <span class="nav-text">1.去除Github仓库展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-去除Twitte"><span class="nav-number">2.2.</span> <span class="nav-text">2. 去除Twitte</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-去除Google-相关服务"><span class="nav-number">2.3.</span> <span class="nav-text">3.去除Google+相关服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-去除Pinboard服务"><span class="nav-number">2.4.</span> <span class="nav-text">4.去除Pinboard服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-去除Facebook-Like"><span class="nav-number">2.5.</span> <span class="nav-text">5.去除Facebook Like</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-去除disqus"><span class="nav-number">2.6.</span> <span class="nav-text">6.去除disqus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二步，替换Octopress博客中依赖的资源"><span class="nav-number">3.</span> <span class="nav-text">第二步，替换Octopress博客中依赖的资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-替换ga-js"><span class="nav-number">3.1.</span> <span class="nav-text">1.替换ga.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-替换fonts-googleapis-com依赖"><span class="nav-number">3.2.</span> <span class="nav-text">2.替换fonts.googleapis.com依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-替换ajax-googleapis-com依赖"><span class="nav-number">3.3.</span> <span class="nav-text">3.替换ajax.googleapis.com依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

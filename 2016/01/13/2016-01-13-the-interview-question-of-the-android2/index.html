@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android 面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文转自： http://www.jianshu.com/p/a22450882af2
+
+三金四银，又到了一年一度的跳槽季。也许有不少Android程序员开始摩拳擦掌蠢蠢欲动了。结合以往自己的经历，今天给大家总结下Android面试题，希望有帮助。
+1：Activity 生命周期？这几乎是个老少咸宜，永远不会过时的问题，而且极有可能是第一个问题。这个问题当然没什么好讲的啦，死记硬背是没什么用的了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 面试题整理">
+<meta property="og:url" content="http://www.jiangbing.me/2016/01/13/2016-01-13-the-interview-question-of-the-android2/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文转自： http://www.jianshu.com/p/a22450882af2
+
+三金四银，又到了一年一度的跳槽季。也许有不少Android程序员开始摩拳擦掌蠢蠢欲动了。结合以往自己的经历，今天给大家总结下Android面试题，希望有帮助。
+1：Activity 生命周期？这几乎是个老少咸宜，永远不会过时的问题，而且极有可能是第一个问题。这个问题当然没什么好讲的啦，死记硬背是没什么用的了">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1187237-4cbfd0f464cd5313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-05-14T07:51:01.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 面试题整理">
+<meta name="twitter:description" content="本文转自： http://www.jianshu.com/p/a22450882af2
+
+三金四银，又到了一年一度的跳槽季。也许有不少Android程序员开始摩拳擦掌蠢蠢欲动了。结合以往自己的经历，今天给大家总结下Android面试题，希望有帮助。
+1：Activity 生命周期？这几乎是个老少咸宜，永远不会过时的问题，而且极有可能是第一个问题。这个问题当然没什么好讲的啦，死记硬背是没什么用的了">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1187237-4cbfd0f464cd5313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 面试题整理 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 面试题整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-13T15:36:28+08:00" content="2016-01-13">
+              2016-01-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/13/2016-01-13-the-interview-question-of-the-android2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/13/2016-01-13-the-interview-question-of-the-android2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文转自： <a href="http://www.jianshu.com/p/a22450882af2" target="_blank" rel="external">http://www.jianshu.com/p/a22450882af2</a></p>
+</blockquote>
+<p>三金四银，又到了一年一度的跳槽季。也许有不少Android程序员开始摩拳擦掌蠢蠢欲动了。结合以往自己的经历，今天给大家总结下Android面试题，希望有帮助。</p>
+<h2 id="1：Activity-生命周期？"><a href="#1：Activity-生命周期？" class="headerlink" title="1：Activity 生命周期？"></a>1：Activity 生命周期？</h2><p>这几乎是个老少咸宜，永远不会过时的问题，而且极有可能是第一个问题。这个问题当然没什么好讲的啦，死记硬背是没什么用的了，关键是理解。本人就曾遇到这个问题的变种问题，问 <code>onStart()</code>,与 <code>onResume()</code> 有什么区别？如果面试官抛出这个问题，是不是有点措手不及。今天又听说有同学遭遇了更变态的问题：什么情况下 Activity 走了 <code>onCreat()</code>，而不走 <code>onStart()</code>，这简直就是脑筋急转弯嘛。</p>
+<h2 id="2：service-生命周期？"><a href="#2：service-生命周期？" class="headerlink" title="2：service 生命周期？"></a>2：service 生命周期？</h2><p>这里要注意 service 有两种启动方式，<code>startService()</code> 和 <code>bindService()</code><br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/1187237-4cbfd0f464cd5313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="3：如何理解-Activity，View，Window-三者之间的关系？"><a href="#3：如何理解-Activity，View，Window-三者之间的关系？" class="headerlink" title="3：如何理解 Activity，View，Window 三者之间的关系？"></a>3：如何理解 Activity，View，Window 三者之间的关系？</h2><p>这个问题真的很不好回答。所以这里先来个算是比较恰当的比喻来形容下它们的关系吧。 Activity 像一个工匠（控制单元），Window 像窗户（承载模型），View 像窗花（显示视图）LayoutInflater像剪刀，Xml 配置像窗花图纸。</p>
+<p>1：Activity 构造的时候会初始化一个 Window，准确的说是 PhoneWindow。<br>2：这个 PhoneWindow 有一个 “ViewRoot”，这个 “ViewRoot” 是一个 View 或者说 ViewGroup，是最初始的根视图。<br>3：“ViewRoot” 通过 addView 方法来一个个的添加 View。比如 TextView，Button 等<br>4：这些 View 的事件监听，是由 WindowManagerService 来接受消息，并且回调 Activity 函数。比如 onClickListener，onKeyDown 等。</p>
+<h2 id="4：Activity-的几种-LaunchMode-及使用场景"><a href="#4：Activity-的几种-LaunchMode-及使用场景" class="headerlink" title="4：Activity 的几种 LaunchMode 及使用场景"></a>4：Activity 的几种 LaunchMode 及使用场景</h2><p><strong>standard 模式</strong></p>
+<p>这是默认模式，每次激活Activity时都会创建 Activity 实例，并放入任务栈中。使用场景：大多数 Activity。</p>
+<p><strong>singleTop 模式</strong></p>
+<p>如果在任务的栈顶正好存在该 Activity 的实例，就重用该实例( 会调用实例的 <code>onNewIntent()</code> )，否则就会创建新的实例并放入栈顶，即使栈中已经存在该 Activity 的实例，只要不在栈顶，都会创建新的实例。使用场景如新闻类或者阅读类App的内容页面。</p>
+<p><strong>singleTask 模式</strong></p>
+<p>如果在栈中已经有该 Activity 的实例，就重用该实例(会调用实例的 <code>onNewIntent()</code> )。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移出栈。如果栈中不存在该实例，将会创建新的实例放入栈中。使用场景如浏览器的主界面。不管从多少个应用启动浏览器，只会启动主界面一次，其余情况都会走 onNewIntent，并且会清空主界面上面的其他页面。</p>
+<p><strong>singleInstance 模式</strong></p>
+<p>在一个新栈中创建该 Activity 的实例，并让多个应用共享该栈中的该 Activity 实例。一旦该模式的 Activity 实例已经存在于某个栈中，任何应用再激活该 Activity 时都会重用该栈中的实例( 会调用实例的 <code>onNewIntent()</code> )。其效果相当于多个应用共享一个应用，不管谁激活该 Activity 都会进入同一个应用中。使用场景如闹铃提醒，将闹铃提醒与闹铃设置分离。singleInstance不要用于中间页面，如果用于中间页面，跳转会有问题，比如：A -&gt; B (singleInstance) -&gt; C，完全退出后，在此启动，首先打开的是B。</p>
+<h2 id="5：View-的绘制流程"><a href="#5：View-的绘制流程" class="headerlink" title="5：View 的绘制流程"></a>5：View 的绘制流程</h2><p>measure过程<br>layout过程<br>draw过程</p>
+<p><a href="http://blog.csdn.net/yanbober/article/details/46128379/" target="_blank" rel="external">http://blog.csdn.net/yanbober/article/details/46128379/</a><br><a href="http://gold.xitu.io/entry/56af0ba0c24aa800547b60ea" target="_blank" rel="external">http://gold.xitu.io/entry/56af0ba0c24aa800547b60ea</a> &lt;- 如果只是为了面试，我推荐看这个，想深入了解的，可以点上面的连接..</p>
+<h2 id="6：Touch事件的传递机制"><a href="#6：Touch事件的传递机制" class="headerlink" title="6：Touch事件的传递机制"></a>6：Touch事件的传递机制</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEventev)</span></span>;     <span class="comment">// 用来分派 event</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEventev)</span></span>;  <span class="comment">// 用来拦截 event</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEventev)</span></span>;			<span class="comment">// 用来处理 event</span></span><br></pre></td></tr></table></figure>
+<p>其中 Activity 和 View 控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该任务，而直接自己去做，如果做不成，也只能向上级报告不能完成任务。</p>
+<p><a href="http://blog.csdn.net/morgan_xww/article/details/9372285" target="_blank" rel="external">http://blog.csdn.net/morgan_xww/article/details/9372285</a></p>
+<h2 id="7：Android中的几种动画"><a href="#7：Android中的几种动画" class="headerlink" title="7：Android中的几种动画"></a>7：Android中的几种动画</h2><p>曾被问到 Android 中有几种动画，这个问题也好难回答。Android3.0 之前有2种，3.0后有3种。</p>
+<p>FrameAnimation（逐帧动画）：将多张图片组合起来进行播放，类似于早期电影的工作原理，很多 App 的 loading 是采用这种方式。<br>TweenAnimation（补间动画）：是对某个View进行一系列的动画的操作，包括淡入淡出（Alpha），缩放（Scale），平移（Translate），旋转（Rotate）四种模式。<br>PropertyAnimation（属性动画）：属性动画不再仅仅是一种视觉效果了，而是一种不断地对值进行操作的机制，并将值赋到指定对象的指定属性上，可以是任意对象的任意属性。<br><a href="http://blog.csdn.net/yanbober/article/details/46481171" target="_blank" rel="external">http://blog.csdn.net/yanbober/article/details/46481171</a></p>
+<h2 id="8：Android中跨进程通讯有几种方式"><a href="#8：Android中跨进程通讯有几种方式" class="headerlink" title="8：Android中跨进程通讯有几种方式"></a>8：Android中跨进程通讯有几种方式</h2><p><strong>1：访问其他应用程序的 Activity</strong></p>
+<p>如调用系统通话应用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent callIntent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL,Uri.parse(<span class="string">"tel:12345678"</span>);</span><br><span class="line">startActivity(callIntent);</span><br></pre></td></tr></table></figure>
+<p><strong>2：Content Provider</strong></p>
+<p>如访问系统相册</p>
+<p><strong>3：广播（Broadcast）</strong></p>
+<p>如显示系统时间</p>
+<p><strong>4：AIDL 服务</strong></p>
+<h2 id="9：AIDL-理解"><a href="#9：AIDL-理解" class="headerlink" title="9：AIDL 理解"></a>9：AIDL 理解</h2><p><a href="http://bbs.51cto.com/thread-1086040-1.html" target="_blank" rel="external">http://bbs.51cto.com/thread-1086040-1.html</a></p>
+<h2 id="10：Handler-的原理"><a href="#10：Handler-的原理" class="headerlink" title="10：Handler 的原理"></a>10：Handler 的原理</h2><p><a href="http://blog.csdn.net/lmj623565791/article/details/38377229" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/38377229</a></p>
+<h2 id="11：Binder-机制原理"><a href="#11：Binder-机制原理" class="headerlink" title="11：Binder 机制原理"></a>11：Binder 机制原理</h2><p><a href="http://blog.csdn.net/boyupeng/article/details/47011383" target="_blank" rel="external">http://blog.csdn.net/boyupeng/article/details/47011383</a></p>
+<h2 id="12：热修复的原理"><a href="#12：热修复的原理" class="headerlink" title="12：热修复的原理"></a>12：热修复的原理</h2><p>1：JavaSisst<br>2：AspectJ<br>3：Xposef</p>
+<p>这里给出Xposef方案<br><a href="http://mp.weixin.qq.com/s?__biz=MzA3Mjk1MjA4Nw==&amp;mid=400452659&amp;idx=1&amp;sn=841b49b875ec3b307f261ed52a7d9c4e&amp;scene=23&amp;srcid=1119JWRt0adNwGxTHiyok460#rd" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA3Mjk1MjA4Nw==&amp;mid=400452659&amp;idx=1&amp;sn=841b49b875ec3b307f261ed52a7d9c4e&amp;scene=23&amp;srcid=1119JWRt0adNwGxTHiyok460#rd</a></p>
+<h2 id="13：设计一套图片异步加载缓存方案"><a href="#13：设计一套图片异步加载缓存方案" class="headerlink" title="13：设计一套图片异步加载缓存方案"></a>13：设计一套图片异步加载缓存方案</h2><p><a href="http://www.cnblogs.com/zyw-205520/p/4997863.html" target="_blank" rel="external">http://www.cnblogs.com/zyw-205520/p/4997863.html</a><br><a href="http://blog.csdn.net/boyupeng/article/details/47127605" target="_blank" rel="external">http://blog.csdn.net/boyupeng/article/details/47127605</a></p>
+<h2 id="14：Android-内存泄露及管理"><a href="#14：Android-内存泄露及管理" class="headerlink" title="14：Android 内存泄露及管理"></a>14：Android 内存泄露及管理</h2><p><a href="http://gold.xitu.io/entry/56d64b9e816dfa005943a55c" target="_blank" rel="external">http://gold.xitu.io/entry/56d64b9e816dfa005943a55c</a></p>
+<h2 id="15：Activity-与-Fragment-通信"><a href="#15：Activity-与-Fragment-通信" class="headerlink" title="15：Activity 与 Fragment 通信"></a>15：Activity 与 Fragment 通信</h2><p><a href="http://gold.xitu.io/entry/56a87b2b2e958a0051906227" target="_blank" rel="external">http://gold.xitu.io/entry/56a87b2b2e958a0051906227</a></p>
+<h2 id="16：Fragment-的那些坑"><a href="#16：Fragment-的那些坑" class="headerlink" title="16：Fragment 的那些坑"></a>16：Fragment 的那些坑</h2><p><a href="http://www.jianshu.com/p/d9143a92ad94" target="_blank" rel="external">http://www.jianshu.com/p/d9143a92ad94</a><br><a href="http://www.jianshu.com/p/fd71d65f0ec6" target="_blank" rel="external">http://www.jianshu.com/p/fd71d65f0ec6</a><br><a href="http://www.jianshu.com/p/38f7994faa6b" target="_blank" rel="external">http://www.jianshu.com/p/38f7994faa6b</a></p>
+<h2 id="16：Android-UI适配"><a href="#16：Android-UI适配" class="headerlink" title="16：Android UI适配"></a>16：Android UI适配</h2><p>这里给出 hongyang 大神的方案：<br><a href="http://blog.csdn.net/lmj623565791/article/details/45460089" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/45460089</a></p>
+<h2 id="17：布局优化"><a href="#17：布局优化" class="headerlink" title="17：布局优化"></a>17：布局优化</h2><p><a href="http://www.jianshu.com/p/145fc61011cd" target="_blank" rel="external">http://www.jianshu.com/p/145fc61011cd</a></p>
+<h2 id="18：Http-Https"><a href="#18：Http-Https" class="headerlink" title="18：Http Https"></a>18：Http Https</h2><p><a href="http://www.jianshu.com/p/93fdebe5fef1" target="_blank" rel="external">http://www.jianshu.com/p/93fdebe5fef1</a></p>
+<h2 id="19：网络请求优化"><a href="#19：网络请求优化" class="headerlink" title="19：网络请求优化"></a>19：网络请求优化</h2><p><a href="http://www.jianshu.com/p/3141d4e46240" target="_blank" rel="external">http://www.jianshu.com/p/3141d4e46240</a></p>
+<h2 id="20：数据库优化"><a href="#20：数据库优化" class="headerlink" title="20：数据库优化"></a>20：数据库优化</h2><p><a href="http://www.jianshu.com/p/3b4452fc1bbd" target="_blank" rel="external">http://www.jianshu.com/p/3b4452fc1bbd</a></p>
+<h2 id="21：图片优化"><a href="#21：图片优化" class="headerlink" title="21：图片优化"></a>21：图片优化</h2><p><a href="http://www.jianshu.com/p/5bb8c01e2bc7" target="_blank" rel="external">http://www.jianshu.com/p/5bb8c01e2bc7</a></p>
+<h2 id="22：HybridJAVA-与-JS-交互"><a href="#22：HybridJAVA-与-JS-交互" class="headerlink" title="22：HybridJAVA 与 JS 交互"></a>22：HybridJAVA 与 JS 交互</h2><p><a href="http://droidyue.com/blog/2014/09/20/interaction-between-java-and-javascript-in-android/" target="_blank" rel="external">http://droidyue.com/blog/2014/09/20/interaction-between-java-and-javascript-in-android/</a></p>
+<h2 id="23：单例"><a href="#23：单例" class="headerlink" title="23：单例"></a>23：单例</h2><p><a href="http://www.jianshu.com/p/a956024629cb" target="_blank" rel="external">http://www.jianshu.com/p/a956024629cb</a></p>
+<h2 id="24：Java-GC原理"><a href="#24：Java-GC原理" class="headerlink" title="24：Java GC原理"></a>24：Java GC原理</h2><p><a href="http://www.jianshu.com/p/d75a32ac5bed?" target="_blank" rel="external">http://www.jianshu.com/p/d75a32ac5bed?</a></p>
+<h2 id="25：ANR"><a href="#25：ANR" class="headerlink" title="25：ANR"></a>25：ANR</h2><p><a href="http://www.jianshu.com/p/124f3b75e164" target="_blank" rel="external">http://www.jianshu.com/p/124f3b75e164</a></p>
+<h2 id="26：Volley"><a href="#26：Volley" class="headerlink" title="26：Volley"></a>26：Volley</h2><p><a href="http://www.jianshu.com/p/9e17727f31a1" target="_blank" rel="external">http://www.jianshu.com/p/9e17727f31a1</a></p>
+<h2 id="27：JAVA-注解反射原理"><a href="#27：JAVA-注解反射原理" class="headerlink" title="27：JAVA 注解反射原理"></a>27：JAVA 注解反射原理</h2><p><a href="http://www.jianshu.com/p/3968ffabdf9d" target="_blank" rel="external">http://www.jianshu.com/p/3968ffabdf9d</a></p>
+<h2 id="28：算法"><a href="#28：算法" class="headerlink" title="28：算法"></a>28：算法</h2><p><a href="http://www.jianshu.com/p/ae97c3ceea8d" target="_blank" rel="external">http://www.jianshu.com/p/ae97c3ceea8d</a></p>
+<h2 id="29：设计模式"><a href="#29：设计模式" class="headerlink" title="29：设计模式"></a>29：设计模式</h2><p><a href="http://gold.xitu.io/entry/56ebb4ad5bbb50004c440972" target="_blank" rel="external">http://gold.xitu.io/entry/56ebb4ad5bbb50004c440972</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-面试题/" rel="tag">#Android 面试题</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/10/2016-01-10-tips-and-tricks-of-android-about-how-can-we-make-the-text-of-textview-vertical/" rel="next" title="Android 小技巧之将 TextView 的文字竖直排列">
+                <i class="fa fa-chevron-left"></i> Android 小技巧之将 TextView 的文字竖直排列
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/" rel="prev" title="Android 应用在系统内的存在方式">
+                Android 应用在系统内的存在方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/13/2016-01-13-the-interview-question-of-the-android2/"
+     data-title="Android 面试题整理"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/01/13/2016-01-13-the-interview-question-of-the-android2/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/13/2016-01-13-the-interview-question-of-the-android2/"
+           data-title="Android 面试题整理" data-url="http://www.jiangbing.me/2016/01/13/2016-01-13-the-interview-question-of-the-android2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：Activity-生命周期？"><span class="nav-number">1.</span> <span class="nav-text">1：Activity 生命周期？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：service-生命周期？"><span class="nav-number">2.</span> <span class="nav-text">2：service 生命周期？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：如何理解-Activity，View，Window-三者之间的关系？"><span class="nav-number">3.</span> <span class="nav-text">3：如何理解 Activity，View，Window 三者之间的关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：Activity-的几种-LaunchMode-及使用场景"><span class="nav-number">4.</span> <span class="nav-text">4：Activity 的几种 LaunchMode 及使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：View-的绘制流程"><span class="nav-number">5.</span> <span class="nav-text">5：View 的绘制流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：Touch事件的传递机制"><span class="nav-number">6.</span> <span class="nav-text">6：Touch事件的传递机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7：Android中的几种动画"><span class="nav-number">7.</span> <span class="nav-text">7：Android中的几种动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8：Android中跨进程通讯有几种方式"><span class="nav-number">8.</span> <span class="nav-text">8：Android中跨进程通讯有几种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9：AIDL-理解"><span class="nav-number">9.</span> <span class="nav-text">9：AIDL 理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10：Handler-的原理"><span class="nav-number">10.</span> <span class="nav-text">10：Handler 的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11：Binder-机制原理"><span class="nav-number">11.</span> <span class="nav-text">11：Binder 机制原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12：热修复的原理"><span class="nav-number">12.</span> <span class="nav-text">12：热修复的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13：设计一套图片异步加载缓存方案"><span class="nav-number">13.</span> <span class="nav-text">13：设计一套图片异步加载缓存方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14：Android-内存泄露及管理"><span class="nav-number">14.</span> <span class="nav-text">14：Android 内存泄露及管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15：Activity-与-Fragment-通信"><span class="nav-number">15.</span> <span class="nav-text">15：Activity 与 Fragment 通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16：Fragment-的那些坑"><span class="nav-number">16.</span> <span class="nav-text">16：Fragment 的那些坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16：Android-UI适配"><span class="nav-number">17.</span> <span class="nav-text">16：Android UI适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17：布局优化"><span class="nav-number">18.</span> <span class="nav-text">17：布局优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18：Http-Https"><span class="nav-number">19.</span> <span class="nav-text">18：Http Https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19：网络请求优化"><span class="nav-number">20.</span> <span class="nav-text">19：网络请求优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20：数据库优化"><span class="nav-number">21.</span> <span class="nav-text">20：数据库优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21：图片优化"><span class="nav-number">22.</span> <span class="nav-text">21：图片优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22：HybridJAVA-与-JS-交互"><span class="nav-number">23.</span> <span class="nav-text">22：HybridJAVA 与 JS 交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23：单例"><span class="nav-number">24.</span> <span class="nav-text">23：单例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24：Java-GC原理"><span class="nav-number">25.</span> <span class="nav-text">24：Java GC原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25：ANR"><span class="nav-number">26.</span> <span class="nav-text">25：ANR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26：Volley"><span class="nav-number">27.</span> <span class="nav-text">26：Volley</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27：JAVA-注解反射原理"><span class="nav-number">28.</span> <span class="nav-text">27：JAVA 注解反射原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28：算法"><span class="nav-number">29.</span> <span class="nav-text">28：算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29：设计模式"><span class="nav-number">30.</span> <span class="nav-text">29：设计模式</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
