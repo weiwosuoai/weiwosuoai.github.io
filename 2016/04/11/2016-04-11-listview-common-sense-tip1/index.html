@@ -1,0 +1,741 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//servers.ustclug.org/2014/07/ustc-blog-force-google-fonts-proxy//css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,ListView," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文对 ListView 中的一些常用技巧做一个总结。附:虽然现在 RecyclerView 已逐渐取代 ListView,但实际情况是大部分项目中还在使用 ListView。当然，后续我会在我的博客中详细介绍 RecyclerView,敬请期待。
+
+前言ListView 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 listView 随处可见，也是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ListView 常用技巧总结">
+<meta property="og:url" content="http://www.jiangbing.me/2016/04/11/2016-04-11-listview-common-sense-tip1/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="本文对 ListView 中的一些常用技巧做一个总结。附:虽然现在 RecyclerView 已逐渐取代 ListView,但实际情况是大部分项目中还在使用 ListView。当然，后续我会在我的博客中详细介绍 RecyclerView,敬请期待。
+
+前言ListView 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 listView 随处可见，也是">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016052200.png">
+<meta property="og:updated_time" content="2016-05-22T07:21:23.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ListView 常用技巧总结">
+<meta name="twitter:description" content="本文对 ListView 中的一些常用技巧做一个总结。附:虽然现在 RecyclerView 已逐渐取代 ListView,但实际情况是大部分项目中还在使用 ListView。当然，后续我会在我的博客中详细介绍 RecyclerView,敬请期待。
+
+前言ListView 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 listView 随处可见，也是">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016052200.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android ListView 常用技巧总结 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android ListView 常用技巧总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T10:55:08+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/11/2016-04-11-listview-common-sense-tip1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/2016-04-11-listview-common-sense-tip1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文对 <code>ListView</code> 中的一些常用技巧做一个总结。<font color="blue">附:虽然现在 <code>RecyclerView</code> 已逐渐取代 <code>ListView</code>,但实际情况是大部分项目中还在使用 <code>ListView</code>。当然，后续我会在我的博客中详细介绍 <code>RecyclerView</code>,敬请期待。</font></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>ListView</code> 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 <code>listView</code> 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 <code>listView</code> 中的常用技巧一一罗列出来。<br><a id="more"></a></p>
+<h2 id="listView-的缓存机制以及-ViewHolder-的使用"><a href="#listView-的缓存机制以及-ViewHolder-的使用" class="headerlink" title="listView 的缓存机制以及 ViewHolder 的使用"></a>listView 的缓存机制以及 ViewHolder 的使用</h2><p>这两个知识点是最常用的优化 listView 的技巧。</p>
+<p><strong>1.首先，来说说 listView 的缓存机制，再这之前，我们先看看下面这张图：</strong></p>
+<p><img src="/images/2016052200.png" alt=""></p>
+<p>我先来说一下这张图的意思，从左边第一张图开始，当我们的手机上显示一个 listView 列表的时候，如图有 7 个 item,当我们向上拖动 listView，进入第二个示意图，注意细节，第二个图例表示的是，当向上拖动时，这是 item00 正准备消失在手机屏幕上但还没有完全消失时，item07 出现在我们的视野内，这时，item07 也只是显示一半，这种情况下，item07 还不是从缓存中复用的 item,而是重新 new 的一个 View.我们继续向上拖动，到了第三个图例，这时 item00 已经完全消失在屏幕上，这时系统不会销毁这 item00,而是将其放到了缓存中，那么当我们继续向上滑动时，我们就可以利用 listView 的 <em>缓存机制</em>，复用缓存中 item,用它显示 item08,而不是再次的重新 new 一个.</p>
+<p><strong>2.通过 <em>缓存机制</em> 和 ViewHolder 配合使用</strong></p>
+<p>知道了 <em>缓存机制</em>，我们还需要知道 ViewHolder,这时 Google 大会上推荐我们使用的 listView 优化方案。</p>
+<p>我们知道，我们通常写的视图 xml 文件，实际上是一个 DOM 树结构，而 findViewById() 实际上是遍历整个视图树，当你的 listView 中的 item 非常复杂时，findViewById() 所需的时间就越长，这是非常耗性能的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    TextView title; <span class="comment">// The title of item.</span></span><br><span class="line">	ImageView img;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以在第一次创建 listView 中的 item 的同时，创建一个 ViewHolder,将需要遍历的视图保存在其中，通过 <code>View.setTag()</code> 保存在缓存中，这样下次重用的时候就避免的再次 findViewById() 的操作了。</p>
+<blockquote>
+<font color="red">注意：这样做虽然消耗了一些内存，但是与 findViewById() 遍历所需的时间相比，显得微不足道。(据测试，使用 ViewHolder,效率提高 50%)</font>
+
+</blockquote>
+<p><strong>3.示例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">    ViewHolder viewHolder;</span><br><span class="line">    <span class="comment">// 判断是否存在缓存</span></span><br><span class="line">    <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">        convertView = <span class="keyword">this</span>.mInflater.inflate(R.layout.item_lv_weixn_about, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        viewHolder = <span class="keyword">new</span> ViewHolder(convertView);</span><br><span class="line">        convertView.setTag(viewHolder);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 若有，取出缓存中存放的 ViewHolder,避免再次 findViewById().</span></span><br><span class="line">        viewHolder = (ViewHolder) convertView.getTag();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新视图</span></span><br><span class="line">    viewHolder.title.setText(mStrArr[position]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> convertView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设置-listView-中的分割线"><a href="#设置-listView-中的分割线" class="headerlink" title="设置 listView 中的分割线"></a>设置 listView 中的分割线</h2><p>通过 <code>android:divider</code> 和 <code>android:dividerHeight</code> 这两个属性，我们可以设置设置分割线。另外，除了为分割线设置颜色以外，我们还可以为其设置图片资源：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:divider="@drawable:split_pic"</span><br><span class="line">android:dividerHeight="1dp"</span><br></pre></td></tr></table></figure>
+<h2 id="隐藏-listView-的滚动条"><a href="#隐藏-listView-的滚动条" class="headerlink" title="隐藏 listView 的滚动条"></a>隐藏 listView 的滚动条</h2><p>我们在拖动 listView 时，默认情况下是有滚动条的，我们可以通过设置 <code>scrollbars</code> 属性来控制滚动条的状态。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:scrollbars="none"</span><br></pre></td></tr></table></figure>
+<p>设置为 <code>none</code>,则不会出现滚动条。</p>
+<h3 id="取消-listView-的-item-的点击效果"><a href="#取消-listView-的-item-的点击效果" class="headerlink" title="取消 listView 的 item 的点击效果"></a>取消 listView 的 item 的点击效果</h3><p>listView 默认下，但我们点击其中的 item 时，会有点击效果。通过设置 <code>listSelector</code> 属性来取消点击效果。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:listSelector="#00000000"</span><br></pre></td></tr></table></figure>
+<p>你还可以使用 Android 自带的透明色来实现这个效果：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:listSelector="@android:color/transparent"</span><br></pre></td></tr></table></figure>
+<h3 id="设置-listView-需要显示在其中某一项"><a href="#设置-listView-需要显示在其中某一项" class="headerlink" title="设置 listView 需要显示在其中某一项"></a>设置 listView 需要显示在其中某一项</h3><p>listView 默认情况下是显示在第一项的，<em>有时候，需求是显示在指定项，那么要如何实现呢？</em></p>
+<p>代码控制：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listView.setSelection(position)</span><br></pre></td></tr></table></figure>
+<p>通过制定 position,来设置需要显示在第几项。但是，这种滑动操作是瞬间完成的，有时候，我们的需求是 <em>平滑</em> 的滑动到某个位置，通过下面的代码可以实现这种效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mListView.smoothScrollBy(distance, duration);</span><br><span class="line">mListView.smoothScrollByOffset(offset);</span><br><span class="line">mListView.smoothScrollToPosition(index);</span><br></pre></td></tr></table></figure>
+<h2 id="动态修改-listView"><a href="#动态修改-listView" class="headerlink" title="动态修改 listView"></a>动态修改 listView</h2><p>listView 中的数据通常情况下，在做了某种操作后，需要动态更新，<em>如何实现这种功能呢</em>？</p>
+<p>通过更新 listView 中的数据源，一般情况下都是一个 <code>List&lt;Object&gt;</code>,我们通过向 list 中添加数据，然后调用 <code>mAdapter.notifyDataSetChanged()</code> 方法，就能实现 listView 的动态更新了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mData.add(<span class="string">"info"</span>);</span><br><span class="line">mAdapter.notifyDataSetChanged();</span><br></pre></td></tr></table></figure>
+<h2 id="遍历-listView-中的-item"><a href="#遍历-listView-中的-item" class="headerlink" title="遍历 listView 中的 item"></a>遍历 listView 中的 item</h2><p>通过 <code>getChildAt()</code> 来获取某个 View:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; mListView.getChildCount(); i++=) &#123;</span><br><span class="line">	View view = mListView.getChildAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="交互，当-listView-为空时"><a href="#交互，当-listView-为空时" class="headerlink" title="交互，当 listView 为空时"></a>交互，当 listView 为空时</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/ListView/" rel="tag">#ListView</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/07/2016-04-07-butterknife/" rel="next" title="Android 注解框架之 ButterKnife">
+                <i class="fa fa-chevron-left"></i> Android 注解框架之 ButterKnife
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/11/2016-04-11-listview-common-sense-tip1/"
+     data-title="Android ListView 常用技巧总结"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/04/11/2016-04-11-listview-common-sense-tip1/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/11/2016-04-11-listview-common-sense-tip1/"
+           data-title="Android ListView 常用技巧总结" data-url="http://www.jiangbing.me/2016/04/11/2016-04-11-listview-common-sense-tip1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description">有一种难事叫坚持</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#listView-的缓存机制以及-ViewHolder-的使用"><span class="nav-number">2.</span> <span class="nav-text">listView 的缓存机制以及 ViewHolder 的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-listView-中的分割线"><span class="nav-number">3.</span> <span class="nav-text">设置 listView 中的分割线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏-listView-的滚动条"><span class="nav-number">4.</span> <span class="nav-text">隐藏 listView 的滚动条</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取消-listView-的-item-的点击效果"><span class="nav-number">4.1.</span> <span class="nav-text">取消 listView 的 item 的点击效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置-listView-需要显示在其中某一项"><span class="nav-number">4.2.</span> <span class="nav-text">设置 listView 需要显示在其中某一项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态修改-listView"><span class="nav-number">5.</span> <span class="nav-text">动态修改 listView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历-listView-中的-item"><span class="nav-number">6.</span> <span class="nav-text">遍历 listView 中的 item</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互，当-listView-为空时"><span class="nav-number">7.</span> <span class="nav-text">交互，当 listView 为空时</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
