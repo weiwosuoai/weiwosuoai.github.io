@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-05-22T07:21:23.276Z</updated>
+  <updated>2016-05-22T07:25:24.879Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -20,16 +20,15 @@
     <link href="http://www.jiangbing.me/2016/04/11/2016-04-11-listview-common-sense-tip1/"/>
     <id>http://www.jiangbing.me/2016/04/11/2016-04-11-listview-common-sense-tip1/</id>
     <published>2016-04-11T02:55:08.000Z</published>
-    <updated>2016-05-22T07:21:23.276Z</updated>
+    <updated>2016-05-22T07:25:24.879Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本文对 &lt;code&gt;ListView&lt;/code&gt; 中的一些常用技巧做一个总结。&lt;font color=&quot;blue&quot;&gt;附:虽然现在 &lt;code&gt;RecyclerView&lt;/code&gt; 已逐渐取代 &lt;code&gt;ListView&lt;/code&gt;,但实际情况是大部分项目中还在使用 &lt;code&gt;ListView&lt;/code&gt;。当然，后续我会在我的博客中详细介绍 &lt;code&gt;RecyclerView&lt;/code&gt;,敬请期待。&lt;/font&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ListView&lt;/code&gt; 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 &lt;code&gt;listView&lt;/code&gt; 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 &lt;code&gt;listView&lt;/code&gt; 中的常用技巧一一罗列出来。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ListView&lt;/code&gt; 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 &lt;code&gt;listView&lt;/code&gt; 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 &lt;code&gt;listView&lt;/code&gt; 中的常用技巧一一罗列出来。&lt;/p&gt;
 &lt;h2 id=&quot;listView-的缓存机制以及-ViewHolder-的使用&quot;&gt;&lt;a href=&quot;#listView-的缓存机制以及-ViewHolder-的使用&quot; class=&quot;headerlink&quot; title=&quot;listView 的缓存机制以及 ViewHolder 的使用&quot;&gt;&lt;/a&gt;listView 的缓存机制以及 ViewHolder 的使用&lt;/h2&gt;&lt;p&gt;这两个知识点是最常用的优化 listView 的技巧。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1.首先，来说说 listView 的缓存机制，再这之前，我们先看看下面这张图：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2016052200.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;我先来说一下这张图的意思，从左边第一张图开始，当我们的手机上显示一个 listView 列表的时候，如图有 7 个 item,当我们向上拖动 listView，进入第二个示意图，注意细节，第二个图例表示的是，当向上拖动时，这是 item00 正准备消失在手机屏幕上但还没有完全消失时，item07 出现在我们的视野内，这时，item07 也只是显示一半，这种情况下，item07 还不是从缓存中复用的 item,而是重新 new 的一个 View.我们继续向上拖动，到了第三个图例，这时 item00 已经完全消失在屏幕上，这时系统不会销毁这 item00,而是将其放到了缓存中，那么当我们继续向上滑动时，我们就可以利用 listView 的 &lt;em&gt;缓存机制&lt;/em&gt;，复用缓存中 item,用它显示 item08,而不是再次的重新 new 一个.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016052200.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;我先来说一下这张图的意思，从左边第一张图开始，当我们的手机上显示一个 listView 列表的时候，如图有 7 个 item,当我们向上拖动 listView，进入第二个示意图，注意细节，第二个图例表示的是，当向上拖动时，这是 item00 正准备消失在手机屏幕上但还没有完全消失时，item07 出现在我们的视野内，这时，item07 也只是显示一半，这种情况下，item07 还不是从缓存中复用的 item,而是重新 new 的一个 View.我们继续向上拖动，到了第三个图例，这时 item00 已经完全消失在屏幕上，这时系统不会销毁这 item00,而是将其放到了缓存中，那么当我们继续向上滑动时，我们就可以利用 listView 的 &lt;em&gt;缓存机制&lt;/em&gt;，复用缓存中 item,用它显示 item08,而不是再次的重新 new 一个.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.通过 &lt;em&gt;缓存机制&lt;/em&gt; 和 ViewHolder 配合使用&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;知道了 &lt;em&gt;缓存机制&lt;/em&gt;，我们还需要知道 ViewHolder,这时 Google 大会上推荐我们使用的 listView 优化方案。&lt;/p&gt;
 &lt;p&gt;我们知道，我们通常写的视图 xml 文件，实际上是一个 DOM 树结构，而 findViewById() 实际上是遍历整个视图树，当你的 listView 中的 item 非常复杂时，findViewById() 所需的时间就越长，这是非常耗性能的。&lt;/p&gt;
@@ -46,11 +45,11 @@
 &lt;h2 id=&quot;隐藏-listView-的滚动条&quot;&gt;&lt;a href=&quot;#隐藏-listView-的滚动条&quot; class=&quot;headerlink&quot; title=&quot;隐藏 listView 的滚动条&quot;&gt;&lt;/a&gt;隐藏 listView 的滚动条&lt;/h2&gt;&lt;p&gt;我们在拖动 listView 时，默认情况下是有滚动条的，我们可以通过设置 &lt;code&gt;scrollbars&lt;/code&gt; 属性来控制滚动条的状态。&lt;/p&gt;
 &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android:scrollbars=&quot;none&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;设置为 &lt;code&gt;none&lt;/code&gt;,则不会出现滚动条。&lt;/p&gt;
-&lt;h3 id=&quot;取消-listView-的-item-的点击效果&quot;&gt;&lt;a href=&quot;#取消-listView-的-item-的点击效果&quot; class=&quot;headerlink&quot; title=&quot;取消 listView 的 item 的点击效果&quot;&gt;&lt;/a&gt;取消 listView 的 item 的点击效果&lt;/h3&gt;&lt;p&gt;listView 默认下，但我们点击其中的 item 时，会有点击效果。通过设置 &lt;code&gt;listSelector&lt;/code&gt; 属性来取消点击效果。&lt;/p&gt;
+&lt;h2 id=&quot;取消-listView-的-item-的点击效果&quot;&gt;&lt;a href=&quot;#取消-listView-的-item-的点击效果&quot; class=&quot;headerlink&quot; title=&quot;取消 listView 的 item 的点击效果&quot;&gt;&lt;/a&gt;取消 listView 的 item 的点击效果&lt;/h2&gt;&lt;p&gt;listView 默认下，但我们点击其中的 item 时，会有点击效果。通过设置 &lt;code&gt;listSelector&lt;/code&gt; 属性来取消点击效果。&lt;/p&gt;
 &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android:listSelector=&quot;#00000000&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;你还可以使用 Android 自带的透明色来实现这个效果：&lt;/p&gt;
 &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android:listSelector=&quot;@android:color/transparent&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;设置-listView-需要显示在其中某一项&quot;&gt;&lt;a href=&quot;#设置-listView-需要显示在其中某一项&quot; class=&quot;headerlink&quot; title=&quot;设置 listView 需要显示在其中某一项&quot;&gt;&lt;/a&gt;设置 listView 需要显示在其中某一项&lt;/h3&gt;&lt;p&gt;listView 默认情况下是显示在第一项的，&lt;em&gt;有时候，需求是显示在指定项，那么要如何实现呢？&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;设置-listView-需要显示在其中某一项&quot;&gt;&lt;a href=&quot;#设置-listView-需要显示在其中某一项&quot; class=&quot;headerlink&quot; title=&quot;设置 listView 需要显示在其中某一项&quot;&gt;&lt;/a&gt;设置 listView 需要显示在其中某一项&lt;/h2&gt;&lt;p&gt;listView 默认情况下是显示在第一项的，&lt;em&gt;有时候，需求是显示在指定项，那么要如何实现呢？&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;代码控制：&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;listView.setSelection(position)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;通过制定 position,来设置需要显示在第几项。但是，这种滑动操作是瞬间完成的，有时候，我们的需求是 &lt;em&gt;平滑&lt;/em&gt; 的滑动到某个位置，通过下面的代码可以实现这种效果：&lt;/p&gt;
@@ -67,7 +66,10 @@
       &lt;blockquote&gt;
 &lt;p&gt;本文对 &lt;code&gt;ListView&lt;/code&gt; 中的一些常用技巧做一个总结。&lt;font color=&#39;blue&#39;&gt;附:虽然现在 &lt;code&gt;RecyclerView&lt;/code&gt; 已逐渐取代 &lt;code&gt;ListView&lt;/code&gt;,但实际情况是大部分项目中还在使用 &lt;code&gt;ListView&lt;/code&gt;。当然，后续我会在我的博客中详细介绍 &lt;code&gt;RecyclerView&lt;/code&gt;,敬请期待。&lt;/font&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ListView&lt;/code&gt; 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 &lt;code&gt;listView&lt;/code&gt; 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 &lt;code&gt;listView&lt;/code&gt; 中的常用技巧一一罗列出来。&lt;br&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ListView&lt;/code&gt; 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 &lt;code&gt;listView&lt;/code&gt; 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 &lt;code&gt;listView&lt;/code&gt; 中的常用技巧一一罗列出来。&lt;/p&gt;
+&lt;h2 id=&quot;listView-的缓存机制以及-ViewHolder-的使用&quot;&gt;&lt;a href=&quot;#listView-的缓存机制以及-ViewHolder-的使用&quot; class=&quot;headerlink&quot; title=&quot;listView 的缓存机制以及 ViewHolder 的使用&quot;&gt;&lt;/a&gt;listView 的缓存机制以及 ViewHolder 的使用&lt;/h2&gt;&lt;p&gt;这两个知识点是最常用的优化 listView 的技巧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.首先，来说说 listView 的缓存机制，再这之前，我们先看看下面这张图：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016052200.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     

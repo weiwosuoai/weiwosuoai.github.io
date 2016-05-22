@@ -337,7 +337,10 @@
           <blockquote>
 <p>本文对 <code>ListView</code> 中的一些常用技巧做一个总结。<font color='blue'>附:虽然现在 <code>RecyclerView</code> 已逐渐取代 <code>ListView</code>,但实际情况是大部分项目中还在使用 <code>ListView</code>。当然，后续我会在我的博客中详细介绍 <code>RecyclerView</code>,敬请期待。</font></p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>ListView</code> 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 <code>listView</code> 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 <code>listView</code> 中的常用技巧一一罗列出来。<br>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>ListView</code> 作为 Android 中常用的列表控件，用以向用户展示列表信息。可以说，我们开发的项目中 <code>listView</code> 随处可见，也是 Android 程序员面试时，最常被问的一个知识点，下面我就将 <code>listView</code> 中的常用技巧一一罗列出来。</p>
+<h2 id="listView-的缓存机制以及-ViewHolder-的使用"><a href="#listView-的缓存机制以及-ViewHolder-的使用" class="headerlink" title="listView 的缓存机制以及 ViewHolder 的使用"></a>listView 的缓存机制以及 ViewHolder 的使用</h2><p>这两个知识点是最常用的优化 listView 的技巧。</p>
+<p><strong>1.首先，来说说 listView 的缓存机制，再这之前，我们先看看下面这张图：</strong></p>
+<p><img src="/images/2016052200.png" alt=""><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/11/2016-04-11-listview-common-sense-tip1/#more" rel="contents">
               阅读全文 &raquo;
