@@ -244,7 +244,7 @@
     <link href="http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/"/>
     <id>http://www.jiangbing.me/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/</id>
     <published>2016-04-02T00:03:53.000Z</published>
-    <updated>2016-05-30T11:48:53.408Z</updated>
+    <updated>2016-06-01T07:42:38.024Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;我在之前有两篇介绍 Android Studio 的博文，分别是 &lt;a href=&quot;http://jiangbing.me/2016/01/25/2016-01-25-android-studio-tips-and-tricks/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Android Studio 概览》&lt;/a&gt; 和 &lt;a href=&quot;http://jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《再说说 Android Studio》&lt;/a&gt;，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.&lt;/p&gt;
@@ -298,7 +298,11 @@
 &lt;p&gt;点击 Settings -&amp;gt; Editor -&amp;gt; Code Style -&amp;gt; Java -&amp;gt; Code Generation -&amp;gt; Naming -&amp;gt; Field(Name prefix),如下图所示：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2016053000.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;完成后，再次生成 get &amp;amp;&amp;amp; set 方法，你就不会看见方法名中带有 m 了。&lt;/p&gt;
-&lt;h2 id=&quot;8-导入工程&quot;&gt;&lt;a href=&quot;#8-导入工程&quot; class=&quot;headerlink&quot; title=&quot;8.导入工程&quot;&gt;&lt;/a&gt;8.导入工程&lt;/h2&gt;&lt;p&gt;导入工程分为两个部分：&lt;/p&gt;
+&lt;h2 id=&quot;8-修改-Android-Studio-默认的注释模板&quot;&gt;&lt;a href=&quot;#8-修改-Android-Studio-默认的注释模板&quot; class=&quot;headerlink&quot; title=&quot;8.修改 Android Studio 默认的注释模板&quot;&gt;&lt;/a&gt;8.修改 Android Studio 默认的注释模板&lt;/h2&gt;&lt;p&gt;Android Studio 中默认的注释模板通常情况下不能详细的描述类的具体信息，格式上也不是很美观，接下来，让我们看看如何修改成自己想要的注释模板。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;点击 Setting -&amp;gt; Editor -&amp;gt; Code Style -&amp;gt; File and Code Templates -&amp;gt; File -&amp;gt; Class -&amp;gt; Includes -&amp;gt; File Header:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016060100.jpg&quot; alt=&quot;&quot;&gt; &lt;img src=&quot;/images/2016060101.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;通过编辑 &lt;em&gt;注释模板&lt;/em&gt; 区域，完成好保存后，新创建的类就会应用你指定的注释模板了。&lt;/p&gt;
+&lt;h2 id=&quot;9-导入工程&quot;&gt;&lt;a href=&quot;#9-导入工程&quot; class=&quot;headerlink&quot; title=&quot;9.导入工程&quot;&gt;&lt;/a&gt;9.导入工程&lt;/h2&gt;&lt;p&gt;导入工程分为两个部分：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1.导入 AS 工程&lt;/li&gt;
 &lt;/ul&gt;
