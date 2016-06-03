@@ -91,12 +91,12 @@
 前言众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 startService()，从而调用 Service 中的 onStartCommand()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 中的 Service 类拓展和 IntentService 介绍">
-<meta property="og:url" content="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service/index.html">
+<meta property="og:url" content="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/index.html">
 <meta property="og:site_name" content="Allen's Blog">
 <meta property="og:description" content="IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。
 
 前言众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 startService()，从而调用 Service 中的 onStartCommand()">
-<meta property="og:updated_time" content="2016-06-03T04:23:52.665Z">
+<meta property="og:updated_time" content="2016-06-03T04:32:48.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的 Service 类拓展和 IntentService 介绍">
 <meta name="twitter:description" content="IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。
@@ -311,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/18/2016-04-18-intent-service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/2016-04-18-intent-service/" itemprop="commentsCount"></span>
+                <a href="/2016/04/18/2016-04-18-intent-service-and-intent-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/2016-04-18-intent-service-and-intent-service/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -350,9 +350,9 @@
 <ul>
 <li>Service : 这是服务的基类。默认情况下运行于主线程中。</li>
 <li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。<a id="more"></a>
-<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2></li>
+</li>
 </ul>
-<p>我们来详细说一说 IntentService 的功能：</p>
+<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><p>我们来详细说一说 IntentService 的功能：</p>
 <ul>
 <li>创建默认的 <strong>工作线程</strong>，来处理在 <code>onStartCommand()</code> 中接受到的所有 Intent;</li>
 <li>创建 <strong>工作队列</strong>，用于将 Intent 逐一传递给 <code>onHandleIntent()</code> 实现，这种机制，让我们告别多线程的苦恼;</li>
@@ -427,17 +427,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/" rel="next" title="Android ListView 常用技巧总结">
-                <i class="fa fa-chevron-left"></i> Android ListView 常用技巧总结
+              <a href="/2016/04/18/2016-04-18-intent-service/" rel="next" title="Android 中的 Service 类拓展和 IntentService 介绍">
+                <i class="fa fa-chevron-left"></i> Android 中的 Service 类拓展和 IntentService 介绍
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/18/2016-04-18-intent-service-and-intent-service/" rel="prev" title="Android 中的 Service 类拓展和 IntentService 介绍">
-                Android 中的 Service 类拓展和 IntentService 介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,10 +448,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/18/2016-04-18-intent-service/"
+        <div class="ds-share flat" data-thread-key="2016/04/18/2016-04-18-intent-service-and-intent-service/"
      data-title="Android 中的 Service 类拓展和 IntentService 介绍"
      data-content=""
-     data-url="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service/">
+     data-url="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -482,8 +478,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/18/2016-04-18-intent-service/"
-           data-title="Android 中的 Service 类拓展和 IntentService 介绍" data-url="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service/">
+      <div class="ds-thread" data-thread-key="2016/04/18/2016-04-18-intent-service-and-intent-service/"
+           data-title="Android 中的 Service 类拓展和 IntentService 介绍" data-url="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/">
       </div>
     
   </div>
