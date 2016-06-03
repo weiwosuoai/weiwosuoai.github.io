@@ -335,7 +335,7 @@
       
         
           <blockquote>
-<p>IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。</p>
+<p>IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 <code>onHandleIntent()</code> 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 <code>startService()</code>，从而调用 Service 中的 <code>onStartCommand()</code> 方法. </p>
 <p>Service 拥有自己的生命周期，并可以在后台无限期的运行（和 Windows 中的 Service 很像）。</p>
