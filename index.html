@@ -340,10 +340,11 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 <code>startService()</code>，从而调用 Service 中的 <code>onStartCommand()</code> 方法. </p>
 <p>Service 拥有自己的生命周期，并可以在后台无限期的运行（和 Windows 中的 Service 很像）。</p>
 <blockquote>
-<p><font color='red'>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。</font></p>
-<p><font color='red'>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。</font></p>
-<p><font color='blue'>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</font><br><br/><br><em>这里有两种 Service 供我们使用：</em></p>
+<font color='red'>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。</font><br><font color='red'>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。</font><br><font color='blue'>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</font>
+
+
 </blockquote>
+<p><em>这里有两种 Service 供我们使用：</em></p>
 <ul>
 <li>Service : 这是服务的基类。默认情况下运行于主线程中。</li>
 <li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。
