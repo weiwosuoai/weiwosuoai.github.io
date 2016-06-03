@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-06-03T04:34:09.652Z</updated>
+  <updated>2016-06-03T04:40:12.506Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/"/>
     <id>http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/</id>
     <published>2016-04-18T02:55:08.000Z</published>
-    <updated>2016-06-03T04:34:09.652Z</updated>
+    <updated>2016-06-03T04:40:12.506Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。&lt;/p&gt;
@@ -30,9 +30,7 @@
 &lt;blockquote&gt;
 &lt;font color=&quot;red&quot;&gt;注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。&lt;/font&gt;
 
-&lt;font color=&quot;red&quot;&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;/font&gt;
-
-&lt;font color=&quot;blue&quot;&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/font&gt;
+&lt;font color=&quot;red&quot;&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;blue&quot;&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/font&gt;
 
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;/p&gt;
@@ -94,9 +92,7 @@
 &lt;blockquote&gt;
 &lt;font color=&#39;red&#39;&gt;注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。&lt;/font&gt;
 
-&lt;font color=&#39;red&#39;&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;/font&gt;
-
-&lt;font color=&#39;blue&#39;&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/font&gt;
+&lt;font color=&#39;red&#39;&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;/font&gt;&lt;br&gt;&lt;font color=&#39;blue&#39;&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/font&gt;
 
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;/p&gt;
