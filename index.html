@@ -399,142 +399,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/18/2016-04-18-intent-service/" itemprop="url">
-                  Android 中的 Service 类拓展和 IntentService 介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T10:55:08+08:00" content="2016-04-18">
-              2016-04-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/18/2016-04-18-intent-service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/2016-04-18-intent-service/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 <code>startService()</code>，从而调用 Service 中的 <code>onStartCommand()</code> 方法. </p>
-<p>Service 拥有自己的生命周期，并可以在后台无限期的运行（和 Windows 中的 Service 很像）。</p>
-<blockquote>
-<font color='red'>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。</font>
-
-<font color='red'>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。</font><br><font color='blue'>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</font>
-
-</blockquote>
-<p><em>这里有两种 Service 供我们使用：</em></p>
-<ul>
-<li>Service : 这是服务的基类。默认情况下运行于主线程中。</li>
-<li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/18/2016-04-18-intent-service/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/" itemprop="url">
                   Android ListView 常用技巧总结
                 </a>
@@ -1543,6 +1407,146 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="url">
+                  Android Touch 事件传递机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-29T11:45:49+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文转自 Trinea大牛的 <a href="http://www.trinea.cn/android/touch-event-delivery-mechanism/">《Android Touch事件传递机制》</a></p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>(1) 所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。</p>
+<p>(2) 事件类型分为：</p>
+<ul>
+<li>ACTION_DOWN</li>
+<li>ACTION_UP</li>
+<li>ACTION_MOVE </li>
+<li>ACTION_POINTER_DOWN </li>
+<li>ACTION_POINTER_UP</li>
+<li>ACTION_CANCEL</li>
+</ul>
+<p>每个事件都是以ACTION_DOWN 开始 ACTION_UP 结束。</p>
+<p>(3) 对事件的处理包括三类，分别为：</p>
+<ul>
+<li>1.传递：dispatchTouchEvent()函数</li>
+<li>2.拦截：onInterceptTouchEvent()函数</li>
+<li>3.消费：onTouchEvent()函数和 OnTouchListener
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1588,7 +1592,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
