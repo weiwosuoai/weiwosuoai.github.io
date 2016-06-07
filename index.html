@@ -374,7 +374,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/" itemprop="url">
+                <a class="post-title-link" href="/2016/04/11/2016-04-11-listview-common-sense-tip1/" itemprop="url">
                   Android ListView 常用技巧总结
                 </a>
               
@@ -418,8 +418,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/" itemprop="commentsCount"></span>
+                <a href="/2016/04/11/2016-04-11-listview-common-sense-tip1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/2016-04-11-listview-common-sense-tip1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -452,7 +452,7 @@
 <p><img src="/images/2016052200.png" alt=""></p>
 <p>我先来说一下这张图的意思，从左边第一张图开始，当我们的手机上显示一个 listView 列表的时候，如图有 7 个 item,当我们向上拖动 listView，进入第二个示意图，注意细节，第二个图例表示的是，当向上拖动时，这是 item00 正准备消失在手机屏幕上但还没有完全消失时，item07 出现在我们的视野内，这时，item07 也只是显示一半，这种情况下，item07 还不是从缓存中复用的 item,而是重新 new 的一个 View.我们继续向上拖动，到了第三个图例，这时 item00 已经完全消失在屏幕上，这时系统不会销毁这 item00,而是将其放到了缓存中，那么当我们继续向上滑动时，我们就可以利用 listView 的 <em>缓存机制</em>，复用缓存中 item,用它显示 item08,而不是再次的重新 new 一个.<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/11/2016-04-11-listview-common-sense-tip1 - 副本 - 副本/#more" rel="contents">
+            <a class="btn" href="/2016/04/11/2016-04-11-listview-common-sense-tip1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
