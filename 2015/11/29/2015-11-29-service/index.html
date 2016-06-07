@@ -75,7 +75,7 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
 Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。
 它有">
 <meta property="og:image" content="http://www.jiangbing.me/images/2016060700.png">
-<meta property="og:updated_time" content="2016-06-07T05:58:29.573Z">
+<meta property="og:updated_time" content="2016-06-07T07:38:05.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的 Service">
 <meta name="twitter:description" content="Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service
@@ -398,6 +398,7 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
 
 <p><img src="/images/2016060700.png" alt=""></p>
 <p>上图中分别是通过 <code>startService()</code> 和 <code>bindService()</code> 来创建 Service 的生命周期。</p>
+<h2 id="外话：使用服务还是使用线程？"><a href="#外话：使用服务还是使用线程？" class="headerlink" title="外话：使用服务还是使用线程？"></a>外话：使用服务还是使用线程？</h2><p>即使用户未与用户交互，它仍然可以在后台运行。我们应该仅在必要时创建 Service。如果需要在主线程外执行工作，而这种操作又是在用户与应用交互时才需要，这个时候我们应该使用线程，而不是 Service.比如说你只是想在 Activity 运行时播放音乐，就没有必要用 Service 了。</p>
 <p>本文参考：</p>
 <ul>
 <li><a href="https://developer.android.com/guide/components/services.html" target="_blank" rel="external">https://developer.android.com/guide/components/services.html</a></li>
@@ -631,7 +632,7 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建-Service？"><span class="nav-number">2.</span> <span class="nav-text">如何创建 Service？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务"><span class="nav-number">3.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止服务"><span class="nav-number">4.</span> <span class="nav-text">停止服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定服务"><span class="nav-number">5.</span> <span class="nav-text">绑定服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-中向用户发送通知"><span class="nav-number">6.</span> <span class="nav-text">Service 中向用户发送通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前台运行的服务"><span class="nav-number">7.</span> <span class="nav-text">前台运行的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-生命周期"><span class="nav-number">8.</span> <span class="nav-text">Service 生命周期</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建-Service？"><span class="nav-number">2.</span> <span class="nav-text">如何创建 Service？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务"><span class="nav-number">3.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止服务"><span class="nav-number">4.</span> <span class="nav-text">停止服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定服务"><span class="nav-number">5.</span> <span class="nav-text">绑定服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-中向用户发送通知"><span class="nav-number">6.</span> <span class="nav-text">Service 中向用户发送通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前台运行的服务"><span class="nav-number">7.</span> <span class="nav-text">前台运行的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-生命周期"><span class="nav-number">8.</span> <span class="nav-text">Service 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外话：使用服务还是使用线程？"><span class="nav-number">9.</span> <span class="nav-text">外话：使用服务还是使用线程？</span></a></li></ol></div>
             
           </div>
         </section>
