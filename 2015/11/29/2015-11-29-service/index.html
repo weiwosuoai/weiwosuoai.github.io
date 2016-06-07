@@ -1,0 +1,768 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Service," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service
+
+前言什么是服务？
+Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。
+它有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 中的 Service">
+<meta property="og:url" content="http://www.jiangbing.me/2015/11/29/2015-11-29-service/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service
+
+前言什么是服务？
+Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。
+它有">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016060700.png">
+<meta property="og:updated_time" content="2016-06-07T05:50:43.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 中的 Service">
+<meta name="twitter:description" content="Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service
+
+前言什么是服务？
+Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。
+它有">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016060700.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> Android 中的 Service | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 中的 Service
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-29T10:55:08+08:00" content="2015-11-29">
+              2015-11-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/29/2015-11-29-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/29/2015-11-29-service/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是服务？</em></p>
+<p>Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。</p>
+<p><em>它有什么作用？</em></p>
+<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。<br><a id="more"></a><br>我们可以通过下面两种方式来启动一个服务：</p>
+<ul>
+<li>1.<code>startService()</code> : 这种方式，即使启动者别销毁了，Service 依旧可以在后台运行，且不会反悔结果给调用者。</li>
+<li>2.<code>bindServcie()</code> : 这种方式，使得 Service 出于绑定状态。该服务提供了一个接口，允许我们与 Service 进行交互（发送请求，获取结果），甚至是用进程通信（IPC）跨进程交互。另外，多个组件可以同时绑定到该服务，同时如果你想要停止该服务，你需要解绑所有的绑定，该服务才能够被销毁。</li>
+</ul>
+<blockquote>
+<font color="red"><strong>注意1</strong>：上面的两种方式可以同时存在，也就是说，你可让一个服务以 <code>startService()</code> 的方式在后台无限期的运行，也可以让该 Service 绑定到某一个组件上。</font><br><font color="red"><strong>注意2</strong>：服务默认情况下是在主进程中运行的，它既不创建自己的线程，也不在单独的进程中运行，当然，你另行指定的话就另说了。也就是说，如果你想在 Service 中执行一些耗时操作的话，请在单独开一个子线程，以降低 ANR 的风险。</font>
+
+</blockquote>
+<h2 id="如何创建-Service？"><a href="#如何创建-Service？" class="headerlink" title="如何创建 Service？"></a>如何创建 Service？</h2><p><strong>Step1: 创建 Service 子类，重写一些回调方法</strong></p>
+<ul>
+<li><code>onStartCommand()</code></li>
+</ul>
+<p>当另一个组件通过调用 <code>startService()</code> 启动服务时，系统会调用此方法。实现此方法后，你需要通过调用 <code>stopSelf()</code> 或者是 <code>stopService()</code> 来停止服务。如果你只是想提供绑定服务，则无需实现此方法。</p>
+<ul>
+<li><code>onBind()</code></li>
+</ul>
+<p>当另一个组件通过调用 <code>bindService()</code> 绑定服务时，系统将调用此方法。在此方法中，你需要返回一个 IBinder，实现里面的相关方法，以供调用者与服务进行通信。当然，如果你不是绑定服务，返回 <code>null</code> 即可。</p>
+<ul>
+<li><code>onCreate()</code></li>
+</ul>
+<p>首次创建 Service 时，系统会调用此方法。如果 Service 已在运行，则不会调用此方法。</p>
+<ul>
+<li><code>onCreate()</code></li>
+</ul>
+<p>当服务不再使用被销毁时，系统将调用此方法。你需要在服务中清理掉服务中用到的所有资源，如线程，接受器等。</p>
+<p><strong>Step2: 在清单文件中声明服务</strong></p>
+<p>代码如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">...</span> &gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">application</span> <span class="attr">...</span> &gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">".ExampleService"</span> /&gt;</span></span><br><span class="line">      ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>android:name 属性是唯一必须声明的属性，用来指定服务类名。</p>
+<blockquote>
+<font color="red"><strong>注意</strong>：为了确保应用的安全性，我们应使用显式 Intent 启动或绑定 Service,且不应为其声明 Intent 过滤器。另外，还可以通过添加 <code>android:exported</code> 属性并将其设置为 <code>false</code>,以确保此服务仅仅在本应用中被调用。这样可以防止第三方应用启动了我们的服务。</font>
+
+</blockquote>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>在其他组件中，我们通过 Intent 来指定需要启动的服务，调用 <code>startService()</code>。这样系统会自动调用 <code>onStartCommand()</code> 方法，并将定义好的 Intent 传递过去。</p>
+<blockquote>
+<font color="red"><strong>注意</strong>：切勿手动调用 <code>onStartCommand()</code> 方法。</font>
+
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, HelloService.class);</span><br><span class="line">startService(intent);</span><br></pre></td></tr></table></figure>
+<p>还有一点需要注意的是，当我们需要启动的 Service 还未运行，则会调用 <code>onCreate()</code> -&gt; <code>onStartCommand()</code>,否者直接调用 <code>onStartCommand()</code> 方法。</p>
+<p>对于非绑定的服务，我们想要与之通信，startService() 中传递的 Intent 是唯一的通信模式。但是，我们可以通过为广播创建一个 PendingIntent(使用 <code>getBroadcast()</code>),并通过启动服务的方法将这个 Intent 传递给服务。这样，在 Service 中，就可以通过广播来传递信息了。</p>
+<blockquote>
+<font color="blue">Tip : 多次启动同一个服务，会调用多次的 <code>onStartCommand()</code> 方法，但是，如果我们想要停止服务，只需一个停止请求即可（<code>stopSelf()</code> 或者 <code>stopService()</code>）</font>
+
+</blockquote>
+<h2 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h2><p>服务需要自己管理自己的生命周期。换而言之，除非系统需要回收内存资源，我们的服务是不大可能会被停止和销毁的。因此，当我们不需要某个 Service 时，应调用 <code>stopSelf()</code> 来停止服务，亦或者是在另一个组件中通过调用 <code>stopService()</code> 来停止服务。</p>
+<font color="red">注意，如果 Service 同时处理多个 onStartCommand() 请求时，这种情况下，我们不应处理完一个请求后立刻停止服务，因为这个时候，Service 可能接受到了新的请求，如果我们停止了服务，则第二个请求将不被执行。</font>
+
+<p><em>那么要如何避免上述情况的发生呢？</em></p>
+<p>我们可以通过 <code>stopSelf(int)</code> 来确保请求停止的服务是最近一个被启动的服务。换句话说就是，<code>stopService(int)</code> 中传递的 id 和 <code>onStartCommand()</code> 中的 startId 是相等的，这样如果 id 不匹配，服务也就不会被停止了。</p>
+<font color="blue">Tip : 为了避免浪费系统资源和消耗电量，我们应该保证工作完成后立即停止服务。</font>
+
+<h2 id="绑定服务"><a href="#绑定服务" class="headerlink" title="绑定服务"></a>绑定服务</h2><p>关于绑定服务的相关知识，我们将会在下一篇博文 《Android 中的绑定服务》 详细论述。</p>
+<h2 id="Service-中向用户发送通知"><a href="#Service-中向用户发送通知" class="headerlink" title="Service 中向用户发送通知"></a>Service 中向用户发送通知</h2><p>运行中的 Service 可以使用 <em>Toast 通知</em> 或 <em>状态栏通知</em> 来与用户交互。</p>
+<p>首先，<em>Toast 通知</em> 就没什么好说的了，Android 开发者应该是非常熟悉了。而 <em>状态栏通知</em> 通常出现在 Service 所做的工作（比如文件下载）且用户可以马上对其操作（比如终止下载，下载完成后打开文件），这种情况下，状态栏是最佳的选择。</p>
+<h2 id="前台运行的服务"><a href="#前台运行的服务" class="headerlink" title="前台运行的服务"></a>前台运行的服务</h2><p>前台运行的服务是一种优先级非常高的服务，是一种用户能够意识到的服务，即使是在系统内存不足时，系统也不会考虑将其终止。前台服务必须在状态栏中提供通知，状态栏位于 “正在进行” 标题下方，这意味着除非服务停止或者前台删除，否者我们是不能清除通知的。</p>
+<p>运用前台服务最常见的例子就是音乐播放器。状态栏中的通知一般都是正在播放的歌曲，用户点击过后又会启动相应的 Activity 来操作播放器。</p>
+<p>通过调用 statForeground() 方法来让服务运行于前台。此方法需要传入两个参数：</p>
+<ul>
+<li>唯一标识通知的整型数；</li>
+<li>状态栏的 Notificaiton</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Notification notification = <span class="keyword">new</span> Notification(R.drawable.icon, getText(R.string.ticker_text),</span><br><span class="line">        System.currentTimeMillis());</span><br><span class="line">Intent notificationIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ExampleActivity.class);</span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, notificationIntent, <span class="number">0</span>);</span><br><span class="line">notification.setLatestEventInfo(<span class="keyword">this</span>, getText(R.string.notification_title),</span><br><span class="line">        getText(R.string.notification_message), pendingIntent);</span><br><span class="line">startForeground(ONGOING_NOTIFICATION_ID, notification);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<font color="red">注意：传入 <code>startForeground()</code> 中的整数型 ID 不能为 0.</font>
+
+</blockquote>
+<p>想要删除前台服务，通过调用 <code>stopForeground()</code>,参数中我们需要传入一个 boolean 值，来决定是否需要删除状态栏通知。</p>
+<h2 id="Service-生命周期"><a href="#Service-生命周期" class="headerlink" title="Service 生命周期"></a>Service 生命周期</h2><p>Service 中回调的示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mStartMode;       <span class="comment">// indicates how to behave if the service is killed</span></span><br><span class="line">    IBinder mBinder;      <span class="comment">// interface for clients that bind</span></span><br><span class="line">    <span class="keyword">boolean</span> mAllowRebind; <span class="comment">// indicates whether onRebind should be used</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// The service is being created</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// The service is starting, due to a call to startService()</span></span><br><span class="line">        <span class="keyword">return</span> mStartMode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// A client is binding to the service with bindService()</span></span><br><span class="line">        <span class="keyword">return</span> mBinder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// All clients have unbound with unbindService()</span></span><br><span class="line">        <span class="keyword">return</span> mAllowRebind;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRebind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// A client is binding to the service with bindService(),</span></span><br><span class="line">        <span class="comment">// after onUnbind() has already been called</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// The service is no longer used and is being destroyed</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font color="blue">我们需要知道的是，与 Activity 不同，我们不需要再回调方法中调用父类的实现。</font>
+
+<p><img src="/images/2016060700.png" alt=""></p>
+<p>上图中分别是通过 <code>startService()</code> 和 <code>bindService()</code> 来创建 Service 的生命周期。</p>
+<p>本文参考：</p>
+<ul>
+<li><a href="https://developer.android.com/guide/components/services.html#Notifications" target="_blank" rel="external">https://developer.android.com/guide/components/services.html#Notifications</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Service/" rel="tag">#Service</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" rel="prev" title="朋友面试中被问到的 Android 面试题解答">
+                朋友面试中被问到的 Android 面试题解答 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/29/2015-11-29-service/"
+     data-title="Android 中的 Service"
+     data-content=""
+     data-url="http://www.jiangbing.me/2015/11/29/2015-11-29-service/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/29/2015-11-29-service/"
+           data-title="Android 中的 Service" data-url="http://www.jiangbing.me/2015/11/29/2015-11-29-service/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description">有一种难事叫坚持</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建-Service？"><span class="nav-number">2.</span> <span class="nav-text">如何创建 Service？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务"><span class="nav-number">3.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止服务"><span class="nav-number">4.</span> <span class="nav-text">停止服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定服务"><span class="nav-number">5.</span> <span class="nav-text">绑定服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-中向用户发送通知"><span class="nav-number">6.</span> <span class="nav-text">Service 中向用户发送通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前台运行的服务"><span class="nav-number">7.</span> <span class="nav-text">前台运行的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-生命周期"><span class="nav-number">8.</span> <span class="nav-text">Service 生命周期</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
