@@ -75,7 +75,7 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
 Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。
 它有">
 <meta property="og:image" content="http://www.jiangbing.me/images/2016060700.png">
-<meta property="og:updated_time" content="2016-06-07T07:38:05.561Z">
+<meta property="og:updated_time" content="2016-06-07T07:59:08.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的 Service">
 <meta name="twitter:description" content="Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service
@@ -323,16 +323,17 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是服务？</em></p>
 <p>Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。</p>
 <p><em>它有什么作用？</em></p>
-<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。<br><a id="more"></a><br>我们可以通过下面两种方式来启动一个服务：</p>
+<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。</p>
+<p>我们可以通过下面两种方式来启动一个服务：</p>
 <ul>
 <li>1.<code>startService()</code> : 这种方式，即使启动者别销毁了，Service 依旧可以在后台运行，且不会反悔结果给调用者。</li>
 <li>2.<code>bindServcie()</code> : 这种方式，使得 Service 出于绑定状态。该服务提供了一个接口，允许我们与 Service 进行交互（发送请求，获取结果），甚至是用进程通信（IPC）跨进程交互。另外，多个组件可以同时绑定到该服务，同时如果你想要停止该服务，你需要解绑所有的绑定，该服务才能够被销毁。</li>
 </ul>
 <blockquote>
-<font color="red"><strong>注意1</strong>：上面的两种方式可以同时存在，也就是说，你可让一个服务以 <code>startService()</code> 的方式在后台无限期的运行，也可以让该 Service 绑定到某一个组件上。</font><br><font color="red"><strong>注意2</strong>：服务默认情况下是在主进程中运行的，它既不创建自己的线程，也不在单独的进程中运行，当然，你另行指定的话就另说了。也就是说，如果你想在 Service 中执行一些耗时操作的话，请在单独开一个子线程，以降低 ANR 的风险。</font>
-
-</blockquote>
-<h2 id="如何创建-Service？"><a href="#如何创建-Service？" class="headerlink" title="如何创建 Service？"></a>如何创建 Service？</h2><p><strong>Step1: 创建 Service 子类，重写一些回调方法</strong></p>
+<p><font color="red"><strong>注意1</strong>：上面的两种方式可以同时存在，也就是说，你可让一个服务以 <code>startService()</code> 的方式在后台无限期的运行，也可以让该 Service 绑定到某一个组件上。</font></p>
+<p><font color="red"><strong>注意2</strong>：服务默认情况下是在主进程中运行的，它既不创建自己的线程，也不在单独的进程中运行，当然，你另行指定的话就另说了。也就是说，如果你想在 Service 中执行一些耗时操作的话，请在单独开一个子线程，以降低 ANR 的风险。</font><br><a id="more"></a></p>
+<h2 id="如何创建-Service？"><a href="#如何创建-Service？" class="headerlink" title="如何创建 Service？"></a>如何创建 Service？</h2></blockquote>
+<p><strong>Step1: 创建 Service 子类，重写一些回调方法</strong></p>
 <ul>
 <li><code>onStartCommand()</code></li>
 </ul>
@@ -460,8 +461,8 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" rel="prev" title="朋友面试中被问到的 Android 面试题解答">
-                朋友面试中被问到的 Android 面试题解答 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/01/2015-12-01-binder-service/" rel="prev" title="Android 中的绑定服务">
+                Android 中的绑定服务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -553,7 +554,7 @@ Service 与 Activity 不同，它是一个不需要交互界面，且能够在�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -239,7 +239,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" itemprop="url">
+                <a class="post-title-link" href="/2015/12/03/2015-12-03-about-the-answer-of-interview-question-of-friend/" itemprop="url">
                   朋友面试中被问到的 Android 面试题解答
                 </a>
               
@@ -253,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-05T15:21:28+08:00" content="2015-12-05">
-              2015-12-05
+            <time itemprop="dateCreated" datetime="2015-12-03T15:21:28+08:00" content="2015-12-03">
+              2015-12-03
             </time>
           </span>
 
@@ -283,8 +283,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/" itemprop="commentsCount"></span>
+                <a href="/2015/12/03/2015-12-03-about-the-answer-of-interview-question-of-friend/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/2015-12-03-about-the-answer-of-interview-question-of-friend/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -313,7 +313,135 @@
 </blockquote>
 <h2 id="Question-1-碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？"><a href="#Question-1-碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？" class="headerlink" title="Question 1: 碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？"></a>Question 1: 碎片跳转碎片然后怎么从这个碎片返回到前面一个碎片？</h2><p>这个问题很简单，但是为了答案的可信度和专业度，这里还是要贴上官方的文档：<br><img src="/images/2016031600.png" alt=""><br><a href="http://developer.android.com/training/basics/fragments/fragment-ui.html#Replace">官方文档链接</a><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/05/2015-12-05-about-the-answer-of-interview-question-of-friend/#more" rel="contents">
+            <a class="btn" href="/2015/12/03/2015-12-03-about-the-answer-of-interview-question-of-friend/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/01/2015-12-01-binder-service/" itemprop="url">
+                  Android 中的绑定服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-01T10:55:08+08:00" content="2015-12-01">
+              2015-12-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/01/2015-12-01-binder-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/01/2015-12-01-binder-service/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是绑定服务？</em></p>
+<p>绑定服务是指服务与其他绑定在一起。比如说，我们可以将服务绑定在 Activity 上，来发送请求，接受响应，甚至是执行进程间的通讯（IPC）。我们需要知道的是，绑定服务的生命周期通常与被绑定者的生命周期相同，不会无限期的运行在后台。</p>
+<h2 id="关于绑定服务"><a href="#关于绑定服务" class="headerlink" title="关于绑定服务"></a>关于绑定服务</h2><p>想要服务绑定于某个组件，你必须实现 <code>onBind()</code> 回调方法。该方法返回的 IBinder 对线定义了启动者与 Service 交互的接口。</p>
+<p>通过调用 <code>bindService()</code> 来绑定服务。前提是，你必须提供 ServiceConnection 的实现，ServiceConnection 能够监控调用者与 Serviced 的链接。创建后，系统会调用 ServiceConnnection 接口中的 <code>onServiceConnected()</code> 回调，并先调用者传递 IBinder.这样，二者就可以通信了。</p>
+<p>多个组件可以同时与 Service 绑定，不过，需要注意的是，只有在第一个组件绑定时，系统才会调用 <code>onBind()</code> 方法返回检索到的 IBinder.随后的绑定，系统将不在调用 <code>onBind()</code>,而是将同一个 IBinder 传递给绑定的组件。</p>
+<p><em>何时销毁？</em></p>
+<p>当最后一个与之绑定的组件解绑时，系统才会将 Service 销毁（排除 <code>startService()</code> 也启动了该服务）。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/01/2015-12-01-binder-service/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -439,7 +567,15 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是服务？</em></p>
 <p>Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。</p>
 <p><em>它有什么作用？</em></p>
-<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。<br>
+<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。</p>
+<p>我们可以通过下面两种方式来启动一个服务：</p>
+<ul>
+<li>1.<code>startService()</code> : 这种方式，即使启动者别销毁了，Service 依旧可以在后台运行，且不会反悔结果给调用者。</li>
+<li>2.<code>bindServcie()</code> : 这种方式，使得 Service 出于绑定状态。该服务提供了一个接口，允许我们与 Service 进行交互（发送请求，获取结果），甚至是用进程通信（IPC）跨进程交互。另外，多个组件可以同时绑定到该服务，同时如果你想要停止该服务，你需要解绑所有的绑定，该服务才能够被销毁。</li>
+</ul>
+<blockquote>
+<p><font color='red'><strong>注意1</strong>：上面的两种方式可以同时存在，也就是说，你可让一个服务以 <code>startService()</code> 的方式在后台无限期的运行，也可以让该 Service 绑定到某一个组件上。</font></p>
+<p><font color='red'><strong>注意2</strong>：服务默认情况下是在主进程中运行的，它既不创建自己的线程，也不在单独的进程中运行，当然，你另行指定的话就另说了。也就是说，如果你想在 Service 中执行一些耗时操作的话，请在单独开一个子线程，以降低 ANR 的风险。</font><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/11/29/2015-11-29-service/#more" rel="contents">
               阅读全文 &raquo;
@@ -516,7 +652,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
