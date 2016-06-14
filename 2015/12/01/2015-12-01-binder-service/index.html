@@ -71,7 +71,7 @@
 绑定服务是指服务与其他绑定在一起。比如说，我们可以将服务绑定在 Activity 上，来发送请求，接受响应，甚至是执行进程间的通讯（IPC）。我们需要知道的是，绑定服务的生命周期通常与被绑定者的生命周期相同，不会无限期的运行在后台。
 关于绑定服务想要服务绑定于某个组件，你必须实现 onBind() 回调方法。该方法返回的 IBinder 对线定义了启动者与 Service 交">
 <meta property="og:image" content="http://www.jiangbing.me/images/2016061400.png">
-<meta property="og:updated_time" content="2016-06-14T10:26:26.339Z">
+<meta property="og:updated_time" content="2016-06-14T10:30:53.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的绑定服务">
 <meta name="twitter:description" content="前言什么是绑定服务？
@@ -313,16 +313,16 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是绑定服务？</em></p>
 <p>绑定服务是指服务与其他绑定在一起。比如说，我们可以将服务绑定在 Activity 上，来发送请求，接受响应，甚至是执行进程间的通讯（IPC）。我们需要知道的是，绑定服务的生命周期通常与被绑定者的生命周期相同，不会无限期的运行在后台。</p>
-<h2 id="关于绑定服务"><a href="#关于绑定服务" class="headerlink" title="关于绑定服务"></a>关于绑定服务</h2><p>想要服务绑定于某个组件，你必须实现 <code>onBind()</code> 回调方法。该方法返回的 IBinder 对线定义了启动者与 Service 交互的接口。</p>
-<p>通过调用 <code>bindService()</code> 来绑定服务。前提是，你必须提供 ServiceConnection 的实现，ServiceConnection 能够监控调用者与 Serviced 的链接。创建后，系统会调用 ServiceConnnection 接口中的 <code>onServiceConnected()</code> 回调，并先调用者传递 IBinder.这样，二者就可以通信了。</p>
-<p>多个组件可以同时与 Service 绑定，不过，需要注意的是，只有在第一个组件绑定时，系统才会调用 <code>onBind()</code> 方法返回检索到的 IBinder.随后的绑定，系统将不在调用 <code>onBind()</code>,而是将同一个 IBinder 传递给绑定的组件。</p>
+<h2 id="关于绑定服务"><a href="#关于绑定服务" class="headerlink" title="关于绑定服务"></a>关于绑定服务</h2><p>想要服务绑定于某个组件，你必须实现 <code>onBind()</code> 回调方法。该方法返回的 <code>IBinder</code> 对线定义了启动者与 <code>Service</code> 交互的接口。</p>
+<p>通过调用 <code>bindService()</code> 来绑定服务。前提是，你必须提供 <code>ServiceConnection</code> 的实现，ServiceConnection 能够监控调用者与 Serviced 的链接。创建后，系统会调用 ServiceConnnection 接口中的 <code>onServiceConnected()</code> 回调，并先调用者传递 IBinder.这样，二者就可以通信了。</p>
+<p>多个组件可以同时与 <code>Service</code> 绑定，不过，需要注意的是，只有在第一个组件绑定时，系统才会调用 <code>onBind()</code> 方法返回检索到的 <code>IBinder</code>.随后的绑定，系统将不在调用 <code>onBind()</code>,而是将同一个 <code>IBinder</code> 传递给绑定的组件。</p>
 <p><em>何时销毁？</em></p>
-<p>当最后一个与之绑定的组件解绑时，系统才会将 Service 销毁（排除 <code>startService()</code> 也启动了该服务）。<br><a id="more"></a></p>
-<h2 id="创建绑定服务"><a href="#创建绑定服务" class="headerlink" title="创建绑定服务"></a>创建绑定服务</h2><p>上面已经说到，绑定服务需要提供一个 IBinder,用来调用者和 Service 的交互，你可以通过以下三种方式来定义接口：</p>
+<p>当最后一个与之绑定的组件解绑时，系统才会将 <code>Service</code> 销毁（排除 <code>startService()</code> 也启动了该服务）。<br><a id="more"></a></p>
+<h2 id="创建绑定服务"><a href="#创建绑定服务" class="headerlink" title="创建绑定服务"></a>创建绑定服务</h2><p>上面已经说到，绑定服务需要提供一个 <code>IBinder</code>,用来调用者和 <code>Service</code> 的交互，你可以通过以下三种方式来定义接口：</p>
 <ul>
 <li><strong>扩展 IBinder 类</strong></li>
 </ul>
-<p>如果这个服务只是提供给自身应用使用，并且与客户端运行在同一进程中，则应通过扩展 Binder 类，并从 onBind() 返回它的一个示例来创建接口。调用者在接受到 Binder 后，就可以通过它来访问 Binder 中的实现，甚至是 Service 中公有的方法。</p>
+<p>如果这个服务只是提供给自身应用使用，并且与客户端运行在同一进程中，则应通过扩展 Binder 类，并从 <code>onBind()</code> 返回它的一个示例来创建接口。调用者在接受到 Binder 后，就可以通过它来访问 Binder 中的实现，甚至是 Service 中公有的方法。</p>
 <p>也就是说，如果服务仅仅是自身应用的后台工作线程，则优先采用这种方法。</p>
 <font color="red">不使用这种方式创建接口的唯一原因是：被启动的服务需要提供给其他应用使用，或者不同进程使用。</font>
 
