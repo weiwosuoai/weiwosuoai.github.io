@@ -62,20 +62,20 @@
 
 <meta name="description" content="前言什么是 ContentProvider？有什么用？
 简单来说，ContentProvider 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。
-如果你需要先其他应用提供数据，那就没有必须开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
+如果你需要先其他应用提供数据，那就有必要开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="详解 Android 四大组件中的 ContentProvider">
 <meta property="og:url" content="http://www.jiangbing.me/2016/04/21/2016-04-21-content-provider1/index.html">
 <meta property="og:site_name" content="Allen's Blog">
 <meta property="og:description" content="前言什么是 ContentProvider？有什么用？
 简单来说，ContentProvider 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。
-如果你需要先其他应用提供数据，那就没有必须开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
-<meta property="og:updated_time" content="2016-07-04T11:24:39.089Z">
+如果你需要先其他应用提供数据，那就有必要开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
+<meta property="og:updated_time" content="2016-07-04T11:50:39.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解 Android 四大组件中的 ContentProvider">
 <meta name="twitter:description" content="前言什么是 ContentProvider？有什么用？
 简单来说，ContentProvider 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。
-如果你需要先其他应用提供数据，那就没有必须开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
+如果你需要先其他应用提供数据，那就有必要开发 ContentProvider 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。">
 
 
 
@@ -311,7 +311,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是 ContentProvider？有什么用？</em></p>
 <p>简单来说，<code>ContentProvider</code> 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。</p>
-<p>如果你需要先其他应用提供数据，那就没有必须开发 <code>ContentProvider</code> 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。</p>
+<p>如果你需要先其他应用提供数据，那就有必要开发 <code>ContentProvider</code> 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。</p>
 <h2 id="ContentProvider-概览"><a href="#ContentProvider-概览" class="headerlink" title="ContentProvider 概览"></a>ContentProvider 概览</h2><p><code>ContentProvider</code> 作为应用的一部分，我可以通过它来获取数据，当然，<code>ContentProvider</code> 被设计出来的主要的意图是为了跨应用访问数据。</p>
 <p>本篇博文将介绍以下知识点：<br><a id="more"></a></p>
 <ul>
