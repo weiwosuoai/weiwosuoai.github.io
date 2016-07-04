@@ -239,6 +239,146 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="url">
+                  Android Touch 事件传递机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-29T11:45:49+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文转自 Trinea大牛的 <a href="http://www.trinea.cn/android/touch-event-delivery-mechanism/">《Android Touch事件传递机制》</a></p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>(1) 所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。</p>
+<p>(2) 事件类型分为：</p>
+<ul>
+<li>ACTION_DOWN</li>
+<li>ACTION_UP</li>
+<li>ACTION_MOVE </li>
+<li>ACTION_POINTER_DOWN </li>
+<li>ACTION_POINTER_UP</li>
+<li>ACTION_CANCEL</li>
+</ul>
+<p>每个事件都是以ACTION_DOWN 开始 ACTION_UP 结束。</p>
+<p>(3) 对事件的处理包括三类，分别为：</p>
+<ul>
+<li>1.传递：dispatchTouchEvent()函数</li>
+<li>2.拦截：onInterceptTouchEvent()函数</li>
+<li>3.消费：onTouchEvent()函数和 OnTouchListener
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/27/2016-02-25-android-s-http-client/" itemprop="url">
                   关于 Android 中的 HTTP Clients
                 </a>
@@ -1377,130 +1517,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/" itemprop="url">
-                  Android 自定义控件(四)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-07T15:38:40+08:00" content="2016-02-07">
-              2016-02-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android-自定义控件/" itemprop="url" rel="index">
-                    <span itemprop="name">Android 自定义控件</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>前几篇博文我们已经了解如何创建设计良好的View，并且能够使之在手势与状态切换时得到正确的反馈。下面要介绍的是如何使得view能够执行更快。为了避免UI显得卡顿，你必须确保动画能够保持在60fps。</p>
-<h2 id="去除冗余的代码"><a href="#去除冗余的代码" class="headerlink" title="去除冗余的代码"></a>去除冗余的代码</h2><p>为了加速你的view，对于频繁调用的方法，需要尽量减少不必要的代码。先从onDraw开始，需要特别注意不应该在这里做内存分配的事情，因为它会导致GC，从而导致卡顿。在初始化或者动画间隙期间做分配内存的动作。不要在动画正在执行的时候做内存分配的事情。</p>
-<p>你还需要尽可能的减少onDraw被调用的次数，大多数时候导致onDraw都是因为调用了<code>invalidate()</code>.因此请尽量减少调用<code>invaildate()</code>的次数。如果可能的话，尽量调用含有4个参数的<code>invalidate()</code>方法而不是没有参数的<code>invalidate()</code>。没有参数的invalidate会强制重绘整个view。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1546,7 +1562,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1563,7 +1579,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

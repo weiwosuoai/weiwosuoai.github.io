@@ -239,6 +239,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/2016-04-21-content-provider1/" itemprop="url">
+                  详解 Android 四大组件中的 ContentProvider
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T10:55:08+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/21/2016-04-21-content-provider1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/2016-04-21-content-provider1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是 ContentProvider？有什么用？</em></p>
+<p>简单来说，<code>ContentProvider</code> 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。</p>
+<p>如果你需要先其他应用提供数据，那就没有必须开发 <code>ContentProvider</code> 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。</p>
+<h2 id="ContentProvider-概览"><a href="#ContentProvider-概览" class="headerlink" title="ContentProvider 概览"></a>ContentProvider 概览</h2><p><code>ContentProvider</code> 作为应用的一部分，我可以通过它来获取数据，当然，<code>ContentProvider</code> 被设计出来的主要的意图是为了跨应用访问数据。</p>
+<p>本篇博文将介绍以下知识点：</p>
+<ul>
+<li>内容提供程序的工作方式；</li>
+<li>用于从 <code>ContentProvider</code> 中获取数据的 API;</li>
+<li><code>ContentProvider</code> 中插入、更新或删除数据的 API;</li>
+<li>其他 <code>ContentProvider</code> 的 API 功能。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/21/2016-04-21-content-provider1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/18/2016-04-18-intent-service-and-intent-service/" itemprop="url">
                   Android 中的 Service 类拓展和 IntentService 介绍
                 </a>
@@ -1380,146 +1511,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="url">
-                  Android Touch 事件传递机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T11:45:49+08:00" content="2016-02-29">
-              2016-02-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/2016-02-30-mastering-the-android-touch-system/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本文转自 Trinea大牛的 <a href="http://www.trinea.cn/android/touch-event-delivery-mechanism/">《Android Touch事件传递机制》</a></p>
-</blockquote>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>(1) 所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。</p>
-<p>(2) 事件类型分为：</p>
-<ul>
-<li>ACTION_DOWN</li>
-<li>ACTION_UP</li>
-<li>ACTION_MOVE </li>
-<li>ACTION_POINTER_DOWN </li>
-<li>ACTION_POINTER_UP</li>
-<li>ACTION_CANCEL</li>
-</ul>
-<p>每个事件都是以ACTION_DOWN 开始 ACTION_UP 结束。</p>
-<p>(3) 对事件的处理包括三类，分别为：</p>
-<ul>
-<li>1.传递：dispatchTouchEvent()函数</li>
-<li>2.拦截：onInterceptTouchEvent()函数</li>
-<li>3.消费：onTouchEvent()函数和 OnTouchListener
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/29/2016-02-30-mastering-the-android-touch-system/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1565,7 +1556,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1582,7 +1573,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
