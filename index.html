@@ -312,12 +312,7 @@
 <p>简单来说，<code>ContentProvider</code> 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。</p>
 <p>如果你需要先其他应用提供数据，那就没有必须开发 <code>ContentProvider</code> 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。</p>
 <h2 id="ContentProvider-概览"><a href="#ContentProvider-概览" class="headerlink" title="ContentProvider 概览"></a>ContentProvider 概览</h2><p><code>ContentProvider</code> 作为应用的一部分，我可以通过它来获取数据，当然，<code>ContentProvider</code> 被设计出来的主要的意图是为了跨应用访问数据。</p>
-<p>本篇博文将介绍以下知识点：</p>
-<ul>
-<li>内容提供程序的工作方式；</li>
-<li>用于从 <code>ContentProvider</code> 中获取数据的 API;</li>
-<li><code>ContentProvider</code> 中插入、更新或删除数据的 API;</li>
-<li>其他 <code>ContentProvider</code> 的 API 功能。
+<p>本篇博文将介绍以下知识点：<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/21/2016-04-21-content-provider1/#more" rel="contents">
               阅读全文 &raquo;
@@ -447,10 +442,7 @@
 <blockquote>
 <p>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。<br>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。<br>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</p>
 </blockquote>
-<p><em>这里有两种 Service 供我们使用：</em></p>
-<ul>
-<li>Service : 这是服务的基类。默认情况下运行于主线程中。</li>
-<li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。
+<p><em>这里有两种 Service 供我们使用：</em><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/18/2016-04-18-intent-service-and-intent-service/#more" rel="contents">
               阅读全文 &raquo;

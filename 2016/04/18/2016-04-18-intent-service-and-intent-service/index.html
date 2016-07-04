@@ -70,7 +70,7 @@
 <meta property="og:description" content="IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。
 
 前言众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 startService()，从而调用 Service 中的 onStartCommand()">
-<meta property="og:updated_time" content="2016-06-24T02:00:41.763Z">
+<meta property="og:updated_time" content="2016-07-04T11:24:54.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的 Service 类拓展和 IntentService 介绍">
 <meta name="twitter:description" content="IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 onHandleIntent() 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。
@@ -317,11 +317,10 @@
 <blockquote>
 <p>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。<br>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。<br>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</p>
 </blockquote>
-<p><em>这里有两种 Service 供我们使用：</em></p>
+<p><em>这里有两种 Service 供我们使用：</em><br><a id="more"></a></p>
 <ul>
 <li>Service : 这是服务的基类。默认情况下运行于主线程中。</li>
-<li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。<a id="more"></a>
-</li>
+<li>IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 <code>onHandleIntent()</code> 方法即可，该方法会处理每个请求，并在后台执行。</li>
 </ul>
 <h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><p>我们来详细说一说 IntentService 的功能：</p>
 <ul>

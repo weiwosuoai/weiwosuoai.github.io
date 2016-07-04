@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-04T11:22:54.608Z</updated>
+  <updated>2016-07-04T11:24:39.089Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -20,21 +20,20 @@
     <link href="http://www.jiangbing.me/2016/04/21/2016-04-21-content-provider1/"/>
     <id>http://www.jiangbing.me/2016/04/21/2016-04-21-content-provider1/</id>
     <published>2016-04-21T02:55:08.000Z</published>
-    <updated>2016-07-04T11:22:54.608Z</updated>
+    <updated>2016-07-04T11:24:39.089Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;em&gt;什么是 ContentProvider？有什么用？&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;简单来说，&lt;code&gt;ContentProvider&lt;/code&gt; 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。&lt;/p&gt;
 &lt;p&gt;如果你需要先其他应用提供数据，那就没有必须开发 &lt;code&gt;ContentProvider&lt;/code&gt; 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。&lt;/p&gt;
 &lt;h2 id=&quot;ContentProvider-概览&quot;&gt;&lt;a href=&quot;#ContentProvider-概览&quot; class=&quot;headerlink&quot; title=&quot;ContentProvider 概览&quot;&gt;&lt;/a&gt;ContentProvider 概览&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ContentProvider&lt;/code&gt; 作为应用的一部分，我可以通过它来获取数据，当然，&lt;code&gt;ContentProvider&lt;/code&gt; 被设计出来的主要的意图是为了跨应用访问数据。&lt;/p&gt;
-&lt;p&gt;本篇博文将介绍以下知识点：&lt;/p&gt;
+&lt;p&gt;本篇博文将介绍以下知识点：&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;内容提供程序的工作方式；&lt;/li&gt;
 &lt;li&gt;用于从 &lt;code&gt;ContentProvider&lt;/code&gt; 中获取数据的 API;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ContentProvider&lt;/code&gt; 中插入、更新或删除数据的 API;&lt;/li&gt;
-&lt;li&gt;其他 &lt;code&gt;ContentProvider&lt;/code&gt; 的 API 功能。&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;访问-ContentProvider&quot;&gt;&lt;a href=&quot;#访问-ContentProvider&quot; class=&quot;headerlink&quot; title=&quot;访问 ContentProvider&quot;&gt;&lt;/a&gt;访问 ContentProvider&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;其他 &lt;code&gt;ContentProvider&lt;/code&gt; 的 API 功能。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;应用通过 &lt;code&gt;ContentResolver&lt;/code&gt; 对象和拥有 &lt;code&gt;ContentProvider&lt;/code&gt; 对象可自动处理跨进程通信。 &lt;/p&gt;
+&lt;h2 id=&quot;访问-ContentProvider&quot;&gt;&lt;a href=&quot;#访问-ContentProvider&quot; class=&quot;headerlink&quot; title=&quot;访问 ContentProvider&quot;&gt;&lt;/a&gt;访问 ContentProvider&lt;/h2&gt;&lt;p&gt;应用通过 &lt;code&gt;ContentResolver&lt;/code&gt; 对象和拥有 &lt;code&gt;ContentProvider&lt;/code&gt; 对象可自动处理跨进程通信。 &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意：想要访问 &lt;code&gt;ContentProvider&lt;/code&gt;,你需要在应用的清单文件中请求特定的权限。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -182,12 +181,7 @@
 &lt;p&gt;简单来说，&lt;code&gt;ContentProvider&lt;/code&gt; 就是一个向外界提供数据的接口。它可以向非同一进程提供数据。&lt;/p&gt;
 &lt;p&gt;如果你需要先其他应用提供数据，那就没有必须开发 &lt;code&gt;ContentProvider&lt;/code&gt; 了。Android 本身的内容提供程序可以用来管理音频、视频、图像和个人联系信息等数据。任何 Android 应用都可以来访问这些提供程序，但是会受到一定的限制。&lt;/p&gt;
 &lt;h2 id=&quot;ContentProvider-概览&quot;&gt;&lt;a href=&quot;#ContentProvider-概览&quot; class=&quot;headerlink&quot; title=&quot;ContentProvider 概览&quot;&gt;&lt;/a&gt;ContentProvider 概览&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ContentProvider&lt;/code&gt; 作为应用的一部分，我可以通过它来获取数据，当然，&lt;code&gt;ContentProvider&lt;/code&gt; 被设计出来的主要的意图是为了跨应用访问数据。&lt;/p&gt;
-&lt;p&gt;本篇博文将介绍以下知识点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;内容提供程序的工作方式；&lt;/li&gt;
-&lt;li&gt;用于从 &lt;code&gt;ContentProvider&lt;/code&gt; 中获取数据的 API;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ContentProvider&lt;/code&gt; 中插入、更新或删除数据的 API;&lt;/li&gt;
-&lt;li&gt;其他 &lt;code&gt;ContentProvider&lt;/code&gt; 的 API 功能。
+&lt;p&gt;本篇博文将介绍以下知识点：&lt;br&gt;
     
     </summary>
     
@@ -205,7 +199,7 @@
     <link href="http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/"/>
     <id>http://www.jiangbing.me/2016/04/18/2016-04-18-intent-service-and-intent-service/</id>
     <published>2016-04-18T02:55:08.000Z</published>
-    <updated>2016-06-24T02:00:41.763Z</updated>
+    <updated>2016-07-04T11:24:54.713Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 &lt;code&gt;onHandleIntent()&lt;/code&gt; 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。&lt;/p&gt;
@@ -215,11 +209,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。&lt;br&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;br&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Service : 这是服务的基类。默认情况下运行于主线程中。&lt;/li&gt;
-&lt;li&gt;IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 &lt;code&gt;onHandleIntent()&lt;/code&gt; 方法即可，该方法会处理每个请求，并在后台执行。&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;/li&gt;
+&lt;li&gt;IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 &lt;code&gt;onHandleIntent()&lt;/code&gt; 方法即可，该方法会处理每个请求，并在后台执行。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;IntentService&quot;&gt;&lt;a href=&quot;#IntentService&quot; class=&quot;headerlink&quot; title=&quot;IntentService&quot;&gt;&lt;/a&gt;IntentService&lt;/h2&gt;&lt;p&gt;我们来详细说一说 IntentService 的功能：&lt;/p&gt;
 &lt;ul&gt;
@@ -274,10 +267,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。&lt;br&gt;注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。&lt;br&gt;实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Service : 这是服务的基类。默认情况下运行于主线程中。&lt;/li&gt;
-&lt;li&gt;IntentService : Service 的子类，能够将我们的请求在工作线程中逐一处理。如果你的业务需求是不需要同时处理多个请求，那么 IntentService 将会是你最好的选择。我们只需实现 &lt;code&gt;onHandleIntent()&lt;/code&gt; 方法即可，该方法会处理每个请求，并在后台执行。
+&lt;p&gt;&lt;em&gt;这里有两种 Service 供我们使用：&lt;/em&gt;&lt;br&gt;
     
     </summary>
     
