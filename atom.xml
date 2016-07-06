@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-06T07:49:36.462Z</updated>
+  <updated>2016-07-06T07:54:37.805Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/"/>
     <id>http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/</id>
     <published>2016-04-25T02:55:08.000Z</published>
-    <updated>2016-07-06T07:49:36.462Z</updated>
+    <updated>2016-07-06T07:54:37.805Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;说起前端开发工具那就很多了，但大致分为下面两类：&lt;/p&gt;
 &lt;ul&gt;
@@ -67,17 +67,17 @@
 &lt;p&gt;保存文件，再次打开 Package Control 即可，问题解决。&lt;/p&gt;
 &lt;h2 id=&quot;前端开发中常用的那些插件推荐&quot;&gt;&lt;a href=&quot;#前端开发中常用的那些插件推荐&quot; class=&quot;headerlink&quot; title=&quot;前端开发中常用的那些插件推荐&quot;&gt;&lt;/a&gt;前端开发中常用的那些插件推荐&lt;/h2&gt;&lt;p&gt;1.Emment 插件： 让我们编写 HTML 代码更加简单高效&lt;/p&gt;
 &lt;p&gt;基本用法： 输入标签简写形式，按 TAB 键自动补全。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_4-1.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016060710.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;2.JsFormat 插件： 这是一款将 JS 格式化的插件&lt;/p&gt;
 &lt;p&gt;基本用法： 在 JS　文件中通过鼠标　&lt;em&gt;右键　-&amp;gt; JsFormat&lt;/em&gt; 或者 快键键 &lt;code&gt;ctrl + alt + F&lt;/code&gt; 进行格式化：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_5-2.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016060711.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;3.TrailingSpaces 插件： 对于我们代码中多出的 &lt;em&gt;空格&lt;/em&gt; 或 &lt;em&gt;TAB&lt;/em&gt; 进行显示&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2016060708.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;4：Tag 插件： 这时一个对 HTML/XML 标签进行缩进、补全和校验的工具&lt;/p&gt;
 &lt;p&gt;使用方法：通过 &lt;code&gt;Edit -&amp;gt; Tag -&amp;gt; Auto-Format Tags on Document&lt;/code&gt; 来排版：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_8-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016060712.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;你也可以通过 &lt;code&gt;ctrl + shift + P&lt;/code&gt; 调用命令面板来搜索相关命令，如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2016070609.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016060709.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;5:Terminal 插件： 编程过程中，我们经常需要使用命令窗口&lt;/p&gt;
 &lt;p&gt;使用方法：安装好此插件后，通过快捷键 &lt;code&gt;ctrl + shift + T&lt;/code&gt; 来呼出命令行窗口。&lt;/p&gt;
 &lt;h2 id=&quot;Sublime-Text-常用快捷键&quot;&gt;&lt;a href=&quot;#Sublime-Text-常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;Sublime Text 常用快捷键&quot;&gt;&lt;/a&gt;Sublime Text 常用快捷键&lt;/h2&gt;&lt;table&gt;
