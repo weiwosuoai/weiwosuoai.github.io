@@ -1,0 +1,873 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="开发工具," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言说起前端开发工具那就很多了，但大致分为下面两类：
+
+编辑器 : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等
+IDE ： webstorm, eclipse, VS, IntelliJ 等。
+
+但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发利器 Sublime Text 介绍">
+<meta property="og:url" content="http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="前言说起前端开发工具那就很多了，但大致分为下面两类：
+
+编辑器 : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等
+IDE ： webstorm, eclipse, VS, IntelliJ 等。
+
+但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070600.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070601.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070602.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070603.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070604.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070605.png">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070606.jpg">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_4-1.gif">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_5-2.gif">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070608.jpg">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_8-1.jpg">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016070609.png">
+<meta property="og:updated_time" content="2016-07-06T07:44:23.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发利器 Sublime Text 介绍">
+<meta name="twitter:description" content="前言说起前端开发工具那就很多了，但大致分为下面两类：
+
+编辑器 : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等
+IDE ： webstorm, eclipse, VS, IntelliJ 等。
+
+但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016070600.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> 前端开发利器 Sublime Text 介绍 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端开发利器 Sublime Text 介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-25T10:55:08+08:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/25/2016-04-25-fontend-sublime-text/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/2016-04-25-fontend-sublime-text/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说起前端开发工具那就很多了，但大致分为下面两类：</p>
+<ul>
+<li><strong>编辑器</strong> : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等</li>
+<li><strong>IDE</strong> ： webstorm, eclipse, VS, IntelliJ 等。</li>
+</ul>
+<p>但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化，界面简洁，快速，最重要的是它具有丰富的插件。可以说是现在前端开发最流行的开发工具了。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>我们可以到 Sublime Text 的 <a href="http://www.sublimetext.com/" target="_blank" rel="external">官网</a>下载相应版本的 Sublime Text 编辑器。</p>
+<p>如图：</p>
+<p><img src="/images/2016070600.png" alt=""><br><a id="more"></a><br>选择下载与版本相应的版本 Sublime Text 即可。</p>
+<blockquote>
+<p>注意：Sublime Text 有两个版本，分别是 Sublime Text2 和 Sublime Text3,这两个版本相比较而言，Sublime Text2 更加稳定，Sublime Text3 功能要丰富一些，你可以权衡一下选择自己需要的版本进行下载。</p>
+</blockquote>
+<h2 id="如何安装插件"><a href="#如何安装插件" class="headerlink" title="如何安装插件"></a>如何安装插件</h2><p>安装我们就不讨论了，傻瓜式安装就可以了。我们来说说插件的安装。想要安装插件，我们首先需要安装 <em>Package Control</em>。下面是安装步骤：</p>
+<ul>
+<li>第一步： 安装 <em>Package Control</em></li>
+</ul>
+<p>点击 <code>ctrl + `</code> 或者 <code>View -&gt; Show Console</code> 菜单来打开控制台。</p>
+<p><strong>Sublime Text 2</strong> 输入以下命令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> not os.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> None; print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string">'Please restart Sublime Text to finish installation'</span>) </span><br></pre></td></tr></table></figure>
+<p><strong>Sublime Text 3</strong> 输入以下命令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != <span class="function">h <span class="keyword">else</span> <span class="title">open</span><span class="params">(os.path.join( ipp, pf)</span>, 'wb' ).<span class="title">write</span><span class="params">(by)</span>  </span></span><br></pre></td></tr></table></figure>
+<p>点击 <em>回车</em> 键，等待安装完成，重启 Sublime Text 你就可以看见 Package Control 了，如下图所示：</p>
+<p><img src="/images/2016070601.png" alt=""></p>
+<ul>
+<li>第二步： 安装插件</li>
+</ul>
+<p>打开 Package Control 可能发生的问题：</p>
+<p><img src="/images/2016070602.png" alt=""></p>
+<p>在命令面板中输入 <code>install package</code> 命令并 <em>回车</em>，会出现下面的面板：</p>
+<p><img src="/images/2016070603.jpg" alt=""></p>
+<p>在出现的输入框中搜索自己想要安装的插件，选择安装即可。</p>
+<blockquote>
+<p>注意 ： 输入 <code>install package</code> 可能出现的问题：</p>
+</blockquote>
+<p>你可能会出现以下警告：</p>
+<p><img src="/images/2016070604.png" alt=""></p>
+<p>莫慌！根据 Stack Overflow 上的解决方案，极可能是我们的 Intent 服务提供商（ISP）不支持 IPv6 而引起的。</p>
+<p>那么，我么要如何解决这个问题呢？</p>
+<p>1：获取 <code>sublime.wbond.net</code> 的 IPv4 的地址，我们可以通过在 CMD 中输入 <code>ping sublime.wbond.net</code> 命令</p>
+<p><img src="/images/2016070605.png" alt=""></p>
+<p>2.打开 C:\Windows\system32\drivers\etc\hosts 文件，增加如下对应关系 {IPv4 地址} sublime.wbond.net</p>
+<p><img src="/images/2016070606.jpg" alt=""></p>
+<p>保存文件，再次打开 Package Control 即可，问题解决。</p>
+<h2 id="前端开发中常用的那些插件推荐"><a href="#前端开发中常用的那些插件推荐" class="headerlink" title="前端开发中常用的那些插件推荐"></a>前端开发中常用的那些插件推荐</h2><p>1.Emment 插件： 让我们编写 HTML 代码更加简单高效</p>
+<p>基本用法： 输入标签简写形式，按 TAB 键自动补全。</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_4-1.gif" alt=""></p>
+<p>2.JsFormat 插件： 这是一款将 JS 格式化的插件</p>
+<p>基本用法： 在 JS　文件中通过鼠标　<em>右键　-&gt; JsFormat</em> 或者 快键键 <code>ctrl + alt + F</code> 进行格式化：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_5-2.gif" alt=""></p>
+<p>3.TrailingSpaces 插件： 对于我们代码中多出的 <em>空格</em> 或 <em>TAB</em> 进行显示</p>
+<p><img src="/images/2016070608.jpg" alt=""></p>
+<p>4：Tag 插件： 这时一个对 HTML/XML 标签进行缩进、补全和校验的工具</p>
+<p>使用方法：通过 <code>Edit -&gt; Tag -&gt; Auto-Format Tags on Document</code> 来排版：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/hykun/607566/o_8-1.jpg" alt=""></p>
+<p>你也可以通过 <code>ctrl + shift + P</code> 调用命令面板来搜索相关命令，如下：</p>
+<p><img src="/images/2016070609.png" alt=""></p>
+<p>5:Terminal 插件： 编程过程中，我们经常需要使用命令窗口</p>
+<p>使用方法：安装好此插件后，通过快捷键 <code>ctrl + shift + T</code> 来呼出命令行窗口。</p>
+<h2 id="Sublime-Text-常用快捷键"><a href="#Sublime-Text-常用快捷键" class="headerlink" title="Sublime Text 常用快捷键"></a>Sublime Text 常用快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + Shift + P</td>
+<td>打开命令面板</td>
+</tr>
+<tr>
+<td>Ctrl + P</td>
+<td>搜索项目中的文件</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + V</td>
+<td>粘贴并格式化</td>
+</tr>
+<tr>
+<td>Ctrl + D</td>
+<td>选择单词，重复可增加选择下一个相同的单词</td>
+</tr>
+<tr>
+<td>Ctrl + L</td>
+<td>选择行，重复可依次增加选择下一行</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + L</td>
+<td>选择多行</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Enter</td>
+<td>在当前行前插入新行</td>
+</tr>
+<tr>
+<td>Ctrl + X</td>
+<td>删除当前行</td>
+</tr>
+<tr>
+<td>Ctrl + F</td>
+<td>查找内容</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F</td>
+<td>查找并替换</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>替换</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>前往 method</td>
+</tr>
+<tr>
+<td>Ctrl + N</td>
+<td>新建窗口</td>
+</tr>
+<tr>
+<td>Ctrl + /</td>
+<td>注释当前行</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + /</td>
+<td>当前位置插入注释</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + /</td>
+<td>块注释，并Focus到首行，写注释说明用的</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>全屏</td>
+</tr>
+<tr>
+<td>Shift + F11</td>
+<td>全屏免打扰模式，只编辑当前文件</td>
+</tr>
+<tr>
+<td>Alt + .</td>
+<td>闭合标签</td>
+</tr>
+<tr>
+<td>Alt + Shift + 数字</td>
+<td>分屏显示</td>
+</tr>
+<tr>
+<td>按Ctrl，依次点击或选取</td>
+<td>可编辑的多个位置</td>
+</tr>
+</tbody>
+</table>
+<p>本文参考文献：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation" target="_blank" rel="external">http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation</a></li>
+<li><a href="http://www.cnblogs.com/hykun/p/sublimeText3.html" target="_blank" rel="external">http://www.cnblogs.com/hykun/p/sublimeText3.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div><font style="font-weight:bold;font-style:italic;" color='red' size='5'>文章有帮助到您？不妨打赏博主一碗拉面或一杯咖啡的小费吧 :-D！</font></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixin_pay.png" alt="江冰 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/zhifubao_pay.png" alt="江冰 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/21/2016-04-21-content-provider1/" rel="next" title="详解 Android 四大组件中的 ContentProvider">
+                <i class="fa fa-chevron-left"></i> 详解 Android 四大组件中的 ContentProvider
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/25/2016-04-25-fontend-sublime-text/"
+     data-title="前端开发利器 Sublime Text 介绍"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/25/2016-04-25-fontend-sublime-text/"
+           data-title="前端开发利器 Sublime Text 介绍" data-url="http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description">有一种难事叫坚持</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">2.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何安装插件"><span class="nav-number">3.</span> <span class="nav-text">如何安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端开发中常用的那些插件推荐"><span class="nav-number">4.</span> <span class="nav-text">前端开发中常用的那些插件推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sublime-Text-常用快捷键"><span class="nav-number">5.</span> <span class="nav-text">Sublime Text 常用快捷键</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

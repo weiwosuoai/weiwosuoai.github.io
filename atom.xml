@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-04T11:50:39.993Z</updated>
+  <updated>2016-07-06T07:44:23.355Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -14,6 +14,193 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端开发利器 Sublime Text 介绍</title>
+    <link href="http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/"/>
+    <id>http://www.jiangbing.me/2016/04/25/2016-04-25-fontend-sublime-text/</id>
+    <published>2016-04-25T02:55:08.000Z</published>
+    <updated>2016-07-06T07:44:23.355Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;说起前端开发工具那就很多了，但大致分为下面两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;编辑器&lt;/strong&gt; : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE&lt;/strong&gt; ： webstorm, eclipse, VS, IntelliJ 等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化，界面简洁，快速，最重要的是它具有丰富的插件。可以说是现在前端开发最流行的开发工具了。&lt;/p&gt;
+&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;我们可以到 Sublime Text 的 &lt;a href=&quot;http://www.sublimetext.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;下载相应版本的 Sublime Text 编辑器。&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070600.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;选择下载与版本相应的版本 Sublime Text 即可。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：Sublime Text 有两个版本，分别是 Sublime Text2 和 Sublime Text3,这两个版本相比较而言，Sublime Text2 更加稳定，Sublime Text3 功能要丰富一些，你可以权衡一下选择自己需要的版本进行下载。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;如何安装插件&quot;&gt;&lt;a href=&quot;#如何安装插件&quot; class=&quot;headerlink&quot; title=&quot;如何安装插件&quot;&gt;&lt;/a&gt;如何安装插件&lt;/h2&gt;&lt;p&gt;安装我们就不讨论了，傻瓜式安装就可以了。我们来说说插件的安装。想要安装插件，我们首先需要安装 &lt;em&gt;Package Control&lt;/em&gt;。下面是安装步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步： 安装 &lt;em&gt;Package Control&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点击 &lt;code&gt;ctrl + `&lt;/code&gt; 或者 &lt;code&gt;View -&amp;gt; Show Console&lt;/code&gt; 菜单来打开控制台。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sublime Text 2&lt;/strong&gt; 输入以下命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; urllib2,os,hashlib; h = &lt;span class=&quot;string&quot;&gt;&#39;2915d1851351e5ee549c20394736b442&#39;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;8bc59f460fa1548d1514676163dafc88&#39;&lt;/span&gt;; pf = &lt;span class=&quot;string&quot;&gt;&#39;Package Control.sublime-package&#39;&lt;/span&gt;; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; not os.path.exists(ipp) &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( &lt;span class=&quot;string&quot;&gt;&#39;http://packagecontrol.io/&#39;&lt;/span&gt; + pf.replace(&lt;span class=&quot;string&quot;&gt;&#39; &#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;%20&#39;&lt;/span&gt;)).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), &lt;span class=&quot;string&quot;&gt;&#39;wb&#39;&lt;/span&gt; ).write(by) &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; dh == h &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; None; print(&lt;span class=&quot;string&quot;&gt;&#39;Error validating download (got %s instead of %s), please try manual install&#39;&lt;/span&gt; % (dh, h) &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; dh != h &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;Please restart Sublime Text to finish installation&#39;&lt;/span&gt;) &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Sublime Text 3&lt;/strong&gt; 输入以下命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; urllib.request,os,hashlib; h = &lt;span class=&quot;string&quot;&gt;&#39;2915d1851351e5ee549c20394736b442&#39;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;8bc59f460fa1548d1514676163dafc88&#39;&lt;/span&gt;; pf = &lt;span class=&quot;string&quot;&gt;&#39;Package Control.sublime-package&#39;&lt;/span&gt;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &lt;span class=&quot;string&quot;&gt;&#39;http://packagecontrol.io/&#39;&lt;/span&gt; + pf.replace(&lt;span class=&quot;string&quot;&gt;&#39; &#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;%20&#39;&lt;/span&gt;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&lt;span class=&quot;string&quot;&gt;&#39;Error validating download (got %s instead of %s), please try manual install&#39;&lt;/span&gt; % (dh, h)) &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; dh != &lt;span class=&quot;function&quot;&gt;h &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(os.path.join( ipp, pf)&lt;/span&gt;, &#39;wb&#39; ).&lt;span class=&quot;title&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(by)&lt;/span&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;点击 &lt;em&gt;回车&lt;/em&gt; 键，等待安装完成，重启 Sublime Text 你就可以看见 Package Control 了，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070601.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第二步： 安装插件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;打开 Package Control 可能发生的问题：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070602.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在命令面板中输入 &lt;code&gt;install package&lt;/code&gt; 命令并 &lt;em&gt;回车&lt;/em&gt;，会出现下面的面板：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070603.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在出现的输入框中搜索自己想要安装的插件，选择安装即可。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意 ： 输入 &lt;code&gt;install package&lt;/code&gt; 可能出现的问题：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;你可能会出现以下警告：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070604.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;莫慌！根据 Stack Overflow 上的解决方案，极可能是我们的 Intent 服务提供商（ISP）不支持 IPv6 而引起的。&lt;/p&gt;
+&lt;p&gt;那么，我么要如何解决这个问题呢？&lt;/p&gt;
+&lt;p&gt;1：获取 &lt;code&gt;sublime.wbond.net&lt;/code&gt; 的 IPv4 的地址，我们可以通过在 CMD 中输入 &lt;code&gt;ping sublime.wbond.net&lt;/code&gt; 命令&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070605.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.打开 C:\Windows\system32\drivers\etc\hosts 文件，增加如下对应关系 {IPv4 地址} sublime.wbond.net&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070606.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;保存文件，再次打开 Package Control 即可，问题解决。&lt;/p&gt;
+&lt;h2 id=&quot;前端开发中常用的那些插件推荐&quot;&gt;&lt;a href=&quot;#前端开发中常用的那些插件推荐&quot; class=&quot;headerlink&quot; title=&quot;前端开发中常用的那些插件推荐&quot;&gt;&lt;/a&gt;前端开发中常用的那些插件推荐&lt;/h2&gt;&lt;p&gt;1.Emment 插件： 让我们编写 HTML 代码更加简单高效&lt;/p&gt;
+&lt;p&gt;基本用法： 输入标签简写形式，按 TAB 键自动补全。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_4-1.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.JsFormat 插件： 这是一款将 JS 格式化的插件&lt;/p&gt;
+&lt;p&gt;基本用法： 在 JS　文件中通过鼠标　&lt;em&gt;右键　-&amp;gt; JsFormat&lt;/em&gt; 或者 快键键 &lt;code&gt;ctrl + alt + F&lt;/code&gt; 进行格式化：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_5-2.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3.TrailingSpaces 插件： 对于我们代码中多出的 &lt;em&gt;空格&lt;/em&gt; 或 &lt;em&gt;TAB&lt;/em&gt; 进行显示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070608.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;4：Tag 插件： 这时一个对 HTML/XML 标签进行缩进、补全和校验的工具&lt;/p&gt;
+&lt;p&gt;使用方法：通过 &lt;code&gt;Edit -&amp;gt; Tag -&amp;gt; Auto-Format Tags on Document&lt;/code&gt; 来排版：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnblogs.com/cnblogs_com/hykun/607566/o_8-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;你也可以通过 &lt;code&gt;ctrl + shift + P&lt;/code&gt; 调用命令面板来搜索相关命令，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070609.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;5:Terminal 插件： 编程过程中，我们经常需要使用命令窗口&lt;/p&gt;
+&lt;p&gt;使用方法：安装好此插件后，通过快捷键 &lt;code&gt;ctrl + shift + T&lt;/code&gt; 来呼出命令行窗口。&lt;/p&gt;
+&lt;h2 id=&quot;Sublime-Text-常用快捷键&quot;&gt;&lt;a href=&quot;#Sublime-Text-常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;Sublime Text 常用快捷键&quot;&gt;&lt;/a&gt;Sublime Text 常用快捷键&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + P&lt;/td&gt;
+&lt;td&gt;打开命令面板&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + P&lt;/td&gt;
+&lt;td&gt;搜索项目中的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + V&lt;/td&gt;
+&lt;td&gt;粘贴并格式化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + D&lt;/td&gt;
+&lt;td&gt;选择单词，重复可增加选择下一个相同的单词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + L&lt;/td&gt;
+&lt;td&gt;选择行，重复可依次增加选择下一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + L&lt;/td&gt;
+&lt;td&gt;选择多行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + Enter&lt;/td&gt;
+&lt;td&gt;在当前行前插入新行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + X&lt;/td&gt;
+&lt;td&gt;删除当前行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + F&lt;/td&gt;
+&lt;td&gt;查找内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + F&lt;/td&gt;
+&lt;td&gt;查找并替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + H&lt;/td&gt;
+&lt;td&gt;替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + R&lt;/td&gt;
+&lt;td&gt;前往 method&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + N&lt;/td&gt;
+&lt;td&gt;新建窗口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + /&lt;/td&gt;
+&lt;td&gt;注释当前行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Shift + /&lt;/td&gt;
+&lt;td&gt;当前位置插入注释&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Alt + /&lt;/td&gt;
+&lt;td&gt;块注释，并Focus到首行，写注释说明用的&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F11&lt;/td&gt;
+&lt;td&gt;全屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift + F11&lt;/td&gt;
+&lt;td&gt;全屏免打扰模式，只编辑当前文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt + .&lt;/td&gt;
+&lt;td&gt;闭合标签&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt + Shift + 数字&lt;/td&gt;
+&lt;td&gt;分屏显示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;按Ctrl，依次点击或选取&lt;/td&gt;
+&lt;td&gt;可编辑的多个位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文参考文献：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/25105139/sublime-text-2-there-are-no-packages-available-for-installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/hykun/p/sublimeText3.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/hykun/p/sublimeText3.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;说起前端开发工具那就很多了，但大致分为下面两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;编辑器&lt;/strong&gt; : 各平台自带的编辑器，如写字板 etc.; Sublime Text; Notepad++; ULtraEdit; Vim/GVim; Hbuilder 等等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE&lt;/strong&gt; ： webstorm, eclipse, VS, IntelliJ 等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是我推荐的是 Sublime Text, 因为作为编辑器，相比较 IDE 而言，它轻量化，界面简洁，快速，最重要的是它具有丰富的插件。可以说是现在前端开发最流行的开发工具了。&lt;/p&gt;
+&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;我们可以到 Sublime Text 的 &lt;a href=&quot;http://www.sublimetext.com/&quot;&gt;官网&lt;/a&gt;下载相应版本的 Sublime Text 编辑器。&lt;/p&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016070600.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端开发" scheme="http://www.jiangbing.me/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="开发工具" scheme="http://www.jiangbing.me/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>详解 Android 四大组件中的 ContentProvider</title>
@@ -1978,35 +2165,6 @@
       <category term="Android Process" scheme="http://www.jiangbing.me/tags/Android-Process/"/>
     
       <category term="Android Thread" scheme="http://www.jiangbing.me/tags/Android-Thread/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Guitar 弹唱】连衣裙</title>
-    <link href="http://www.jiangbing.me/2016/02/10/2016-02-10-guitar-lian-yi-qun/"/>
-    <id>http://www.jiangbing.me/2016/02/10/2016-02-10-guitar-lian-yi-qun/</id>
-    <published>2016-02-10T01:35:00.000Z</published>
-    <updated>2016-05-14T07:25:04.684Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;宋冬野-《连衣裙》&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/YsVUY-1em8E/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;宋冬野-《连衣裙》&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/YsVUY-1em8E/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;/embed&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="音乐" scheme="http://www.jiangbing.me/categories/%E9%9F%B3%E4%B9%90/"/>
-    
-    
-      <category term="Guitar" scheme="http://www.jiangbing.me/tags/Guitar/"/>
     
   </entry>
   
