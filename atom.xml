@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-27T06:16:46.935Z</updated>
+  <updated>2016-07-27T09:09:41.693Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拖动虚拟机中的命令行终端出现 ^C</title>
+    <link href="http://www.jiangbing.me/2016/05/02/2016-05-02-error-occured-when-draging-window/"/>
+    <id>http://www.jiangbing.me/2016/05/02/2016-05-02-error-occured-when-draging-window/</id>
+    <published>2016-05-02T08:29:36.000Z</published>
+    <updated>2016-07-27T09:09:41.693Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;在使用虚拟机中跑的 Ubuntu 系统时，拖动命令行终端，会出现 ^C,严重影响了自己的正常工作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;错误发生原因：windows 中正在使用的某些软件所致（具体什么软件也说不好，比如说你正在使用的&lt;strong&gt;翻译工具&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;解决办法：尝试将这些软件关闭掉，本人就是在关闭掉几个软件后，问题得以解决。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在使用虚拟机中跑的 Ubuntu 系统时，拖动命令行终端，会出现 ^C,严重影响了自己的正常工作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;错误发生原因：windows 中正在使用的某些软件所致（具体什么软件也说不好，比如说你正在使用的&lt;stro
+    
+    </summary>
+    
+      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+    
+    
+      <category term="Ubuntu" scheme="http://www.jiangbing.me/tags/Ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>【Guitar 弹唱】 难忘的一天</title>
@@ -1978,137 +2008,6 @@
       <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
     
       <category term="Android AsyncTask" scheme="http://www.jiangbing.me/tags/Android-AsyncTask/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于 Android 中工作者线程的思考</title>
-    <link href="http://www.jiangbing.me/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/"/>
-    <id>http://www.jiangbing.me/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/</id>
-    <published>2016-02-14T05:30:31.000Z</published>
-    <updated>2016-05-14T07:18:24.038Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本文转自 &lt;a href=&quot;http://www.infoq.com/cn/articles/android-worker-thread&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.infoq.com/cn/articles/android-worker-thread&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2016030700.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问题呢，关于工作者线程有哪些优化的方面呢，本文将一一解答这些问题。&lt;/p&gt;
-&lt;font color=&quot;red&quot;&gt;&lt;strong&gt;工作者线程的存在原因：&lt;/strong&gt;&lt;/font&gt;
-
-&lt;ul&gt;
-&lt;li&gt;因为Android的UI单线程模型，所有的UI相关的操作都需要在主线程(UI线程)执行&lt;/li&gt;
-&lt;li&gt;Android中各大组件的生命周期回调都是位于主线程中，使得主线程的职责更重&lt;/li&gt;
-&lt;li&gt;如果不使用工作者线程为主线程分担耗时的任务，会造成应用卡顿，严重时可能出现ANR(Application Not Responding),即程序未响应。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;因而，在Android中使用工作者线程显得势在必行，如一开始提到那样，在Android中工作者线程有很多，接下来我们将围绕AsyncTask，HandlerThread等深入研究。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;AsyncTask&quot;&gt;&lt;a href=&quot;#AsyncTask&quot; class=&quot;headerlink&quot; title=&quot;AsyncTask&quot;&gt;&lt;/a&gt;AsyncTask&lt;/h2&gt;&lt;p&gt;AsyncTask是Android框架提供给开发者的一个辅助类，使用该类我们可以轻松的处理异步线程与主线程的交互，由于其便捷性，在Android工程中，AsyncTask被广泛使用。然而AsyncTask并非一个完美的方案，使用它往往会存在一些问题。接下来将逐一列举AsyncTask不容易被开发者察觉的问题。&lt;/p&gt;
-&lt;h3 id=&quot;AsyncTask与内存泄露&quot;&gt;&lt;a href=&quot;#AsyncTask与内存泄露&quot; class=&quot;headerlink&quot; title=&quot;AsyncTask与内存泄露&quot;&gt;&lt;/a&gt;AsyncTask与内存泄露&lt;/h3&gt;&lt;p&gt;内存泄露是Android开发中常见的问题，只要开发者稍有不慎就有可能导致程序产生内存泄露，严重时甚至可能导致OOM(OutOfMemory，即内存溢出错误)。AsyncTask也不例外，也有可能造成内存泄露。&lt;/p&gt;
-&lt;p&gt;以一个简单的场景为例：&lt;br&gt;在Activity中，通常我们这样使用AsyncTask:&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//In Activity&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AsyncTask&amp;lt;String, Void, Void&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; Void &lt;span class=&quot;title&quot;&gt;doInBackground&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... params)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//some code&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;.execute(&lt;span class=&quot;string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上述代码使用的匿名内存类创建AsyncTask实例，然而在Java中，非静态内存类会隐式持有外部类的实例引用，上面例子AsyncTask创建于Activity中，因而会隐式持有Activity的实例引用。&lt;/p&gt;
-&lt;p&gt;而在AsyncTask内部实现中,mFuture同样使用匿名内部类创建对象，而mFuture会作为执行任务加入到任务执行器中。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; WorkerRunnable&amp;lt;Params, Result&amp;gt; mWorker;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AsyncTask&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mFuture = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FutureTask&amp;lt;Result&amp;gt;(mWorker) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//some code&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;而mFuture加入任务执行器，实际上是放入了一个静态成员变量SERIAL_EXECUTOR指向的对象SerialExecutor的一个ArrayDeque类型的集合中。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Executor SERIAL_EXECUTOR = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SerialExecutor();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SerialExecutor&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Executor&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; ArrayDeque&amp;lt;Runnable&amp;gt; mTasks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayDeque&amp;lt;Runnable&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Runnable r)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mTasks.offer(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;//fake code&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                r.run();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;当任务处于排队状态，则Activity实例引用被静态常量SERIAL_EXECUTOR 间接持有。&lt;/p&gt;
-&lt;p&gt;在通常情况下，当设备发生屏幕旋转事件，当前的Activity被销毁，新的Activity被创建，以此完成对布局的重新加载。&lt;/p&gt;
-&lt;p&gt;而本例中，当屏幕旋转时，处于排队的AsyncTask由于其对Activity实例的引用关系，导致这个Activity不能被销毁，其对应的内存不能被GC回收，因而就出现了内存泄露问题。&lt;/p&gt;
-&lt;p&gt;关于如何避免内存泄露，我们可以使用&lt;strong&gt;静态内部类 + 弱引用&lt;/strong&gt;的形式解决。&lt;/p&gt;
-&lt;h3 id=&quot;cancel的问题&quot;&gt;&lt;a href=&quot;#cancel的问题&quot; class=&quot;headerlink&quot; title=&quot;cancel的问题&quot;&gt;&lt;/a&gt;cancel的问题&lt;/h3&gt;&lt;p&gt;AsyncTask作为任务，是支持调用者取消任务的，即允许我们使用AsyncTask.canncel()方法取消提交的任务。然而其实cancel并非真正的起作用。&lt;/p&gt;
-&lt;p&gt;首先，我们看一下cancel方法：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; mayInterruptIfRunning)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mCancelled.set(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; mFuture.cancel(mayInterruptIfRunning);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;cancel方法接受一个boolean类型的参数，名称为mayInterruptIfRunning，意思是是否可以打断正在执行的任务。&lt;br&gt;&lt;br&gt;1.当我们调用cancel(false)，不打断正在执行的任务，对应的结果是:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;处于doInBackground中的任务不受影响，继续执行&lt;/li&gt;
-&lt;li&gt;任务结束时不会去调用onPostExecute方法，而是执行onCancelled方法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;2.当我们调用cancel(true)，表示打断正在执行的任务，会出现如下情况：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果doInBackground方法处于阻塞状态，如调用Thread.sleep,wait等方法，则会抛出InterruptedException。&lt;/li&gt;
-&lt;li&gt;对于某些情况下，有可能无法打断正在执行的任务&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如下，就是一个cancel方法无法打断正在执行的任务的例子:&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;AsyncTask&amp;lt;String,Void,Void&amp;gt; task = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AsyncTask&amp;lt;String, Void, Void&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; Void &lt;span class=&quot;title&quot;&gt;doInBackground&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... params)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; loop = &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(loop) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Log.i(LOGTAG, &lt;span class=&quot;string&quot;&gt;&quot;doInBackground after interrupting the loop&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;task.execute(&lt;span class=&quot;string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Thread.sleep(&lt;span class=&quot;number&quot;&gt;2000&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//确保AsyncTask任务执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.cancel(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (InterruptedException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面的例子，如果想要使cancel正常工作需要在循环中，需要在循环条件里面同时检测isCancelled()才可以。&lt;/p&gt;
-&lt;h3 id=&quot;串行带来的问题&quot;&gt;&lt;a href=&quot;#串行带来的问题&quot; class=&quot;headerlink&quot; title=&quot;串行带来的问题&quot;&gt;&lt;/a&gt;串行带来的问题&lt;/h3&gt;&lt;p&gt;Android团队关于AsyncTask执行策略进行了多次修改，修改大致如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自最初引入到Donut(1.6)之前，任务串行执行&lt;/li&gt;
-&lt;li&gt;从Donut到GINGERBREAD_MR1(2.3.4),任务被修改成了并行执行&lt;/li&gt;
-&lt;li&gt;从HONEYCOMB（3.0）至今，任务恢复至串行，但可以设置executeOnExecutor()实现并行执行。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;然而AsyncTask的串行实际执行起来是这样的逻辑&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;由串行执行器控制任务的初始分发&lt;/li&gt;
-&lt;li&gt;并行执行器一次执行单个任务，并启动下一个&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在AsyncTask中，并发执行器实际为ThreadPoolExecutor的实例，其CORE_POOL_SIZE为当前设备CPU数量+1，MAXIMUM_POOL_SIZE值为CPU数量的2倍 + 1。&lt;/p&gt;
-&lt;p&gt;以一个四核手机为例，当我们持续调用AsyncTask任务过程中:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在AsyncTask线程数量小于CORE_POOL_SIZE(5个)时，会启动新的线程处理任务，不重用之前空闲的线程&lt;/li&gt;
-&lt;li&gt;当数量超过CORE_POOL_SIZE(5个)，才开始重用之前的线程处理任务&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;但是由于AsyncTask属于默认线性执行任务，导致并发执行器总是处于某一个线程工作的状态，因而造成了ThreadPool中其他线程的浪费。同时由于AsyncTask中并不存在&lt;code&gt;allowCoreThreadTimeOut(boolean)&lt;/code&gt;的调用，所以ThreadPool中的核心线程即使处于空闲状态也不会销毁掉。&lt;/p&gt;
-&lt;h2 id=&quot;Executors&quot;&gt;&lt;a href=&quot;#Executors&quot; class=&quot;headerlink&quot; title=&quot;Executors&quot;&gt;&lt;/a&gt;Executors&lt;/h2&gt;&lt;p&gt;Executors是Java API中一个快速创建线程池的工具类，然而在它里面也是存在问题的。&lt;/p&gt;
-&lt;p&gt;以Executors中获取一个固定大小的线程池方法为例:&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; ExecutorService &lt;span class=&quot;title&quot;&gt;newFixedThreadPool&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; nThreads)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ThreadPoolExecutor(nThreads, nThreads,&lt;span class=&quot;number&quot;&gt;0L&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        TimeUnit.MILLISECONDS,&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LinkedBlockingQueue&amp;lt;Runnable&amp;gt;());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;在上面代码实现中，CORE_POOL_SIZE和MAXIMUM_POOL_SIZE都是同样的值，如果把nThreads当成核心线程数，则无法保证最大并发，而如果当做最大并发线程数，则会造成线程的浪费。因而Executors这样的API导致了我们无法在最大并发数和线程节省上做到平衡。&lt;/p&gt;
-&lt;p&gt;为了达到最大并发数和线程节省的平衡，建议自行创建ThreadPoolExecutor，根据业务和设备信息确定CORE_POOL_SIZE和MAXIMUM_POOL_SIZE的合理值。&lt;/p&gt;
-&lt;h2 id=&quot;HandlerThread&quot;&gt;&lt;a href=&quot;#HandlerThread&quot; class=&quot;headerlink&quot; title=&quot;HandlerThread&quot;&gt;&lt;/a&gt;HandlerThread&lt;/h2&gt;&lt;p&gt;HandlerThread是Android中提供特殊的线程类，使用这个类我们可以轻松创建一个带有Looper的线程，同时利用Looper我们可以结合Handler实现任务的控制与调度。以Handler的post方法为例，我们可以封装一个轻量级的任务处理器.&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Handler mHandler;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightTaskManager&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    HandlerThread workerThread = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HandlerThread(&lt;span class=&quot;string&quot;&gt;&quot;LightTaskThread&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    workerThread.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Handler(workerThread.getLooper());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runnable run)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler.post(run);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;postAtFrontOfQueue&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runnable runnable)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler.postAtFrontOfQueue(runnable);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;postDelayed&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runnable runnable, &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; delay)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler.postDelayed(runnable, delay);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;postAtTime&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runnable runnable, &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; time)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mHandler.postAtTime(runnable, time);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在本例中，我们可以按照如下规则提交任务:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;post&lt;/code&gt; 提交优先级一般的任务&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;postAtFrontOfQueue&lt;/code&gt; 将优先级较高的任务加入到队列前端&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;postAtTime&lt;/code&gt; 指定时间提交任务&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;postDelayed&lt;/code&gt; 延后提交优先级较低的任务&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;上面的轻量级任务处理器利用&lt;strong&gt;HandlerThread的单一线程 + 任务队列&lt;/strong&gt;的形式，可以处理类似本地IO（文件或数据库读取）的轻量级任务。在具体的处理场景下，可以参考如下做法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;对于本地IO读取，并显示到界面，建议使用postAtFrontOfQueue&lt;/li&gt;
-&lt;li&gt;对于本地IO写入，不需要通知界面，建议使用postDelayed&lt;/li&gt;
-&lt;li&gt;一般操作，可以使用post&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;线程优先级调整&quot;&gt;&lt;a href=&quot;#线程优先级调整&quot; class=&quot;headerlink&quot; title=&quot;线程优先级调整&quot;&gt;&lt;/a&gt;线程优先级调整&lt;/h2&gt;&lt;p&gt;在Android应用中，将耗时任务放入异步线程是一个不错的选择，那么为异步线程调整应有的优先级则是一件锦上添花的事情。众所周知，线程的并行通过CPU的时间片(这个时间片，让我想到了当时教我们《操作系统》的美女老师:-D)切换实现，对线程优先级调整，最主要的策略就是降低异步线程的优先级，从而使得主线程获得更多的CPU资源。&lt;/p&gt;
-&lt;p&gt;Android中的线程优先级和Linux系统进程优先级有些类似，其值都是从-20至19（递减，-20优先级最大,19优先级最小）。其中Android中，开发者可以控制的优先级有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;THREAD_PRIORITY_DEFAULT&lt;/strong&gt;，默认的线程优先级，值为0&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;THREAD_PRIORITY_LOWEST&lt;/strong&gt;，最低的线程级别，值为19&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;THREAD_PRIORITY_BACKGROUND&lt;/strong&gt; 后台线程建议设置这个优先级，值为10&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;THREAD_PRIORITY_MORE_FAVORABLE&lt;/strong&gt; 相对THREAD_PRIORITY_DEFAULT稍微优先，值为-1&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;THREAD_PRIORITY_LESS_FAVORABLE&lt;/strong&gt; 相对THREAD_PRIORITY_DEFAULT稍微落后一些，值为1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;为线程设置优先级也比较简单，通用的做法是在run方法体的开始部分加入下列代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android.os.Process.setThreadPriority(priority);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;通常设置优先级的规则如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一般的工作者线程，设置成&lt;code&gt;THREAD_PRIORITY_BACKGROUND&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;对于优先级很低的线程，可以设置&lt;code&gt;THREAD_PRIORITY_LOWEST&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;其他特殊需求，视业务应用具体的优先级&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;在Android中工作者线程如此普遍，然而潜在的问题也不可避免，建议在开发者使用工作者线程时，从工作者线程的数量和优先级等方面进行审视，做到较为合理的使用。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文转自 &lt;a href=&quot;http://www.infoq.com/cn/articles/android-worker-thread&quot;&gt;http://www.infoq.com/cn/articles/android-worker-thread&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2016030700.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问题呢，关于工作者线程有哪些优化的方面呢，本文将一一解答这些问题。&lt;/p&gt;
-&lt;font color=&#39;red&#39;&gt;&lt;strong&gt;工作者线程的存在原因：&lt;/strong&gt;&lt;/font&gt;
-
-&lt;ul&gt;
-&lt;li&gt;因为Android的UI单线程模型，所有的UI相关的操作都需要在主线程(UI线程)执行&lt;/li&gt;
-&lt;li&gt;Android中各大组件的生命周期回调都是位于主线程中，使得主线程的职责更重&lt;/li&gt;
-&lt;li&gt;如果不使用工作者线程为主线程分担耗时的任务，会造成应用卡顿，严重时可能出现ANR(Application Not Responding),即程序未响应。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;因而，在Android中使用工作者线程显得势在必行，如一开始提到那样，在Android中工作者线程有很多，接下来我们将围绕AsyncTask，HandlerThread等深入研究。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
-    
-      <category term="Android Thread" scheme="http://www.jiangbing.me/tags/Android-Thread/"/>
     
   </entry>
   

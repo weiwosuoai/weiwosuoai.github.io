@@ -239,6 +239,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/" itemprop="url">
+                  关于 Android 中工作者线程的思考
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-14T13:30:31+08:00" content="2016-02-14">
+              2016-02-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文转自 <a href="http://www.infoq.com/cn/articles/android-worker-thread">http://www.infoq.com/cn/articles/android-worker-thread</a></p>
+</blockquote>
+<p><img src="/images/2016030700.jpg" alt=""></p>
+<p>在Android中，我们或多或少使用了工作者线程，比如Thread，AsyncTask，HandlerThread，甚至是自己创建的线程池，使用工作者线程我们可以将耗时的操作从主线程中移走。然而在Android系统中为什么存在工作者线程呢，常用的工作者线程有哪些不易察觉的问题呢，关于工作者线程有哪些优化的方面呢，本文将一一解答这些问题。</p>
+<font color='red'><strong>工作者线程的存在原因：</strong></font>
+
+<ul>
+<li>因为Android的UI单线程模型，所有的UI相关的操作都需要在主线程(UI线程)执行</li>
+<li>Android中各大组件的生命周期回调都是位于主线程中，使得主线程的职责更重</li>
+<li>如果不使用工作者线程为主线程分担耗时的任务，会造成应用卡顿，严重时可能出现ANR(Application Not Responding),即程序未响应。</li>
+</ul>
+<p>因而，在Android中使用工作者线程显得势在必行，如一开始提到那样，在Android中工作者线程有很多，接下来我们将围绕AsyncTask，HandlerThread等深入研究。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/11/2016-02-11-android-processes-and-threads/" itemprop="url">
                   Android 中的进程和线程
                 </a>
@@ -1421,141 +1555,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/27/2016-01-27-android-studio-preview/" itemprop="url">
-                  再说说 Android Studio
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-27T10:12:54+08:00" content="2016-01-27">
-              2016-01-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android-Studio/" itemprop="url" rel="index">
-                    <span itemprop="name">Android Studio</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/27/2016-01-27-android-studio-preview/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/27/2016-01-27-android-studio-preview/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本文翻译自： <a href="http://developer.android.com/intl/zh-cn/tools/studio/index.html">http://developer.android.com/intl/zh-cn/tools/studio/index.html</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了上一篇中对Android Studio的介绍，本篇我们将继续深入了解Android Studio的功能：</p>
-<ul>
-<li>基于 <code>Gradle</code> 来构建应用</li>
-<li>同时生成多个 <code>apk</code> 文件（Build variants and multiple apk file generation）</li>
-<li>常用的代码模板以帮助你快速生成app中常见的功能模块</li>
-<li>支持拖拽的布局编辑器</li>
-<li><code>lint</code> 工具（帮助你性能调优，app易用性，版本兼容性以及其他一些问题）</li>
-<li>代码混淆（ProGuard）和app签名功能</li>
-<li><a href="http://developers.google.com/cloud/devtools/android_studio_templates/">Google云平台</a>的内置支持，使它易于集成Google云通讯服务和应用程序引擎</li>
-<li>更多…</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/27/2016-01-27-android-studio-preview/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1601,7 +1600,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1618,7 +1617,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
