@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-06T07:57:00.911Z</updated>
+  <updated>2016-07-27T06:16:46.935Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Guitar 弹唱】 难忘的一天</title>
+    <link href="http://www.jiangbing.me/2016/05/01/2016-05-01-guitar-nanwangdeyitian/"/>
+    <id>http://www.jiangbing.me/2016/05/01/2016-05-01-guitar-nanwangdeyitian/</id>
+    <published>2016-05-01T02:26:11.000Z</published>
+    <updated>2016-07-27T06:16:46.935Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;不一样的 53231323，许巍，感动！ :-D&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/po6i-NkfdW0/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;不一样的 53231323，许巍，感动！ :-D&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/po6i-NkfdW0/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;/embed&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="音乐" scheme="http://www.jiangbing.me/categories/%E9%9F%B3%E4%B9%90/"/>
+    
+    
+      <category term="Guitar" scheme="http://www.jiangbing.me/tags/Guitar/"/>
+    
+  </entry>
   
   <entry>
     <title>前端开发利器 Sublime Text 介绍</title>
@@ -2078,91 +2107,6 @@
     
     
       <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
-    
-      <category term="Android Thread" scheme="http://www.jiangbing.me/tags/Android-Thread/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 中的进程和线程</title>
-    <link href="http://www.jiangbing.me/2016/02/11/2016-02-11-android-processes-and-threads/"/>
-    <id>http://www.jiangbing.me/2016/02/11/2016-02-11-android-processes-and-threads/</id>
-    <published>2016-02-11T05:30:31.000Z</published>
-    <updated>2016-05-14T07:20:45.943Z</updated>
-    
-    <content type="html">&lt;p&gt;当android应用启动第一个组件后，系统会自动为这个分配一个新的Linux进程，这个进程中包含一个执行线程。默认情况下，同一个应用中的所有组件都运行在这个包含着主线程的进程中。也就是说，在创建一个新的组件时，系统还是会把它运行在已经分配好的这个进程中。当然，你也可以指定这些组件运行在不同的进程中，同时，你还可以为他们创建额外的线程。&lt;/p&gt;
-&lt;p&gt;这篇博文，我们就来说说在Android应用中，进程和线程是如何来工作的。&lt;/p&gt;
-&lt;h2 id=&quot;进程&quot;&gt;&lt;a href=&quot;#进程&quot; class=&quot;headerlink&quot; title=&quot;进程&quot;&gt;&lt;/a&gt;进程&lt;/h2&gt;&lt;p&gt;前面已经说了，同一个应用中的所有组件都被分配在同一个进程中，而且你也不应该去改变这种做法。然而，如果你需要控制某一确定的组件的Proces，你可以在manifest文件中做特殊设置。Music播放器的Playback Service就可以这样做.&lt;/p&gt;
-&lt;p&gt;manifest文件中记录着所有组件的节点，包括 &lt;code&gt;&amp;lt;activity&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;service&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;provider&amp;gt;&lt;/code&gt;.在这些节点中，你可以通过 &lt;code&gt;android:process&lt;/code&gt; 属性来指定这些组件应该运行在哪个进程中。你也可以通过 &lt;code&gt;android:process&lt;/code&gt; 将不同应用中的组件都运行在同一个进程中,这样它们就会拥有同一个Linux用户ID,并且用相同的证书签名。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; 节点同样支持 android:process 属性，你可以为他指派一个默认的值，那么，这个值，就会应用于所有组件。&lt;/p&gt;
-&lt;p&gt;当内存不足，或者另一个进程需要立即执行时，系统可能会 shut down 那些无用的进程。那么，被杀死的进程中组件也会被销毁。当这些组件再次工作时，所属进程也会被重新创建。&lt;/p&gt;
-&lt;p&gt;有意思的是，系统在需要销毁进程时，会衡量这个进程对用户的重要性。比方说，相比一个活动的进程，系统更容易销毁一个不再屏幕上显示的进程。决定于一个进程是否终止，取决于该进程中组件的运行状态。&lt;/p&gt;
-&lt;h2 id=&quot;进程的生命周期&quot;&gt;&lt;a href=&quot;#进程的生命周期&quot; class=&quot;headerlink&quot; title=&quot;进程的生命周期&quot;&gt;&lt;/a&gt;进程的生命周期&lt;/h2&gt;&lt;p&gt;Android系统尽可能的去维持一个应用的进程，除非是因为内存不足或者在内存不足的情况下需要创建更重要的进程。系统会把进程中存在正在运行的组件放在 &lt;em&gt;importance层&lt;/em&gt; ，而重要性最低的进程会首先被杀死，然后是下一个重要性最低的进程，当然，必要时，系统会恢复资源的。&lt;/p&gt;
-&lt;p&gt;在 &lt;em&gt;importance层&lt;/em&gt; 有五种等级。下面从重要性从高到低的顺序来说说这五种等级的进程（下面第一个级别是最重要，也是最后被系统杀死的进程）：&lt;/p&gt;
-&lt;h3 id=&quot;1-前台进程（Foreground-process）&quot;&gt;&lt;a href=&quot;#1-前台进程（Foreground-process）&quot; class=&quot;headerlink&quot; title=&quot;1.前台进程（Foreground process）&quot;&gt;&lt;/a&gt;1.前台进程（Foreground process）&lt;/h3&gt;&lt;p&gt;这个进程就是说用户当前正在使用的进程。下面这些情况，如果任何一种成立的话，我们都认为这个进程是前台进程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进程中寄存一个正在与用户交互的 &lt;code&gt;activity&lt;/code&gt;(也就是，这个&lt;code&gt;activity&lt;/code&gt;已获取焦点，换句话说就是 &lt;code&gt;onResume()&lt;/code&gt; 已经被调用)&lt;/li&gt;
-&lt;li&gt;进程中寄存了一个 &lt;code&gt;service&lt;/code&gt;,并且这个&lt;code&gt;service&lt;/code&gt;绑定在了一个正在与用户进行交互的&lt;code&gt;activity&lt;/code&gt;上&lt;/li&gt;
-&lt;li&gt;进程中寄存了一个前台&lt;code&gt;service&lt;/code&gt;(该service已经调用了&lt;code&gt;startForeground()&lt;/code&gt;方法)&lt;/li&gt;
-&lt;li&gt;进程中寄存了一个正在调用其生命周期方法(onCreate(), onStart(), onDestroy())的&lt;code&gt;service&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;进程中寄存了一个广播接受者，并且其正在执行&lt;code&gt;onReceive()&lt;/code&gt;方法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;通常情况下，任何时候，只有少数前台进程存在。而它们被杀死也只是存在内存极低，以至于进程无法继续运行下去。&lt;/p&gt;
-&lt;h3 id=&quot;2-可视化的进程（Visible-process）&quot;&gt;&lt;a href=&quot;#2-可视化的进程（Visible-process）&quot; class=&quot;headerlink&quot; title=&quot;2.可视化的进程（Visible process）&quot;&gt;&lt;/a&gt;2.可视化的进程（Visible process）&lt;/h3&gt;&lt;p&gt;此进程无任何前台组件，但用户还能够在屏幕上可见。下面这些情况，如果任何一种成立的话，我们都认为这个进程是可视化进程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进程中寄存了一个前台activity,但是一直对用户是可见的（onPause()方法被调用）。&lt;/li&gt;
-&lt;li&gt;寄存了一个绑定于可视的(或者前台)activity的&lt;code&gt;service&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;visible process是非常重要的，也只有在需要保证所有前台进程正常运行时，才有可能将其杀死。&lt;/p&gt;
-&lt;h3 id=&quot;3-服务型进程（Service-process）&quot;&gt;&lt;a href=&quot;#3-服务型进程（Service-process）&quot; class=&quot;headerlink&quot; title=&quot;3.服务型进程（Service process）&quot;&gt;&lt;/a&gt;3.服务型进程（Service process）&lt;/h3&gt;&lt;p&gt;该进程运行着一个已经调用 &lt;code&gt;startService()&lt;/code&gt; 的service,并且does not fall into either of the two higher categories.虽然service进程用户看不见，但是他们通常做的工作时用户关心的事情（比如后台播放音乐，下载文件等），所以系统通常维持他们的运行，除非在保证所有的前台进程和可视化进程下内存不足。&lt;/p&gt;
-&lt;h3 id=&quot;4-后台进程（Background-process）&quot;&gt;&lt;a href=&quot;#4-后台进程（Background-process）&quot; class=&quot;headerlink&quot; title=&quot;4.后台进程（Background process）&quot;&gt;&lt;/a&gt;4.后台进程（Background process）&lt;/h3&gt;&lt;p&gt;该进程寄存着一个当前状态下对用户不可见的activity(已经调用了 &lt;code&gt;onStop()&lt;/code&gt; 方法)。此类进程对用户没有直接影响，所以在需要为foreground, visible, service进程分配内存时，系统会在任何时候杀死此类进程以回收内存。通常情况下，有很多的后台进程在忙碌着，他们被保存在 LRU（least recently used） list中,最近被用户用到的也是最后一个被杀死的。如果activity实现生命周期方法，并且保存了其所属的状态信息，那么当该进程被杀死后对用户的体验是没有什么影响的，因为当用户重回这个activity时，activity将会还原所有的状态。具体如何使用，请查阅Google官方文档中，关于activity的信息保存和找回。&lt;/p&gt;
-&lt;h3 id=&quot;5-空进程（Empty-process）&quot;&gt;&lt;a href=&quot;#5-空进程（Empty-process）&quot; class=&quot;headerlink&quot; title=&quot;5.空进程（Empty process）&quot;&gt;&lt;/a&gt;5.空进程（Empty process）&lt;/h3&gt;&lt;p&gt;该进程中没有任何活动的应用组件。这种进程被存活下来的唯一目的就是缓存了，已达到下一次在其中运行组件时减少启动时间。系统杀死它们经常是因为平衡进程缓存和底层内核缓存之间的系统资源。&lt;/p&gt;
-&lt;p&gt;Android在对一个进程进行等级排名时，依据这个进程中当前活动组件的重要性，尽可能的分配最高等级。比如说，如果一个中寄存了一个service和一个visible activity,那么系统将这个进程认定为是一个visible process，而不是一个service process.&lt;/p&gt;
-&lt;p&gt;另外, a process’s ranking might be increased because other processes are dependent on it—a process that is serving another process can never be ranked lower than the process it is serving. For example, if a content provider in process A is serving a client in process B, or if a service in process A is bound to a component in process B, process A is always considered at least as important as process B.&lt;/p&gt;
-&lt;p&gt;因为一个执行service的进程的排名比一个后台activity的进程排名要高，所以，如果一个activity启动时要执行一段长时间的操作，应该选择使用Service而不是创建一个worker thread。例如，一个activity做上传图片的操作，应该选择启动一个Service做上传的动作。使用service能确保这个操作会至少有”service process”的优先级。&lt;/p&gt;
-&lt;h2 id=&quot;Thread&quot;&gt;&lt;a href=&quot;#Thread&quot; class=&quot;headerlink&quot; title=&quot;Thread&quot;&gt;&lt;/a&gt;Thread&lt;/h2&gt;&lt;p&gt;当一个程序首次启动，系统会为这个程序创建一个“main thread”。这个线程非常重要，因为它将肩负起UI的控制调度，还包含绘制图像的事件。同时，它还是与UI相关的组件（来自android.widget与android.view下的组件）进行交互的中介。因此，有些时候main thread 也被成为“UI thread”.&lt;/p&gt;
-&lt;p&gt;系统不会为每一个组件的实例创建单独的线程。所有运行在同一个进程中的组件都会在UI Thread中被实例化。系统调用组件与他们自身的回调函数都是运行在UI Thread的。&lt;/p&gt;
-&lt;p&gt;例如，当用户点击屏幕上的一个button，程序的UI thread会把这个事件分发至button这个组件上，然后button会执行它的presss state并post an invalidate请求到事件队列中。UI thread然后从事件队列中取出消息并通知组件进行重绘。&lt;/p&gt;
-&lt;p&gt;当你的app执行一个比较重的工作时，单线程模式有可能会卡到UI。特别是，在UI线程里面做网络请求操作或者是db查询会严重卡到整个UI。当UI thread被阻塞时，没有事件能够继续被分发，包括绘制事件。那么在用户看来，这样的程序是糟糕的。更糟糕的是，如果UI线程被阻塞超过5秒，程序会就出现ANR的错误提示。那么用户可能会决定退出程序，并对该程序进行卸载。&lt;/p&gt;
-&lt;p&gt;另外，Andoid的UI组件不是thread-safe的。因此，你不应该在另外一个线程去操控UI组件。有两个原则需要遵守：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;不要阻塞UI线程&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;不要在UI线程之外访问UI组件&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Worker-threads&quot;&gt;&lt;a href=&quot;#Worker-threads&quot; class=&quot;headerlink&quot; title=&quot;Worker threads&quot;&gt;&lt;/a&gt;Worker threads&lt;/h3&gt;&lt;p&gt;为了实现执行耗时的操作，你应该确保哪些动作执行在另外一个线程(“background” or “worker” threads)。&lt;/p&gt;
-&lt;p&gt;例如，下面的代码演示了点击事件后开启另外一个线程来下载并显示图片的操作：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Bitmap b = loadImageFromNetwork(&lt;span class=&quot;string&quot;&gt;&quot;http://example.com/image.png&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            mImageView.setImageBitmap(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面的例子看起来没有问题，实际上违法了第二条规则：不要在UI线程之外访问UI组件。 Android提供了下面三个方法来解决这个问题：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Activity.runOnUiThread(Runnable)&lt;/li&gt;
-&lt;li&gt;View.post(Runnable)&lt;/li&gt;
-&lt;li&gt;View.postDelayed(Runnable, long)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;例如下面就是使用View.post的方式实现的代码示例：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Bitmap bitmap = loadImageFromNetwork(&lt;span class=&quot;string&quot;&gt;&quot;http://example.com/image.png&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            mImageView.post(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    mImageView.setImageBitmap(bitmap);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面的代码虽然实现了功能，可是当系统变复杂时，会显得不好处理。也许我们可以考虑使用Handler，但是更好的方案也许是使用AsyncTask。&lt;/p&gt;
-&lt;h3 id=&quot;使用AsyncTask&quot;&gt;&lt;a href=&quot;#使用AsyncTask&quot; class=&quot;headerlink&quot; title=&quot;使用AsyncTask&quot;&gt;&lt;/a&gt;使用AsyncTask&lt;/h3&gt;&lt;p&gt;关于什么是AsyncTask与如何使用&lt;a href=&quot;http://developer.android.com/reference/android/os/AsyncTask.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AsyncTask&lt;/a&gt;，不再赘述。 下面是使用AsyncTask来实现上面的例子：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DownloadImageTask().execute(&lt;span class=&quot;string&quot;&gt;&quot;http://example.com/image.png&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DownloadImageTask&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AsyncTask&lt;/span&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Void&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Bitmap&lt;/span&gt;&amp;gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/** The system calls this to perform work in a worker thread and&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      * delivers it the parameters given to AsyncTask.execute() */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; Bitmap &lt;span class=&quot;title&quot;&gt;doInBackground&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... urls)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; loadImageFromNetwork(urls[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/** The system calls this to perform work in the UI thread and delivers&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      * the result from doInBackground() */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onPostExecute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bitmap result)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mImageView.setImageBitmap(result);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;Thread-safe-methods&quot;&gt;&lt;a href=&quot;#Thread-safe-methods&quot; class=&quot;headerlink&quot; title=&quot;Thread-safe methods&quot;&gt;&lt;/a&gt;Thread-safe methods&lt;/h3&gt;&lt;p&gt;在某些情况下，你实现的一些方法有可能会被不止一个线程中执行到，因此这些方法必须是线程安全的。&lt;/p&gt;
-&lt;p&gt;在bound service的情况下，回调函数通常都需要是线程安全的。如果IBinder的Client与Server是在同一进程的话，那么被Client调用的方法是执行在Client的线程当中的。然而如果Client是在另外一个进程的话，被调用的方法则是执行在来自系统为Server端维护的一个线程池当中的某个线程中（非UI Thread）。例如，既然Service的onBind()的方法可以被service进程的UI线程所调用执行，那么onBind所返回的对象（Client端）所实现的方法则可以被线程池中的线程所调用执行。因为一个service可以拥有多个client，那么在同一时刻可以有不止一个线程可以占用同一个IBinder的回调函数。所以IBinder的方法必须是线程安全的。&lt;/p&gt;
-&lt;p&gt;同样的，一个content provider可以接受来自另外一个进程的数据请求。尽管ContentResolver与ContentProvider类隐藏了实现细节，但是ContentProvider所提供的query()，insert()，delete()，update()与getType()都是在content provider进程的线程池中被调用执行的，而不是进程的主线程中。因为那些方法可能同时被多个线程所调用，所以他们都应该是线程安全的。&lt;/p&gt;
-&lt;h3 id=&quot;进程间的通信（Interprocess-Communication）&quot;&gt;&lt;a href=&quot;#进程间的通信（Interprocess-Communication）&quot; class=&quot;headerlink&quot; title=&quot;进程间的通信（Interprocess Communication）&quot;&gt;&lt;/a&gt;进程间的通信（Interprocess Communication）&lt;/h3&gt;&lt;p&gt;Android提供了为远程过程调用（RPC）提供了一种进程间通信（IPC）的机制。调用发生在activity或者其他组件中，执行却在另外一个进程，最后再把结果返回给调用者。这需要把调用的数据解析成操作系统能够识别的格式，解码，传递，再编码返回。Android提供了IPC交互的实现细节，因此我们只需要专注于定义与实现RPC接口。&lt;/p&gt;
-&lt;p&gt;为了执行IPC，你的程序必须通过bindService()方法绑定到service上，更多细节，请查看&lt;a href=&quot;http://developer.android.com/guide/components/services.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Services文档&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;本文参考：&lt;br&gt;&lt;a href=&quot;http://developer.android.com/guide/components/processes-and-threads.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.android.com/guide/components/processes-and-threads.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当android应用启动第一个组件后，系统会自动为这个分配一个新的Linux进程，这个进程中包含一个执行线程。默认情况下，同一个应用中的所有组件都运行在这个包含着主线程的进程中。也就是说，在创建一个新的组件时，系统还是会把它运行在已经分配好的这个进程中。当然，你也可以指定这些组件运行在不同的进程中，同时，你还可以为他们创建额外的线程。&lt;/p&gt;
-&lt;p&gt;这篇博文，我们就来说说在Android应用中，进程和线程是如何来工作的。&lt;/p&gt;
-&lt;h2 id=&quot;进程&quot;&gt;&lt;a href=&quot;#进程&quot; class=&quot;headerlink&quot; title=&quot;进程&quot;&gt;&lt;/a&gt;进程&lt;/h2&gt;&lt;p&gt;前面已经说了，同一个应用中的所有组件都被分配在同一个进程中，而且你也不应该去改变这种做法。然而，如果你需要控制某一确定的组件的Proces，你可以在manifest文件中做特殊设置。Music播放器的Playback Service就可以这样做.&lt;/p&gt;
-&lt;p&gt;manifest文件中记录着所有组件的节点，包括 &lt;code&gt;&amp;lt;activity&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;service&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;receiver&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;provider&amp;gt;&lt;/code&gt;.在这些节点中，你可以通过 &lt;code&gt;android:process&lt;/code&gt; 属性来指定这些组件应该运行在哪个进程中。你也可以通过 &lt;code&gt;android:process&lt;/code&gt; 将不同应用中的组件都运行在同一个进程中,这样它们就会拥有同一个Linux用户ID,并且用相同的证书签名。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
-    
-      <category term="Android Process" scheme="http://www.jiangbing.me/tags/Android-Process/"/>
     
       <category term="Android Thread" scheme="http://www.jiangbing.me/tags/Android-Thread/"/>
     
