@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-28T03:05:57.839Z</updated>
+  <updated>2016-07-28T05:41:49.653Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Ubuntu 16.04 安装中文输入法</title>
+    <title>Ubuntu 16.04 安装中文输入法（附：修改系统默认字体方法）</title>
     <link href="http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/"/>
     <id>http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/</id>
     <published>2016-05-03T08:29:36.000Z</published>
-    <updated>2016-07-28T03:05:57.839Z</updated>
+    <updated>2016-07-28T05:41:49.653Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;这篇博文中将会告诉你如何在 Ubuntu 系统中安装一款中文输入法。&lt;/p&gt;
@@ -31,6 +31,12 @@
 &lt;p&gt;&lt;img src=&quot;/images/2016072800.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;2.打开终端，输入命令：&lt;code&gt;sudo apt-get install fcitx-table-wbpy&lt;/code&gt;,等待相关的依赖库和框架安装完成。&lt;/p&gt;
 &lt;p&gt;3.重启电脑后，你就可以使用这款中文输入法了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2016072801.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;总是对系统默认的字体不满意？下面链接经过博主亲测可行，完美解决问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://my.oschina.net/itblog/blog/278566&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://my.oschina.net/itblog/blog/278566&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我用的是 Mac 的字体 &lt;em&gt;Monaco&lt;/em&gt;,废话少说，上图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016072802.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
