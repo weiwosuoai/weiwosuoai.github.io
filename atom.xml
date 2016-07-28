@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-27T09:09:41.693Z</updated>
+  <updated>2016-07-28T03:05:57.839Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 16.04 安装中文输入法</title>
+    <link href="http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/"/>
+    <id>http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/</id>
+    <published>2016-05-03T08:29:36.000Z</published>
+    <updated>2016-07-28T03:05:57.839Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;这篇博文中将会告诉你如何在 Ubuntu 系统中安装一款中文输入法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;想到安装中文输入法，我们首先想到的肯定是搜狗输入法，但是博主在折腾一段时间后，因为一些坑，决定还是弃之。&lt;/p&gt;
+&lt;p&gt;接下来我们将会安装一款国人开发的 Linux 中文输入法，接下来，我么来看看具体的安装步骤：&lt;/p&gt;
+&lt;p&gt;1.将系统默认的 iBus 输入法更改为 Fcitx 输入法框架：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016072800.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;2.打开终端，输入命令：&lt;code&gt;sudo apt-get install fcitx-table-wbpy&lt;/code&gt;,等待相关的依赖库和框架安装完成。&lt;/p&gt;
+&lt;p&gt;3.重启电脑后，你就可以使用这款中文输入法了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016072801.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;这篇博文中将会告诉你如何在 Ubuntu 系统中安装一款中文输入法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;想到安装中文输入法，我们首先想到的肯定是搜狗输入法，但是博主在折腾一段时间后，因为一些坑，决定还是弃之。&lt;/p&gt;
+&lt;p&gt;接下来我们将会安装一款国人开发的 Linux 中文输入法，接下来，我么来看看具体的安装步骤：&lt;/p&gt;
+&lt;p&gt;1.将系统默认的 iBus 输入法更改为 Fcitx 输入法框架：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2016072800.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+    
+    
+      <category term="Ubuntu" scheme="http://www.jiangbing.me/tags/Ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>拖动虚拟机中的命令行终端出现 ^C</title>
@@ -1921,93 +1958,6 @@
       <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
     
       <category term="Android Performance Optimization" scheme="http://www.jiangbing.me/tags/Android-Performance-Optimization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 中的 AsyncTask</title>
-    <link href="http://www.jiangbing.me/2016/02/16/2016-02-16-asynctask-of-the-android/"/>
-    <id>http://www.jiangbing.me/2016/02/16/2016-02-16-asynctask-of-the-android/</id>
-    <published>2016-02-16T05:30:31.000Z</published>
-    <updated>2016-05-14T07:17:27.254Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;AsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。&lt;/p&gt;
-&lt;p&gt;AsyncTask 理论上被用来执行 &lt;em&gt;短时&lt;/em&gt;（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 &lt;code&gt;java.util.concurrent&lt;/code&gt; 包下的 &lt;code&gt;Executor&lt;/code&gt;, &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; 和 &lt;code&gt;FutureTask&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;你在定义AsyncTask时需要定义三个泛型参数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Called Params&lt;/strong&gt; - 传入的参数&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Progress&lt;/strong&gt;      - 执行中的参数&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Result&lt;/strong&gt;        - 返回值参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;4 个方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;onPreExecute()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;doInBackground()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;onProgressUpdate()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;onPostExecute()&lt;/code&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;如何使用？&quot;&gt;&lt;a href=&quot;#如何使用？&quot; class=&quot;headerlink&quot; title=&quot;如何使用？&quot;&gt;&lt;/a&gt;如何使用？&lt;/h2&gt;&lt;p&gt;AsyncTask 必须作为一个子类去使用。其中， &lt;code&gt;doInBackgournd(Params...)&lt;/code&gt; 是必须实现的方法，大部分情况下，我们还需要实现 &lt;code&gt;onPostExecute(Result)&lt;/code&gt; 方法.&lt;/p&gt;
-&lt;p&gt;下面是一个使用的例子:&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DownloadFilesTask&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AsyncTask&lt;/span&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;URL&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Integer&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Long&lt;/span&gt;&amp;gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; Long &lt;span class=&quot;title&quot;&gt;doInBackground&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL... urls)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; count = urls.length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; totalSize = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; count; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            totalSize += Downloader.downloadFile(urls[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            publishProgress((&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;) ((i / (&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt;) count) * &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// Escape early if cancel() is called&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (isCancelled()) &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; totalSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onProgressUpdate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer... progress)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        setProgressPercent(progress[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onPostExecute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Long result)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        showDialog(&lt;span class=&quot;string&quot;&gt;&quot;Downloaded &quot;&lt;/span&gt; + result + &lt;span class=&quot;string&quot;&gt;&quot; bytes&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后,就是执行这个 AsyncTask:&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DownloadFilesTask().execute(url1, url2, url3);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;AsyncTask-的泛型参数&quot;&gt;&lt;a href=&quot;#AsyncTask-的泛型参数&quot; class=&quot;headerlink&quot; title=&quot;AsyncTask 的泛型参数&quot;&gt;&lt;/a&gt;AsyncTask 的泛型参数&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;1.&lt;code&gt;Params&lt;/code&gt;   执行前传入的参数&lt;/li&gt;
-&lt;li&gt;2.&lt;code&gt;Progress&lt;/code&gt; 执行中传入的参数&lt;/li&gt;
-&lt;li&gt;3.&lt;code&gt;Result&lt;/code&gt;   执行完毕后返回的参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当然，如果你不需要传任何参数，使用 &lt;code&gt;Void&lt;/code&gt; 即可：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyTask&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AsyncTask&lt;/span&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;Void&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Void&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;Void&lt;/span&gt;&amp;gt; &lt;/span&gt;&amp;#123; ... &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;四个方法&quot;&gt;&lt;a href=&quot;#四个方法&quot; class=&quot;headerlink&quot; title=&quot;四个方法&quot;&gt;&lt;/a&gt;四个方法&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;1.&lt;code&gt;onPreExecute()&lt;/code&gt; UI线程会在任务执行前调用此方法。通常被用来设置与任务相关的操作，比如在用户界面显示一个进度条。&lt;/li&gt;
-&lt;li&gt;2.&lt;code&gt;doInBackground(Params...)&lt;/code&gt; 在 &lt;code&gt;onPreExecute()&lt;/code&gt; 执行完毕后，调用此方法，注意，此耗时操作执行在一个后台线程中。 &lt;code&gt;Params&lt;/code&gt; 参数会被传入到此方法中，计算的结果必须由这一步返回，并将传回最后一步。在方法中，我们还可以调用 &lt;code&gt;publishProgress(Progress...)&lt;/code&gt; 来传递进度，然后我就可以在 &lt;code&gt;onProgressUpdate(Progress...)&lt;/code&gt; 的方法中来更新 UI 了。&lt;/li&gt;
-&lt;li&gt;3.&lt;code&gt;onProgressUpdate(Progress...)&lt;/code&gt; 此方法将会在调用了 &lt;code&gt;publishProgress(Progress...)&lt;/code&gt; 后，由UI线程来调用。通常被用来在界面上显示执行的进度，例如，它可用于动画显示一个进度栏或在文本字段中显示日志。&lt;/li&gt;
-&lt;li&gt;4.&lt;code&gt;onPostExecute(Result)&lt;/code&gt; 此方法在耗时操作执行完毕后，由UI线程调用。 &lt;code&gt;doInBackground（Params...）&lt;/code&gt; 中返回的结果将作为参数传递进来。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;取消任务&quot;&gt;&lt;a href=&quot;#取消任务&quot; class=&quot;headerlink&quot; title=&quot;取消任务&quot;&gt;&lt;/a&gt;取消任务&lt;/h2&gt;&lt;p&gt;我们可以通过调用 &lt;code&gt;cancel(boolean)&lt;/code&gt; 在任何时候来取消异步任务。Invoking this method will cause subsequent calls to isCancelled() to return true. After invoking this method, onCancelled(Object), instead of onPostExecute(Object) will be invoked after doInBackground(Object[]) returns. To ensure that a task is cancelled as quickly as possible, you should always check the return value of isCancelled() periodically from doInBackground(Object[]), if possible (inside a loop for instance.)&lt;/p&gt;
-&lt;h2 id=&quot;使用它，你需要遵守&quot;&gt;&lt;a href=&quot;#使用它，你需要遵守&quot; class=&quot;headerlink&quot; title=&quot;使用它，你需要遵守&quot;&gt;&lt;/a&gt;使用它，你需要遵守&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;The AsyncTask class must be loaded on the UI thread. This is done automatically as of JELLY_BEAN.&lt;/li&gt;
-&lt;li&gt;你必须在 UI 线程中创建任务实例。&lt;/li&gt;
-&lt;li&gt;你必须在 UI 线程中调用 &lt;code&gt;execute(Params...)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;不要手动调用 &lt;code&gt;onPreExecute()&lt;/code&gt;, &lt;code&gt;onPostExecute(Result)&lt;/code&gt;, &lt;code&gt;doInBackground(Params...)&lt;/code&gt;, &lt;code&gt;onProgressUpdate(Progress...)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;任务只能执行一次(如果你尝试调用第二次，将会抛出异常)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Memory-observability&quot;&gt;&lt;a href=&quot;#Memory-observability&quot; class=&quot;headerlink&quot; title=&quot;Memory observability&quot;&gt;&lt;/a&gt;Memory observability&lt;/h2&gt;&lt;p&gt;AsyncTask guarantees that all callback calls are synchronized in such a way that the following operations are safe without explicit synchronizations.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Set member fields in the constructor or onPreExecute(), and refer to them in doInBackground(Params…).&lt;/li&gt;
-&lt;li&gt;Set member fields in doInBackground(Params…), and refer to them in onProgressUpdate(Progress…) and onPostExecute(Result).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;执行顺序&quot;&gt;&lt;a href=&quot;#执行顺序&quot; class=&quot;headerlink&quot; title=&quot;执行顺序&quot;&gt;&lt;/a&gt;执行顺序&lt;/h2&gt;&lt;p&gt;在第一次引入 &lt;code&gt;AsyncTask&lt;/code&gt; 时，内部实现使用串行执行单个后台线程。而从 &lt;code&gt;DONUT&lt;/code&gt;（甜甜圈）开始，这是更改为允许多个任务并行运行的线程池。从 &lt;code&gt;HONEYCOMB&lt;/code&gt;（蜂窝）开始，在单个线程上执行任务并行执行，以避免引起的常见的应用程序错误&lt;/p&gt;
-&lt;p&gt;如果你真的需要并行执行, 你可以通过 &lt;code&gt;THREAD_POOL_EXECUTOR&lt;/code&gt; 来调用 &lt;code&gt;executeOnExecutor(java.util.concurrent.Executor, Object[])&lt;/code&gt; .&lt;/p&gt;
-&lt;p&gt;本文参考：&lt;br&gt;&lt;a href=&quot;http://developer.android.com/reference/android/os/AsyncTask.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.android.com/reference/android/os/AsyncTask.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;AsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。&lt;/p&gt;
-&lt;p&gt;AsyncTask 理论上被用来执行 &lt;em&gt;短时&lt;/em&gt;（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 &lt;code&gt;java.util.concurrent&lt;/code&gt; 包下的 &lt;code&gt;Executor&lt;/code&gt;, &lt;code&gt;ThreadPoolExecutor&lt;/code&gt; 和 &lt;code&gt;FutureTask&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;你在定义AsyncTask时需要定义三个泛型参数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Called Params&lt;/strong&gt; - 传入的参数&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Progress&lt;/strong&gt;      - 执行中的参数&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Result&lt;/strong&gt;        - 返回值参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;4 个方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;onPreExecute()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;doInBackground()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;onProgressUpdate()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;onPostExecute()&lt;/code&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.jiangbing.me/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
-    
-      <category term="Android AsyncTask" scheme="http://www.jiangbing.me/tags/Android-AsyncTask/"/>
     
   </entry>
   

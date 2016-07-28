@@ -239,6 +239,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/16/2016-02-16-asynctask-of-the-android/" itemprop="url">
+                  Android 中的 AsyncTask
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-16T13:30:31+08:00" content="2016-02-16">
+              2016-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/16/2016-02-16-asynctask-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/16/2016-02-16-asynctask-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>AsyncTask 能够让我们不用操作 threads 和 handlers 的情况下，在 UI 线程中方便的执行耗时操作，并且返回结果到 UI 线程。</p>
+<p>AsyncTask 理论上被用来执行 <em>短时</em>（通常情况下，只需几秒的操作）的操作。如果你需要长时间的执行某一操作，强烈推荐你使用 <code>java.util.concurrent</code> 包下的 <code>Executor</code>, <code>ThreadPoolExecutor</code> 和 <code>FutureTask</code>.</p>
+<p>你在定义AsyncTask时需要定义三个泛型参数：</p>
+<ul>
+<li><strong>Called Params</strong> - 传入的参数</li>
+<li><strong>Progress</strong>      - 执行中的参数</li>
+<li><strong>Result</strong>        - 返回值参数</li>
+</ul>
+<p>4 个方法：</p>
+<ul>
+<li><code>onPreExecute()</code></li>
+<li><code>doInBackground()</code></li>
+<li><code>onProgressUpdate()</code></li>
+<li><code>onPostExecute()</code>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/16/2016-02-16-asynctask-of-the-android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/14/2016-02-14-think-in-the-worker-thread-of-android/" itemprop="url">
                   关于 Android 中工作者线程的思考
                 </a>
@@ -1428,133 +1563,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/28/2016-01-28-guitar-miao-xiao-jie/" itemprop="url">
-                  【Guitar 弹唱】再见吧，喵小姐！
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-28T09:44:10+08:00" content="2016-01-28">
-              2016-01-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/音乐/" itemprop="url" rel="index">
-                    <span itemprop="name">音乐</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/28/2016-01-28-guitar-miao-xiao-jie/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/28/2016-01-28-guitar-miao-xiao-jie/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>说起来，练琴已经快两年了，虽说技术还是很烂，但好歹还是坚持了下来，每天下班回去还是会练一会儿，也算是一种娱乐方式！（真是苦了我的左手，皮都不知道掉了多少层%&gt;_&lt;%）</p>
-<p>这首《再见吧，喵小姐》是我过年回家路上无意间听到的一首民谣歌曲，当时觉得特别好听，还循环了好久，O(∩_∩)O哈哈~，故此，特意从网上找到了谱子，弹了一哈子，弹唱的不好别见怪，纯属娱乐！</p>
-<p><font color='red'>附上原谱地址：</font><a href="http://www.jitashe.net/tab/24255/">http://www.jitashe.net/tab/24255/</a></p>
-</blockquote>
-<embed src="http://www.tudou.com/v/0TS5Iptz8Hk/&bid=05&rpid=816991464&resourceId=816991464_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/28/2016-01-28-guitar-miao-xiao-jie/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1600,7 +1608,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
