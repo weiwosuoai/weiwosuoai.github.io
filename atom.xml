@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-07-28T07:54:41.160Z</updated>
+  <updated>2016-07-28T08:07:23.995Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.jiangbing.me/2016/05/04/2016-05-04-change-ubuntu-theme/"/>
     <id>http://www.jiangbing.me/2016/05/04/2016-05-04-change-ubuntu-theme/</id>
     <published>2016-05-04T08:29:36.000Z</published>
-    <updated>2016-07-28T07:54:41.160Z</updated>
+    <updated>2016-07-28T08:07:23.995Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Ubuntu 的默认主题虽然还不错，但是个人觉得仍然不够 geek。这篇博文以 Vertex 主题为例，来讲解一下如何来安装自己喜欢的主题。&lt;/p&gt;
@@ -52,7 +52,7 @@
     
     </summary>
     
-      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+      <category term="Linux" scheme="http://www.jiangbing.me/categories/Linux/"/>
     
     
       <category term="Ubuntu" scheme="http://www.jiangbing.me/tags/Ubuntu/"/>
@@ -64,7 +64,7 @@
     <link href="http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/"/>
     <id>http://www.jiangbing.me/2016/05/03/2016-05-03-ubuntu-setup-chinese-input/</id>
     <published>2016-05-03T08:29:36.000Z</published>
-    <updated>2016-07-28T05:41:49.653Z</updated>
+    <updated>2016-07-28T08:07:31.592Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;这篇博文中将会告诉你如何在 Ubuntu 系统中安装一款中文输入法。&lt;/p&gt;
@@ -95,7 +95,7 @@
     
     </summary>
     
-      <category term="Issues Resolution" scheme="http://www.jiangbing.me/categories/Issues-Resolution/"/>
+      <category term="Linux" scheme="http://www.jiangbing.me/categories/Linux/"/>
     
     
       <category term="Ubuntu" scheme="http://www.jiangbing.me/tags/Ubuntu/"/>
