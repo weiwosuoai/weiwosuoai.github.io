@@ -239,6 +239,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/06/2016-05-06-singleton/" itemprop="url">
+                  你真的会写单例模式吗？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-06T16:29:36+08:00" content="2016-05-06">
+              2016-05-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/06/2016-05-06-singleton/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/2016-05-06-singleton/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>在我们开发的 Android 项目中，单例模式可能是我们用的最多的开发模式了，但是对于这种常用的开发模式，我们真的用对了吗？本篇博文我们就来探讨一下单例模式。</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在讨论之前，我们先来看一下新手使用单例模式，最常见的代码，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton sInstance = <span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">			sInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sInstance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color='red'>上面的单例代码咋一看上去没什么问题，其实问题很大,真的很大。这并不是真的单例。</font><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/06/2016-05-06-singleton/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/04/2016-05-04-change-ubuntu-theme/" itemprop="url">
                   如何更换 Ubuntu 16.04 默认主题
                 </a>
@@ -1370,135 +1497,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/" itemprop="url">
-                  说说 Android Studio 下载完成后，我们需要知道的事情
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-02T08:03:53+08:00" content="2016-04-02">
-              2016-04-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Issues-Resolution/" itemprop="url" rel="index">
-                    <span itemprop="name">Issues Resolution</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>我在之前有两篇介绍 Android Studio 的博文，分别是 <a href="http://jiangbing.me/2016/01/25/2016-01-25-android-studio-tips-and-tricks/">《Android Studio 概览》</a> 和 <a href="http://jiangbing.me/2016/01/27/2016-01-27-android-studio-preview/">《再说说 Android Studio》</a>，但这两篇基本上都是介绍 Android Studio 的功能，今天这篇将会说说，当我们将 Android Studio 下载完成后，需要对 AS(下面均简称为 AS) 做的配置，以便我们能够方便高效的使用这个开发工具.</p>
-</blockquote>
-<font color='red'><strong>注意：本文后续建立在你已经下好了 AS,且能够正常启动.(至于如何下载，这没什么好说的，自行 Google,百度即可 …)</strong></font>
-
-<h2 id="1-Gradle-配置文件下载耗时太长的问题"><a href="#1-Gradle-配置文件下载耗时太长的问题" class="headerlink" title="1.Gradle 配置文件下载耗时太长的问题"></a>1.Gradle 配置文件下载耗时太长的问题</h2><p>当我们第一次启动 AS，并点击 <em>“Start a new Android Studio project”</em> 的时候，AS 会自动去下载 Gradle 相关的配置文件，默认下载完成后放置位置在 C:\User\Administrator.gradle 下的 C:\Users\Administrator\gradle\wrapper\dists\gradle-2.1-all\27fdsaorewru2342dsjon45 文件夹，也许你会疑问这一串数字和英文组合的文件夹是什么意思，其实它是随机生成的。</p>
-<p>我们打开这个文件夹，可以看到 gradle-2.1-all.zip 的 .part 文件。拿到这个版本号，我们可以通过第三方下载软件（例如迅雷）去 Google 官方网站去下载。</p>
-<p>下载好 gradle-2.1-all.zip 文件好，无需解压，放到这个奇怪的文件夹下，AS 运行的时候会自动解压。这样就可以为我们节省了很多时间了，再次创建工程的时候只需要下载一些 jcenter 的依赖包即可，而这些文件都很小，不会花费多长时间。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/02/2016-04-02-what-should-we-config-it-after-downloaded-the-as/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1544,7 +1542,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1552,7 +1550,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1561,7 +1559,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

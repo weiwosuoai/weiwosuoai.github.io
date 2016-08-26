@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Guitar," />
+  <meta name="keywords" content="Android,Singleton," />
 
 
 
@@ -60,16 +60,27 @@
 
 
 
-<meta name="description" content="宋冬野-《连衣裙》">
+<meta name="description" content="在我们开发的 Android 项目中，单例模式可能是我们用的最多的开发模式了，但是对于这种常用的开发模式，我们真的用对了吗？本篇博文我们就来探讨一下单例模式。
+
+前言在讨论之前，我们先来看一下新手使用单例模式，最常见的代码，如下：
+1234567891011public class Singleton &amp;#123;		private static Singleton sInstance = nu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Guitar 弹唱】连衣裙">
-<meta property="og:url" content="http://www.jiangbing.me/2016/02/10/2016-02-10-guitar-lian-yi-qun/index.html">
+<meta property="og:title" content="你真的会写单例模式吗？">
+<meta property="og:url" content="http://www.jiangbing.me/2016/05/06/2016-05-06-singleton/index.html">
 <meta property="og:site_name" content="Allen's Blog">
-<meta property="og:description" content="宋冬野-《连衣裙》">
-<meta property="og:updated_time" content="2016-05-14T07:25:04.684Z">
+<meta property="og:description" content="在我们开发的 Android 项目中，单例模式可能是我们用的最多的开发模式了，但是对于这种常用的开发模式，我们真的用对了吗？本篇博文我们就来探讨一下单例模式。
+
+前言在讨论之前，我们先来看一下新手使用单例模式，最常见的代码，如下：
+1234567891011public class Singleton &amp;#123;		private static Singleton sInstance = nu">
+<meta property="og:image" content="http://www.jiangbing.me/images/2016082600.png">
+<meta property="og:updated_time" content="2016-08-26T03:36:12.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Guitar 弹唱】连衣裙">
-<meta name="twitter:description" content="宋冬野-《连衣裙》">
+<meta name="twitter:title" content="你真的会写单例模式吗？">
+<meta name="twitter:description" content="在我们开发的 Android 项目中，单例模式可能是我们用的最多的开发模式了，但是对于这种常用的开发模式，我们真的用对了吗？本篇博文我们就来探讨一下单例模式。
+
+前言在讨论之前，我们先来看一下新手使用单例模式，最常见的代码，如下：
+1234567891011public class Singleton &amp;#123;		private static Singleton sInstance = nu">
+<meta name="twitter:image" content="http://www.jiangbing.me/images/2016082600.png">
 
 
 
@@ -87,7 +98,7 @@
   };
 </script>
 
-  <title> 【Guitar 弹唱】连衣裙 | Allen's Blog </title>
+  <title> 你真的会写单例模式吗？ | Allen's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +248,7 @@
             
             
               
-                【Guitar 弹唱】连衣裙
+                你真的会写单例模式吗？
               
             
           </h1>
@@ -249,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-10T09:35:00+08:00" content="2016-02-10">
-              2016-02-10
+            <time itemprop="dateCreated" datetime="2016-05-06T16:29:36+08:00" content="2016-05-06">
+              2016-05-06
             </time>
           </span>
 
@@ -263,8 +274,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/音乐/" itemprop="url" rel="index">
-                    <span itemprop="name">音乐</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -279,8 +290,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/10/2016-02-10-guitar-lian-yi-qun/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/10/2016-02-10-guitar-lian-yi-qun/" itemprop="commentsCount"></span>
+                <a href="/2016/05/06/2016-05-06-singleton/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/2016-05-06-singleton/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -304,9 +315,41 @@
 
       
         <blockquote>
-<p>宋冬野-《连衣裙》</p>
+<p>在我们开发的 Android 项目中，单例模式可能是我们用的最多的开发模式了，但是对于这种常用的开发模式，我们真的用对了吗？本篇博文我们就来探讨一下单例模式。</p>
 </blockquote>
-<p><embed src="http://www.tudou.com/v/YsVUY-1em8E/&bid=05&rpid=816991464&resourceId=816991464_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"><br><a id="more"></a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在讨论之前，我们先来看一下新手使用单例模式，最常见的代码，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton sInstance = <span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">			sInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sInstance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color="red">上面的单例代码咋一看上去没什么问题，其实问题很大,真的很大。这并不是真的单例。</font><br><a id="more"></a></p>
+<h2 id="什么是单例？"><a href="#什么是单例？" class="headerlink" title="什么是单例？"></a>什么是单例？</h2><p>简单来说，就是在程序的运行过程中，只保持一个实例对象。</p>
+<h2 id="为什么要用单例？"><a href="#为什么要用单例？" class="headerlink" title="为什么要用单例？"></a>为什么要用单例？</h2><p>在我们开发项目的过程中，某些类存在占用资源较大，每次 new 的时候性能消耗较大，这个时候我们应考虑使用单例来提高性能。</p>
+<h2 id="使用单例要注意什么？"><a href="#使用单例要注意什么？" class="headerlink" title="使用单例要注意什么？"></a>使用单例要注意什么？</h2><p>主要有以下三点：</p>
+<ul>
+<li>1.私有化构造器；</li>
+<li>2.定义静态的单例 <code>instance</code> 对象 和 <code>getInstance()</code> 方法；</li>
+<li>3.<code>getInstance()</code> 方法中要使用同步锁 <code>synchronized(Singleton.class)</code> 防止多线程多次示例化。</li>
+</ul>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><blockquote>
+<p>在我们写正确的 单例 代码前，我们先来测试以下博文开头给出的这种单例 demo 为何不对;</p>
+</blockquote>
+<p>错误点有以下几方面：</p>
+<ul>
+<li>1.<em>未私有化构造器</em>，这样就导致了调用者可能越过 <code>getInstance()</code> 方法，直接调用默认的公有的构造器来 <code>new</code> 对象。</li>
+<li>2.<code>getInstance()</code> 方法未加锁，多线程调用时，可能多次示例化对象。</li>
+</ul>
+<p>所谓口说无凭，我们看下面的测试代码，来实际验证以下是否真的存在多次实例化对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> threadCount = <span class="number">1000</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">				</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						<span class="comment">// 让所有的线程进入等待状态</span></span><br><span class="line">						latch.await();</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">					<span class="comment">// 测试示例 hashCode</span></span><br><span class="line">					Log.d(<span class="string">"Test"</span>, String.valueOf(Singleton.getInstance().hashCode()));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;).start();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 释放锁，让所有的线程并发运行（所谓并发，也是伪并发，相信知道 CPU 运行原理的同学都会知道）</span></span><br><span class="line">		latch.countDown();</span><br></pre></td></tr></table></figure>
+<p>查看 Log:</p>
+<p><img src="/images/2016082600.png" alt=""></p>
+<p>我们明显和可以看到示例对象的 hashCode 有两个不同的值，也就是说对象在多线程的情况下，被实例化了两次。</p>
+<blockquote>
+<p>接下来是正确的单例代码 demo:</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton sInstance = <span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// private constructor suppresses</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// if already inited, no need to get lock everytime</span></span><br><span class="line">		<span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">				<span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">					sInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sInstance;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是：</p>
+<ul>
+<li>1.在 <code>getInstance()</code> 方法中有两次判空，第一次判空是为了防止 <code>sInstance</code> 已经实例化后，再次获取锁对象。这样做可以提高性能。</li>
+<li>2.很多人都会重新 <code>new Object()</code> 来充当 <code>synchronized</code> 锁对象，完全没有必要新建一个对象，我们直接用单列对象本身即可，防止消耗不必要的内存。</li>
+</ul>
 
       
     </div>
@@ -349,7 +392,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Guitar/" rel="tag">#Guitar</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Singleton/" rel="tag">#Singleton</a>
           
         </div>
       
@@ -358,17 +403,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/07/2016-02-07-how-can-we-create-a-custom-view4/" rel="next" title="Android 自定义控件(四)">
-                <i class="fa fa-chevron-left"></i> Android 自定义控件(四)
+              <a href="/2016/05/04/2016-05-04-change-ubuntu-theme/" rel="next" title="如何更换 Ubuntu 16.04 默认主题">
+                <i class="fa fa-chevron-left"></i> 如何更换 Ubuntu 16.04 默认主题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/11/2016-02-11-android-processes-and-threads/" rel="prev" title="Android 中的进程和线程">
-                Android 中的进程和线程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -383,10 +424,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/10/2016-02-10-guitar-lian-yi-qun/"
-     data-title="【Guitar 弹唱】连衣裙"
+        <div class="ds-share flat" data-thread-key="2016/05/06/2016-05-06-singleton/"
+     data-title="你真的会写单例模式吗？"
      data-content=""
-     data-url="http://www.jiangbing.me/2016/02/10/2016-02-10-guitar-lian-yi-qun/">
+     data-url="http://www.jiangbing.me/2016/05/06/2016-05-06-singleton/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -413,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/10/2016-02-10-guitar-lian-yi-qun/"
-           data-title="【Guitar 弹唱】连衣裙" data-url="http://www.jiangbing.me/2016/02/10/2016-02-10-guitar-lian-yi-qun/">
+      <div class="ds-thread" data-thread-key="2016/05/06/2016-05-06-singleton/"
+           data-title="你真的会写单例模式吗？" data-url="http://www.jiangbing.me/2016/05/06/2016-05-06-singleton/">
       </div>
     
   </div>
@@ -538,7 +579,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是单例？"><span class="nav-number">2.</span> <span class="nav-text">什么是单例？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用单例？"><span class="nav-number">3.</span> <span class="nav-text">为什么要用单例？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用单例要注意什么？"><span class="nav-number">4.</span> <span class="nav-text">使用单例要注意什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">5.</span> <span class="nav-text">实践</span></a></li></ol></div>
             
           </div>
         </section>
