@@ -239,6 +239,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/" itemprop="url">
+                  Android 应用在系统内的存在方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-16T10:14:51+08:00" content="2016-01-16">
+              2016-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>碎碎念：关于 Android 应用在系统内的存在方式。</p>
+</blockquote>
+<p>Android 应用在安装到设备后，每个 Android 应用都运行在自己的安全沙箱内.</p>
+<p>你需要知道的是：</p>
+<ul>
+<li>Android 操作系统是一种多用户的 Linux 系统，其中的每个应用都是一位不同的用户；</li>
+<li>默认情况下，系统会为每个应用分配一个唯一的 Linux 用户 ID (该 ID 仅由系统使用，应用并不知晓)。系统为应用中的所有文件设置权限，使得只有分配给该应用的用户 ID 才能访问这些文件；</li>
+<li>每个进程都具有自己的虚拟机（VM）,因此应用代码是在与其他应用隔离的环境中运行；</li>
+<li>默认情况下，每个应用都在其自己的 Linux 进程内运行。Android 会在需要执行任何应用组件时启动该进程，然后在不再需要该进程或系统必须为其他应用恢复内存时关闭该进程。</li>
+</ul>
+<p>Android 系统可以通过这种方式实现 <strong>最小权限原则</strong>。也就是说，默认情况下，每个应用都只能访问执行其工作所需的组件，而不能访问其他组件。这样便营造出一个非常安全的环境，在这个环境中，应用无法访问系统中其未获得权限的部分。</p>
+<p>不过，应用仍然可以通过一些途径与其他应用共享数据以及访问系统服务：</p>
+<ul>
+<li>可以安排两个应用共享同一 Linux 用户 ID,在这种情况下，他们能够相互访问彼此的文件。为了节省系统资源，可以安排具有相同用户 ID 的应用在同一 Linux 进程中运行，并共享同一 VM(应用还必须使用相同的证书签署)；</li>
+<li>应用可以请求访问设备数据（如用户的联系人,短信，SD 卡，相机，蓝牙，etc.）的权限。所有应用权限都必须由用户在安装是授予。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/16/2016-01-16-about-the-some-basic-message-of-the-android/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/13/2016-01-13-the-interview-question-of-the-android2/" itemprop="url">
                   Android 面试题整理
                 </a>
@@ -1378,147 +1515,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/29/2015-11-29-service/" itemprop="url">
-                  Android 中的 Service
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-29T10:55:08+08:00" content="2015-11-29">
-              2015-11-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/29/2015-11-29-service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/29/2015-11-29-service/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Service 作为 Android 四大组件之一，在 Android 开发中有这不可替代的作用。今天这篇博文，我们就来详细了解一下 Android 的 Service</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是服务？</em></p>
-<p>Service 与 Activity 不同，它是一个不需要交互界面，且能够在后台长时间运行的应用组件。通常情况下，Service 能够由其他应用组件来启动，即使启动者被销毁了，它依然能够在后台继续运行。</p>
-<p><em>它有什么作用？</em></p>
-<p>我们可以将 Service 与其他组件进行绑定，两者进行通信，也可以执行进程间的通信（IPC）.通过 Service,我们可以处理网络事务、播放音乐、执行 I/O 操作或者与提供内容的程序交互。注意，所有的一切，都是在后台执行的。</p>
-<p>我们可以通过下面两种方式来启动一个服务：</p>
-<ul>
-<li>1.<code>startService()</code> : 这种方式，即使启动者别销毁了，Service 依旧可以在后台运行，且不会反悔结果给调用者。</li>
-<li>2.<code>bindServcie()</code> : 这种方式，使得 Service 出于绑定状态。该服务提供了一个接口，允许我们与 Service 进行交互（发送请求，获取结果），甚至是用进程通信（IPC）跨进程交互。另外，多个组件可以同时绑定到该服务，同时如果你想要停止该服务，你需要解绑所有的绑定，该服务才能够被销毁。</li>
-</ul>
-<blockquote>
-<p><font color='red'><strong>注意1</strong>：上面的两种方式可以同时存在，也就是说，你可让一个服务以 <code>startService()</code> 的方式在后台无限期的运行，也可以让该 Service 绑定到某一个组件上。</font></p>
-<p><font color='red'><strong>注意2</strong>：服务默认情况下是在主进程中运行的，它既不创建自己的线程，也不在单独的进程中运行，当然，你另行指定的话就另说了。也就是说，如果你想在 Service 中执行一些耗时操作的话，请在单独开一个子线程，以降低 ANR 的风险。</font><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/29/2015-11-29-service/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1559,7 +1560,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
