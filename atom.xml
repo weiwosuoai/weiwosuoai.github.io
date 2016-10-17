@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jiangbing.me/"/>
-  <updated>2016-09-30T07:12:53.729Z</updated>
+  <updated>2016-10-17T03:21:34.819Z</updated>
   <id>http://www.jiangbing.me/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Guitar 弹唱】南方北方</title>
+    <link href="http://www.jiangbing.me/2016/05/15/2016-05-15-guitar_nanfangbeifang/"/>
+    <id>http://www.jiangbing.me/2016/05/15/2016-05-15-guitar_nanfangbeifang/</id>
+    <published>2016-05-15T01:35:00.000Z</published>
+    <updated>2016-10-17T03:21:34.819Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;So lonely …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/JptkQrsQzGo/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;So lonely …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/JptkQrsQzGo/&amp;bid=05&amp;rpid=816991464&amp;resourceId=816991464_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;480&quot; height=&quot;400&quot;&gt;&lt;/embed&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="音乐" scheme="http://www.jiangbing.me/categories/%E9%9F%B3%E4%B9%90/"/>
+    
+    
+      <category term="Guitar" scheme="http://www.jiangbing.me/tags/Guitar/"/>
+    
+  </entry>
   
   <entry>
     <title>【Guitar 弹唱】去大理</title>
@@ -1462,52 +1491,6 @@
       <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
     
       <category term="Android Http" scheme="http://www.jiangbing.me/tags/Android-Http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>通过 Android Studio 远程调试真机</title>
-    <link href="http://www.jiangbing.me/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/"/>
-    <id>http://www.jiangbing.me/2016/02/25/2015-12-05-remote-debug-devices-with-android-studio/</id>
-    <published>2016-02-25T07:09:59.000Z</published>
-    <updated>2016-05-14T08:07:17.708Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本文转自 &lt;a href=&quot;[http://www.finalshares.com/read-5498](http://www.finalshares.com/read-5498&quot;&gt;&lt;a href=&quot;http://www.finalshares.com/read-5498&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.finalshares.com/read-5498&lt;/a&gt;&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;还在为找不到目标真机发愁，今天在逛 &lt;a href=&quot;http://www.finalshares.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;极分享&lt;/a&gt; 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！&lt;br&gt;废话少说，先睹为快。在不用数据线连接手机的情况下，我先来个打断点截图。&lt;br&gt;&lt;img src=&quot;/images/2016031500.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;实现步骤&quot;&gt;&lt;a href=&quot;#实现步骤&quot; class=&quot;headerlink&quot; title=&quot;实现步骤&quot;&gt;&lt;/a&gt;实现步骤&lt;/h2&gt;&lt;p&gt;首先，准备工作做好，需要借助如下这个辅助工具。&lt;br&gt;&lt;img src=&quot;/images/2016031501.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;这是需要注册一个账号才能使用的，现在这个平台是开放注册，免费体验，看完觉得还可以的话觉得点这里注册试试： &lt;a href=&quot;http://t.cn/R48gYL5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://t.cn/R48gYL5&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;工具准备好以后，点进去选一台手机，比如像我之前调试的时候选的是一台 &lt;strong&gt;htc one M8&lt;/strong&gt;.&lt;br&gt;&lt;img src=&quot;/images/2016031502.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;点击租用以后我们会看到这个画面。&lt;br&gt;&lt;img src=&quot;/images/2016031503.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;我们可以用鼠标点击或者滑动屏幕，这台手机也会跟着动。实际上我们现在操作的手机是一台真的手机，只是他在云端，也就是我们平常说的远程调试，我们是在用电脑操控它，而且它还支持截图，视频，日志，shell命令等功能。&lt;/p&gt;
-&lt;p&gt;接下来，我们需要看到界面右上角的adb 连接地址。&lt;br&gt;&lt;img src=&quot;/images/2016031504.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;每台云手机都有一个单独的连接地址，我们需要复制这个adb连接地址到命令行，然后按回车执行这个命令我们的电脑就会连接到云手机。（ps：云端和PC上显示的adb地址一定要一致）&lt;br&gt;&lt;img src=&quot;/images/2016031505.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;输入命令“adb devices”，看到以下结果的话，此时我们的电脑已经连接到云手机上了。&lt;br&gt;&lt;img src=&quot;/images/2016031506.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;现在我们就可以用Android Studio调试了。（我这里是以AS为例，其实eclipse也是一样用的）&lt;br&gt;当我们的电脑通过前面的操作连接到了云手机，我们就获得了这台手机的最大控制权。此时，打开我们的Android Studio来debug吧！ &lt;/p&gt;
-&lt;p&gt;首先，在代码中设置断点:&lt;br&gt;&lt;img src=&quot;/images/2016031507.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;打开 Android Studio,工具栏选择 Run —&amp;gt; Debug，选中已连接的云手机:&lt;br&gt;&lt;img src=&quot;/images/2016031508.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;程序启动，可以看到程序命中断点，即可开始远程调试了。&lt;br&gt;&lt;img src=&quot;/images/2016031509.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;这个工具的优势就在于它集合了上千款各种型号的手机，不会再担心出现BUG没有手机调试的尴尬场景，而且所有的调试设备全部是真机，这样就避免了在调试的过程中模拟器速度慢、硬件性能模拟不出来以及接口不全的问题，然后就是这个工具提供视频、截图、日志、shell命令等功能用来记录和复现BUG，省钱省事，提高开发效率，何乐不为~&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文转自 &lt;a href=&quot;[http://www.finalshares.com/read-5498](http://www.finalshares.com/read-5498&quot;&gt;&lt;a href=&quot;http://www.finalshares.com/read-5498&quot;&gt;http://www.finalshares.com/read-5498&lt;/a&gt;&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;还在为找不到目标真机发愁，今天在逛 &lt;a href=&quot;http://www.finalshares.com/&quot;&gt;极分享&lt;/a&gt; 的时候，看到一篇比较好的文章，觉得对我们Android开发作用很大，就转了过来。接下来我们就来看看原文。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;之前用了很久的模拟器，今天给大家分享一个不用模拟器，在没有手机的情况下，如何实现真机 debug 的教程，第一次发教程贴，望支持哈，非喜勿喷哈！&lt;br&gt;废话少说，先睹为快。在不用数据线连接手机的情况下，我先来个打断点截图。&lt;br&gt;&lt;img src=&quot;/images/2016031500.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;实现步骤&quot;&gt;&lt;a href=&quot;#实现步骤&quot; class=&quot;headerlink&quot; title=&quot;实现步骤&quot;&gt;&lt;/a&gt;实现步骤&lt;/h2&gt;&lt;p&gt;首先，准备工作做好，需要借助如下这个辅助工具。&lt;br&gt;&lt;img src=&quot;/images/2016031501.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://www.jiangbing.me/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Android" scheme="http://www.jiangbing.me/tags/Android/"/>
-    
-      <category term="开发工具" scheme="http://www.jiangbing.me/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

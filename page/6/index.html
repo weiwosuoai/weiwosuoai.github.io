@@ -239,6 +239,134 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/01/2015-12-01-binder-service/" itemprop="url">
+                  Android 中的绑定服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-01T10:55:08+08:00" content="2015-12-01">
+              2015-12-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/01/2015-12-01-binder-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/01/2015-12-01-binder-service/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><em>什么是绑定服务？</em></p>
+<p>绑定服务是指服务与其他绑定在一起。比如说，我们可以将服务绑定在 Activity 上，来发送请求，接受响应，甚至是执行进程间的通讯（IPC）。我们需要知道的是，绑定服务的生命周期通常与被绑定者的生命周期相同，不会无限期的运行在后台。</p>
+<h2 id="关于绑定服务"><a href="#关于绑定服务" class="headerlink" title="关于绑定服务"></a>关于绑定服务</h2><p>想要服务绑定于某个组件，你必须实现 <code>onBind()</code> 回调方法。该方法返回的 <code>IBinder</code> 对线定义了启动者与 <code>Service</code> 交互的接口。</p>
+<p>通过调用 <code>bindService()</code> 来绑定服务。前提是，你必须提供 <code>ServiceConnection</code> 的实现，ServiceConnection 能够监控调用者与 Serviced 的链接。创建后，系统会调用 ServiceConnnection 接口中的 <code>onServiceConnected()</code> 回调，并先调用者传递 IBinder.这样，二者就可以通信了。</p>
+<p>多个组件可以同时与 <code>Service</code> 绑定，不过，需要注意的是，只有在第一个组件绑定时，系统才会调用 <code>onBind()</code> 方法返回检索到的 <code>IBinder</code>.随后的绑定，系统将不在调用 <code>onBind()</code>,而是将同一个 <code>IBinder</code> 传递给绑定的组件。</p>
+<p><em>何时销毁？</em></p>
+<p>当最后一个与之绑定的组件解绑时，系统才会将 <code>Service</code> 销毁（排除 <code>startService()</code> 也启动了该服务）。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/01/2015-12-01-binder-service/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/29/2015-11-29-service/" itemprop="url">
                   Android 中的 Service
                 </a>
@@ -399,7 +527,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
