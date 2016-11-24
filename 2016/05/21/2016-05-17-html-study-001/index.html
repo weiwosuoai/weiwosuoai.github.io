@@ -1,0 +1,905 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css,学习笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="上一天内容回顾css 属性笔试常问：
+
+加粗，倾斜，下划线
+
+123font-weight:blod;font-style:italic;text-decoration:underline;
+
+背景色，前景色
+
+12background-color:red;color:red;
+
+class 和 id 的区别
+
+class 用于 css 的，id 用于 js 的。
+1.class 页面上可以重复。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 学习第三天">
+<meta property="og:url" content="http://www.jiangbing.me/2016/05/21/2016-05-17-html-study-001/index.html">
+<meta property="og:site_name" content="Allen's Blog">
+<meta property="og:description" content="上一天内容回顾css 属性笔试常问：
+
+加粗，倾斜，下划线
+
+123font-weight:blod;font-style:italic;text-decoration:underline;
+
+背景色，前景色
+
+12background-color:red;color:red;
+
+class 和 id 的区别
+
+class 用于 css 的，id 用于 js 的。
+1.class 页面上可以重复。">
+<meta property="og:updated_time" content="2016-11-02T07:39:32.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 学习第三天">
+<meta name="twitter:description" content="上一天内容回顾css 属性笔试常问：
+
+加粗，倾斜，下划线
+
+123font-weight:blod;font-style:italic;text-decoration:underline;
+
+背景色，前景色
+
+12background-color:red;color:red;
+
+class 和 id 的区别
+
+class 用于 css 的，id 用于 js 的。
+1.class 页面上可以重复。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260685068050630000,
+      author: '博主大大'
+    }
+  };
+</script>
+
+  <title> CSS 学习第三天 | Allen's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b3cbf0a981022d724ccc89cc6a983b7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Allen's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">当你的才华还撑不起你的野心时，你就应该静下心来学习</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS 学习第三天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-21T10:55:08+08:00" content="2016-05-21">
+              2016-05-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端之路/" itemprop="url" rel="index">
+                    <span itemprop="name">前端之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/21/2016-05-17-html-study-001/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/21/2016-05-17-html-study-001/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="上一天内容回顾"><a href="#上一天内容回顾" class="headerlink" title="上一天内容回顾"></a>上一天内容回顾</h2><p>css 属性笔试常问：</p>
+<ul>
+<li>加粗，倾斜，下划线</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-weight</span><span class="selector-pseudo">:blod</span>;</span><br><span class="line"><span class="selector-tag">font-style</span><span class="selector-pseudo">:italic</span>;</span><br><span class="line"><span class="selector-tag">text-decoration</span><span class="selector-pseudo">:underline</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>背景色，前景色</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</span><br><span class="line"><span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>class 和 id 的区别</li>
+</ul>
+<p>class 用于 css 的，id 用于 js 的。</p>
+<p>1.class 页面上可以重复。id 页面上唯一，不能重复。<br>2.一个标签可以存在多个 class,之间用<em>空格</em>隔开。但是，只能存在一个 id。</p>
+<ul>
+<li>选择器</li>
+</ul>
+<p>先说说 IE6 能够兼容的选择器：标签选择器，id 选择器，类选择器，后代，交集选择器，通配符。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span></span><br><span class="line"><span class="selector-id">#box</span></span><br><span class="line"><span class="selector-class">.spec</span></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.spec</span></span><br><span class="line"><span class="selector-tag">div</span>,<span class="selector-tag">p</span></span><br><span class="line">*</span><br></pre></td></tr></table></figure>
+<p>IE7 能够兼容的：儿子选择器，下一个兄弟选择器：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&gt;<span class="selector-tag">p</span></span><br><span class="line"><span class="selector-tag">h3</span>+<span class="selector-tag">p</span></span><br></pre></td></tr></table></figure>
+<p>IE8 能够兼容的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:first-child</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:last-child</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>css 的两个性质</li>
+</ul>
+<p>1） 继承性：父类有的属性，子类继承；<br>2） 层叠性：层叠性是一种能力，能够处理冲突。当不同的选择器，对同一个标签的同一个样式，有不同的值，这时，听谁的？这时候就发生了冲突。css 有着严格的处理冲突的机制：</p>
+<blockquote>
+<p>选择上了，数权重，（id 的数量，类的数量，标签的数量）。如果权重一样，谁写在后面听谁的。<br>没有选择上，通过继承影响，就近原则，谁描述的近听谁的。如果描述的一样近，比选择器权重，如果权重也一样，谁写在后面听谁的。<br><a id="more"></a></p>
+</blockquote>
+<h2 id="！important-标记"><a href="#！important-标记" class="headerlink" title="！important 标记"></a>！important 标记</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line">	p&#123;</span><br><span class="line">		color:red !important;</span><br><span class="line">	&#125;</span><br><span class="line">	#paral&#123;</span><br><span class="line">		color:blue;</span><br><span class="line">	&#125;</span><br><span class="line">	.spec&#123;</span><br><span class="line">		color:green;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>我们可以通过 <code>！important</code> 属性来提高权重。这也就意味着该权重无限大。</p>
+<blockquote>
+<p>Note1: 书写该属性的时候，一定要保证书写正确，不能忘记书写感叹号，另外，不能将 <code>！important</code> 写在分号外面。<br>还有一点需要注意的是：<code>！important</code> 针对属性，而不是整个选择器。</p>
+<p>Note2: !important 无法提升继承的权重，该是 0 还是 0</p>
+</blockquote>
+<h2 id="访问-ContentProvider"><a href="#访问-ContentProvider" class="headerlink" title="访问 ContentProvider"></a>访问 ContentProvider</h2><p>应用通过 <code>ContentResolver</code> 对象和拥有 <code>ContentProvider</code> 对象可自动处理跨进程通信。 </p>
+<blockquote>
+<p>注意：想要访问 <code>ContentProvider</code>,你需要在应用的清单文件中请求特定的权限。</p>
+</blockquote>
+<p>例如，如果你想从 <em>用户字典 ContentProvider</em> 中获取字词以及其区域设置的列表，需要通过调用 <code>ContentResovler.query()</code>。 <code>query()</code> 方法会调用用户字典 <code>ContentProvider</code> 中定义的 <code>ContentProvider.query()</code> 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Queries the user dictionary and returns results</span></span><br><span class="line">mCursor = getContentResolver().query(</span><br><span class="line">	UserDictionary.Words.CONTENT_URI, <span class="comment">// The content URI of the words table</span></span><br><span class="line">	mProjection,                      <span class="comment">// The column to return for each row</span></span><br><span class="line">	mSelectionClause,                 <span class="comment">// Selection criteria</span></span><br><span class="line">	mSelectionArgs,                   <span class="comment">// Selection criteria</span></span><br><span class="line">	mSortOrder                        <span class="comment">// The sort order for the returned rows</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="内容-URI"><a href="#内容-URI" class="headerlink" title="内容 URI"></a>内容 URI</h2><p>内容 URI 用来在 <code>ContentProvider</code> 程序中标识数据的 URI.这个 URI 包括整个提供程序的符号名称和一个指向表名称的路径。此 URI 也是你通过 <code>ContentResolver</code> 访问 <code>ContentProvider</code> 的重要参数之一。</p>
+<p><code>ContentResolver</code> 对象会分析出 URI 的授权，并通过该授权与包含 <code>ContentProvider</code> 对象应用的系统表进行比较，比对无误后，<code>ContentResolver</code> 就可以将查询的参数分配给正确的 <code>ContentProvider</code> 了。</p>
+<p>以上面的示例代码为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:<span class="comment">//user_dictionary/words</span></span><br></pre></td></tr></table></figure>
+<p>其中，<code>user_dictionary</code> 就是 <code>ContentProvider</code> 提供的授权，<code>words</code> 字符串是表的路径。<code>content://</code> 始终显示，并被解释为 <em>内容 URI</em>.</p>
+<p>大部分 <code>ContentProvider</code> 允许你在 URI 的末尾追加 <code>ID</code> 值来访问表中具体行。例如下面的例子，我们可以检索 <code>_ID</code> 为 4 的行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri singleUri = ContentUris.withAppendedId(UserDictionary.Words.CONTENT_URI, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>通过追加 ID,我们不光能够执行查询操作，还可以执行更新和删除操作。</p>
+<blockquote>
+<p>注意：<code>Uri</code> 和 <code>Uri.Builder</code> 类都分装了 根据字符串构建规范格式的 <code>URI</code> 对象的方法，我们可以直接拿来用。 <code>ContentUris</code> 类也封装了 可以将 <code>ID</code> 值轻松追加到 <code>URI</code> 后的方法。上面的示例代码中就是通过 <code>ContentUris.withAppendId()</code> 方法将 <code>ID</code> 追加到用户字典内容的 <code>URI</code> 后面的。</p>
+</blockquote>
+<h2 id="通过-ContentProvider-查询数据"><a href="#通过-ContentProvider-查询数据" class="headerlink" title="通过 ContentProvider 查询数据"></a>通过 ContentProvider 查询数据</h2><p>想要从 ContentProvider 中查询数据，你需要执行以下操作：</p>
+<p>1.请求对 ContentProvider 读取的读取访问权限；<br>2.定义将查询操作发送给提供程序的代码。</p>
+<h3 id="请求读取访问权限"><a href="#请求读取访问权限" class="headerlink" title="请求读取访问权限"></a>请求读取访问权限</h3><p>你需要在清单文件中定义提供者程序准确的权限名称，这样用户在安装你的应用时，会隐式授予此权限。比如，<em>用户字典提供程序</em> 在其清单文件中定义了权限 <code>android.permission.READ_USER_DICTIONARY</code>,这样，如果你想要获取它的相关数据，你就需要请求该权限。</p>
+<h3 id="构建查询"><a href="#构建查询" class="headerlink" title="构建查询"></a>构建查询</h3><p>在获取了相关权限后，我们需要来构建查询，看下面的示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A "projection" defines the columns that will be returned for each row.</span></span><br><span class="line">String[] mProjection = &#123;</span><br><span class="line">	UserDictionary.Words._ID, <span class="comment">// Contract class constant for the _ID column name.</span></span><br><span class="line">	UserDictionary.Words.WORD, <span class="comment">// Contract class constant for the word column name.</span></span><br><span class="line">	UserDictionary.Words.LOCALE <span class="comment">// Contract class constant for the locale column name.</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines a string a contain the selection clause.</span></span><br><span class="line">String mSelectionClause = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Initializes an array to contain selection arguments.</span></span><br><span class="line">String[] mSelectionArgs = &#123;<span class="string">""</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中定义了一些访问 <em>用户字典 ContentProvider</em> 变量。</p>
+<p>再来看看下面的代码，同样是以 <em>用户字典</em> 为例，告诉了我们如何使用 <code>ContentResolver.query()</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Gets a word from the UI.</span></span><br><span class="line">mSearchString = mSearchWord.getText().toString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Remember to insert code here to check for invalid or malicious input.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// If the word is the empty string, gets everything.</span></span><br><span class="line"><span class="keyword">if</span> (TextUtils.isEmpty(mSearchString)) &#123;</span><br><span class="line">    <span class="comment">// Setting the selection clause to null will return all words.</span></span><br><span class="line">    mSelctionClause = <span class="keyword">null</span>;</span><br><span class="line">    mSelectionArgs[<span class="number">0</span>] = <span class="string">""</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Constructs a selection clause that matches the word that the user entered.</span></span><br><span class="line">    mSelectionClause = UserDictionary.Words.WORD + <span class="string">" = ?"</span>;</span><br><span class="line">    mSelectionArgs[<span class="number">0</span>] = mSearchString;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Moves the user's input string to the selection arguments.</span></span><br><span class="line">    mSelectionArgs[<span class="number">0</span>] = mSearchString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Does a query against the table and returns a Cursor object.</span></span><br><span class="line">mCursor = getContentReslover().query(</span><br><span class="line">        UserDictionary.Words.CONTENT_URI, <span class="comment">// The content URI of the words table</span></span><br><span class="line">        mProjection,                      <span class="comment">// The columns to renturn for each row</span></span><br><span class="line">        mSelectionClause,                 <span class="comment">// Either nll, or the word the user entered</span></span><br><span class="line">        mSelectionArgs,                   <span class="comment">// Either empty, or the string the user entered</span></span><br><span class="line">        mSortOrder                        <span class="comment">// The sort order for the returned rows</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Some providers return null if an error occurs, others throw an exception.</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">null</span> == mCursor) &#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Insert code here to handle the error.Be sure not to use the cursor! You may want to</span><br><span class="line">     * call android.util.Log.e() to log this error.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">// If the Cursor is empty, the provider found no matches.</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (mCursor.getCount() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Insert code here to notify the user that the search was unsuccessful.This isn't necessarily</span><br><span class="line">     * an error.You may want to offer the user the option to insert a new row, or re-type the</span><br><span class="line">     * serch term</span><br><span class="line">     */</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Insert code here to do something with the result.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的查询就类似于下面的 SQL:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> _ID, word, locale <span class="keyword">FROM</span> words <span class="keyword">WHERE</span> word = &lt;userinput&gt; <span class="keyword">ORDER</span> <span class="keyword">BY</span> word <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="防止恶意输入"><a href="#防止恶意输入" class="headerlink" title="防止恶意输入"></a>防止恶意输入</h4><p>如果 <code>ContentProvider</code> 提供的数据位于数据库中，那么我们在拼写 SQL 的时候，可能会被 SQL 注入：</p>
+<p>我们来看下面的这个示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将用户的输入拼接成 SQL 的查询子句</span></span><br><span class="line">String mSelectionClause = <span class="string">"var = "</span> + mUserInput;</span><br></pre></td></tr></table></figure>
+<p>上面的这段代码会允许用户将恶意的 SQL 串连到 SQL 语句上。例如，用户可以为 <code>mUserInput</code> 输入 “nothing;DROP TABLE *;”,</p>
+<p>那么就会生成这样的语句 <code>var = nothing; DROP TABLE *</code>;这样会给我们的应用带来灾难性的后果。</p>
+<p><em>那么，我们应该如何避免此类问题的出现？</em></p>
+<p>通过将 <code>？</code> 作为可替代参数的选择子句以及一个选择参数的数组。执行这样的操作，用户输入将会受到查询约束，而不是解释为 SQL 语句的一部分。这样就可以避免恶意的 SQL 注入。</p>
+<p>下面是正确的写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String mSelectionClause = <span class="string">"var = ?"</span>;</span><br></pre></td></tr></table></figure>
+<p>选择参数数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[] selectionArgs = &#123;<span class="string">""</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>将用户输入置于选择参数数组中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set the selection argument to the user's input</span></span><br><span class="line">selectionArgs[<span class="number">0</span>] = mUserInput;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note:即使我们的 <code>ContentProvider</code> 提供的数据不在数据库中，我们也应该将 <code>？</code> 作为可替换选择子句和选择参数数组来提供问号值作为首选方式。</p>
+</blockquote>
+<h3 id="显示查询结果"><a href="#显示查询结果" class="headerlink" title="显示查询结果"></a>显示查询结果</h3><p><code>ContentResolver.query()</code> 方法总是会返回一个 <code>Cursor</code>。我们可以通过使用 <code>Cursor</code> 方法，来访问查询结果中的相关数据信息。</p>
+<p>但如果没有与查询条件相匹配的行，则提供程序会返回 <code>Cursor.getCount()</code> 为 0（空游标）的 <code>Cursor</code> 对象。</p>
+<p>下面是将 <code>ContentProvider</code> 返回的 <code>Cursor</code> 通过 <code>SimpleCursorAdapter</code> 与 <code>ListView</code> 关联示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defines a list of columns to retrieve from the Cursor and load into an output row</span></span><br><span class="line">String[] mWordListColumns = &#123;</span><br><span class="line">        UserDictionary.Words.WORD, <span class="comment">// Contract class constant containing the word column name</span></span><br><span class="line">        UserDictionary.Words.LOCALE <span class="comment">// Contract class constant containing the word column name</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines a list of view IDs that will receive the Cursor columns for each row</span></span><br><span class="line"><span class="keyword">int</span>[] mWordListItems = &#123;R.id.dictword, R.id.locale&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Creates a new SimpleCursorAdapter</span></span><br><span class="line">mCursorAdapter = <span class="keyword">new</span> SimpleCursorAdapter(</span><br><span class="line">    getApplicaitonContext(), <span class="comment">// The application's Context object</span></span><br><span class="line">    R.layout.wordlistrow,    <span class="comment">// A layout in XML for one row in the ListView</span></span><br><span class="line">    mCursor,                 <span class="comment">// The result from the query</span></span><br><span class="line">    mWordListColumns,        <span class="comment">//</span></span><br><span class="line">    mWordListItems,          <span class="comment">// An interger array of view IDs in the row layout</span></span><br><span class="line">    <span class="number">0</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Sets the adapter for the ListView</span></span><br><span class="line">mWordList.setAdapter(mCursorAdapter);</span><br></pre></td></tr></table></figure>
+<h3 id="从查询结果中获取数据"><a href="#从查询结果中获取数据" class="headerlink" title="从查询结果中获取数据"></a>从查询结果中获取数据</h3><p>如果我们不光是想显示查询的数据，而是想从 Cursor 中做一些其他操作，你需要在 Cursor 中循环访问行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Determine the column index of the column named "word"</span></span><br><span class="line"><span class="keyword">int</span> index = mCursor.getColumnIndex(UserDictionary.Words.WORD);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Only executes if the cursor is valid. The User Dictionary Provider returns null</span><br><span class="line"> * if an internal error occurs. Other providers may throw an Excpetion instead of</span><br><span class="line"> * returning null.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">if</span> (mCursor != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Moves to the next row in the cursor. Before the first movement in the cursor,</span><br><span class="line">     * the "row pointer" is -1, and if you try to retrieve data at that position you</span><br><span class="line">     * will get an exception.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">while</span> (mCursor.moveToNext) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Gets the value from the column.</span></span><br><span class="line">        newWord = mCursor.getString(index);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Insert code here to process the retrieved word.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// end of while loop</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert code here to report an error if the cursor is null or the provider threw an exception.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Cursor</code> 实现了包含了很多用于从对象中检索不同类型的数据的 <em>“获取”</em> 方法。例如，上面的示例代码中使用的 <code>getString()</code> 方法。另外，我们还可以通过 <code>getType()</code> 方法来获取指示列的数据类型的值。</p>
+<h2 id="内容提供程序权限"><a href="#内容提供程序权限" class="headerlink" title="内容提供程序权限"></a>内容提供程序权限</h2><p>提供程序的应用可以指定第三方应用访问提供程序所必须的权限。这样，其他程序会请求访问提供程序所需的权限。如果，提供程序未提供任何权限，则其他应用无法访问提供程序的数据。当然这是针对不同进程的程序请求而言，对于在同一个进程的组件是具有完整的读写权限的。</p>
+<p>比如，我们想要访问用户字典程序需要 <code>android.permission.READ_USER_DICTIONARY</code> 权限才能从中检索数据。<br>通过 <code>ContentProvider</code> 我们可以对其进行插入、更新，如果你想进行删除数据的操作，你还需要申请 <code>android.permission.WRITE_USER_DICTIONARY</code> 权限。</p>
+<h2 id="如何通过-ContentProvider-进行增删改操作"><a href="#如何通过-ContentProvider-进行增删改操作" class="headerlink" title="如何通过 ContentProvider 进行增删改操作"></a>如何通过 ContentProvider 进行增删改操作</h2><p>我们不但能够通过 <code>ContentProvider</code> 来进行查询操作，还能通过它来进行增删改操作。</p>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><p>我们通过调用 <code>ContentResolver.insert()</code> 方法来插入数据。它会插入数据后并返回内容 URI:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defines a new Uri object that receives the result of the insertion.</span></span><br><span class="line">Uri mNewUri;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines an object to contain the new values to insert</span></span><br><span class="line">ContentValues mNewValues = <span class="keyword">new</span> ContentValues();</span><br><span class="line"></span><br><span class="line">mNewValues.put(UserDictionary.Words.APP_ID, <span class="string">"example.user"</span>);</span><br><span class="line">mNewValues.put(UserDictionary.Words.LOCALE, <span class="string">"en_US"</span>);</span><br><span class="line">mNewValues.put(UserDictionary.Words.WORD, <span class="string">"insert"</span>);</span><br><span class="line">mNewValues.put(UserDictionary.Words.FREQUENCY, <span class="string">"100"</span>);</span><br><span class="line"></span><br><span class="line">mNewUri = getContentResolver().insert(</span><br><span class="line">        UserDictionary.Words.CONTENT_URI, <span class="comment">// the user dictionary content URI</span></span><br><span class="line">        mNewValues                        <span class="comment">// the values to insert</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>我们不需要添加 <code>_ID</code> 列，系统会自动维护此列。<code>ContentProvider</code> 会向添加的每个行分配唯一的 <code>_ID</code> 值，并用以作为主键。</p>
+<p><code>insert()</code> 方法会放回一下形式的 <code>URI</code> 给我们：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:<span class="comment">//user_dictionary/words/&lt;id_value&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个 <code>&lt;id_value&gt;</code> 就是新插入的行的 <code>_ID</code> 内容。</p>
+<blockquote>
+<p>注意：要想从 <code>Uri</code> 中获取 <code>_ID</code> 的值，请调用 <code>ContentUris.parseId()</code>.</p>
+</blockquote>
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><p>通过 <code>ContentResolver.update()</code> 来执行更新操作。我么只需将需要 <code>ContentValues</code> 对象传入。而对于想要清除的字段内容，只需将值置为 <code>null</code> 即可。</p>
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defines an object to contain the new values to insert</span></span><br><span class="line">ContentValues mNewValues = <span class="keyword">new</span> ContentValues();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines selection criteria for the rows you want to update</span></span><br><span class="line">String mSelectionClause = UserDictionary.Words.LOCALE + <span class="string">"LIKE ?"</span>;</span><br><span class="line">String[] mSelectionArgs = &#123;<span class="string">"en_%"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines a variable to contain the number of updated rows</span></span><br><span class="line"><span class="keyword">int</span> mRowsUpdated = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Sets the updated value and updates the selected words.</span><br><span class="line"> */</span></span><br><span class="line">mUpdateValues.putNull(UserDictionary.Words.LOCALE);</span><br><span class="line"></span><br><span class="line">mRowsUpdated = getContentResolver().update(</span><br><span class="line">        UserDictionary.Words.CONTENT_URI, <span class="comment">// the user dictionary content URI</span></span><br><span class="line">        mUpdateValues,                    <span class="comment">// the columns to update</span></span><br><span class="line">        mSelectionClause,                 <span class="comment">// the columns to select on</span></span><br><span class="line">        mSelectionArgs                    <span class="comment">// the value to compare to</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 你应该在 <code>ContentResolver.update()</code> 时检查用户输入，以防止 <em>恶意输入</em>。</p>
+</blockquote>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>删除操作与查询操作类似，我们只需要指定条件即可，<code>delete()</code> 方法会将 <em>删除的行数</em> 返回给我们。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defines selection criteria for the rows you want to delete</span></span><br><span class="line">String mSelectionClause = UserDictionary.Words.APP_ID + <span class="string">"LIKE ?"</span>;</span><br><span class="line">String[] mSelectionArgs = &#123;<span class="string">"user"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Defines a variable to contain the number of row deleted</span></span><br><span class="line"><span class="keyword">int</span> mRowsDeleted = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Deletes the words that match the selection criteria</span></span><br><span class="line">mRowsDeleted = getContentResolver().delete(</span><br><span class="line">        UserDictionary.Words.CONTENT_URI, <span class="comment">// the user dictionary content URI</span></span><br><span class="line">        mSelectionClause,                 <span class="comment">// the columns to select on</span></span><br><span class="line">        mSelectionArgs                    <span class="comment">// the value to compare to</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="ContentProvider-数据类型"><a href="#ContentProvider-数据类型" class="headerlink" title="ContentProvider 数据类型"></a>ContentProvider 数据类型</h2><p><code>ContentProvider</code> 可以提供不同类型的数据：</p>
+<ul>
+<li>整型</li>
+<li>长整型</li>
+<li>浮点型</li>
+<li>长浮点型（双倍）</li>
+</ul>
+<p><code>ContentProvider</code> 还会维护其定义的每个内容的 <code>MIME</code> 数据类型信息。在使用包含复杂数据结构或文件的 <code>ContentProvider</code> 时，通常需要 <code>MIME</code> 类型。例如，联系人的 <code>ContentProvider</code> 中的 <code>ContactsContract.Data</code> 表会使用 MIME 类型来标记每行中存储的联系人数据类型。想要获取与内容 <code>URI</code> 对应的 <code>MIME</code> 类型，请调用 <code>ContentResolver.getType()</code>;</p>
+<h2 id="ContentProvider-的替代形式"><a href="#ContentProvider-的替代形式" class="headerlink" title="ContentProvider 的替代形式"></a>ContentProvider 的替代形式</h2><p><code>ContentProvider</code> 的三种替代形式在应用开发过程中很是重要：</p>
+<ul>
+<li><strong>批量访问</strong>： 你可以通过 <code>ContentProviderOperation</code> 类中的方法创建一批访问调用，再通过 <code>ContentResolver.applyBatch()</code> 应用他们。</li>
+<li><strong>异步查询</strong>： 你应该在单独线程中执行查询。执行方式之一是通过 <code>CursorLaoder</code> 对象。</li>
+<li><strong>通过 Intent 访问数据</strong>： 虽然我们无法向 <code>ContentProvider</code> 发送 Intent,但是可以向 <code>ContentProvider</code> 的应用发送 Intent,后者通常具有修改 <code>ContentProvider</code> 数据的最佳配置。 </li>
+</ul>
+<h3 id="批量访问"><a href="#批量访问" class="headerlink" title="批量访问"></a>批量访问</h3><p>批量访问 <code>ContentProvider</code> 适用于插入大量行，或通过同一方法调用在多个表中插入行，或者用于跨进程界限将一组操作事务处理执行。</p>
+<p>想要在 <strong>“批量模式”</strong> 下访问 <code>ContentProvider</code>,你可以创建 <code>ContentProviderOperation</code> 对象数组，然后使用 <code>ContentResolver.applyBatch()</code> 将其分派给内容提供程序。</p>
+<p>我们需要将 <code>ContentProvider</code> 的 <strong>授权</strong> 传递给此方法，而不是特定内容的 <code>URI</code>.这样可以使数组中的每个 <code>ContentProviderOperation</code> 对象都能适用于其他表。</p>
+<p><code>ContactsContract.RawContacts</code> 协定类的说明包括展示批量注入的代码段。</p>
+<h3 id="通过-Intent-访问数据"><a href="#通过-Intent-访问数据" class="headerlink" title="通过 Intent 访问数据"></a>通过 Intent 访问数据</h3><p>我们可以通过 Intent 对 ContentProvider 进行间接的访问。即使我们的应用不具备访问权限。我们可以从具有权限的应用中获取回结果 Intent,或者通过激活具有权限的应用，然后让用户在其中工作。</p>
+<p><em>通过临时权限获取访问权限：</em></p>
+<p>即便我们没有适当的访问权限，还是可以通过以下方式来访问 ContentProvider 中的数据：</p>
+<p>将 Intent 发送至具有权限的应用，然后接受到包含 URI 权限的结果 Intent. 这些就是特定内容的 URI 权限，此权限的生命周期将持续到 <em>接受该权限的组件结束为止</em>。具有永久权限的应用将通过在结果 Intent 中设置标志来授予临时权限：</p>
+<ul>
+<li><strong>读取权限</strong>： <code>FLAG_GRANT_READ_URI_PERMISSION</code></li>
+<li><strong>写入权限</strong>： <code>FLAG_GRANT_WRITE_URI_PERMISSION</code></li>
+</ul>
+<blockquote>
+<p>注意：这些标志不会为其授权包含在内容 URI 中的提供程序提供常规的读取或写入访问权限。访问权限仅适用于 URI 本身。</p>
+</blockquote>
+<p><code>ContentProvider</code> 使用 <code>&lt;provider&gt;</code> 元素的 <code>android:grantUriPermission</code> 属性以及 <code>&lt;provider&gt;</code> 元素的 <code>&lt;grant-uri-permission&gt;</code> 在清单文件中定义内容 <code>URI</code> 的 <code>URI</code> 权限。详情参见<a href="https://developer.android.com/guide/topics/security/security.html" target="_blank" rel="external">《安全与权限》</a>。</p>
+<p>举个例子，即使你没有 <code>READ_CONTACTS</code> 权限，也可以在联系人的 <code>ContentProvider</code> 中检索联系人的数据。比如说你希望在一个 <code>向联系人发送电子生日祝福</code> 的应用中执行此操作。你更希望让用户控制应用所使用的联系人，而不是请求 <code>READ_CONTACTS</code>,让你的应用能够访问用户所有的联系人和信息，这样做是不友好的，用户也很有可能因为此举而删掉你的应用。</p>
+<p><em>如何做到呢？</em></p>
+<p>1.使用 <code>startActivityForResult()</code> 发送包含操作 <code>ACTION_PICK</code> 和 联系人 <code>MIME</code> 类型 <code>CONTENT_ITEM_TYPE</code> 的 Intent 对象。</p>
+<p>2.通过此 <code>Intent</code> 与 联系人 应用的 选择 <code>Activity</code> 的 <code>Intent</code> 过滤器相匹配，来显示 联系人 <code>Activity</code>.</p>
+<p>3.用户在 联系人 界面上选择需要发送电子生日祝福的联系人。这样，该 <code>Activity</code> 会调用 <code>setResult(resultcode, intent)</code> 来设置用于返回的 <code>Intent</code>. <code>Intent</code> 包含用户选择的联系人的内容 <code>URI</code>,以及 extras 标志 <code>FLAG_GRANT_READ_URI_PERMISSION</code>。这些标志会为你的应用授予读取内容 <code>URI</code> 所指向的联系人的数据的 <code>URI</code> 权限。接着，联系人选择 <code>Activity</code> 会调用 <code>finish()</code> 以返回对应用的控制。</p>
+<p>4.在 <code>onActivityResult()</code> 方法中，我们会接受到联系人应用选择界面所返回的 <code>Intent</code>.</p>
+<p>5.通过 <code>Intent</code> 中的内容 <code>URI</code>,我们可以读取来自联系人 <code>ContentProvider</code> 的联系人数据，即使你未在清单文件中请求对该提供程序的永久读取访问权限。</p>
+<p>6.最后，我们就可以在不获取联系人权限的前提下，向某个联系人发送生日祝福的功能了。</p>
+<blockquote>
+<p>小结：这么麻烦，有必要吗？直接在清单文件中申请永久权限不就行了吗？用得着这么大费周章吗？<br>这么做是非常有必要的，你需要知道的是，用户对于 APP 申请读取敏感信息权限是非常反感的，这样做，很可能导致用户拒绝安装此应用，进而流失用户。</p>
+</blockquote>
+<p><em>使用其他应用：</em></p>
+<p>第二种方法允许用户修改你无权访问的数据的简单方法是激活具有权限的应用，让用户在其中执行工作。</p>
+<p>例如，日历应用 接受 <code>ACTION_INSERT</code> Intent,这让你可以激活应用的插入 UI.你可以在此 <code>Intent</code> 中传递额外的数据，由于定期事件具有复杂的语法，因此将事件插入日历提供程序的首选方式是激活具有 <code>ACTION_INSERT</code> 的日历应用，然后让用户在其中插入事件。</p>
+<h2 id="协定类"><a href="#协定类" class="headerlink" title="协定类"></a>协定类</h2><p>协定类的作用是帮助应用使用内容 URI,列名称，Intent 操作以及内容提供程序的其他功能的常量。然而协定类未自动包含在提供程序中。开发者需要在 <code>ContentProvider</code> 中定义它们，然后使其可用于其他开发者。Android 平台中包含的许多提供程序都在软件包 <code>android.provider</code> 中具有对应的协定类。</p>
+<p>例如，用户字典提供程序具有包含内容 <code>URI</code> 和 列名称常量的协定类 <code>UserDictionary</code>.字词表的内容 URI 在常量 <code>UserDictionary.Words.CONTENT_URI</code> 中定义。 <code>UserDictionary.Words</code> 类包含列名称常量，上面的示例代码就使用了相关常量。</p>
+<p>联系人的 <code>ContentProvider</code> 的 <code>ContactsContract</code> 也是一个协定类。</p>
+<h2 id="MIME-类型引用"><a href="#MIME-类型引用" class="headerlink" title="MIME 类型引用"></a>MIME 类型引用</h2><p>ContentProvider 可以返回标准的 MIME 媒体类型和 自定义 的 MIME 类型字符串。</p>
+<p>MIME 类型具有的格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type/subtype</span><br></pre></td></tr></table></figure>
+<p>例如，<code>text/html</code>，<code>ContentProvider</code> 一旦返回此类型，则意味着使用该 <code>URI</code> 查询会返回包含 <code>HTML</code> 标记的文本。</p>
+<p>自定义 <code>MIME</code> 类型(一般是特定供应商会使用)字符串具有更加复杂的类型和子类型，类型值始终为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnd.android.cursor.dir</span><br></pre></td></tr></table></figure>
+<p>上面表示 <strong>多行</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnd.android.cursor.item</span><br></pre></td></tr></table></figure>
+<p>上面表示 <strong>单行</strong>；</p>
+<p>子类型 特定于提供程序。Android 内置提供程序通常具有简单的子类型。例如，当联系人应用为电话号码创建行时，它会在行中设置以下 MIME 类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnd.android.cursor.item/phone_v2</span><br></pre></td></tr></table></figure>
+<p>上面的子类型就是 <code>phone_v2</code>.</p>
+<p>其他程序的开发者可能会根据提供程序的授权和表名称创建自己的子类型模式。例如，假设提供程序包含了列车时刻表。且授权是 <code>com.example.trains</code>,并包含表 Line1,Line2 和 Line3.在响应 Line1 的内容 <code>URI</code> ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:<span class="comment">//com.example.trains/Line1</span></span><br></pre></td></tr></table></figure>
+<p>时，提供程序会返回 <code>MIME</code> 类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnd.android.cursor.dir/vnd.example.line1</span><br></pre></td></tr></table></figure>
+<p>在响应表 Line2 中的第五行的内容的 <code>URI</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content:<span class="comment">//com.example.trains/Line2/5</span></span><br></pre></td></tr></table></figure>
+<p>时，会返回的 <code>MIME</code> 类型为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnd.android.cursor.item/vnd.example.line2</span><br></pre></td></tr></table></figure>
+<p>基本上大多数 <code>ContentProvider</code> 都会为其使用的 <code>MIME</code> 类型定义协定类常量。例如，联系人提供程序的协定类 <code>ContactsContract.RawContacts</code> 会为单个原始联系人行的 <code>MIME</code> 类型定义常量 <code>CONTENT_ITEM_TYPE</code>.</p>
+<p>具体参见：<a href="https://developer.android.com/guide/topics/providers/content-provider-basics.html#ContentURIs" target="_blank" rel="external">《内容 URI》</a>.</p>
+<p>本文学习自：<br><a href="https://developer.android.com/guide/topics/providers/content-provider-basics.html" target="_blank" rel="external">https://developer.android.com/guide/topics/providers/content-provider-basics.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div><font style="font-weight:bold;font-style:italic;" color='red' size='5'>文章有帮助到您？不妨打赏博主一碗拉面或一杯咖啡的小费吧 :-D！</font></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixin_pay.png" alt="江冰 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/zhifubao_pay.png" alt="江冰 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/15/2016-05-15-guitar_nanfangbeifang/" rel="next" title="【Guitar 弹唱】南方北方">
+                <i class="fa fa-chevron-left"></i> 【Guitar 弹唱】南方北方
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/21/2016-05-17-html-study-001/"
+     data-title="CSS 学习第三天"
+     data-content=""
+     data-url="http://www.jiangbing.me/2016/05/21/2016-05-17-html-study-001/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/21/2016-05-17-html-study-001/"
+           data-title="CSS 学习第三天" data-url="http://www.jiangbing.me/2016/05/21/2016-05-17-html-study-001/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="江冰" />
+          <p class="site-author-name" itemprop="name">江冰</p>
+          <p class="site-description motion-element" itemprop="description">有一种难事叫坚持</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/weiwosuoai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3932230692/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#上一天内容回顾"><span class="nav-number">1.</span> <span class="nav-text">上一天内容回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#！important-标记"><span class="nav-number">2.</span> <span class="nav-text">！important 标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问-ContentProvider"><span class="nav-number">3.</span> <span class="nav-text">访问 ContentProvider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容-URI"><span class="nav-number">4.</span> <span class="nav-text">内容 URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-ContentProvider-查询数据"><span class="nav-number">5.</span> <span class="nav-text">通过 ContentProvider 查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求读取访问权限"><span class="nav-number">5.1.</span> <span class="nav-text">请求读取访问权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建查询"><span class="nav-number">5.2.</span> <span class="nav-text">构建查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#防止恶意输入"><span class="nav-number">5.2.1.</span> <span class="nav-text">防止恶意输入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示查询结果"><span class="nav-number">5.3.</span> <span class="nav-text">显示查询结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从查询结果中获取数据"><span class="nav-number">5.4.</span> <span class="nav-text">从查询结果中获取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容提供程序权限"><span class="nav-number">6.</span> <span class="nav-text">内容提供程序权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何通过-ContentProvider-进行增删改操作"><span class="nav-number">7.</span> <span class="nav-text">如何通过 ContentProvider 进行增删改操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增"><span class="nav-number">7.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改"><span class="nav-number">7.2.</span> <span class="nav-text">改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">7.3.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentProvider-数据类型"><span class="nav-number">8.</span> <span class="nav-text">ContentProvider 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentProvider-的替代形式"><span class="nav-number">9.</span> <span class="nav-text">ContentProvider 的替代形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#批量访问"><span class="nav-number">9.1.</span> <span class="nav-text">批量访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-Intent-访问数据"><span class="nav-number">9.2.</span> <span class="nav-text">通过 Intent 访问数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协定类"><span class="nav-number">10.</span> <span class="nav-text">协定类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIME-类型引用"><span class="nav-number">11.</span> <span class="nav-text">MIME 类型引用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江冰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangbing"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -239,6 +239,156 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/21/2016-05-17-html-study-001/" itemprop="url">
+                  CSS 学习第三天
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-21T10:55:08+08:00" content="2016-05-21">
+              2016-05-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端之路/" itemprop="url" rel="index">
+                    <span itemprop="name">前端之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/21/2016-05-17-html-study-001/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/21/2016-05-17-html-study-001/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="上一天内容回顾"><a href="#上一天内容回顾" class="headerlink" title="上一天内容回顾"></a>上一天内容回顾</h2><p>css 属性笔试常问：</p>
+<ul>
+<li>加粗，倾斜，下划线</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-weight</span><span class="selector-pseudo">:blod</span>;</span><br><span class="line"><span class="selector-tag">font-style</span><span class="selector-pseudo">:italic</span>;</span><br><span class="line"><span class="selector-tag">text-decoration</span><span class="selector-pseudo">:underline</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>背景色，前景色</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</span><br><span class="line"><span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>class 和 id 的区别</li>
+</ul>
+<p>class 用于 css 的，id 用于 js 的。</p>
+<p>1.class 页面上可以重复。id 页面上唯一，不能重复。<br>2.一个标签可以存在多个 class,之间用<em>空格</em>隔开。但是，只能存在一个 id。</p>
+<ul>
+<li>选择器</li>
+</ul>
+<p>先说说 IE6 能够兼容的选择器：标签选择器，id 选择器，类选择器，后代，交集选择器，通配符。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span></span><br><span class="line"><span class="selector-id">#box</span></span><br><span class="line"><span class="selector-class">.spec</span></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.spec</span></span><br><span class="line"><span class="selector-tag">div</span>,<span class="selector-tag">p</span></span><br><span class="line">*</span><br></pre></td></tr></table></figure>
+<p>IE7 能够兼容的：儿子选择器，下一个兄弟选择器：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&gt;<span class="selector-tag">p</span></span><br><span class="line"><span class="selector-tag">h3</span>+<span class="selector-tag">p</span></span><br></pre></td></tr></table></figure>
+<p>IE8 能够兼容的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:first-child</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:last-child</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>css 的两个性质</li>
+</ul>
+<p>1） 继承性：父类有的属性，子类继承；<br>2） 层叠性：层叠性是一种能力，能够处理冲突。当不同的选择器，对同一个标签的同一个样式，有不同的值，这时，听谁的？这时候就发生了冲突。css 有着严格的处理冲突的机制：</p>
+<blockquote>
+<p>选择上了，数权重，（id 的数量，类的数量，标签的数量）。如果权重一样，谁写在后面听谁的。<br>没有选择上，通过继承影响，就近原则，谁描述的近听谁的。如果描述的一样近，比选择器权重，如果权重也一样，谁写在后面听谁的。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/21/2016-05-17-html-study-001/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/15/2016-05-15-guitar_nanfangbeifang/" itemprop="url">
                   【Guitar 弹唱】南方北方
                 </a>
@@ -1354,136 +1504,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/18/2016-04-18-intent-service-and-intent-service/" itemprop="url">
-                  Android 中的 Service 类拓展和 IntentService 介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T10:55:08+08:00" content="2016-04-18">
-              2016-04-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/18/2016-04-18-intent-service-and-intent-service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/2016-04-18-intent-service-and-intent-service/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>IntentService 作为 Service 的子类，它能够将我们需要的操作放到 工作线程 进行处理。通过重写 <code>onHandleIntent()</code> 方法，此方法会自动处理我们发出的每一个 Intent，在工作线程中执行任务。</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，但我们想要启动一个 Service,需要在另一个组件中调用 <code>startService()</code>，从而调用 Service 中的 <code>onStartCommand()</code> 方法. </p>
-<p>Service 拥有自己的生命周期，并可以在后台无限期的运行（和 Windows 中的 Service 很像）。</p>
-<blockquote>
-<p>注意1：即使是调用者（启动服务的组件）被销毁，都不能影响 Service 的运行。我们需要在另一个组件中调用 stopService() 或者在服务中调用 stopSelf() 来停止服务。<br>注意2：我见到到一些 Android 开发人员，因为对 Service 不熟悉，想当然的认为每当我们启动了一个 Service,也就意味了开了一个子线程，这种想法是错误的。<br>实际情况是：默认情况下，服务和服务声明的应用运行在同一个进程中，而且运行在主线程中。所以说，如果 Service 需要处理一些耗时操作，我们需要在 Service 中开启一个工作线程来处理这些任务。</p>
-</blockquote>
-<p><em>这里有两种 Service 供我们使用：</em><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/18/2016-04-18-intent-service-and-intent-service/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1529,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1537,7 +1557,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1546,7 +1566,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
