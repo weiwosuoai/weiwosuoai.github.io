@@ -501,7 +501,7 @@ pre,
   font-size: 14px;
   color: #c5c8c6;
   background: #1d1f21;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 pre,
 code {
@@ -1665,7 +1665,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bd502e;
+  background: #7ac80d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2549,4 +2549,7 @@ hr {
 }
 .posts-expand .post-body ul li {
   list-style: disc;
+}
+.container .main-inner {
+  width: 888px;
 }
