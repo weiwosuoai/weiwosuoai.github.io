@@ -49,7 +49,7 @@ abbr[title] {
 }
 b,
 strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 dfn {
   font-style: italic;
@@ -57,6 +57,7 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  font-weight: 600;
 }
 mark {
   background: #ff0;
@@ -185,10 +186,10 @@ th {
 }
 body {
   position: relative;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
-  line-height: 2;
-  color: #555;
+  font-family: 'Lato', 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
   background: #fff;
 }
 @media (max-width: 767px) {
@@ -203,7 +204,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 h1,
@@ -214,9 +215,8 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-  font-weight: bold;
   line-height: 1.5;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, sans-serif;
 }
 h2,
 h3,
@@ -224,6 +224,8 @@ h4,
 h5,
 h6 {
   margin: 20px 0 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
 }
 h1 {
   font-size: 24px;
@@ -455,7 +457,7 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 850px;
+  width: 888px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
@@ -467,7 +469,7 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 850px;
+  width: 888px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
@@ -484,7 +486,7 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 850px;
+  width: 888px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
@@ -496,22 +498,22 @@ pre,
   overflow: auto;
   margin: 20px 0;
   padding: 15px;
-  font-size: 13px;
+  font-size: 14px;
   color: #c5c8c6;
   background: #1d1f21;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 pre,
 code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Monaco', consolas, Menlo, 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, monospace;
 }
 code {
   padding: 2px 4px;
   word-break: break-all;
   color: #555;
   background: #eee;
-  border-radius: 4px;
-  font-size: 13px;
+  border-radius: 3px;
+  font-size: 14px;
 }
 pre code {
   padding: 0;
@@ -746,7 +748,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: #555;
+  background: #333;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -910,7 +912,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -998,7 +1000,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1016,7 +1018,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1216,7 +1218,7 @@ pre .javascript .function {
   font-size: 26px;
   text-align: center;
   word-break: break-word;
-  font-weight: 400;
+  font-weight: 600;
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
@@ -1263,7 +1265,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif, sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1663,7 +1665,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff58ff;
+  background: #bd502e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2456,7 +2458,7 @@ hr {
 }
 .post-more-link a {
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   background: none;
   border: none;
@@ -2465,12 +2467,12 @@ hr {
 }
 @media (max-width: 767px) {
   .post-more-link a {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 1600px) {
   .post-more-link a {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 .post-more-link a:hover {
@@ -2539,4 +2541,12 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+.posts-expand .post-title {
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 2em;
+}
+.posts-expand .post-body ul li {
+  list-style: disc;
 }
